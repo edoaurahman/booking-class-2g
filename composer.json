@@ -1,0 +1,19 @@
+{
+    "name": "tugas-besar/booking-class-2g",
+    "description": "Tugas Besar , Booking Class",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "TugasBesar\\BookingClass2g\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ridho Aulia' Rahman",
+            "email": "edoaurahman@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8"
+    }
+}
