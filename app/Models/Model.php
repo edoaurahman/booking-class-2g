@@ -21,6 +21,7 @@ class Model extends Database
                 $model->$key = $value;
             }
         }
+
         return $model;
     }
 
@@ -30,6 +31,7 @@ class Model extends Database
         $sql = "SELECT * FROM $model->table";
         $stmt = $model->db->prepare($sql);
         $stmt->execute();
+
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
@@ -42,6 +44,7 @@ class Model extends Database
         $stmt = $model->db->prepare($sql);
         $stmt->bind_param(str_repeat('s', count($data)), ...array_values($data));
         $stmt->execute();
+
     }
 
     public function update(array $data, string $id, string $column = 'id'): void
@@ -61,6 +64,7 @@ class Model extends Database
 
         $stmt->bind_param($types, ...$values);
         $stmt->execute();
+
     }
 
     public function delete(string $id, string $column = 'id'): void
@@ -70,6 +74,7 @@ class Model extends Database
         $stmt = $model->db->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();
+
     }
 
     public function query(string $sql): array
@@ -77,16 +82,18 @@ class Model extends Database
         $model = new static;
         $stmt = $model->db->prepare($sql);
         $stmt->execute();
+
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function where(string $column, string $operator, string $value): object | null
+    public function where(string $column, string $operator, string $value): object|null
     {
         $model = new static;
         $sql = "SELECT * FROM $model->table WHERE $column $operator '$value'";
         $stmt = $model->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
-        return $result ? (object) $result : null;
+
+        return $result ? (object)$result : null;
     }
 }
