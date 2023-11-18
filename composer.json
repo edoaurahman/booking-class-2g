@@ -9,12 +9,12 @@
     },
     "authors": [
         {
-            "name": "Ridho Aulia' Rahman",
+            "name": "Sholeh Project",
             "email": "edoaurahman@gmail.com"
         }
     ],
     "require": {
         "php": ">=8",
-      "ext-mysqli": "*"
+        "ext-mysqli": "*"
     }
 }

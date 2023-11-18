@@ -1,0 +1,15 @@
+{
+  "name": "booking-class-2g",
+  "version": "1.0.0",
+  "description": "## Dalam tugas ini arsitektur yang digunakan adalah MVC (Model View Controller)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "sholeh-project",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}
