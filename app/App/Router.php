@@ -55,8 +55,10 @@ class Router
                     $function = $route['function'];
                     $controller = new $route['controller'];
 
-                    call_user_func_array([$controller, $function], $variables);
+                    if ($method == 'POST')
+                        $variables[] = new Request();
 
+                    call_user_func_array([$controller, $function], $variables);
                     return;
                 } catch (\Throwable $e) {
                     http_response_code(500);
