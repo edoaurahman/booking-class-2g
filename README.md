@@ -17,7 +17,17 @@ cd booking-class-2g
 composer install 
 ```
 
+### jalankan npm install
+```
+npm install 
+```
+
 ### jalankan program dengan perintah
 ```
-php -S localhost:8080 -t public
+(php -S localhost:8080 -t public & npx tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/style.css --watch)
+```
+
+### Buka di Browser
+```
+http://localhost:8080
 ```
