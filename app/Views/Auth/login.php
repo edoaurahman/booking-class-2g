@@ -9,7 +9,7 @@
     <form action="">
         <input type="text" id="nim/nip" placeholder="NIM/NIM">
         <input type="password" id="password" placeholder="Password">
-        <button></button>
+        <button>Login</button>
     </form>
 </body>
 </html>
