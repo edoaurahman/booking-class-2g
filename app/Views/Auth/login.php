@@ -6,6 +6,10 @@
     <title>Login</title>
 </head>
 <body>
-    
+    <form action="">
+        <input type="text" id="nim/nip" placeholder="NIM/NIM">
+        <input type="password" id="password" placeholder="Password">
+        <button></button>
+    </form>
 </body>
 </html>

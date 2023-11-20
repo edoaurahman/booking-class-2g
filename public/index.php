@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use TugasBesar\BookingClass2g\App\Router;
+use TugasBesar\BookingClass2g\Controller\AuthController;
 
-// Router::add('GET', '/user', HomeController::class, 'index');
-// Router::add('GET', '/jabatan', HomeController::class, 'jabatan');
+Router::add('GET', '/login', AuthController::class, 'login');
 Router::run();
