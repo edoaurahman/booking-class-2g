@@ -28,9 +28,18 @@ composer install
 npm install 
 ```
 
-### jalankan program dengan perintah
+### jalankan program dengan perintah (Mac / Linux)
 ```
 (php -S localhost:8080 -t public & npx tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/style.css --watch)
+```
+
+### jalankan program dengan perintah (Windows)
+```
+php -S localhost:8080 -t public
+```
+
+```
+ npx tailwindcss -i public\assets\css\input.css -o public\assets\css\style.css --watch
 ```
 
 ### Buka di Browser
