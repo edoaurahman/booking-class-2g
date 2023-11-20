@@ -2,6 +2,12 @@
 
 ## Dalam tugas ini arsitektur yang digunakan adalah MVC (Model View Controller)
 
+### Requirement
+- php 8
+- composer
+- nodejs
+- npm
+
 ### clone repository
 ``` 
 git clone https://github.com/edoaurahman/booking-class-2g.git
