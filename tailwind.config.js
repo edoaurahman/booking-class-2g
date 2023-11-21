@@ -10,6 +10,13 @@ module.exports = {
         royal_blue: "#0074B7",
         white: "#ffff",
       },
+      fontFamily: {
+        // Menambahkan atau mengganti font family sesuai kebutuhan Anda
+        sans: ["Roboto", "sans-serif"],
+        serif: ["Lato", "Cambria", "Times New Roman", "Times", "serif"],
+        mono: ["Menlo", "Monaco", "Courier New", "Courier", "monospace"],
+        // Tambahkan konfigurasi font family lainnya jika diperlukan
+      },
     },
   },
   plugins: [],
