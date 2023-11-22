@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="bg-white border-gray-200 dark:bg-gray-800">
+    <nav class="bg-navy_blue border-gray-200 dark:bg-gray-800">
         <div class="max-w-screen-2xl flex flex-wrap items-center justify-between p-4 mx-2 md:mx-4">
 
             <!-- logo -->
