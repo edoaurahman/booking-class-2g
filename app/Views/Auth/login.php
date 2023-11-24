@@ -258,7 +258,7 @@
 <body>
     <div class="flex justify-center h-screen overflow-hidden">
         <div id="particles-js" class="blur-sm"></div>
-        <img class="w-1/2 object-cover opacity-40 bg-no-repeat blur-sm" src="https://kampusimpian.com/wp-content/uploads/2020/10/Polinema.jpg" alt="" srcset="">
+        <img class="w-1/2 hidden sm:block object-cover opacity-40 bg-no-repeat blur-sm" src="https://kampusimpian.com/wp-content/uploads/2020/10/Polinema.jpg" alt="" srcset="">
         <section class="z-50 absolute sm:w-screen md:w-full h-screen">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
