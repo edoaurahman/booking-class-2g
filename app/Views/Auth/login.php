@@ -303,6 +303,11 @@
             password.setAttribute("type", type);
             this.classList.toggle("bi-eye");
         });
+
+        const theme = localStorage.getItem("theme");
+        if (theme == "dark") {
+            document.body.classList.add("dark");
+        }
     </script>
     <script src="assets/js/particles.js"></script>
     <script src="assets/js/app.js"></script>

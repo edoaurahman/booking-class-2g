@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,14 +16,14 @@
 </head>
 
 <body>
-    <nav class="w-full bg-navy_blue border-gray-200 dark:bg-gray-800" >
+    <nav class="w-full bg-navy_blue border-gray-200 dark:bg-gray-800">
         <div class="flex flex-wrap items-center justify-between px-3 py-2 mx-2 md:mx-4">
 
             <!-- logo -->
 
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="assets/img/logo.png" class="h-8" alt="Smart Booking Logo" />
-                <span class="self-center font-sans text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">Booking Room <span class="text-sky-500">Polinema</span></span>
+                <span class="self-center font-sans text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">Booking Room <span id="text-polinema" class="text-sky-500 hidden">Polinema</span></span>
             </a>
 
             <!-- notifikasi -->
@@ -29,11 +34,11 @@
                         <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
                     </svg>
 
-                    <div class="absolute block w-3 h-3 bg-red-500 border-2 border-navy_blue rounded-full -top-0.5 start-2.5 md:start-4 dark:border-gray-900"></div>
+                    <div class="absolute block w-3 h-3 bg-red-500 border-2 border-navy_blue rounded-full -top-0.5 start-2.5 md:start-3 dark:border-gray-900"></div>
                 </button>
 
                 <!-- Dropdown menu -->
-                <div id="dropdownNotification" class="z-20 hidden w-[90%] md:w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" aria-labelledby="dropdownNotificationButton">
+                <div id="dropdownNotification" class="z-20 hidden w-[85%] md:w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" aria-labelledby="dropdownNotificationButton">
                     <div class="block px-4 py-2 font-medium text-center text-gray-600 rounded-t-lg bg-gray-50 dark:bg-gray-700 dark:text-white">
                         Notifications
                     </div>
@@ -44,7 +49,7 @@
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-gray-900 dark:text-white">Success</span><br>
+                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
                                     Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
                                 </div>
                                 <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
@@ -56,7 +61,7 @@
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-red-500 p-0.5 rounded-md font-semibold text-gray-900 dark:text-white">Cancelled</span><br>
+                                    <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
                                     Your class in <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is cancelled by something.
                                 </div>
                                 <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
@@ -68,7 +73,7 @@
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-gray-900 dark:text-white">Success</span><br>
+                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
                                     Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
                                 </div>
                                 <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
@@ -80,7 +85,7 @@
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-gray-900 dark:text-white">On Process</span><br>
+                                    <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
                                     Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is on process please waiting.
                                 </div>
                                 <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
@@ -92,7 +97,7 @@
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-gray-900 dark:text-white">Success</span><br>
+                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
                                     Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
                                 </div>
                                 <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
@@ -104,7 +109,7 @@
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-gray-900 dark:text-white">Success</span><br>
+                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
                                     Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
                                 </div>
                                 <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
@@ -146,7 +151,9 @@
                     <!-- dark mode toggle -->
 
                     <div class="border-t-[1px] border-gray-300 dark:border-gray-600">
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                        <form action="/signout" method="post">
+                            <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white w-full text-left">Sign out</button>
+                        </form>
                         <div class="pt-2 pb-5 px-3 w-full flex justify-end">
                             <button class="w-[55px] h-6 rounded-full bg-gray-400 flex items-center transition duration-300 focus:outline-none shadow dark:bg-white" id="buttonToggle">
                                 <div id="switch-toggle" class="w-8 h-8 relative rounded-full transition duration-500 transform p-1 text-white">
@@ -157,13 +164,11 @@
                     </div>
                 </div>
 
-                <a href="#" class="hidden" id="loginButton">
-                    <button type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:outline-none focus:ring-blue-300 font-semibold rounded-md text-xs sm:text-sm px-3 py-1.5 sm:px-3 sm:py-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Log In
-                        <div class="hidden sm:block w:3 h:3 md:w-5 md:h-5 ms-2">
-                            <img src="assets/img/enter.png" alt="login">
-                        </div>
-                    </button>
+                <a href="/login" class="items-center rounded-md inline-flex bg-bingu px-3 py-1.5  md:text-[19px] text-[12px] text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu" id="loginButton">
+                    Log In
+                    <div class="hidden sm:block w:3 h:3 md:w-5 md:h-5 ms-2">
+                        <img src="assets/img/enter.png" alt="login">
+                    </div>
                 </a>
             </div>
         </div>

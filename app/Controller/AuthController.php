@@ -33,4 +33,11 @@ class AuthController
             ]);
         }
     }
+
+    public function signout(): void
+    {
+        session_start();
+        session_destroy();
+        header('Location: /login');
+    }
 }

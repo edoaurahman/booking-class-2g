@@ -12,8 +12,11 @@
   const loginButton = document.querySelector('#loginButton');
   const notifikasiButton = document.querySelector('#dropdownNotificationButton');
   const profil = document.querySelector('#dropdownAvatarNameButton');
+  const user = "<?= $_SESSION['user'] ?? "" ?>";
+  const level = "<?= $_SESSION['level'] ?? "" ?>";
+  const text_polinema = document.querySelector('#text-polinema');
 
-  if (!sessionStorage.getItem('user')) {
+  if (user == "") {
     loginButton.classList.add("block");
     loginButton.classList.remove("hidden");
 
@@ -31,6 +34,12 @@
 
     profil.classList.remove("hidden");
     profil.classList.add("block");
+  }
+
+  if (window.innerWidth < 768) {
+    text_polinema.classList.add("hidden");
+  } else {
+    text_polinema.classList.remove("hidden");
   }
 </script>
 
@@ -65,6 +74,7 @@
   const themeCheck = () => {
     if (userTheme === "dark" || (!userTheme && systemTheme)) {
       document.documentElement.classList.add("dark");
+      console.log("set dark mode");
     }
   };
 
