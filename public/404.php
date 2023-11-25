@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 Not Found</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 </head>
 <style>
     body {
@@ -22,10 +26,19 @@
                 </h2>
                 <p class="mb-5 text-2xl font-semibold md:text-3xl">Halaman yang anda cari tidak ditemukan.</p>
 
-                <a rel="noopener noreferrer" href="/" class="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Back to homepage</a>
+                <a rel="noopener noreferrer" href="/" class="px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900">Back to homepage</a>
             </div>
         </div>
     </section>
+    <script>
+        // cek dark mode atau tidak
+        const isDarkMode = localStorage.getItem('dark-mode') === 'true' ? true : false;
+        const html = document.querySelector('html');
+
+        if (isDarkMode) {
+            html.classList.add('dark');
+        }
+    </script>
 </body>
 
 </html>
