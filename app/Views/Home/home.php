@@ -1,4 +1,4 @@
-<section class="relative bg-[url(/assets/img/bg_home.jpg)] bg-cover bg-center bg-no-repeat">
+<section class="relative bg-[url(/assets/img/bg_home.webp)] bg-cover bg-center bg-no-repeat">
     <div class="absolute inset-0 bg-gradient-to-t from-white to-white-300 dark:from-dark_grey1 "></div>
 
     <div class="relative mx-auto max-w-screen-xl pl-10 py-20 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-1">
