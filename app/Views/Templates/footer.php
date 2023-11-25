@@ -52,11 +52,11 @@
 </svg>`
   const setIcon = () => {
     if (userTheme === "dark" || (!userTheme && systemTheme)) {
+      switchToggle.classList.add('bg-gray-500', 'translate-x-full');
+      switchToggle.innerHTML = darkIcon;
+    } else {
       switchToggle.classList.add('bg-yellow-500', '-translate-x-2');
       switchToggle.innerHTML = lightIcon;
-    } else {
-      switchToggle.classList.add('bg-gray-700', 'translate-x-full');
-      switchToggle.innerHTML = darkIcon;
     }
   }
 
@@ -72,13 +72,13 @@
     if (document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
-      iconToggle(darkIcon);
+      iconToggle(lightIcon);
       return;
     }
 
     document.documentElement.classList.add("dark");
     localStorage.setItem("theme", "dark");
-    iconToggle(lightIcon);
+    iconToggle(darkIcon);
   }
 
   buttonToggle.addEventListener("click", () => {
@@ -88,7 +88,7 @@
   const iconToggle = (icon) => {
     switchToggle.classList.toggle('bg-yellow-500');
     switchToggle.classList.toggle('-translate-x-2');
-    switchToggle.classList.toggle('bg-gray-700');
+    switchToggle.classList.toggle('bg-gray-500');
     switchToggle.classList.toggle('translate-x-full');
 
     setTimeout(() => {
