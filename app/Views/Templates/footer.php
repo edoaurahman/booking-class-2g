@@ -109,6 +109,15 @@
   themeCheck();
 </script>
 
+<script>
+  const btnKelas = document.querySelector(".btn-kelas");
+
+  btnKelas.addEventListener("click", () => {
+    const dropdown = document.querySelector(".dropdown-kelas");
+    dropdown.classList.toggle("hidden")
+  })
+</script>
+
 </body>
 
 </html>

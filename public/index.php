@@ -13,4 +13,5 @@ Router::add('POST', '/signout', AuthController::class, 'signout');
 
 Router::add('GET', '/', HomeController::class, 'home');
 Router::add('GET', '/booking', HomeController::class, 'booking', [HomeMiddleware::class]);
+Router::add('GET', '/roomSchedule', HomeController::class, 'roomSchedule', [HomeMiddleware::class]);
 Router::run();

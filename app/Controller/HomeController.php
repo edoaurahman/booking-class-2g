@@ -20,4 +20,11 @@ class HomeController
         View::render("Home/booking", []);
         View::render("Templates/footer", ['title' => 'booking']);
     }
+
+    public function roomSchedule(): void
+    {
+        View::render("Templates/header", ['title' => 'booking']);
+        View::render("Home/roomSchedule", []);
+        View::render("Templates/footer", ['title' => 'booking']);
+    }
 }
