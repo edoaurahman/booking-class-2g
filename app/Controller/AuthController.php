@@ -25,7 +25,13 @@ class AuthController
             session_start();
             $_SESSION['user'] = $username;
             $_SESSION['level'] = "mahasiswa";
-            header('Location: /');
+
+            if (isset($_SESSION['next_path'])) {
+                header('Location: ' . $_SESSION['next_path']);
+                unset($_SESSION['next_path']);
+            } else {
+                header('Location: /');
+            }
         } else {
             View::render("Auth/login", [
                 'error' => 'NIM/NIP dan Password tidak sesuai',

@@ -8,7 +8,10 @@ class AuthMiddleware implements Middleware
     {
         session_start();
         if (!isset($_SESSION['user'])) {
+            $path = $_SERVER['REQUEST_URI'];
+            $_SESSION['next_path'] = $path;
             header('Location: /login');
+            exit();
         }
     }
 }
