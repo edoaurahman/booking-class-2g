@@ -1,3 +1,4 @@
+
 <section class="relative bg-[url(/assets/img/bg_home.jpg)] bg-cover bg-center bg-no-repeat">
     <div class="absolute inset-0 bg-gradient-to-t from-white to-white-300 dark:from-dark_grey1 "></div>
 
@@ -49,32 +50,32 @@
                     <tbody>
                         <tr class="border-b border-gray-200 dark:border-gray-700">
                             <th scope="row" class="md:px-6 md:py-3 px-4 py-2 font-medium  whitespace-nowrap bg-white dark:text-white dark:bg-dark_grey1">
-                                RT_01
+                                RT_05
                             </th>
                             <td class="md:px-6 md:py-3 px-4 py-2 bg-white dark:bg-dark_grey1 dark:text-white ">
-                                Ruang Teori 1
+                                Ruang Teori 5
                             </td>
                             <td class="md:px-6 md:py-3 px-4 py-2 bg-white dark:text-white dark:bg-dark_grey1">
                                 5T
                             </td>
                             <td class="flex md:px-6 md:py-3 px-4 py-2 justify-center bg-white dark:bg-dark_grey1 dark:text-white">
-                                <a href="#" class="rounded-2xl w-max bg-bingu md:px-7 md:py-3 px-4 py-3 text-sm font-medium text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
+                                <a href="/roomSchedule" class="rounded-2xl w-max bg-bingu md:px-7 md:py-3 px-4 py-3 text-sm font-medium text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
                                     Lihat Jadwal
                                 </a>
                             </td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-700">
                             <th scope="row" class="md:px-6 md:py-3 px-4 py-2 font-medium  whitespace-nowrap bg-white dark:text-white dark:bg-dark_grey1">
-                                RT_01
+                                RT_05
                             </th>
                             <td class="md:px-6 md:py-3 px-4 py-2 bg-white dark:bg-dark_grey1 dark:text-white">
-                                Ruang Teori 1
+                                Ruang Teori 5
                             </td>
                             <td class="md:px-6 md:py-3 px-4 py-2 bg-white dark:text-white dark:bg-dark_grey1">
                                 5T
                             </td>
                             <td class="flex px-6 justify-center py-4 bg-white dark:bg-dark_grey1 dark:text-white">
-                                <a href="#" class=" rounded-2xl  w-max bg-bingu md:px-7 md:py-3 px-4 py-3 text-sm font-medium text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
+                                <a href="/roomSchedule" class=" rounded-2xl  w-max bg-bingu md:px-7 md:py-3 px-4 py-3 text-sm font-medium text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
                                     Lihat Jadwal
                                 </a>
                             </td>
@@ -132,5 +133,4 @@
             </div>
         </div>
     </div>
-
 </div>
