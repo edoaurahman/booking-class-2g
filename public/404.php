@@ -32,7 +32,7 @@ session_start();
     </section>
     <script>
         // cek dark mode atau tidak
-        const isDarkMode = localStorage.getItem('dark-mode') === 'true' ? true : false;
+        const isDarkMode = localStorage.getItem('theme') === 'dark' ? true : false;
         const html = document.querySelector('html');
 
         if (isDarkMode) {
