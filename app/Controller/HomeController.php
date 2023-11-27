@@ -21,14 +21,14 @@ class HomeController
     {
         View::render("Templates/header", ['title' => 'booking']);
         View::render("Home/booking", []);
-        View::render("Templates/footer", ['title' => 'booking']);
+        View::render("Templates/footer", []);
     }
 
     public function roomSchedule($id): void
     {
         View::render("Templates/header", ['title' => 'booking']);
         View::render("Home/roomSchedule", []);
-        View::render("Templates/footer", ['title' => 'booking']);
+        View::render("Templates/footer", []);
     }
 
     public function apiRuang($page)

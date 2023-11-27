@@ -28,14 +28,14 @@
         </h2>
 
         <div class="flex justify-center shadow-md rounded-lg">
-            <div class="container h-screen overflow-x-auto">
-                <table class=" md:w-[80%] w-full text-sm text-center md:m-auto text-gray-500 dark:text-gray-400 mb-6 md:mb-6 mx-3">
+            <div class="container h-screen overflow-x-auto px-10">
+                <table class="md:w-[80%] w-full text-sm text-center md:m-auto text-gray-500 dark:text-gray-400 mb-6 md:mb-6 mx-3">
                     <thead class="text-xs text-gray-400 uppercase dark:text-gray-400 rounded-lg">
                         <tr>
                             <th scope="col" class="md:px-6 md:py-3 px-4 py-2 bg-white dark:bg-dark_grey1 max-w-[19%] text-gray-500">
                                 Kode Ruang
                             </th>
-                            <th scope="col" class="md:px-6 md:py-3 px-4 py-2  bg-white dark:bg-dark_grey1 text-gray-500">
+                            <th scope="col" class="md:px-6 md:py-3 px-10 py-2  bg-white dark:bg-dark_grey1 text-gray-500">
                                 Ruang
                             </th>
                             <th scope="col" class="md:px-6 md:py-3 px-4 py-2 bg-white dark:bg-dark_grey1 text-gray-500">
