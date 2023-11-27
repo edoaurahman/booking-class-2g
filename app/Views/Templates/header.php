@@ -11,8 +11,9 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?></title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>
@@ -21,8 +22,8 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <!-- logo -->
 
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="assets/img/logo.png" class="h-8" alt="Smart Booking Logo" />
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="/assets/img/logo.png" class="h-8" alt="Smart Booking Logo" />
                 <span class="self-center font-sans text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">Booking Room <span id="text-polinema" class="text-sky-500 hidden">Polinema</span></span>
             </a>
 
@@ -45,7 +46,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <div class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                             <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="assets/img/logo.png" alt="Robert image">
+                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
@@ -57,7 +58,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                             <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="assets/img/logo.png" alt="Robert image">
+                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
@@ -69,7 +70,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                             <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="assets/img/logo.png" alt="Robert image">
+                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
@@ -81,7 +82,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                             <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="assets/img/logo.png" alt="Robert image">
+                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
@@ -93,7 +94,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                             <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="assets/img/logo.png" alt="Robert image">
+                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
@@ -105,7 +106,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                             <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="assets/img/logo.png" alt="Robert image">
+                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                             </div>
                             <div class="w-full ps-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
@@ -121,13 +122,13 @@ if (session_status() == PHP_SESSION_NONE) {
                 <!-- profil -->
 
                 <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="group flex items-center gap-2 md:gap-4" data-dropdown-trigger="hover" data-dropdown-delay="200">
-                    <img class="w-7 h-7 md:w-9 md:h-9 rounded-full group-hover:ring-white group-hover:ring-1" src="assets/img/foto-profil.png" alt="">
+                    <img class="w-7 h-7 md:w-9 md:h-9 rounded-full group-hover:ring-white group-hover:ring-1" src="/assets/img/foto-profil.png" alt="">
                     <div class="font-medium hidden text-left text-white md:block">
                         <div>Username</div>
                         <div class="text-sm text-white-400 dark:text-gray-400">22417xxxxx</div>
                     </div>
                     <div class=" w-[17px] md:w-[24px] block group-hover:rotate-180 duration-300 ease-in-out">
-                        <img src="assets/img/bottom-icon.png" alt="bottom-icon">
+                        <img src="/assets/img/bottom-icon.png" alt="bottom-icon">
                     </div>
                 </button>
 
@@ -167,7 +168,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <a href="/login" class="items-center rounded-md inline-flex bg-bingu px-3 py-1.5  md:text-[19px] text-[12px] text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu" id="loginButton">
                     Log In
                     <div class="hidden sm:block w:3 h:3 md:w-5 md:h-5 ms-2">
-                        <img src="assets/img/enter.png" alt="login">
+                        <img src="/assets/img/enter.png" alt="login">
                     </div>
                 </a>
             </div>

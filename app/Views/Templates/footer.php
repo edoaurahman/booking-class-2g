@@ -4,7 +4,7 @@
   </div>
 </footer>
 
-<script src="assets/js/flowbite.min.js"></script>
+<script src="/assets/js/flowbite.min.js"></script>
 
 <script>
   // show login button 
@@ -74,7 +74,6 @@
   const themeCheck = () => {
     if (userTheme === "dark" || (!userTheme && systemTheme)) {
       document.documentElement.classList.add("dark");
-      console.log("set dark mode");
     }
   };
 
@@ -107,15 +106,6 @@
   }
 
   themeCheck();
-</script>
-
-<script>
-  const btnKelas = document.querySelector(".btn-kelas");
-
-  btnKelas.addEventListener("click", () => {
-    const dropdown = document.querySelector(".dropdown-kelas");
-    dropdown.classList.toggle("hidden")
-  })
 </script>
 
 </body>
