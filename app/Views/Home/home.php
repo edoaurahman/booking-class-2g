@@ -100,9 +100,7 @@
                 } else {
                     button.classList.add('bg-bingu');
                     button.classList.add('text-white');
-                    button.classList.remove('text-gray-500');
                     button.classList.remove('bg-white');
-
                 }
             } else {
                 if (localStorage.getItem('theme') == 'dark') {
