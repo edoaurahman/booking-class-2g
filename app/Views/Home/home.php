@@ -21,15 +21,14 @@
         </div>
     </div>
 </section>
-<section id="jadwal-ruang">
-    <div x-data="tableData" x-init="$nextTick(() => { paggination(1) })" class="bg-white dark:bg-dark_grey1">
+<section id="jadwal-ruang" class="relative overflow-auto bg-white dark:bg-dark_grey1">
+    <div x-data="tableData" x-init="$nextTick(() => { paggination(1) })">
         <h2 class="text-xl font-bold md:text-3xl text-center pb-3 dark:text-white p-5">
             Jadwal <span class="font-bold text-biru">Ruang</span>
         </h2>
 
         <div class="flex justify-center shadow-md rounded-lg">
-            <div class="container overflow-x-auto">
-
+            <div class="container h-screen overflow-x-auto">
                 <table class=" md:w-[80%] w-full text-sm text-center md:m-auto text-gray-500 dark:text-gray-400 mb-6 md:mb-6 mx-3">
                     <thead class="text-xs text-gray-400 uppercase dark:text-gray-400 rounded-lg">
                         <tr>
@@ -65,7 +64,6 @@
                         </template>
                     </tbody>
                 </table>
-
                 <div class="flex justify-center mb-3 -mt-3">
                     <nav aria-label="Page navigation example">
                         <ul class="inline-flex -space-x-px text-base h-10">
@@ -74,7 +72,7 @@
                             </li>
                             <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
                                 <li>
-                                    <a @click="paggination(<?= $i ?>)" href="#jadwal-ruang" id="button-pagination" class=" flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-bingu hover:text-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-bingu dark:hover:text-white"><?= $i ?></a>
+                                    <a @click="paggination(<?= $i ?>)" href="#jadwal-ruang" id="button-pagination" class=" flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-bingu hover:text-white dark:bg-bingu dark:border-gray-700 dark:text-gray-400 dark:hover:bg-bingu dark:hover:text-white"><?= $i ?></a>
                                 </li>
                             <?php endfor; ?>
                             <li>
@@ -83,10 +81,8 @@
                         </ul>
                     </nav>
                 </div>
-
             </div>
         </div>
-
     </div>
 </section>
 
@@ -100,8 +96,7 @@
                 if (localStorage.getItem('theme') == 'dark') {
                     button.classList.add('dark:bg-bingu');
                     button.classList.add('dark:text-white');
-                    // button.classList.remove('dark:text-gray-500');
-                    // button.classList.remove('dark:bg-white');
+                    button.classList.remove('dark:bg-gray-800');
                 } else {
                     button.classList.add('bg-bingu');
                     button.classList.add('text-white');
@@ -111,14 +106,12 @@
                 }
             } else {
                 if (localStorage.getItem('theme') == 'dark') {
+                    button.classList.add('dark:bg-gray-800');
                     button.classList.remove('dark:bg-bingu');
                     button.classList.remove('dark:text-white');
                 } else {
                     button.classList.remove('bg-bingu');
                     button.classList.remove('text-white');
-                    // button.classList.add('text-gray-500');
-                    // button.classList.add('bg-white');
-
                 }
             }
         });
