@@ -128,7 +128,7 @@
             tableData: null,
             current_page: 1,
             paggination(page = '1') {
-                fetch('http://localhost:8080/api/ruang/' + page)
+                fetch('/api/ruang/' + page)
                     .then(response => response.json())
                     .then(data => {
                         this.tableData = data.ruangan;
@@ -140,7 +140,7 @@
                 if (this.current_page == <?= $totalPage ?>) {
                     return;
                 }
-                fetch('http://localhost:8080/api/ruang/' + (parseInt(this.current_page) + 1))
+                fetch('/api/ruang/' + (parseInt(this.current_page) + 1))
                     .then(response => response.json())
                     .then(data => {
                         this.tableData = data.ruangan;
@@ -152,7 +152,7 @@
                 if (this.current_page == 1) {
                     return;
                 }
-                fetch('http://localhost:8080/api/ruang/' + (parseInt(this.current_page) - 1))
+                fetch('/api/ruang/' + (parseInt(this.current_page) - 1))
                     .then(response => response.json())
                     .then(data => {
                         this.tableData = data.ruangan;
