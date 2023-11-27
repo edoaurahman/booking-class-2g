@@ -9,8 +9,7 @@
             <div class="w-auto ">
 
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto flex-col">
-                    <!-- <select id="countries" class="w-[150px]  px-2 bg-blue-700  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"> -->
-                    <select id="countries" class="w-[200px]  px-2 bg-bingu py-3  md:text-[19px] text-[12px] rounded-lg text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-blue-700 ">
+                    <select id="countries" class="w-[200px]  px-2 bg-navy_blue py-3  md:text-[19px] text-[12px] rounded-lg text-white shadow hover:bg-dark_grey1 focus:outline-none focus:ring active:bg-blue-700 ">
                         <option selected>Choose a room</option>
                         <option value="RT 1">Ruang Teori 1</option>
                         <option value="RT 2">Ruang Teori 2</option>
@@ -57,23 +56,18 @@
 
 
 
-        <div class="flex-1 w-full h-full bg-gradient-to-t from-white to-white-300 dark:from-dark_grey1">
-            <div class=" w-full h-auto">
-                <!-- clock wrapper -->
-                <div class="font-sans font-extrabold text-7xl text-right text-white shadow-2xl gap-x-px grid grid-cols-2 ">
-                    <div class="flex items-center justify-end ">
-                        <div class="relative py-6 px-2">
-                            <div class="relative">05:47</div>
-                        </div>
-                        <!-- <div class="relative px-2">:</div>
-                        <div class="relative py-6 px-2">
-                            <div class="relative">47</div>
-                        </div> -->
+        <div class="flex-1 w-full h-full bg-gradient-to-l from-white to-white-300 dark:from-dark_grey1">
+            <div class="w-auto h-auto">
+                <div class="flex items-center justify-center ">
+                    <!-- iki jam -->
+                    <div class="mx-auto max-w-sm  font-sans font-extrabold text-7xl text-center text-white shadow-2xl  ">
+                        <div class="relative">05:47</div>
                     </div>
                 </div>
 
 
-                <div class="relative max-w-sm py-8">
+                <!-- iki tanggal -->
+                <div class="relative mx-auto max-w-sm items-center justify-center">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
@@ -85,9 +79,12 @@
 
 
 
-                <div class="relative rounded-lg overflow-x-auto">
-                    <table class="w-auto text-sm  text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <!-- iki jadwal -->
+                <div class="relative rounded-lg overflow-x-auto ">
+                    <!-- <table class="w-full text-sm  text-left rtl:text-right text-gray-500 dark:text-gray-400"> -->
+                    <table class="w-full text-sm  text-left rtl:text-right text-black dark:text-white">
+                        <!-- <thead class="text-xs  uppercase text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400"> -->
+                        <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     No
@@ -104,7 +101,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     1
                                 </td>
@@ -118,7 +115,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     2
                                 </td>
@@ -132,7 +129,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     3
                                 </td>
@@ -147,7 +144,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     4
                                 </td>
@@ -161,7 +158,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     5
                                 </td>
@@ -176,7 +173,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     6
                                 </td>
@@ -192,7 +189,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     7
                                 </td>
@@ -207,7 +204,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     8
                                 </td>
@@ -222,7 +219,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     9
                                 </td>
@@ -238,7 +235,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     10
                                 </td>
@@ -254,7 +251,7 @@
                                     Kuliah OOP
                                 </td>
                             </tr>
-                            <tr class="bg-white dark:bg-gray-800">
+                            <tr class=" border-grey-700 dark:border-white">
                                 <td class="px-6 py-4">
                                     11
                                 </td>
