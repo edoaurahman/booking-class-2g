@@ -106,6 +106,19 @@
   }
 
   themeCheck();
+
+  // shorted Name
+  // const nama = document.getElementById('nama');
+
+  // function shortenName(nama, maxLength) {
+  //   if (nama.length > maxLength) {
+  //     return nama.substring(0, maxLength) + '...';
+  //   } else {
+  //     return nama;
+  //   }
+  // }
+
+  // nama.innerText = shortenName(nama.innerText.toString(), 10);
 </script>
 
 </body>

@@ -126,9 +126,9 @@ if (session_status() == PHP_SESSION_NONE) {
 
                 <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="group flex items-center gap-2 md:gap-4" data-dropdown-trigger="hover" data-dropdown-delay="200">
                     <img class="w-7 h-7 md:w-9 md:h-9 rounded-full group-hover:ring-white group-hover:ring-1" src="/assets/img/foto-profil.png" alt="">
-                    <div class="font-medium hidden text-left text-white md:block">
-                        <div>Username</div>
-                        <div class="text-sm text-white-400 dark:text-gray-400">22417xxxxx</div>
+                    <div class="font-medium hidden text-left text-white md:block" id="nama">
+                        <div><?= $user->nama ?></div>
+                        <div class="text-sm text-white-400 dark:text-gray-400"><?= ($user->nip ?? $user->nim) ?: 'N/A'; ?></div>
                     </div>
                     <div class=" w-[17px] md:w-[24px] block group-hover:rotate-180 duration-300 ease-in-out">
                         <img src="/assets/img/bottom-icon.png" alt="bottom-icon">

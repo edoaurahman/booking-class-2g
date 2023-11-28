@@ -8,7 +8,7 @@ class Model extends Database
 {
     protected $table;
 
-    public function find($id, string $column = 'id'): object
+    public function find(string $id, string $column = 'id'): object
     {
         $model = new static;
         $sql = "SELECT * FROM $model->table WHERE $column = ?";
@@ -44,7 +44,6 @@ class Model extends Database
         $stmt = $model->db->prepare($sql);
         $stmt->bind_param(str_repeat('s', count($data)), ...array_values($data));
         $stmt->execute();
-
     }
 
     public function update(array $data, string $id, string $column = 'id'): void
@@ -64,7 +63,6 @@ class Model extends Database
 
         $stmt->bind_param($types, ...$values);
         $stmt->execute();
-
     }
 
     public function delete(string $id, string $column = 'id'): void
@@ -74,7 +72,6 @@ class Model extends Database
         $stmt = $model->db->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();
-
     }
 
     public function query(string $sql): array
