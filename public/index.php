@@ -1,6 +1,4 @@
 <?php
-phpinfo();
-die();
 $env = parse_ini_file(__DIR__ . '/../.env');
 if ($env['ENVIRONMENT'] == 'development') {
     ini_set('display_errors', 1);
