@@ -24,6 +24,7 @@ Router::add('POST', '/signout', AuthController::class, 'signout');
 
 Router::add('GET', '/', HomeController::class, 'home');
 Router::add('GET', '/booking', HomeController::class, 'booking', [AuthMiddleware::class]);
+Router::add('GET', '/detail', HomeController::class, 'detail', [AuthMiddleware::class]);
 Router::add('GET', '/roomSchedule/{id}', HomeController::class, 'roomSchedule', [AuthMiddleware::class]);
 
 // API
