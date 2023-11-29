@@ -92,24 +92,18 @@
     function setActive(current_page) {
         buttonPaggination.forEach((button) => {
             if (button.innerText == current_page) {
-                if (localStorage.getItem('theme') == 'dark' || localStorage.getItem('theme') == null) {
-                    button.classList.add('dark:bg-bingu');
-                    button.classList.add('dark:text-white');
-                    button.classList.remove('dark:bg-gray-800');
-                } else {
-                    button.classList.add('bg-bingu');
-                    button.classList.add('text-white');
-                    button.classList.remove('bg-white');
-                }
+                button.classList.add('dark:bg-bingu');
+                button.classList.add('dark:text-white');
+                button.classList.remove('dark:bg-gray-800');
+                button.classList.add('bg-bingu');
+                button.classList.add('text-white');
+                button.classList.remove('bg-white');
             } else {
-                if (localStorage.getItem('theme') == 'dark' || localStorage.getItem('theme') == null) {
-                    button.classList.add('dark:bg-gray-800');
-                    button.classList.remove('dark:bg-bingu');
-                    button.classList.remove('dark:text-white');
-                } else {
-                    button.classList.remove('bg-bingu');
-                    button.classList.remove('text-white');
-                }
+                button.classList.add('dark:bg-gray-800');
+                button.classList.remove('dark:bg-bingu');
+                button.classList.remove('dark:text-white');
+                button.classList.remove('bg-bingu');
+                button.classList.remove('text-white');
             }
         });
     }
