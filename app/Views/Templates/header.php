@@ -34,10 +34,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <div class="flex items-center space-x-2 md:space-x-0">
                 <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" class="relative right-0 md:right-5 inline-flex items-center text-sm font-medium text-center text-white hover:text-gray-400 focus:outline-none dark:hover:text-white dark:text-gray-400" type="button" data-dropdown-trigger="hover" data-dropdown-delay="200">
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
-                        <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
-                    </svg>
-
+                    <i class="fa-solid fa-bell text-[25px]"></i>
                     <div class="absolute block w-3 h-3 bg-red-500 border-2 border-navy_blue rounded-full -top-0.5 start-2.5 md:start-3 dark:border-gray-900"></div>
                 </button>
 
@@ -160,9 +157,9 @@ if (session_status() == PHP_SESSION_NONE) {
                         </form>
                         <div class="pt-2 pb-5 px-3 w-full flex justify-end">
                             <button class="w-[55px] h-6 rounded-full bg-gray-400 flex items-center transition duration-300 focus:outline-none shadow dark:bg-white" id="buttonToggle">
-                                <div id="switch-toggle" class="w-8 h-8 relative rounded-full transition duration-500 transform p-1 text-white">
+                                <div id="switch-toggle" class="w-8 h-8 relative rounded-full transition duration-500 transform p-1 text-white flex items-center justify-center">
                                 </div>
-                                <div></div>
+                                <!-- <div></div> -->
                             </button>
                         </div>
                     </div>
