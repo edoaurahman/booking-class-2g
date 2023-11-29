@@ -19,7 +19,11 @@ module.exports = {
         // darkmode
         dark_grey1: "#1C1C1E",
         dark_grey2: "#303030",
+        dark_grey3: "#D5D7D9",
+        dark_grey4: "#959AA1",
+        dark_grey5: "#2B3643",
         biruabu: "#4AA0F7",
+        biruTua: "#85B9E0",
       },
       fontFamily: {
         // Menambahkan atau mengganti font family sesuai kebutuhan Anda
