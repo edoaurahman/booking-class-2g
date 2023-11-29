@@ -1,7 +1,7 @@
 <!-- Booking -->
-<div class="container mt-8 mx-auto">
+<div class="container mt-24 mx-auto">
     <div class="grid grid-cols-1 sm:grid-cols-5 sm:gap-5 sm:mb-11">
-        <div class="sticky top-0 bg-sky-500 ">
+        <div class="sticky top-28 bg-sky-500 ">
             <div class="hidden sm:block">
                 <div class="flex items-center">
                     <i class="fa-solid fa-filter fa-beat text-sky-500 mr-3"></i>

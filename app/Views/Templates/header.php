@@ -20,7 +20,7 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 
 <body>
-    <nav class="w-full bg-navy_blue border-gray-200 dark:bg-gray-800">
+    <nav class="w-full sticky top-0 z-50 first-line: bg-navy_blue border-gray-200 dark:bg-gray-800">
         <div class="flex flex-wrap items-center justify-between px-3 py-2 mx-2 md:mx-4">
 
             <!-- logo -->
