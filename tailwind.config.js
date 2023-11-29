@@ -6,12 +6,17 @@ module.exports = {
     extend: {
       colors: {
         // light mode
+        navy_blue: "#003B73",
+        blue_grotto: "#60A3D9",
+        baby_blue: "#BFD7ED",
+        royal_blue: "#0074B7",
+        white: "#ffff",
         biru: "#0088ED",
         bingu: "#5E5CE6",
         bingu_hover: "#3E3C99",
         p10: "#cdd7e0",
         p20: "#ACBCCC",
-        // dark mode
+        // darkmode
         dark_grey1: "#1C1C1E",
         dark_grey2: "#303030",
         biruabu: "#4AA0F7",
