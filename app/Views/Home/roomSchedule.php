@@ -3,7 +3,7 @@
 
 
 
-    <div class="relative mx-auto pl-10 py-20 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-1 flex justify-center items-center">
+    <div class="relative mx-auto pl-10 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-1 flex justify-center items-center">
         <div class="w-full h-full flex-1 flex justify-center items-center">
 
             <div class="w-auto ">
@@ -57,29 +57,15 @@
 
 
         <div class="flex-1 w-full h-full bg-gradient-to-l from-white to-white-300 dark:from-dark_grey1">
-            <div class="w-auto h-auto">
-                <div class="flex items-center justify-center ">
+            <div class="w-full h-full flex flex-col justify-center">
+                <div class="flex items-center justify-center w-full">
                     <!-- iki jam -->
-                    <div class="mx-auto max-w-sm  font-sans font-extrabold text-7xl text-center text-white shadow-2xl  ">
-                        <div class="relative">05:47</div>
+                    <div class="mx-auto w-full font-sans text-center text-white shadow-2xl  ">
+                        <h1 class="font-extrabold text-7xl schedule-clock relative"></h1>
+                        <div class="p-3 schedule-day">
+                        </div>
                     </div>
                 </div>
-
-
-                <!-- iki tanggal -->
-                <!-- <div class="relative mx-auto max-w-sm items-center justify-center">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                        </svg>
-                    </div>
-                    <input datepicker datepicker-autohide type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
-                </div> -->
-                <div class="relative mx-auto max-w-sm items-center justify-center">
-                        <input type="date" id="tanggal" class="appearance-none font-sans text-sm leading-6 transform-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                </div>
-
-
 
 
                 <!-- iki jadwal -->

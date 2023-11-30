@@ -117,6 +117,23 @@
   // nama.innerText = shortenName(nama.innerText.toString(), 10);
 </script>
 
+<script>
+  const date = new Date();
+  const scheduleTime = document.querySelector('.schedule-clock');
+  const scheduleDay = document.querySelector('.schedule-day');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+
+    console.log(date.getMinutes());
+
+    scheduleTime.textContent = `${date.getHours()} : ${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
+    scheduleDay.innerHTML = `<h1 class="text-4xl">${day[date.getDay()]} ${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}</h1>`
+
+  })
+</script>
+
 </body>
 
 </html>
