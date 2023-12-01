@@ -12,6 +12,7 @@ module.exports = {
         royal_blue: "#0074B7",
         white: "#ffff",
         biru: "#0088ED",
+        biru1: "#85B9E0",
         bingu: "#5E5CE6",
         bingu_hover: "#3E3C99",
         p10: "#cdd7e0",

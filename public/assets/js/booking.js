@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $form2.value = Math.min(value1 + 1, 15);
     }
     if (value2 <= value1) {
-      $form2.value = Math.min(value1 + 2, 15); // Tambahkan 2 ke form2 agar lebih besar dari form1, tapi tidak lebih dari 15
+      $form2.value = Math.min(value1 + 1, 15); // Tambahkan 2 ke form2 agar lebih besar dari form1, tapi tidak lebih dari 15
     }
   }
 
