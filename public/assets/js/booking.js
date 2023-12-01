@@ -22,7 +22,7 @@ function formatDate(date) {
   return yyyy + "-" + mm + "-" + dd;
 }
 
-// =========== Filter Jam ===========
+// =========== Filter Jam dekstop ===========
 document.addEventListener("DOMContentLoaded", function () {
   // Mendapatkan elemen form1 dan form2
   const $form1 = document.getElementById("bedrooms-input");
@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateForm2() {
     // Mendapatkan nilai terkini dari form1 dan form2
     const value1 = parseInt($form1.value, 10);
-    const value2 = parseInt($form2.value, 10);
+    let value2 = parseInt($form2.value, 10);
 
-    // Memastikan form2 bertambah dua dari form1 jika form2 kurang dari form1
+    // Memastikan form2 bertambah 1 dari form1 jika form2 kurang dari form1
     if (value1 + 1 > value2) {
       $form2.value = Math.min(value1 + 1, 15);
     }
     if (value2 <= value1) {
-      $form2.value = Math.min(value1 + 1, 15); // Tambahkan 2 ke form2 agar lebih besar dari form1, tapi tidak lebih dari 15
+      $form2.value = Math.min(value1 + 1, 15); // Tambahkan 1 ke form2 agar lebih besar dari form1, tapi tidak lebih dari 15
     }
   }
 
@@ -52,13 +52,47 @@ document.addEventListener("DOMContentLoaded", function () {
       updateForm2(); // Memperbarui nilai form2 setelah form1 diperbarui
     });
 
+  // Menambahkan penangan acara untuk tombol decrement pada form1
+  document
+    .getElementById("decrement-button")
+    .addEventListener("click", function () {
+      // Mengurangkan satu dari nilai form1, tapi tidak kurang dari 1
+      $form1.value = Math.max(parseInt($form1.value, 10) - 1, 1);
+      updateForm2(); // Memperbarui nilai form2 setelah form1 diperbarui
+    });
+
   // Menambahkan penangan acara untuk input pada form1
   $form1.addEventListener("input", updateForm2);
 
-  // Menambahkan penangan acara untuk input pada form2
-  $form2.addEventListener("input", function () {
-    updateForm2(); // Memperbarui nilai form2 saat form2 diubah secara manual
-  });
+  // Menambahkan penangan acara untuk tombol increment pada form2
+  document
+    .getElementById("increment-button2")
+    .addEventListener("click", function () {
+      let value2 = parseInt($form2.value, 10);
+
+      // Menambah satu ke nilai form2, tapi tidak lebih dari 15
+      $form2.value = Math.min(value2 + 1, 15);
+      updateForm2(); // Memperbarui nilai form2 setelah form2 diperbarui
+    });
+
+  // Menambahkan penangan acara untuk tombol decrement pada form2
+  document
+    .getElementById("decrement-button2")
+    .addEventListener("click", function () {
+      let value1 = parseInt($form1.value, 10);
+      let value2 = parseInt($form2.value, 10);
+
+      // Mengurangkan satu dari nilai form2, tapi tidak kurang dari atau sama dengan form1
+      $form2.value = Math.max(value2 - 1, value1 + 1);
+      updateForm2(); // Memperbarui nilai form2 setelah form2 diperbarui
+    });
+  // Menambahkan penangan acara untuk tombol "Set Max"
+  document
+    .getElementById("set-max-button")
+    .addEventListener("click", function () {
+      $form2.value = 15;
+      updateForm2();
+    });
 });
 
 const buttonPilihJam = document.getElementById("buttonPilihJam");
@@ -69,7 +103,7 @@ buttonPilihJam.addEventListener("click", () => {
   console.log(pilihJam.classList);
 });
 
-// =========== Filter Lantai ===========
+// =========== Filter Lantai dekstop ===========
 const buttonPilihLantai = document.getElementById("buttonPilihLantai");
 const pilihLantai = document.getElementById("pilihLantai");
 
@@ -78,21 +112,23 @@ buttonPilihLantai.addEventListener("click", () => {
   console.log(pilihLantai.classList);
 });
 
-// =========== Filter Sidebar ===========
-// document.addEventListener("DOMContentLoaded", function () {
-//   const toggleButton = document.getElementById("buttonsidebar");
-//   const sidebar = document.getElementById("drawer-navigation");
-//   const overlay = document.getElementById("drawer-navigation");
+// =========== Filter Jam Mobile ===========
 
-//   toggleButton.addEventListener("click", function () {
-//     sidebar.classList.toggle("translate-x-0");
-//     overlay.classList.toggle("opacity-100");
-//     console.log("masuk");
-//   });
+const buttonPilihJamSidebar = document.getElementById("buttonPilihJamSidebar");
+const pilihJamSidebar = document.getElementById("pilihJamSidebar");
 
-//   overlay.addEventListener("click", function () {
-//     sidebar.classList.remove("translate-x-0");
-//     overlay.classList.remove("opacity-100");
-//     console.log("kk");
-//   });
-// });
+buttonPilihJamSidebar.addEventListener("click", () => {
+  pilihJamSidebar.classList.toggle("hidden");
+  console.log(pilihJamSidebar.classList);
+});
+
+// =========== Filter Lantai Mobile ===========
+const buttonPilihLantaiSidebar = document.getElementById(
+  "buttonPilihLantaiSidebar"
+);
+const pilihLantaiSidebar = document.getElementById("pilihLantaiSidebar");
+
+buttonPilihLantaiSidebar.addEventListener("click", () => {
+  pilihLantaiSidebar.classList.toggle("hidden");
+  console.log(pilihLantaiSidebar.classList);
+});
