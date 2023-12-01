@@ -117,12 +117,11 @@
   // nama.innerText = shortenName(nama.innerText.toString(), 10);
 </script>
 
+
 <script>
-  const schedule = [
-    {
+  const schedule = [{
       day: 'Sunday',
-      schedule: [
-        {
+      schedule: [{
           id: 1,
           time: '07.00 - 07.50',
           user: 'TI-2G',
@@ -192,8 +191,7 @@
     },
     {
       day: 'Monday',
-      schedule: [
-        {
+      schedule: [{
           id: 1,
           time: '07.00 - 07.50',
           user: 'TI-2G',
@@ -263,8 +261,7 @@
     },
     {
       day: 'Tuesday',
-      schedule: [
-        {
+      schedule: [{
           id: 1,
           time: '07.00 - 07.50',
           user: 'TI-2G',
@@ -334,8 +331,7 @@
     },
     {
       day: 'Wednesday',
-      schedule: [
-        {
+      schedule: [{
           id: 1,
           time: '07.00 - 07.50',
           user: 'TI-2G',
@@ -405,8 +401,7 @@
     },
     {
       day: 'Thursday',
-      schedule: [
-        {
+      schedule: [{
           id: 1,
           time: '07.00 - 07.50',
           user: 'TI-2G',
@@ -476,8 +471,7 @@
     },
     {
       day: 'Friday',
-      schedule: [
-        {
+      schedule: [{
           id: 1,
           time: '07.00 - 07.50',
           user: 'TI-2G',
@@ -547,8 +541,7 @@
     },
     {
       day: 'Saturday',
-      schedule: [
-        {
+      schedule: [{
           id: 1,
           time: '07.00 - 07.50',
           user: 'TI-2G',
@@ -626,19 +619,19 @@
   const currentSchedule_el = document.querySelector('.current-schedule');
   let counter = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  const time = `${date.getHours()}.${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
+  document.addEventListener('DOMContentLoaded', () => {
+    const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    const time = `${date.getHours()}.${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
 
     // Fungsi untuk mengupdate tampilan waktu
     function updateTime() {
-        scheduleTime.textContent = `${date.getHours()} : ${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
+      scheduleTime.textContent = `${date.getHours()} : ${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
     }
 
     // Fungsi untuk mengupdate tampilan hari dan tanggal
     function updateDay() {
-        scheduleDay.innerHTML = `
+      scheduleDay.innerHTML = `
             <h1 class="text-4xl">${day[date.getDay()]}, ${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}</h1>
             <div class="w-[50%] h-full absolute flex justify-between text-white z-[9999] top-0 items-center">
                 <button class="schedule-prev-button w-[4rem] h-[4rem] bg-transparent">
@@ -652,8 +645,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Memanggil fungsi untuk inisialisasi tampilan awal
     updateTime();
-  updateDay();
-  updateSchedule();
+    updateDay();
+    updateSchedule();
 
 
     document.addEventListener('click', (e) => {
@@ -667,7 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSchedule();
       }
     });
-    
+
     function update_display() {
       if (counter >= 7) {
         counter = 0;
@@ -681,14 +674,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateSchedule() {
-    scheduleTableBody.innerHTML = ''; // Bersihkan isi tabel
-    const currentSchedule = schedule[(date.getDay())];
-    const currentHour = date.getHours();
-    const currentMinute = `${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
-    
-    currentSchedule.schedule.forEach(scedule => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
+      scheduleTableBody.innerHTML = ''; // Bersihkan isi tabel
+      const currentSchedule = schedule[(date.getDay())];
+      const currentHour = date.getHours();
+      const currentMinute = `${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`;
+
+      currentSchedule.schedule.forEach(scedule => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
         <td class="px-6 py-4">
           ${scedule.id}
         </td>
@@ -702,13 +695,11 @@ document.addEventListener('DOMContentLoaded', () => {
           ${scedule.activity}
         </td>
       `;
-      scheduleTableBody.appendChild(row);
+        scheduleTableBody.appendChild(row);
 
-    })
-  }
+      })
+    }
   });
-
-  
 </script>
 
 </body>
