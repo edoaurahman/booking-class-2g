@@ -3,10 +3,10 @@
 
 
 
-    <div class="relative mx-auto pl-10 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-1 flex justify-center items-center">
-        <div class="w-full h-full flex-1 flex justify-center items-center">
+    <div class="relative mx-auto pl-10 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-1 xl:flex justify-center items-center">
+        <div class="w-full h-full flex-1 flex lg:justify-center lg:items-center">
 
-            <div class="w-auto ">
+            <div class="w-auto max-w-[750px]">
 
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto flex-col">
                     <select id="countries" class="w-[200px]  px-2 bg-navy_blue py-3  md:text-[19px] text-[12px] rounded-lg text-white shadow hover:bg-dark_grey1 focus:outline-none focus:ring active:bg-blue-700 ">
@@ -70,9 +70,7 @@
 
                 <!-- iki jadwal -->
                 <div class="relative rounded-lg overflow-x-auto ">
-                    <!-- <table class="w-full text-sm  text-left rtl:text-right text-gray-500 dark:text-gray-400"> -->
                     <table class="w-full text-sm  text-left rtl:text-right text-black dark:text-white">
-                        <!-- <thead class="text-xs  uppercase text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400"> -->
                         <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-center">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
@@ -106,3 +104,4 @@
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
+<script src="assets/js/roomSchedule.js"></script>

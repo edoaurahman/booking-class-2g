@@ -117,7 +117,6 @@
   // nama.innerText = shortenName(nama.innerText.toString(), 10);
 </script>
 
-
 <script>
   const schedule = [{
       day: 'Sunday',
