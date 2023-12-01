@@ -10,25 +10,9 @@
 
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto flex-col">
                     <select id="countries" class="w-[200px]  px-2 bg-navy_blue py-3  md:text-[19px] text-[12px] rounded-lg text-white shadow hover:bg-dark_grey1 focus:outline-none focus:ring active:bg-blue-700 ">
-                        <option selected>Choose a room</option>
-                        <option value="RT 1">Ruang Teori 1</option>
-                        <option value="RT 2">Ruang Teori 2</option>
-                        <option value="RT 3">Ruang Teori 3</option>
-                        <option value="RT 4">Ruang Teori 4</option>
-                        <option value="RT 5">Ruang Teori 5</option>
-                        <option value="RT 6">Ruang Teori 6</option>
-                        <option value="RT 7">Ruang Teori 7</option>
-                        <option value="RT 8">Ruang Teori 8</option>
-                        <option value="LSI 1">Lab Sistem Informasi 1</option>
-                        <option value="LSI 2">Lab Sistem Informasi 2</option>
-                        <option value="LSI 3">Lab Sistem Informasi 3</option>
-                        <option value="LPY 1">Ruang Praktikum 1</option>
-                        <option value="LPY 2">Ruang Praktikum 2</option>
-                        <option value="LPY 3">Ruang Praktikum 3</option>
-                        <option value="LPY 5">Ruang Praktikum 4</option>
-                        <option value="LPY 6">Ruang Praktikum 5</option>
-                        <option value="LPY 7">Ruang Praktikum 6</option>
-                        <option value="LPY 8">Ruang Praktikum 7</option>
+                        <?php foreach ($ruang as $item) : ?>
+                            <option <?= $id == $item['id_ruang'] ? 'selected' : '' ?> value="<?= $item['id_ruang'] ?>"><?= $item['deskripsi_ruang'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
@@ -40,7 +24,7 @@
                 </h1>
 
                 <p class=" max-w-lg text-[17px]/relaxed md:text-[25px] leading-normal dark:text-white current-schedule">
-                    
+
                 </p>
 
 
@@ -104,4 +88,4 @@
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
-<script src="assets/js/roomSchedule.js"></script>
+<script src="/assets/js/roomSchedule.js"></script>
