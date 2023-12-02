@@ -22,6 +22,7 @@ use TugasBesar\BookingClass2g\Controller\AuthController;
 use TugasBesar\BookingClass2g\Controller\HomeController;
 use TugasBesar\BookingClass2g\Middleware\AuthMiddleware;
 use TugasBesar\BookingClass2g\Middleware\HomeMiddleware;
+use TugasBesar\BookingClass2g\Controller\AdminController;
 
 Router::add('GET', '/login', AuthController::class, 'login');
 Router::add('POST', '/login', AuthController::class, 'prosesLogin');
@@ -31,6 +32,14 @@ Router::add('GET', '/', HomeController::class, 'home');
 Router::add('GET', '/booking', HomeController::class, 'booking', [AuthMiddleware::class]);
 Router::add('GET', '/detail', HomeController::class, 'detail', [AuthMiddleware::class]);
 Router::add('GET', '/roomSchedule/{id}', HomeController::class, 'roomSchedule', [AuthMiddleware::class]);
+
+Router::add('GET', '/admin', AdminController::class, 'dashboard');
+Router::add('GET', '/admin/ruang', AdminController::class, 'ruang');
+Router::add('GET', '/admin/mahasiswa', AdminController::class, 'mahasiswa');
+Router::add('GET', '/admin/dosen', AdminController::class, 'dosen');
+Router::add('GET', '/admin/jadwal', AdminController::class, 'jadwal');
+Router::add('GET', '/admin/booking', AdminController::class, 'booking');
+Router::add('GET', '/admin/report', AdminController::class, 'report');
 
 // API
 Router::add('GET', '/api/ruang/{page}', HomeController::class, 'apiRuang');
