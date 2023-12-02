@@ -14,19 +14,14 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-
                 <h1 class="text-[36px] dark:text-gray-100 font-extrabold font-sans md:text-[72px] -ml-[2px] leading-normal ">
                     ROOM
                     <strong class="block font-extrabold text-biru md:-mt-[37px] -mt-[12px]">
                         SCHEDULE
                     </strong>
                 </h1>
-
                 <div class=" max-w-lg text-[17px]/relaxed md:text-[25px] leading-normal dark:text-white current-schedule">
-
                 </div>
-
-
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto  ">
                     <a href="/booking" class="rounded-2xl block -mt-[12px]  bg-bingu px-5 py-3  md:text-[19px] text-[12px] text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
                         CREATE BOOKING
@@ -45,7 +40,16 @@
                     <!-- iki jam -->
                     <div class="mx-auto w-full font-sans text-center text-white shadow-2xl relative">
                         <h1 class="font-extrabold text-7xl schedule-clock relative w-full "></h1>
-                        <div class="p-3 schedule-day w-full relative justify-center flex items-center q">
+                        <div class="p-3 w-full relative justify-center flex items-center q">
+                            <div class="h-full flex justify-between text-white z-[9999] top-0 items-center">
+                                <button class="schedule-prev-button w-[4rem] h-[4rem] bg-transparent">
+                                    <img src="/assets/img/arahTriangle.svg" width='10px' alt="" class="w-full h-full rotate-180 schedule-prev-button">
+                                </button>
+                                <span id="schedule-day"></span>
+                                <button class="schedule-next-button w-[4rem] h-[4rem] bg-transparent">
+                                    <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full schedule-next-button">
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

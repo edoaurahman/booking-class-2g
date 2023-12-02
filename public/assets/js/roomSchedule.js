@@ -7,7 +7,7 @@ document.getElementById('ruang').addEventListener('change', function () {
 
 const date = new Date();
 const scheduleTime = document.querySelector(".schedule-clock");
-const scheduleDay = document.querySelector(".schedule-day");
+const scheduleDay = document.querySelector("#schedule-day");
 const scheduleTableBody = document.querySelector(".schedule-table-body");
 const currentSchedule_el = document.querySelector(".current-schedule");
 let counter = 0;
@@ -39,13 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateDay() {
     scheduleDay.innerHTML = `
     <div class="h-full flex justify-between text-white z-[9999] top-0 items-center">
-      <button class="schedule-prev-button w-[4rem] h-[4rem] bg-transparent">
-        <img src="/assets/img/arahTriangle.svg" width='10px' alt="" class="w-full h-full rotate-180 schedule-prev-button">
-      </button>
-    <h1 class="text-4xl">${day[date.getDay()]}, ${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}</h1>
-      <button class="schedule-next-button w-[4rem] h-[4rem] bg-transparent">
-          <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full schedule-next-button">
-      </button>
+      <h1 class="text-4xl">${day[date.getDay()]}, ${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}</h1>
     </div>`;
   }
 
