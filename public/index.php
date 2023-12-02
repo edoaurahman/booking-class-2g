@@ -21,7 +21,6 @@ use TugasBesar\BookingClass2g\App\Router;
 use TugasBesar\BookingClass2g\Controller\AuthController;
 use TugasBesar\BookingClass2g\Controller\HomeController;
 use TugasBesar\BookingClass2g\Middleware\AuthMiddleware;
-use TugasBesar\BookingClass2g\Middleware\HomeMiddleware;
 use TugasBesar\BookingClass2g\Controller\AdminController;
 
 Router::add('GET', '/login', AuthController::class, 'login');
@@ -42,5 +41,6 @@ Router::add('GET', '/admin/booking', AdminController::class, 'booking');
 Router::add('GET', '/admin/report', AdminController::class, 'report');
 
 // API
+Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');
 Router::add('GET', '/api/ruang/{page}', HomeController::class, 'apiRuang');
 Router::run();

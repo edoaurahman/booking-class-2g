@@ -8,7 +8,7 @@
             <div class="w-auto max-w-[750px]">
 
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto flex-col">
-                    <select id="countries" class="w-[200px]  px-2 bg-navy_blue py-3  md:text-[19px] text-[12px] rounded-lg text-white shadow hover:bg-dark_grey1 focus:outline-none focus:ring active:bg-blue-700 ">
+                    <select id="ruang" class="w-[200px]  px-2 bg-navy_blue py-3  md:text-[19px] text-[12px] rounded-lg text-white shadow hover:bg-dark_grey1 focus:outline-none focus:ring active:bg-blue-700 ">
                         <?php foreach ($ruang as $item) : ?>
                             <option <?= $id == $item['id_ruang'] ? 'selected' : '' ?> value="<?= $item['id_ruang'] ?>"><?= $item['deskripsi_ruang'] ?></option>
                         <?php endforeach; ?>
@@ -23,8 +23,8 @@
                 </h1>
 
                 <div class=" max-w-lg text-[17px]/relaxed md:text-[25px] leading-normal dark:text-white current-schedule">
-                            
-                        </div>
+
+                </div>
 
 
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto  ">
@@ -74,16 +74,28 @@
                             </tr>
                         </thead>
                         <tbody class="schedule-table-body text-center">
+                            <?php $no = 1 ?>
+                            <?php foreach ($jadwal as $item) : ?>
+                                <tr>
+                                    <td class="px-1 py-4">
+                                        <?= $no++ ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?= $item['jam_mulai'] . ' - ' . $item['jam_selesai'] ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?= $item['nama']  ?>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <?= $item['nama_matkul']  ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
-
-
-
     </div>
 </section>
 <style>

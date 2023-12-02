@@ -2,9 +2,9 @@
 
 namespace TugasBesar\BookingClass2g\Controller;
 
-use TugasBesar\BookingClass2g\App\Request;
 use TugasBesar\BookingClass2g\App\View;
 use TugasBesar\BookingClass2g\Models\Dosen;
+use TugasBesar\BookingClass2g\Models\Jadwal;
 use TugasBesar\BookingClass2g\Models\Mahasiswa;
 use TugasBesar\BookingClass2g\Models\Ruang;
 
@@ -19,7 +19,7 @@ class HomeController
         $ruang = new Ruang();
         $totalPage = $ruang->getTotalPage();
         if (isset($_SESSION['user'])) {
-            
+
             $username = $_SESSION['user'];
             $level = $_SESSION['level'];
             if ($level == 'mahasiswa') {
@@ -29,7 +29,7 @@ class HomeController
                 $user = new Dosen();
                 $user = $user->find($username, 'nip');
             }
-        }else{
+        } else {
             $level = "";
             $user = "";
         }
@@ -47,7 +47,7 @@ class HomeController
         $ruang = new Ruang();
         $totalPage = $ruang->getTotalPage();
         if (isset($_SESSION['user'])) {
-            
+
             $username = $_SESSION['user'];
             $level = $_SESSION['level'];
             if ($level == 'mahasiswa') {
@@ -57,7 +57,7 @@ class HomeController
                 $user = new Dosen();
                 $user = $user->find($username, 'nip');
             }
-        }else{
+        } else {
             $level = "";
             $user = "";
         }
@@ -75,7 +75,7 @@ class HomeController
         $ruang = new Ruang();
         $totalPage = $ruang->getTotalPage();
         if (isset($_SESSION['user'])) {
-            
+
             $username = $_SESSION['user'];
             $level = $_SESSION['level'];
             if ($level == 'mahasiswa') {
@@ -85,12 +85,20 @@ class HomeController
                 $user = new Dosen();
                 $user = $user->find($username, 'nip');
             }
-        }else{
+        } else {
             $level = "";
             $user = "";
         }
+
+        $ruang = new Ruang();
+        $ruang = $ruang->all();
+        $fmt = new \IntlDateFormatter('id_ID', 0, 0, 'Asia/Jakarta', 0, 'EEEE');
+        // $fmt->setPattern('EEEE');
+        $hari = $fmt->format(new \DateTime());
+        $jadwal = new Jadwal();
+        $jadwal = $jadwal->getJadwal($id, $hari);
         View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user]);
-        View::render("Home/roomSchedule", []);
+        View::render("Home/roomSchedule", ['ruang' => $ruang, 'id' => $id, 'jadwal' => $jadwal]);
         View::render("Templates/footer", []);
     }
 
@@ -103,5 +111,12 @@ class HomeController
             'currentPage' => $page,
         ];
         echo json_encode($data);
+    }
+
+    public function apiJadwal($id, $hari): void
+    {
+        $jadwal = new Jadwal();
+        $jadwal = $jadwal->getJadwal($id, $hari);
+        echo json_encode($jadwal);
     }
 }

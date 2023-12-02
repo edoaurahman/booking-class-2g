@@ -56,7 +56,7 @@
                                 <td x-text="item.nama_lantai" class="md:px-6 md:py-3 px-4 py-2 bg-white dark:text-white dark:bg-dark_grey1">
                                 </td>
                                 <td class="flex md:px-6 md:py-3 px-4 py-2 justify-center bg-white dark:bg-dark_grey1 dark:text-white">
-                                    <a href="/roomSchedule/RT01" class="rounded-2xl w-max bg-bingu md:px-7 md:py-3 px-4 py-3 text-sm font-medium text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
+                                    <a x-bind:href="'/roomSchedule/' + item.id_ruang" class="rounded-2xl w-max bg-bingu md:px-7 md:py-3 px-4 py-3 text-sm font-medium text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
                                         Lihat Jadwal
                                     </a>
                                 </td>
