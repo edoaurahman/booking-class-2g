@@ -2,7 +2,6 @@
     <div class="absolute inset-0 bg-gradient-to-t from-white to-white-300 dark:from-dark_grey1 "></div>
 
 
-
     <div class="relative mx-auto pl-10 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-1 xl:flex justify-center items-center">
         <div class="w-full h-full flex-1 flex lg:justify-center lg:items-center">
 
@@ -23,9 +22,9 @@
                     </strong>
                 </h1>
 
-                <p class=" max-w-lg text-[17px]/relaxed md:text-[25px] leading-normal dark:text-white current-schedule">
-
-                </p>
+                <div class=" max-w-lg text-[17px]/relaxed md:text-[25px] leading-normal dark:text-white current-schedule">
+                            
+                        </div>
 
 
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto  ">
@@ -45,8 +44,8 @@
                 <div class="flex items-center justify-center w-full">
                     <!-- iki jam -->
                     <div class="mx-auto w-full font-sans text-center text-white shadow-2xl relative">
-                        <h1 class="font-extrabold text-7xl schedule-clock relative"></h1>
-                        <div class="p-3 schedule-day w-full relative justify-center flex items-center">
+                        <h1 class="font-extrabold text-7xl schedule-clock relative w-full "></h1>
+                        <div class="p-3 schedule-day w-full relative justify-center flex items-center q">
                         </div>
                     </div>
                 </div>
@@ -61,7 +60,10 @@
                                     No
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Time
+                                    Time Start
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Time End
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     User

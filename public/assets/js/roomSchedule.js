@@ -4,67 +4,43 @@ const schedule = [
     schedule: [
       {
         id: 1,
-        time: "07.00 - 07.50",
+        timeStart: "07.00",
+        timeEnd: "07.50",
         user: "TI-2G",
         activity: "Kuliah OOP",
       },
       {
         id: 2,
-        time: "07.50 - 08.40",
+        timeStart: "07.50",
+        timeEnd: "08.40",
         user: "TI-2G",
         activity: "Kuliah OOP",
       },
       {
         id: 3,
-        time: "08.40 - 09.30",
+        timeStart: "08.40",
+        timeEnd: "09.30",
         user: "TI-2G",
         activity: "Kuliah OOP",
       },
       {
         id: 4,
-        time: "09.30 - 10.20",
+        timeStart: "09.30",
+        timeEnd: "10.20",
         user: "TI-2G",
         activity: "Kuliah OOP",
       },
       {
         id: 5,
-        time: "10.20 - 11.10",
+        timeStart: "10.20",
+        timeEnd: "11.10",
         user: "TI-2G",
         activity: "Kuliah OOP",
       },
       {
         id: 6,
-        time: "11.10 - 12.00",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 7,
-        time: "12.00 - 12.50",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 8,
-        time: "12.50 - 13.40",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 9,
-        time: "13.40 - 14.30",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 10,
-        time: "14.30 - 15.20",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 11,
-        time: "15.20 - 16.10",
+        timeStart: "11.10",
+        timeEnd: "12.00",
         user: "TI-2G",
         activity: "Kuliah OOP",
       },
@@ -75,67 +51,43 @@ const schedule = [
     schedule: [
       {
         id: 1,
-        time: "07.00 - 07.50",
+        timeStart: "07.00",
+        timeEnd: "07.50",
         user: "TI-2G",
         activity: "Kuliah Database",
       },
       {
         id: 2,
-        time: "07.50 - 08.40",
+        timeStart: "07.50",
+        timeEnd: "08.40",
         user: "TI-2G",
         activity: "Kuliah Database",
       },
       {
         id: 3,
-        time: "08.40 - 09.30",
+        timeStart: "08.40",
+        timeEnd: "09.30",
         user: "TI-2G",
         activity: "Kuliah Database",
       },
       {
         id: 4,
-        time: "09.30 - 10.20",
+        timeStart: "09.30",
+        timeEnd: "10.20",
         user: "TI-2G",
         activity: "Kuliah Database",
       },
       {
         id: 5,
-        time: "10.20 - 11.10",
+        timeStart: "10.20",
+        timeEnd: "11.10",
         user: "TI-2G",
         activity: "Kuliah Database",
       },
       {
         id: 6,
-        time: "11.10 - 12.00",
-        user: "TI-2G",
-        activity: "Kuliah Database",
-      },
-      {
-        id: 7,
-        time: "12.00 - 12.50",
-        user: "TI-2G",
-        activity: "Kuliah Database",
-      },
-      {
-        id: 8,
-        time: "12.50 - 13.40",
-        user: "TI-2G",
-        activity: "Kuliah Database",
-      },
-      {
-        id: 9,
-        time: "13.40 - 14.30",
-        user: "TI-2G",
-        activity: "Kuliah Database",
-      },
-      {
-        id: 10,
-        time: "14.30 - 15.20",
-        user: "TI-2G",
-        activity: "Kuliah Database",
-      },
-      {
-        id: 11,
-        time: "15.20 - 16.10",
+        timeStart: "11.10",
+        timeEnd: "12.00",
         user: "TI-2G",
         activity: "Kuliah Database",
       },
@@ -146,69 +98,45 @@ const schedule = [
     schedule: [
       {
         id: 1,
-        time: "07.00 - 07.50",
+        timeStart: "07.00",
+        timeEnd: "07.50",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 2,
-        time: "07.50 - 08.40",
+        timeStart: "07.50",
+        timeEnd: "08.40",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 3,
-        time: "08.40 - 09.30",
+        timeStart: "08.40",
+        timeEnd: "09.30",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 4,
-        time: "09.30 - 10.20",
+        timeStart: "09.30",
+        timeEnd: "10.20",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 5,
-        time: "10.20 - 11.10",
+        timeStart: "10.20",
+        timeEnd: "11.10",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 6,
-        time: "11.10 - 12.00",
+        timeStart: "11.10",
+        timeEnd: "12.00",
         user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 7,
-        time: "12.00 - 12.50",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 8,
-        time: "12.50 - 13.40",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 9,
-        time: "13.40 - 14.30",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 10,
-        time: "14.30 - 15.20",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 11,
-        time: "15.20 - 16.10",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
     ],
   },
@@ -217,69 +145,45 @@ const schedule = [
     schedule: [
       {
         id: 1,
-        time: "07.00 - 07.50",
+        timeStart: "07.00",
+        timeEnd: "07.50",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 2,
-        time: "07.50 - 08.40",
+        timeStart: "07.50",
+        timeEnd: "08.40",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 3,
-        time: "08.40 - 09.30",
+        timeStart: "08.40",
+        timeEnd: "09.30",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 4,
-        time: "09.30 - 10.20",
+        timeStart: "09.30",
+        timeEnd: "10.20",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 5,
-        time: "10.20 - 11.10",
+        timeStart: "10.20",
+        timeEnd: "11.10",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 6,
-        time: "11.10 - 12.00",
+        timeStart: "11.10",
+        timeEnd: "12.00",
         user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 7,
-        time: "12.00 - 12.50",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 8,
-        time: "12.50 - 13.40",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 9,
-        time: "13.40 - 14.30",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 10,
-        time: "14.30 - 15.20",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 11,
-        time: "15.20 - 16.10",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
     ],
   },
@@ -288,69 +192,45 @@ const schedule = [
     schedule: [
       {
         id: 1,
-        time: "07.00 - 07.50",
+        timeStart: "07.00",
+        timeEnd: "07.50",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 2,
-        time: "07.50 - 08.40",
+        timeStart: "07.50",
+        timeEnd: "08.40",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 3,
-        time: "08.40 - 09.30",
+        timeStart: "08.40",
+        timeEnd: "09.30",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 4,
-        time: "09.30 - 10.20",
+        timeStart: "09.30",
+        timeEnd: "10.20",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 5,
-        time: "10.20 - 11.10",
+        timeStart: "10.20",
+        timeEnd: "11.10",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 6,
-        time: "11.10 - 12.00",
+        timeStart: "11.10",
+        timeEnd: "12.00",
         user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 7,
-        time: "12.00 - 12.50",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 8,
-        time: "12.50 - 13.40",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 9,
-        time: "13.40 - 14.30",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 10,
-        time: "14.30 - 15.20",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 11,
-        time: "15.20 - 16.10",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
     ],
   },
@@ -359,69 +239,45 @@ const schedule = [
     schedule: [
       {
         id: 1,
-        time: "07.00 - 07.50",
+        timeStart: "07.00",
+        timeEnd: "07.50",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 2,
-        time: "07.50 - 08.40",
+        timeStart: "07.50",
+        timeEnd: "08.40",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 3,
-        time: "08.40 - 09.30",
+        timeStart: "08.40",
+        timeEnd: "09.30",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 4,
-        time: "09.30 - 10.20",
+        timeStart: "09.30",
+        timeEnd: "10.20",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 5,
-        time: "10.20 - 11.10",
+        timeStart: "10.20",
+        timeEnd: "11.10",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 6,
-        time: "11.10 - 12.00",
+        timeStart: "11.10",
+        timeEnd: "12.00",
         user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 7,
-        time: "12.00 - 12.50",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 8,
-        time: "12.50 - 13.40",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 9,
-        time: "13.40 - 14.30",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 10,
-        time: "14.30 - 15.20",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 11,
-        time: "15.20 - 16.10",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
     ],
   },
@@ -430,69 +286,45 @@ const schedule = [
     schedule: [
       {
         id: 1,
-        time: "07.00 - 07.50",
+        timeStart: "07.00",
+        timeEnd: "07.50",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah Database",
       },
       {
         id: 2,
-        time: "07.50 - 08.40",
+        timeStart: "07.50",
+        timeEnd: "08.40",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah OOPS",
       },
       {
         id: 3,
-        time: "08.40 - 09.30",
+        timeStart: "08.40",
+        timeEnd: "09.30",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah SIMAN",
       },
       {
         id: 4,
-        time: "09.30 - 10.20",
+        timeStart: "09.30",
+        timeEnd: "10.20",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah MANPRO",
       },
       {
         id: 5,
-        time: "10.20 - 11.10",
+        timeStart: "10.20",
+        timeEnd: "11.10",
         user: "TI-2G",
-        activity: "Kuliah OOP",
+        activity: "Kuliah DESPRO WEB",
       },
       {
         id: 6,
-        time: "11.10 - 12.00",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 7,
-        time: "12.00 - 12.50",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 8,
-        time: "12.50 - 13.40",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 9,
-        time: "13.40 - 14.30",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 10,
-        time: "14.30 - 15.20",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
-      },
-      {
-        id: 11,
-        time: "15.20 - 16.10",
-        user: "TI-2G",
-        activity: "Kuliah OOP",
+        timeStart: "11.10",
+        timeEnd: "12.00",
+        user: "TI-3G",
+        activity: "Kuliah MATEMATIKA 3",
       },
     ],
   },
@@ -508,62 +340,27 @@ let counter = 0;
 document.addEventListener("DOMContentLoaded", () => {
   const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const month = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec",
   ];
-  const time = `${date.getHours()}.${
-    date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
-  }`;
 
-  // Fungsi untuk mengupdate tampilan waktu
   function updateTime() {
-    scheduleTime.textContent = `${date.getHours()} : ${
+    scheduleTime.textContent = `${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}.${
       date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
     }`;
   }
 
-  // Fungsi untuk mengupdate tampilan hari dan tanggal
   function updateDay() {
     scheduleDay.innerHTML = `
-            <h1 class="text-4xl">${day[date.getDay()]}, ${date.getDate()} ${
-      month[date.getMonth()]
-    } ${date.getFullYear()}</h1>
-            <div class="w-[50%] h-full absolute flex justify-between text-white z-[9999] top-0 items-center">
-                <button class="schedule-prev-button w-[4rem] h-[4rem] bg-transparent">
-                    <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full rotate-180 schedule-prev-button">
-                </button>
-                <button class="schedule-next-button w-[4rem] h-[4rem] bg-transparent">
-                    <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full schedule-next-button">
-                </button>
-            </div>`;
+      <h1 class="text-4xl">${day[date.getDay()]}, ${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}</h1>
+      <div class="w-full h-full absolute flex justify-between text-white z-[9999] top-0 items-center  ">
+        <button class="schedule-prev-button h-10 w-10 lg:w-[4rem] lg:h-[4rem] bg-transparent">
+          <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full rotate-90 schedule-prev-button">
+        </button>
+        <button class="schedule-next-button h-10 w-10 lg:w-[4rem] lg:h-[4rem] bg-transparent">
+          <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full schedule-next-button">
+        </button>
+      </div>`;
   }
-
-  // Memanggil fungsi untuk inisialisasi tampilan awal
-  updateTime();
-  updateDay();
-  updateSchedule();
-
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("schedule-next-button")) {
-      update_display();
-    } else if (e.target.classList.contains("schedule-prev-button")) {
-      counter--;
-      date.setDate(date.getDate() - 1); // Mengurangi satu hari pada tanggal
-      updateTime();
-      updateDay();
-      updateSchedule();
-    }
-  });
 
   function update_display() {
     if (counter >= 7) {
@@ -571,37 +368,89 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       counter++;
     }
-    date.setDate(date.getDate() + 1); // Menambahkan satu hari pada tanggal
+    date.setDate(date.getDate() + 1);
     updateTime();
     updateDay();
     updateSchedule();
+    updateCurrentSchedule();
   }
 
   function updateSchedule() {
-    scheduleTableBody.innerHTML = ""; // Bersihkan isi tabel
-    const currentSchedule = schedule[date.getDay()];
-    const currentHour = date.getHours();
-    const currentMinute = `${
-      date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
-    }`;
+    scheduleTableBody.innerHTML = "";
+    const schedulesToday = schedule[date.getDay()];
+    const currentSchedule = get_currentScedule().filter(schedule => schedule !== null);
 
-    currentSchedule.schedule.forEach((scedule) => {
+    schedulesToday.schedule.forEach((scedule) => {
+
       const row = document.createElement("tr");
+      (scedule.id === currentSchedule[0]?.id) ? row.classList.add("bg-bingu") : null
       row.innerHTML = `
-        <td class="px-6 py-4">
-          ${scedule.id}
-        </td>
-        <td class="px-6 py-4">
-          ${scedule.time}
-        </td>
-        <td class="px-6 py-4">
-          ${scedule.user}
-        </td>
-        <td class="px-6 py-4">
-          ${scedule.activity}
-        </td>
-      `;
+        <td class="px-6 py-4">${scedule.id}</td>
+        <td class="px-6 py-4">${scedule.timeStart}</td>
+        <td class="px-6 py-4">${scedule.timeEnd}</td>
+        <td class="px-6 py-4">${scedule.user}</td>
+        <td class="px-6 py-4">${scedule.activity}</td>`;
       scheduleTableBody.appendChild(row);
     });
   }
+
+  function updateCurrentSchedule() {
+    const currentScheduleTable = get_currentScedule();   
+
+    currentSchedule_el.innerHTML = `${currentScheduleTable.length > 0 ? 
+      `
+      <h1 class="text-2xl"><strong>NOW</strong> </h1>
+      <h1 class="text-2xl">${currentScheduleTable[0].activity} </h1>
+      <h1 class="text-2xl">${currentScheduleTable[0].user}</h1>
+      ` : 
+      `<h1 class="text-2xl"><strong>NOW</strong> is free</h1>`}`;
+  }
+
+  const get_currentScedule = () => {
+    const currentDate = new Date();
+    currentSchedule_el.innerHTML = "";
+    const currentSchedule = schedule[currentDate.getDay()];
+    const currentHour = currentDate.getHours();
+    const currentMinute = currentDate.getMinutes();
+    
+    const currentScheduleTable = currentSchedule.schedule.map((scedule) => {
+      const timeStart = scedule.timeStart.split(".");
+      const hourStart = parseInt(timeStart[0]);
+      const minuteStart = parseInt(timeStart[1]);
+      const timeEnd = scedule.timeEnd.split(".");
+      const hourEnd = parseInt(timeEnd[0]);
+      const minuteEnd = parseInt(timeEnd[1]);
+
+      const isCurrentStarting = (currentHour === hourStart && currentMinute >= minuteStart) || (currentHour > hourStart);
+      const isCurrentEnding = (currentHour === hourEnd && currentMinute <= minuteEnd) || (currentHour < hourEnd);
+
+      if (isCurrentStarting && isCurrentEnding) {
+        return scedule;
+      } else {
+        return null;
+      }
+    });
+
+    return currentScheduleTable.filter(schedule => schedule !== null);
+  }
+
+  // Initial rendering
+  updateTime();
+  updateDay();
+  updateSchedule();
+  updateCurrentSchedule();
+
+  // Event listener for button clicks
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("schedule-next-button")) {
+      update_display();
+    } else if (e.target.classList.contains("schedule-prev-button")) {
+      counter--;
+      date.setDate(date.getDate() - 1);
+      updateTime();
+      updateDay();
+      updateSchedule();
+      updateCurrentSchedule();
+    }
+  });
 });
