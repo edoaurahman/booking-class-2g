@@ -1,12 +1,8 @@
-<section class="relative bg-[url(/assets/img/bg_home.webp)] bg-cover bg-center bg-no-repeat h-screen w-full">
-    <div class="absolute inset-0 bg-gradient-to-t from-white to-white-300 dark:from-dark_grey1 "></div>
-
-
-    <div class="relative mx-auto pl-10 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-1 xl:flex justify-center items-center">
-        <div class="w-full h-full flex-1 flex lg:justify-center lg:items-center">
-
+<section class="relative bg-[url(/assets/img/bg_home.webp)] bg-cover bg-center bg-no-repeat min-h-screen sm:h-screen w-full">
+    <div class="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-dark_grey1"></div>
+    <div class="relative mx-auto sm:flex sm:h-full sm:items-center justify-center">
+        <div class="w-full px-10 h-full flex-1 flex sm:justify-center sm:items-center">
             <div class="w-auto max-w-[750px]">
-
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto flex-col">
                     <select id="ruang" class="w-[200px]  px-2 bg-navy_blue py-3  md:text-[19px] text-[12px] rounded-lg text-white shadow hover:bg-dark_grey1 focus:outline-none focus:ring active:bg-blue-700 ">
                         <?php foreach ($ruang as $item) : ?>
@@ -27,83 +23,77 @@
                         CREATE BOOKING
                     </a>
                 </div>
-
             </div>
-
         </div>
 
-
-
-        <div class="flex-1 w-full h-full bg-gradient-to-l from-white to-white-300 dark:from-dark_grey1">
-            <div class="w-full h-full flex flex-col justify-center">
+        <div class="flex-1 px-10 sm:pr-10 w-full h-full bg-gradient-to-l sm:dark:from-dark_grey1 sm:from-white/50 bg-opacity-20 mt-20 sm:mt-0">
+            <div x-data="jadwalRuang" class="w-full h-full flex flex-col justify-center">
                 <div class="flex items-center justify-center w-full">
-                    <!-- iki jam -->
-                    <div class="mx-auto w-full font-sans text-center text-white shadow-2xl relative">
-                        <h1 class="font-extrabold text-7xl schedule-clock relative w-full "></h1>
+                    <div class="mx-auto w-full font-sans text-center text-black dark:text-white shadow-2xl relative">
+                        <!-- jam -->
+                        <h1 x-text="currentTime" class="font-extrabold text-5xl sm:text-7xl relative w-full"></h1>
+                        <!-- tanggal -->
                         <div class="p-3 w-full relative justify-center flex items-center q">
-                            <div class="h-full flex justify-between text-white z-[9999] top-0 items-center">
-                                <button class="schedule-prev-button w-[4rem] h-[4rem] bg-transparent">
-                                    <img src="/assets/img/arahTriangle.svg" width='10px' alt="" class="w-full h-full rotate-180 schedule-prev-button">
+                            <div class="h-full flex justify-between dark:text-white text-5xl text-black z-[9999] top-0 items-center">
+                                <button @click="prev()" class="w-[4rem] h-[4rem] bg-transparent">
+                                    <!-- <img src="/assets/img/arahTriangle.svg" width='10px' alt="" class="w-full h-full rotate-180 schedule-prev-button"> -->
+                                    <i class="fa-solid fa-caret-left"></i>
                                 </button>
-                                <span id="schedule-day"></span>
-                                <button class="schedule-next-button w-[4rem] h-[4rem] bg-transparent">
-                                    <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full schedule-next-button">
+                                <div class="h-full flex justify-between text-black dark:text-white z-[9999] top-0 items-center">
+                                    <h1 x-text="currentDay" class="text-2xl sm:text-4xl"></h1>
+                                </div>
+                                <button @click="next()" class="w-[4rem] h-[4rem] bg-transparent">
+                                    <!-- <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full schedule-next-button"> -->
+                                    <i class="fa-solid fa-caret-right"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
                 <!-- iki jadwal -->
-                <div class="relative rounded-lg overflow-x-auto ">
-                    <table class="w-full text-sm  text-left rtl:text-right text-black dark:text-white">
-                        <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-center">
+                <div class="rounded-lg overflow-auto max-h-full">
+                    <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white">
+                        <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 text-center">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     No
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Time Start
+                                    Jam Mulai
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Time End
+                                    Jam Selesai
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    User
+                                    Dosen
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Activity
+                                    Mata Kuliah
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="schedule-table-body text-center">
-                            <?php $no = 1 ?>
-                            <?php foreach ($jadwal as $item) : ?>
+                            <template x-for="(item,index) in jadwalRuang">
                                 <tr>
-                                    <td class="px-1 py-4">
-                                        <?= $no++ ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?= $item['jam_mulai'] . ' - ' . $item['jam_selesai'] ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?= $item['nama']  ?>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <?= $item['nama_matkul']  ?>
-                                    </td>
+                                    <td x-text="index+1" class="px-1 py-4"> </td>
+                                    <td x-text="item.jam_mulai" class="px-6 py-4"></td>
+                                    <td x-text="item.jam_selesai" class="px-6 py-4"></td>
+                                    <td x-text="item.nama" class=" px-6 py-4"></td>
+                                    <td x-text="item.nama_matkul" class="px-6 py-4"></td>
                                 </tr>
-                            <?php endforeach; ?>
+                            </template>
                         </tbody>
                     </table>
+                </div>
+                <!-- Tidak ada jadwal -->
+                <div x-show="isJadwalAvailable" class="rounded-md top-0 h-20 left-0 w-full flex justify-center items-center text-center text-white text-2xl font-bold bg-gray-900 bg-opacity-50 schedule-empty">
+                    Tidak ada jadwal
                 </div>
             </div>
         </div>
     </div>
 </section>
-<style>
 
-</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
 <script src="/assets/js/roomSchedule.js"></script>

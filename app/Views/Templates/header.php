@@ -2,6 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+$csrf = bin2hex(random_bytes(32));
+$_SESSION['csrf'] = $csrf;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,78 +46,32 @@ if (session_status() == PHP_SESSION_NONE) {
                         Notifications
                     </div>
                     <div class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
-                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                            </div>
-                            <div class="w-full ps-3">
-                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
-                                    Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
+                        <?php foreach ($notification as $item) : ?>
+                            <?php extract($item); ?>
+                            <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <div class="flex-shrink-0">
+                                    <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                                 </div>
-                                <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                            </div>
-                            <div class="w-full ps-3">
-                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
-                                    Your class in <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is cancelled by something.
+                                <div class="w-full ps-3">
+                                    <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
+                                        <?php if ($status_booking === 'success') : ?>
+                                            <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
+                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is success.
+                                        <?php elseif ($status_booking === 'onprocess') : ?>
+                                            <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
+                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is on process please waiting.
+                                        <?php elseif ($status_booking === 'canceled') : ?>
+                                            <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is cancelled by something.
+                                        <?php elseif ($status_booking === 'done') : ?>
+                                            <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is done.
+                                        <?php endif ?>
+                                    </div>
+                                    <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
                                 </div>
-                                <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                            </div>
-                            <div class="w-full ps-3">
-                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
-                                    Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
-                                </div>
-                                <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                            </div>
-                            <div class="w-full ps-3">
-                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
-                                    Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is on process please waiting.
-                                </div>
-                                <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                            </div>
-                            <div class="w-full ps-3">
-                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
-                                    Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
-                                </div>
-                                <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                            <div class="flex-shrink-0">
-                                <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                            </div>
-                            <div class="w-full ps-3">
-                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                    <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
-                                    Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is success.
-                                </div>
-                                <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
-                            </div>
-                        </a>
+                            </a>
+                        <?php endforeach ?>
                     </div>
                 </div>
 

@@ -10,7 +10,6 @@ module.exports = {
         blue_grotto: "#60A3D9",
         baby_blue: "#BFD7ED",
         royal_blue: "#0074B7",
-        white: "#ffff",
         biru: "#0088ED",
         biru1: "#85B9E0",
         bingu: "#5E5CE6",

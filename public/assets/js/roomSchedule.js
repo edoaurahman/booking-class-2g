@@ -6,103 +6,71 @@ document.getElementById('ruang').addEventListener('change', function () {
 });
 
 const date = new Date();
-const scheduleTime = document.querySelector(".schedule-clock");
-const scheduleDay = document.querySelector("#schedule-day");
-const scheduleTableBody = document.querySelector(".schedule-table-body");
-const currentSchedule_el = document.querySelector(".current-schedule");
-let counter = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const day = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-  const month = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "Mei",
-    "Jun",
-    "Jul",
-    "Ags",
-    "Sep",
-    "Okt",
-    "Nov",
-    "Des",
-  ];
+const day = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+const month = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "Mei",
+  "Jun",
+  "Jul",
+  "Ags",
+  "Sep",
+  "Okt",
+  "Nov",
+  "Des",
+];
 
-  // Fungsi untuk mengupdate tampilan waktu
-  function updateTime() {
-    scheduleTime.textContent = `${date.getHours()} : ${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()
-      }`;
-  }
+function padZero(value) {
+  return value < 10 ? "0" + value : value;
+}
 
-  // Fungsi untuk mengupdate tampilan hari dan tanggal
-  function updateDay() {
-    scheduleDay.innerHTML = `
-    <div class="h-full flex justify-between text-white z-[9999] top-0 items-center">
-      <h1 class="text-4xl">${day[date.getDay()]}, ${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}</h1>
-    </div>`;
-  }
+function updateTime() {
+  return `${date.getHours()} : ${padZero(date.getMinutes())}`;
+}
 
-  // Memanggil fungsi untuk inisialisasi tampilan awal
-  updateTime();
-  updateDay();
+function updateDay() {
+  return `${day[date.getDay()]}, ${date.getDate()} ${month[date.getMonth()]} ${date.getFullYear()}`;
+}
 
-  document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("schedule-next-button")) {
-      update_display();
-    } else if (e.target.classList.contains("schedule-prev-button")) {
-      counter--;
-      date.setDate(date.getDate() - 1); // Mengurangi satu hari pada tanggal
-      updateTime();
-      updateDay();
-      // updateSchedule();
-    }
-    // get id ruang from url
-    const url = window.location.href;
-    const id = url.substring(url.lastIndexOf('/') + 1);
-    fetch('/api/jadwal/' + id + '/hari/' + day[date.getDay()], {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        let html = '';
-        let no = 1;
-        data.forEach((jadwal) => {
-          html += `
-            <tr>
-              <td class="px-1 py-4">
-                ${no++}
-              </td>
-              <td class="px-6 py-4">
-                ${jadwal.jam_mulai} - ${jadwal.jam_selesai}
-              </td>
-              <td class="px-6 py-4">
-                ${jadwal.nama}
-              </td>
-              <td class="px-6 py-4">
-                ${jadwal.nama_matkul}
-              </td>
-            </tr>
-            `;
-        });
-        scheduleTableBody.innerHTML = html;
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+async function getJadwal(day) {
+  const url = window.location.href;
+  const id = url.substring(url.lastIndexOf('/') + 1);
+  const response = await fetch('/api/jadwal/' + id + '/hari/' + day, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
   });
+  const data = await response.json();
+  return data;
+}
 
-  function update_display() {
-    if (counter >= 7) {
-      counter = 0;
-    } else {
-      counter++;
-    }
-    date.setDate(date.getDate() + 1); // Menambahkan satu hari pada tanggal
-    updateTime();
-    updateDay();
-  }
-});
+document.addEventListener('alpine:init', () => {
+  Alpine.data('jadwalRuang', () => ({
+    jadwalRuang: [],
+    currentTime: updateTime(),
+    currentDay: updateDay(),
+    isJadwalAvailable: false,
+    async init() {
+      this.currentDay = updateDay();
+      this.currentTime = updateTime();
+      this.jadwalRuang = await getJadwal(day[date.getDay()]);
+      if (this.jadwalRuang.length == 0) {
+        this.isJadwalAvailable = true;
+      } else {
+        this.isJadwalAvailable = false;
+      }
+    },
+    next() {
+      date.setDate(date.getDate() + 1);
+      this.init();
+    },
+    prev() {
+      date.setDate(date.getDate() - 1);
+      this.init();
+    },
+  }))
+})
