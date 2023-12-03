@@ -1,5 +1,5 @@
 <section class="relative bg-[url(/assets/img/bg_home.webp)] bg-cover bg-center bg-no-repeat h-screen w-full">
-    <div class="absolute inset-0 bg-gradient-to-t from-white to-white-300 dark:from-dark_grey1 "></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-dark_grey1 "></div>
 
 
     <div class="relative mx-auto sm:flex sm:h-screen sm:items-center justify-center">
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="flex-1 w-full h-full bg-gradient-to-l sm:dark:from-dark_grey1 sm:from-gray-50 sm:to-white-300 mt-20 sm:mt-0">
+        <div class="flex-1 w-full h-full bg-gradient-to-l sm:dark:from-dark_grey1 sm:from-white/50 bg-opacity-20 mt-20 sm:mt-0">
             <div x-data="jadwalRuang" class="w-full h-full flex flex-col justify-center">
                 <div class="flex items-center justify-center w-full">
                     <div class="mx-auto w-full font-sans text-center text-black dark:text-white shadow-2xl relative">
