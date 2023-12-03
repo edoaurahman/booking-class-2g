@@ -59,13 +59,13 @@ $_SESSION['csrf'] = $csrf;
                                             Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is success.
                                         <?php elseif ($status_booking === 'onprocess') : ?>
                                             <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
-                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is on process please waiting.
+                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
                                         <?php elseif ($status_booking === 'canceled') : ?>
                                             <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
-                                            Your class in <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is cancelled by something.
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is cancelled by something.
                                         <?php elseif ($status_booking === 'done') : ?>
                                             <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
-                                            Your class in <span class="font-medium text-gray-900 dark:text-white">ruang LSI 3 </span> is done.
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is done.
                                         <?php endif ?>
                                     </div>
                                     <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
