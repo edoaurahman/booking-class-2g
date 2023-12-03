@@ -1,8 +1,6 @@
-<section class="relative bg-[url(/assets/img/bg_home.webp)] bg-cover bg-center bg-no-repeat h-screen w-full">
-    <div class="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-dark_grey1 "></div>
-
-
-    <div class="relative mx-auto sm:flex sm:h-screen sm:items-center justify-center">
+<section class="relative bg-[url(/assets/img/bg_home.webp)] bg-cover bg-center bg-no-repeat min-h-screen sm:h-screen w-full">
+    <div class="absolute inset-0 bg-gradient-to-t from-white/70 dark:from-dark_grey1"></div>
+    <div class="relative mx-auto sm:flex sm:h-full sm:items-center justify-center">
         <div class="w-full px-10 h-full flex-1 flex sm:justify-center sm:items-center">
             <div class="w-auto max-w-[750px]">
                 <div class="mt-8 flex flex-wrap gap-4 text-center w-auto flex-col">
@@ -28,7 +26,7 @@
             </div>
         </div>
 
-        <div class="flex-1 w-full h-full bg-gradient-to-l sm:dark:from-dark_grey1 sm:from-white/50 bg-opacity-20 mt-20 sm:mt-0">
+        <div class="flex-1 px-10 sm:pr-10 w-full h-full bg-gradient-to-l sm:dark:from-dark_grey1 sm:from-white/50 bg-opacity-20 mt-20 sm:mt-0">
             <div x-data="jadwalRuang" class="w-full h-full flex flex-col justify-center">
                 <div class="flex items-center justify-center w-full">
                     <div class="mx-auto w-full font-sans text-center text-black dark:text-white shadow-2xl relative">
@@ -53,11 +51,10 @@
                     </div>
                 </div>
 
-
                 <!-- iki jadwal -->
-                <div class="relative rounded-lg overflow-x-auto ">
-                    <table class="w-full text-sm  text-left rtl:text-right text-black dark:text-white">
-                        <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-center">
+                <div class="rounded-lg overflow-auto max-h-full">
+                    <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white">
+                        <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 text-center">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     No
@@ -88,6 +85,10 @@
                             </template>
                         </tbody>
                     </table>
+                </div>
+                <!-- Tidak ada jadwal -->
+                <div x-show="isJadwalAvailable" class="rounded-md top-0 h-20 left-0 w-full flex justify-center items-center text-center text-white text-2xl font-bold bg-gray-900 bg-opacity-50 schedule-empty">
+                    Tidak ada jadwal
                 </div>
             </div>
         </div>

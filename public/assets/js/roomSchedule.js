@@ -53,10 +53,16 @@ document.addEventListener('alpine:init', () => {
     jadwalRuang: [],
     currentTime: updateTime(),
     currentDay: updateDay(),
+    isJadwalAvailable: false,
     async init() {
       this.currentDay = updateDay();
       this.currentTime = updateTime();
       this.jadwalRuang = await getJadwal(day[date.getDay()]);
+      if (this.jadwalRuang.length == 0) {
+        this.isJadwalAvailable = true;
+      } else {
+        this.isJadwalAvailable = false;
+      }
     },
     next() {
       date.setDate(date.getDate() + 1);
