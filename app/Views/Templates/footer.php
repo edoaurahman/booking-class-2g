@@ -5,6 +5,7 @@
 </footer>
 
 <script src="/assets/js/flowbite.min.js"></script>
+<script src="/assets/js/preline.js"></script>
 
 <script>
   // show login button 
