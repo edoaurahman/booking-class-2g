@@ -55,7 +55,7 @@ class HomeController
     {
         $data = $this->getUser();
         extract($data);
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user]);
+        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/booking", []);
         View::render("Templates/footer", []);
     }
@@ -72,7 +72,7 @@ class HomeController
         $hari = $fmt->format(new \DateTime());
         $jadwal = new Jadwal();
         $jadwal = $jadwal->getJadwal($id, $hari);
-        View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user]);
+        View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/roomSchedule", ['ruang' => $ruang, 'id' => $id, 'jadwal' => $jadwal]);
         View::render("Templates/footer", []);
     }
