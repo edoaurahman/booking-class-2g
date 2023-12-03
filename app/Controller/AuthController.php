@@ -13,7 +13,9 @@ class AuthController
     public function login()
     {
         session_start();
-        if (isset($_SESSION['user'])) {
+        if (isset($_SESSION['user']) && isset($_SESSION['level']) && $_SESSION['level'] == 'admin') {
+            header('Location: /admin');
+        } elseif (isset($_SESSION['user']) && isset($_SESSION['level']) && $_SESSION['level'] == 'mahasiswa') {
             header('Location: /');
         }
         View::render("Auth/login", []);
@@ -21,6 +23,7 @@ class AuthController
 
     public function prosesLogin(Request $request): void
     {
+        session_start();
         $username = $request->username;
         $password = $request->password;
 
@@ -59,7 +62,6 @@ class AuthController
                 $user = $user->find($username, 'nim');
                 if (!empty($user->nim)) {
                     if ($password === $user->password) {
-                        session_start();
                         $_SESSION['user'] = $user->nim;
                         $_SESSION['level'] = "mahasiswa";
 
@@ -86,7 +88,6 @@ class AuthController
                 $user = $user->find($username, 'nip');
                 if (!empty($user->nip)) {
                     if ($password === $user->password) {
-                        session_start();
                         $_SESSION['user'] = $user->nip;
                         $_SESSION['level'] = "dosen";
 

@@ -35,6 +35,7 @@ class HomeController
         } else {
             $level = "";
             $user = "";
+            $notification = "";
         }
         return ['level' => $level, 'user' => $user, 'notification' => $notification];
     }
