@@ -53,6 +53,14 @@ class HomeController
         View::render("Home/booking", []);
         View::render("Templates/footer", []);
     }
+    public function detail_booking(): void
+    {
+        $data = $this->getUser();
+        extract($data);
+        View::render("Templates/header", ['title' => 'detail_Booking', 'level' => $level, 'user' => $user]);
+        View::render("Home/detail_booking", []);
+        View::render("Templates/footer", []);
+    }
 
     public function roomSchedule($id): void
     {
