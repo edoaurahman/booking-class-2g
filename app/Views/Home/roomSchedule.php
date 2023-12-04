@@ -36,14 +36,12 @@
                         <div class="p-3 w-full relative justify-center flex items-center q">
                             <div class="h-full flex justify-between dark:text-white text-5xl text-black z-[9999] top-0 items-center">
                                 <button @click="prev()" class="w-[4rem] h-[4rem] bg-transparent">
-                                    <!-- <img src="/assets/img/arahTriangle.svg" width='10px' alt="" class="w-full h-full rotate-180 schedule-prev-button"> -->
                                     <i class="fa-solid fa-caret-left"></i>
                                 </button>
                                 <div class="h-full flex justify-between text-black dark:text-white z-[9999] top-0 items-center">
                                     <h1 x-text="currentDay" class="text-2xl sm:text-4xl"></h1>
                                 </div>
                                 <button @click="next()" class="w-[4rem] h-[4rem] bg-transparent">
-                                    <!-- <img src="/assets/img/arahTriangle.svg" alt="" class="w-full h-full schedule-next-button"> -->
                                     <i class="fa-solid fa-caret-right"></i>
                                 </button>
                             </div>
