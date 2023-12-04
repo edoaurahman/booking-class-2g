@@ -45,7 +45,7 @@ $_SESSION['csrf'] = $csrf;
                     <div class="block px-4 py-2 font-medium text-center text-gray-600 rounded-t-lg bg-gray-50 dark:bg-gray-700 dark:text-white">
                         Notifications
                     </div>
-                    <div class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
+                    <div x-data="notificationList" class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
                         <?php foreach ($notification as $item) : ?>
                             <?php extract($item); ?>
                             <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
@@ -66,9 +66,12 @@ $_SESSION['csrf'] = $csrf;
                                         <?php elseif ($status_booking === 'done') : ?>
                                             <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
                                             Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is done.
+                                        <?php elseif ($status_booking === 'waiting_dosen_verification') : ?>
+                                            <span class="bg-bingu p-0.5 rounded-md font-semibold text-white">waiting verification</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is waiting lecture verification.
                                         <?php endif ?>
                                     </div>
-                                    <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
+                                    <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
                                 </div>
                             </a>
                         <?php endforeach ?>
