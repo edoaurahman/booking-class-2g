@@ -39,6 +39,7 @@ Router::add('GET', '/admin/dosen', AdminController::class, 'dosen', [AuthMiddlew
 Router::add('GET', '/admin/jadwal', AdminController::class, 'jadwal', [AuthMiddleware::class]);
 Router::add('GET', '/admin/booking', AdminController::class, 'booking', [AuthMiddleware::class]);
 Router::add('GET', '/admin/report', AdminController::class, 'report', [AuthMiddleware::class]);
+Router::add('GET', '/check-out', HomeController::class, 'keteranganCheckOut', [AuthMiddleware::class]);
 
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');
