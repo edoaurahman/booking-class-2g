@@ -26,8 +26,9 @@ use TugasBesar\BookingClass2g\Controller\AdminController;
 Router::add('GET', '/login', AuthController::class, 'login');
 Router::add('POST', '/login', AuthController::class, 'prosesLogin');
 Router::add('POST', '/signout', AuthController::class, 'signout');
+Router::add('POST', '/admin/signout', AuthController::class, 'adminSignout');
 
-Router::add('GET', '/', HomeController::class, 'home');
+Router::add('GET', '/', HomeController::class, 'home', [AuthMiddleware::class]);
 Router::add('GET', '/booking', HomeController::class, 'booking', [AuthMiddleware::class]);
 Router::add('GET', '/detail_booking', HomeController::class, 'detail_booking', [AuthMiddleware::class]);
 Router::add('GET', '/roomSchedule/{id}', HomeController::class, 'roomSchedule', [AuthMiddleware::class]);

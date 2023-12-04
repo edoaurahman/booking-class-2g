@@ -90,32 +90,13 @@ class HomeController
     public function keteranganCheckOut()
 
     {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        $ruang = new Ruang();
-        $totalPage = $ruang->getTotalPage();
-        if (isset($_SESSION['user'])) {
-
-            $username = $_SESSION['user'];
-            $level = $_SESSION['level'];
-            if ($level == 'mahasiswa') {
-                $user = new Mahasiswa();
-                $user = $user->find($username, 'nim');
-            } else {
-                $user = new Dosen();
-                $user = $user->find($username, 'nip');
-            }
-        } else {
-            $level = "";
-            $user = "";
-        }
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user]);
+        $data = $this->getUser();
+        extract($data);
+        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
         View::render("Home/formulir-checkout", []);
         View::render("Templates/footer", []);
     }
-    
+
 
     public function apiRuang($page)
     {

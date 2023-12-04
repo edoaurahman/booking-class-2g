@@ -139,7 +139,6 @@
       formatCreatedAt(created_at) {
         const currentTime = new Date();
         const previousTime = new Date(created_at.replace(/-/g, "/")); // Adjusting for timezone differences
-        console.log(previousTime);
         return timeDifference(currentTime, previousTime);
       },
     }));
