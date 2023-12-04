@@ -33,6 +33,8 @@ Router::add('GET', '/detail_booking', HomeController::class, 'detail_booking', [
 Router::add('GET', '/roomSchedule/{id}', HomeController::class, 'roomSchedule', [AuthMiddleware::class]);
 
 Router::add('GET', '/admin', AdminController::class, 'dashboard', [AuthMiddleware::class]);
+Router::add('GET', '/admin/login', AuthController::class, 'login');
+Router::add('POST', '/admin/login', AuthController::class, 'adminLogin');
 Router::add('GET', '/admin/ruang', AdminController::class, 'ruang', [AuthMiddleware::class]);
 Router::add('GET', '/admin/mahasiswa', AdminController::class, 'mahasiswa', [AuthMiddleware::class]);
 Router::add('GET', '/admin/dosen', AdminController::class, 'dosen', [AuthMiddleware::class]);

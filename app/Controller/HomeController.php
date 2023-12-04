@@ -46,6 +46,9 @@ class HomeController
         $totalPage = $ruang->getTotalPage();
         $data = $this->getUser();
         extract($data);
+        // echo "<pre>";
+        // var_dump($notification[0]);
+        // die;
         View::render("Templates/header", ['title' => 'Home', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/home", ['totalPage' => $totalPage]);
         View::render("Templates/footer", []);
