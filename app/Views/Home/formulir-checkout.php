@@ -113,7 +113,7 @@
     
 
     <div class="sm:hidden block fixed z-50 right-0 top-[45%] w-10 h-10 p-2 bg-biru text-center rounded-l-md cursor-pointer" id="buttonFilter">
-        <i class="fa-solid fa-filter fa-flip" style="color: #ffffff;" id="imgButtonFilter"></i>
+        <i  class="fa-solid fa-eye " style="color: #ffffff; " id="imgButtonFilter"></i>
     </div>
 </body>
 <script>
