@@ -179,7 +179,7 @@
                     <!-- Carousel wrapper -->
                     <div class="relative h-56 overflow-hidden bg-green-700 rounded-lg md:h-96">
                         <!-- Item 1 -->
-                        <div class=" duration-700 ease-in-out text-center" data-carousel-item>
+                        <div class=" duration-700 ease-in-out text-center" data-carousel-item="active">
                             <div id="tanggalSekarang" class="text-sm "></div>
                             <div class="grid grid-cols-11  gap-3 mt-5 bg-red-600">
                                 <div class="bg-sky-400 p-5">01</div>
@@ -196,7 +196,7 @@
                             </div>
                         </div>
                         <!-- Item 2 -->
-                        <div class=" duration-700 ease-in-out" data-carousel-item="active">
+                        <div class=" duration-700 ease-in-out" data-carousel-item>
 
                             <div id="satuHariKedepan" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"></div>
                         </div>
