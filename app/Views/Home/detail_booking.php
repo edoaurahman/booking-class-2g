@@ -1,30 +1,69 @@
 <!-- Detail -->
 <div class="detail dark:bg-dark_grey1">
+
     <!-- Header start -->
-    <ol class="flex items-center justify-center w-full text-sm py-36 px-10 font-medium text-center text-gray-500 dark:text-gray-400 bg-gray-500 sm:text-base">
-        <li class="flex md:w-full items-center text-blue-600 dark:text-blue-500 sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-            <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                <i class="fa-solid fa-circle-check w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5"></i>
-                Pemesanan <span class="hidden sm:inline-flex sm:ms-2">Ruang</span>
-            </span>
+
+    <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
+        <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-semibold">
+            <div class="flex flex-none items-center ">
+                <i class="fa-solid fa-circle-check mr-3"></i>
+                <p>Ruang</p>
+            </div>
         </li>
-        <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-            <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                <span class="me-2">2</span>
-                Details <span class="hidden sm:inline-flex sm:ms-2">Ruang</span>
-            </span>
+        <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-bold">
+            <div class="flex flex-none items-center">
+                <i class="fa-solid fa-circle-check mr-3"></i>
+                <p>Jam & Tanggal</p>
+            </div>
         </li>
-        <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-            <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                <span class="me-2">2</span>
-                Pengisian <span class="hidden sm:inline-flex sm:ms-2">Form</span>
-            </span>
+        <li class="flex md:w-full items-center text-biru after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
+            <div class="flex flex-none items-center">
+                <i class="fa-solid fa-file-export mr-3"></i>
+                <p>Isi Formulir</p>
+            </div>
         </li>
         <li class="flex items-center">
-            <span class="me-2">3</span>
-            Confirmation
+            <div class="flex flex-none items-center text-biru">
+                <i class="fa-solid fa-clipboard-check mr-3"></i>
+                <p>Konfirmasi</p>
+            </div>
         </li>
     </ol>
+
+
+    <!-- mobile  -->
+    <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500  border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+        <li class="flex items-center text-blue-600 dark:text-blue-500">
+            <p class="py-0.5 px-1.5 mr-1 text-xs border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+                1
+            </p>
+            <p>Ruang</p>
+            <i class="fa-solid fa-circle-check ml-1"></i>
+        </li>
+        <li class="flex items-center">
+            <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+                2
+            </span>
+            Account <span class="hidden sm:inline-flex sm:ms-2">Info</span>
+            <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+            </svg>
+        </li>
+        <li class="flex items-center">
+            <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+                3
+            </span>
+            Review
+        </li>
+        <li class="flex items-center">
+            <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+                4
+            </span>
+            Review
+        </li>
+    </ol>
+
+
     <!-- Header end -->
     <div class="container py-3 mx-auto ">
         <div class="grid grid-cols-1 sm:grid-cols-8 sm:gap-4 sm:mb-11">
@@ -39,7 +78,7 @@
                 </div>
                 <!-- Fasilitas start -->
 
-                <div class="flex sm:flex-wrap sm:justify-start flex-nowrap overflow-x-auto pb-3 ">
+                <div class="flex sm:flex-wrap sm:justify-start flex-nowrap overflow-x-auto pb-3 pt-8">
 
                     <!-- fasilitas 1 -->
                     <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
@@ -125,7 +164,7 @@
                 </div>
                 <!-- Fasilitas end -->
                 <!-- Description Start  -->
-                <p class="text-gray-500 dark:text-gray-400">
+                <p class="text-gray-500 dark:text-gray-400 mt-8">
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit… Zril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur.</p>
                 <div id="hs-show-hide-collapse-heading" class="hs-collapse hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-show-hide-collapse">
                     <ul class="pl-5 pt-4">
@@ -149,32 +188,20 @@
                     <div class="judul">
                         <h2 class="font-bold text-xl">Informasi Kelas</h2>
                     </div>
-                    <div class="hari">
-                        <!-- <div id="tanggalSekarang"></div> -->
-                        <div id="satuHariKedepan"></div>
-                        <div id="duaHariKedepan"></div>
-                        <div id="tigaHariKedepan"></div>
-                        <div id="empatHariKedepan"></div>
-                        <div id="limaHariKedepan"></div>
-                        <div id="enamHariKedepan"></div>
-                        <div id="tujuhHariKedepan"></div>
-                    </div>
-                    <div class="grid grid-cols-11  gap-3 mt-5 bg-red-600">
-                        <div class="bg-sky-400 p-5">01</div>
-                        <div class="bg-sky-500 p-5">02</div>
-                        <div class="bg-sky-600 p-5">03</div>
-                        <div class="bg-sky-700 p-5">04</div>
-                        <div class="bg-sky-800 p-5">05</div>
-                        <div class="bg-sky-500 p-5">06</div>
-                        <div class="bg-sky-500 p-5">07</div>
-                        <div class="bg-sky-500 p-5">08</div>
-                        <div class="bg-sky-500 p-5">09</div>
-                        <div class="bg-sky-500 p-5">10</div>
-                        <div class="bg-sky-500 p-5">11</div>
-                    </div>
                 </div>
 
 
+                <!-- slide -->
+                <div class="hari pt-60">
+                    <!-- <div id="tanggalSekarang"></div> -->
+                    <div id="satuHariKedepan"></div>
+                    <div id="duaHariKedepan"></div>
+                    <div id="tigaHariKedepan"></div>
+                    <div id="empatHariKedepan"></div>
+                    <div id="limaHariKedepan"></div>
+                    <div id="enamHariKedepan"></div>
+                    <div id="tujuhHariKedepan"></div>
+                </div>
                 <div id="controls-carousel" class="relative w-full " data-carousel="static">
                     <!-- Carousel wrapper -->
                     <div class="relative h-56 overflow-hidden bg-green-700 rounded-lg md:h-96">
@@ -223,13 +250,29 @@
                         </span>
                     </button>
                 </div>
+                <div class="jam">
+                    <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-9 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Jam Ke-1</button>
 
+                    <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
+                        </div>
+                        <div class="px-3 py-2">
+                            <p>7.00 - 7.50</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- Informasi Kelas end  -->
-                <!-- Lantai start -->
+                <!-- Denah start -->
                 <div class="Denah mt-7">
                     <h2 class="font-bold text-xl">Denah Lantai</h2>
                     <img class="object-cover rounded-md" src="/assets/img/lantai/Lantai6.png" alt="" />
                 </div>
+
+
+
+
+
                 <!-- Lantai end -->
             </div>
             <!-- ###################### -->
@@ -245,16 +288,16 @@
                     </div>
                     <div class="filter pt-5 ">
                         <div class="">
-                            <!-- === Filter Tanggal Start === -->
+                            <!-- === Booking Tanggal Start === -->
                             <div class=" p-3 border rounded-md dark:border-dark_grey2">
                                 <label for="tanggal" class="block text-gray-900 dark:text-white font-sans text-sm font-medium mb-2">Pilih Tanggal</label>
                                 <input type="date" id="tanggal" class="appearance-none border border-[#c8c8c8] dark:border-dark_grey3 rounded w-full py-3 px-4 text-gray-700 dark:bg-dark_grey3 dark:text-dark_grey2 font-sans text-sm leading-6 transform-none" />
                             </div>
-                            <!-- === Filter Tanggal END ===-->
+                            <!-- === Booking Tanggal END ===-->
                         </div>
-                        <!-- === Filter Pemilihan Lantai Start ===-->
+                        <!-- === Filter Pemilihan Kelas Start ===-->
                         <div class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
-                            <label for="bedrooms-input" class="block mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Lantai</label>
+                            <label for="bedrooms-input" class="block mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Kelas</label>
                             <button id="buttonPilihLantai" class="text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium text-sm w-full py-3 px-4 text-center flex justify-between items-center" type="button">
                                 Lantai
                                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -269,6 +312,6 @@
             <!-- filter sidebar mobile -->
         </div>
     </div>
+</div>
 
-
-    <script src="/assets/js/detail_booking.js"></script>
+<script src="/assets/js/detail_booking.js"></script>
