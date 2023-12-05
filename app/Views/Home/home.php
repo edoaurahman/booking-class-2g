@@ -21,9 +21,9 @@
         </div>
     </div>
 </section>
-<section id="jadwal-ruang" class="relative overflow-auto bg-white dark:bg-dark_grey1">
+<section id="jadwal-ruang" class="relative overflow-auto bg-white dark:bg-dark_grey1 pt-20">
     <div x-data="tableData" x-init="$nextTick(() => { paggination(1) })">
-        <h2 class="text-xl font-bold md:text-3xl text-center pb-3 dark:text-white p-5">
+        <h2 class="text-2xl font-bold md:text-4xl text-center pb-3 dark:text-white">
             Jadwal <span class="font-bold text-biru">Ruang</span>
         </h2>
 

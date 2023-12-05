@@ -5,6 +5,7 @@
 </footer>
 
 <script src="/assets/js/flowbite.min.js"></script>
+<script src="/assets/js/preline.js"></script>
 
 <script>
   // show login button 
@@ -56,6 +57,33 @@
   // }
 
   // nama.innerText = shortenName(nama.innerText.toString(), 10);
+
+  function timeDifference(current, previous) {
+    const difference = current - previous;
+    const minutes = Math.floor(difference / 60000);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (days > 0) {
+      return days + " day" + (days > 1 ? "s" : "") + (hours % 24 > 0 ? " " + (hours % 24) + " hour" + (hours % 24 > 1 ? "s" : "") : "") + " ago";
+    } else if (hours > 0) {
+      return hours + " hour" + (hours > 1 ? "s" : "") + (minutes % 60 > 0 ? " " + (minutes % 60) + " minute" + (minutes % 60 > 1 ? "s" : "") : "") + " ago";
+    } else if (minutes > 0) {
+      return minutes + " minute" + (minutes > 1 ? "s" : "") + " ago";
+    } else {
+      return "just now";
+    }
+  }
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('notificationList', () => ({
+      formatCreatedAt(created_at) {
+        const currentTime = new Date();
+        const previousTime = new Date(created_at.replace(/-/g, "/")); // Adjusting for timezone differences
+        return timeDifference(currentTime, previousTime);
+      },
+    }));
+  });
 </script>
 </body>
 

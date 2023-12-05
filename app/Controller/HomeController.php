@@ -46,6 +46,9 @@ class HomeController
         $totalPage = $ruang->getTotalPage();
         $data = $this->getUser();
         extract($data);
+        // echo "<pre>";
+        // var_dump($notification[0]);
+        // die;
         View::render("Templates/header", ['title' => 'Home', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/home", ['totalPage' => $totalPage]);
         View::render("Templates/footer", []);
@@ -63,7 +66,7 @@ class HomeController
     {
         $data = $this->getUser();
         extract($data);
-        View::render("Templates/header", ['title' => 'detail_Booking', 'level' => $level, 'user' => $user]);
+        View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/detail_booking", []);
         View::render("Templates/footer", []);
     }
@@ -84,6 +87,16 @@ class HomeController
         View::render("Home/roomSchedule", ['ruang' => $ruang, 'id' => $id, 'jadwal' => $jadwal]);
         View::render("Templates/footer", []);
     }
+    public function keteranganCheckOut()
+
+    {
+        $data = $this->getUser();
+        extract($data);
+        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
+        View::render("Home/formulir-checkout", []);
+        View::render("Templates/footer", []);
+    }
+
 
     public function apiRuang($page)
     {

@@ -18,7 +18,13 @@ class AuthController
         } elseif (isset($_SESSION['user']) && isset($_SESSION['level']) && $_SESSION['level'] == 'mahasiswa') {
             header('Location: /');
         }
-        View::render("Auth/login", []);
+        $path = $_SERVER['REQUEST_URI'];
+        if ($path == '/admin/login') {
+            $level = 'admin';
+        } else {
+            $level = 'user';
+        }
+        View::render("Auth/login", ['level' => $level]);
     }
 
     public function prosesLogin(Request $request): void
@@ -27,89 +33,100 @@ class AuthController
         $username = $request->username;
         $password = $request->password;
 
-        if (isset($_SESSION['next_path']) && $_SESSION['next_path'] == '/admin') {
-            $user = new Admin();
-            $user = $user->find($username, 'username');
-            if ($user->username) {
+
+        if (strlen($username) < 18) {
+            // print to console
+            // echo "<script>console.log('Debug Objects: " . $username . "' );</script>";
+            $user = new Mahasiswa();
+            $user = $user->find($username, 'nim');
+            if (!empty($user->nim)) {
                 if ($password === $user->password) {
-                    session_start();
-                    $_SESSION['user'] = $user->username;
-                    $_SESSION['level'] = "admin";
+                    $_SESSION['user'] = $user->nim;
+                    $_SESSION['level'] = "mahasiswa";
 
                     if (isset($_SESSION['next_path'])) {
                         header('Location: ' . $_SESSION['next_path']);
                         unset($_SESSION['next_path']);
                     } else {
-                        header('Location: /admin');
+                        header('Location: /');
                     }
                 } else {
                     View::render("Auth/login", [
                         'error' => 'NIM/NIP dan Password tidak sesuai',
-                        'username' => $username
+                        'username' => $username,
+                        'level' => 'user'
                     ]);
                 }
             } else {
                 View::render("Auth/login", [
                     'error' => 'NIM/NIP dan Password tidak sesuai',
-                    'username' => $username
+                    'username' => $username,
+                    'level' => 'user'
                 ]);
             }
         } else {
-            if (strlen($username) < 18) {
-                // print to console
-                // echo "<script>console.log('Debug Objects: " . $username . "' );</script>";
-                $user = new Mahasiswa();
-                $user = $user->find($username, 'nim');
-                if (!empty($user->nim)) {
-                    if ($password === $user->password) {
-                        $_SESSION['user'] = $user->nim;
-                        $_SESSION['level'] = "mahasiswa";
+            $user = new Dosen();
+            $user = $user->find($username, 'nip');
+            if (!empty($user->nip)) {
+                if ($password === $user->password) {
+                    $_SESSION['user'] = $user->nip;
+                    $_SESSION['level'] = "dosen";
 
-                        if (isset($_SESSION['next_path'])) {
-                            header('Location: ' . $_SESSION['next_path']);
-                            unset($_SESSION['next_path']);
-                        } else {
-                            header('Location: /');
-                        }
+                    if (isset($_SESSION['next_path'])) {
+                        header('Location: ' . $_SESSION['next_path']);
+                        unset($_SESSION['next_path']);
                     } else {
-                        View::render("Auth/login", [
-                            'error' => 'NIM/NIP dan Password tidak sesuai',
-                            'username' => $username
-                        ]);
+                        header('Location: /');
                     }
                 } else {
                     View::render("Auth/login", [
                         'error' => 'NIM/NIP dan Password tidak sesuai',
-                        'username' => $username
+                        'level' => 'user',
+                        'username' => $username,
                     ]);
                 }
             } else {
-                $user = new Dosen();
-                $user = $user->find($username, 'nip');
-                if (!empty($user->nip)) {
-                    if ($password === $user->password) {
-                        $_SESSION['user'] = $user->nip;
-                        $_SESSION['level'] = "dosen";
-
-                        if (isset($_SESSION['next_path'])) {
-                            header('Location: ' . $_SESSION['next_path']);
-                            unset($_SESSION['next_path']);
-                        } else {
-                            header('Location: /');
-                        }
-                    } else {
-                        View::render("Auth/login", [
-                            'error' => 'NIM/NIP dan Password tidak sesuai',
-                            'username' => $username
-                        ]);
-                    }
-                } else {
-                    View::render("Auth/login", [
-                        'error' => 'NIM/NIP dan Password tidak sesuai',
-                        'username' => $username
-                    ]);
-                }
+                View::render("Auth/login", [
+                    'error' => 'NIM/NIP dan Password tidak sesuai',
+                    'level' => 'user',
+                    'username' => $username,
+                ]);
             }
+        }
+    }
+
+    public function adminLogin(Request $request): void
+    {
+        session_start();
+        $username = $request->username;
+        $password = $request->password;
+        $user = new Admin();
+        $user = $user->find($username, 'username');
+        if (!empty($user->username)) {
+            if ($password === $user->password) {
+                session_start();
+                $_SESSION['user'] = $user->username;
+                $_SESSION['level'] = "admin";
+
+                if (isset($_SESSION['next_path'])) {
+                    header('Location: ' . $_SESSION['next_path']);
+                    unset($_SESSION['next_path']);
+                } else {
+                    header('Location: /admin/login');
+                }
+            } else {
+                View::render("Auth/login", [
+                    'error' => 'Username dan Password tidak sesuai',
+                    'username' => $username,
+                    'level' => 'admin'
+                ]);
+            }
+        } else {
+            View::render("Auth/login", [
+                'error' => 'Username dan Password tidak sesuai',
+                'username' => $username,
+                'level' => 'admin'
+            ]);
         }
     }
 
@@ -118,5 +135,12 @@ class AuthController
         session_start();
         session_destroy();
         header('Location: /login');
+    }
+
+    public function adminSignout(): void
+    {
+        session_start();
+        session_destroy();
+        header('Location: /admin/login');
     }
 }
