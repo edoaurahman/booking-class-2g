@@ -117,7 +117,6 @@ $_SESSION['csrf'] = $csrf;
                             <button class="w-[55px] h-6 rounded-full bg-gray-400 flex items-center transition duration-300 focus:outline-none shadow dark:bg-white" id="buttonToggle">
                                 <div id="switch-toggle" class="w-8 h-8 relative rounded-full transition duration-500 transform p-1 text-white flex items-center justify-center">
                                 </div>
-                                <!-- <div></div> -->
                             </button>
                         </div>
                     </div>
