@@ -26,7 +26,7 @@ session_start();
                 </h2>
                 <p class="mb-5 text-2xl font-semibold md:text-3xl">Halaman yang anda cari tidak ditemukan.</p>
 
-                <a rel="noopener noreferrer" href="/" class="px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900">Back to homepage</a>
+                <a rel="noopener noreferrer" href="/" class="px-8 py-3 font-semibold rounded bg-bingu text-white">Back to homepage</a>
             </div>
         </div>
     </section>
