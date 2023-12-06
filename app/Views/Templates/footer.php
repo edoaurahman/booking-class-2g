@@ -1,6 +1,6 @@
 <footer class="bg-navy_blue shadow dark:bg-gray-800">
   <div class="w-full  max-w-screen-xl p-4 text-center md:text-left">
-    <span class="text-sm text-white dark:text-gray-400">© 2023 <a href="#" class="hover:underline">Sholeh Project</a>. All Rights Reserved.</span>
+    <span class="text-sm text-white dark:text-gray-400">© <?= date('Y') ?> <a href="#" class="hover:underline">Sholeh Project</a>. All Rights Reserved.</span>
   </div>
 </footer>
 
