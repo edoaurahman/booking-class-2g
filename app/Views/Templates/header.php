@@ -50,7 +50,7 @@ $_SESSION['csrf'] = $csrf;
                             <?php extract($item); ?>
                             <?php if ($status_booking === 'waiting_dosen_verification') : ?>
                                 <div <?= $level == 'dosen' ? 'id="accordion-collapse-' . $key . '"' : 'accordion-collapse' ?> data-accordion="collapse">
-                                    <a href="#" <?= $level == 'dosen' ? 'aria-controls="accordion-collapse-body-' . $key . '"' : '' ?> <?= $level == 'dosen' ? 'data-accordion-target="#accordion-collapse-body-' . $key . '"' : '' ?> aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                    <span <?= $level == 'dosen' ? 'aria-controls="accordion-collapse-body-' . $key . '"' : '' ?> <?= $level == 'dosen' ? 'data-accordion-target="#accordion-collapse-body-' . $key . '"' : '' ?> aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                                         <div class="flex-shrink-0">
                                             <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                                         </div>
@@ -61,7 +61,7 @@ $_SESSION['csrf'] = $csrf;
                                             </div>
                                             <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
                                         </div>
-                                    </a>
+                                    </span>
 
                                     <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
                                         <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
@@ -72,7 +72,7 @@ $_SESSION['csrf'] = $csrf;
                                     </div>
                                 </div>
                             <?php else : ?>
-                                <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <span class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                                     <div class="flex-shrink-0">
                                         <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                                     </div>
@@ -94,7 +94,7 @@ $_SESSION['csrf'] = $csrf;
                                         </div>
                                         <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
                                     </div>
-                                </a>
+                                </span>
                             <?php endif ?>
                         <?php endforeach ?>
                     </div>
