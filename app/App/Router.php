@@ -4,7 +4,7 @@ namespace TugasBesar\BookingClass2g\App;
 
 class Router
 {
-    private static array $routes = [];
+    private static array $_routes = [];
 
     public static function add(
         string $method,
@@ -20,7 +20,7 @@ class Router
         }, $path);
         $pattern = '#^' . $pattern . '$#';
 
-        self::$routes[] = [
+        self::$_routes[] = [
             'method' => $method,
             'path' => $path,
             'controller' => $controller,
@@ -40,7 +40,7 @@ class Router
 
         $method = $_SERVER['REQUEST_METHOD'];
 
-        foreach (self::$routes as $route) {
+        foreach (self::$_routes as $route) {
             if (preg_match($route['pattern'], $path, $matches) && $method == $route['method']) {
                 array_shift($matches);
                 $variables = array_combine($route['variables'], $matches);
