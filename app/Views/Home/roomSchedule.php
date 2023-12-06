@@ -34,11 +34,11 @@
                         <h1 x-text="currentTime" class="font-extrabold text-5xl sm:text-7xl relative w-full"></h1>
                         <!-- tanggal -->
                         <div class="p-3 w-full relative justify-center flex items-center q">
-                            <div class="h-full flex justify-between dark:text-white text-5xl text-black z-[9999] top-0 items-center">
+                            <div class="h-full flex justify-between dark:text-white text-5xl text-black top-0 items-center">
                                 <button @click="prev()" class="w-[4rem] h-[4rem] bg-transparent">
                                     <i class="fa-solid fa-caret-left"></i>
                                 </button>
-                                <div class="h-full flex justify-between text-black dark:text-white z-[9999] top-0 items-center">
+                                <div class="h-full flex justify-between text-black dark:text-white top-0 items-center">
                                     <h1 x-text="currentDay" class="text-2xl sm:text-4xl"></h1>
                                 </div>
                                 <button @click="next()" class="w-[4rem] h-[4rem] bg-transparent">
