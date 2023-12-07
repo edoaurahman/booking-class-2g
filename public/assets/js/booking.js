@@ -21,12 +21,19 @@ var nextWeek = new Date();
 nextWeek.setDate(today.getDate() + 6);
 
 var inputTanggal = document.getElementById("tanggal");
+var inputTanggalSidebar = document.getElementById("tanggal-sidebar");
 
 // Atur atribut 'min' untuk membatasi tanggal minimum
 inputTanggal.setAttribute("min", formatDate(today));
 
 // Atur atribut 'max' untuk membatasi tanggal maksimum
 inputTanggal.setAttribute("max", formatDate(nextWeek));
+
+// Atur atribut 'min' untuk membatasi tanggal sidebar minimum
+inputTanggalSidebar.setAttribute("min", formatDate(today));
+
+// Atur atribut 'max' untuk membatasi tanggal sidebar maksimum
+inputTanggalSidebar.setAttribute("max", formatDate(nextWeek));
 
 function formatDate(date) {
   var dd = String(date.getDate()).padStart(2, "0");
@@ -149,39 +156,6 @@ buttonDecremmentSidebar2.addEventListener("click", function () {
   updateFormJamSelesaiSidebar(); // Memperbarui nilai form2 setelah form2 diperbarui
 });
 
-const buttonPilihJam = document.getElementById("buttonPilihJam");
-const pilihJam = document.getElementById("pilihJam");
-
-buttonPilihJam.addEventListener("click", () => {
-  pilihJam.classList.toggle("hidden");
-});
-
-// =========== Filter Lantai dekstop ===========
-const buttonPilihLantai = document.getElementById("buttonPilihLantai");
-const pilihLantai = document.getElementById("pilihLantai");
-
-buttonPilihLantai.addEventListener("click", () => {
-  pilihLantai.classList.toggle("hidden");
-});
-
-// =========== Filter Jam Mobile ===========
-
-const buttonPilihJamSidebar = document.getElementById("buttonPilihJamSidebar");
-const pilihJamSidebar = document.getElementById("pilihJamSidebar");
-
-buttonPilihJamSidebar.addEventListener("click", () => {
-  pilihJamSidebar.classList.toggle("hidden");
-});
-
-// =========== Filter Lantai Mobile ===========
-const buttonPilihLantaiSidebar = document.getElementById(
-  "buttonPilihLantaiSidebar"
-);
-const pilihLantaiSidebar = document.getElementById("pilihLantaiSidebar");
-
-buttonPilihLantaiSidebar.addEventListener("click", () => {
-  pilihLantaiSidebar.classList.toggle("hidden");
-});
 const selectedLantai = [];
 const checkSelectedLantai = (e) => {
   console.log("checkSelectedLantai", e);
@@ -190,6 +164,7 @@ const checkSelectedLantai = (e) => {
 document.addEventListener('alpine:init', () => {
   Alpine.data('listRuang', () => ({
     listRuang: [],
+    isLoading: false,
     formValues: {
       tanggal: new Date().toISOString().slice(0, 10),
       jam_mulai: "",
@@ -197,11 +172,11 @@ document.addEventListener('alpine:init', () => {
       id_lantai: "",
     },
     async fetchData() {
+      this.isLoading = true;
       const formData = new FormData();
       formData.append('tanggal', this.formValues.tanggal);
       formData.append('jam_mulai', this.formValues.jam_mulai);
       formData.append('jam_selesai', this.formValues.jam_selesai);
-      //init id_lantai with empty array
       this.selectedLantai.forEach(lantai => {
         formData.append('id_lantai[]', lantai);
       });
@@ -211,8 +186,8 @@ document.addEventListener('alpine:init', () => {
         body: formData,
       });
       const data = await response.json();
-      console.log(data);
       this.listRuang = data;
+      this.isLoading = false;
     },
     async init() {
       await this.fetchData();
@@ -235,8 +210,7 @@ document.addEventListener('alpine:init', () => {
       if (form_jam_selesai_sidebar.value >= 1) {
         this.formValues.jam_selesai = idJam[form_jam_selesai_sidebar.value - 1];
       }
-
-      console.log(`jam mulai: ${this.formValues.jam_mulai}, jam selesai: ${this.formValues.jam_selesai}`);
+      console.log("this.formValues.jam_mulai", this.formValues.jam_mulai);
       await this.fetchData();
     },
     lantaiValue: ["'L001'", "'L002'", "'L003'", "'L004'"],
@@ -254,7 +228,6 @@ document.addEventListener('alpine:init', () => {
           this.selectedLantai.splice(index, 1);
         }
       }
-
       this.fetchResults();
     }
   }));

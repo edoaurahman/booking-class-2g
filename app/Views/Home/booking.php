@@ -1,12 +1,27 @@
 <!-- Booking -->
-<div x-data="listRuang" class="booking dark:bg-dark_grey1">
-    <div class="container py-3 mx-auto ">
+
+
+
+<div x-data="listRuang" class="dark:bg-dark_grey1">
+    <div x-show="isLoading" class="flex items-center justify-center w-full h-screen bg-transparent dark:bg-gray-800 dark:border-gray-700">
+        <div role="status">
+            <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+            </svg>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="container py-3 mx-auto">
         <div class="grid grid-cols-1 sm:grid-cols-8 sm:gap-4 sm:mb-11">
             <!-- ###################### -->
             <!-- Colom 1 -->
             <!-- ###################### -->
-            <div class=" hidden sm:block mt-5 top-24 p-3 sm:col-span-2 ">
-                <div class="sticky top-24 border-2 dark:border-dark_grey2  rounded-md p-3">
+            <!-- ################ -->
+            <!-- Filter -->
+            <!-- ################ -->
+            <div class="hidden sm:block mt-5 p-3 sm:col-span-2 ">
+                <div class="sticky top-20 border-2 dark:border-dark_grey2  rounded-md p-3">
                     <div class="flex items-center">
                         <i class="fa-solid fa-filter fa-beat text-biru hover:text-bingu_hover dark:text-white mr-3"></i>
                         <h2 class="text-slate-700 dark:text-biru font-sans text-2xl font-bold uppercase">Filter</h2>
@@ -21,77 +36,70 @@
                             <!-- === Filter Tanggal END ===-->
 
                             <!-- === Filter Pemilihan Jam Start ===-->
-                            <div class="p-3  border rounded-md mt-4 dark:border-dark_grey2">
-                                <form>
-                                    <label class="block  mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Jam</label>
+                            <div x-data="{ open: false }" class="p-3  border rounded-md mt-4 dark:border-dark_grey2">
+                                <label class="block  mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Jam</label>
 
-                                    <button id="buttonPilihJam" class="text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium w-full py-3 px-4  text-sm text-center flex justify-between items-center" type="button">
-                                        Jam
-                                        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                                        </svg>
-                                    </button>
+                                <button @click="open = ! open" class="text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium w-full py-3 px-4  text-sm text-center flex justify-between items-center rounded" type="button">
+                                    Jam
+                                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </button>
 
-                                    <!-- Dropdown menu jam -->
-                                    <div id="pilihJam" class="z-10 hidden w-full bg-white divide-y divide-gray-100 rounded-b-lg shadow p-5 dark:bg-gray-700">
-                                        <div class="">
-                                            <!-- Mulai -->
-                                            <div class="mulai relative flex items-center ">
-                                                <button @click.debounce="fetchResults" type="button" id="decrement-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-                                                    </svg>
-                                                </button>
-                                                <input type="number" id="jam-mulai-input" data-input-counter data-input-counter-min="1" data-input-counter-max="11" aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="0" required />
-                                                <div class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 dark:text-white space-x-1 rtl:space-x-reverse">
-                                                    <i class="fa-regular fa-clock dark:text-white"></i>
-                                                    <span>Mulai</span>
-                                                </div>
-                                                <button @click.debounce="fetchResults" type="button" id="increment-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                                    </svg>
-                                                </button>
+                                <!-- Dropdown menu jam -->
+                                <div x-show="open" @click.outside="open = false" id="pilihJam" class="z-10 w-full bg-white divide-y divide-gray-100 rounded-b-lg shadow p-5 dark:bg-gray-700">
+                                    <div class="">
+                                        <!-- Mulai -->
+                                        <div class="mulai relative flex items-center ">
+                                            <button @click.debounce="fetchResults" type="button" id="decrement-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <i class="fa-regular fa-clock"></i>
+                                            </button>
+                                            <input type="number" id="jam-mulai-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="0" required />
+                                            <div class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 dark:text-white space-x-1 rtl:space-x-reverse">
+                                                <i class="fa-regular fa-clock dark:text-white"></i>
+                                                <span>Mulai</span>
                                             </div>
-
-                                            <!-- Selesai -->
-                                            <div class="selesai relative flex items-center mt-4">
-                                                <button @click.debounce="fetchResults" type="button" id="decrement-button-2" data-input-counter-decrement="bedrooms-input2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-                                                    </svg>
-                                                </button>
-                                                <input type="number" id="jam-mulai-input2" aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="0" required />
-                                                <div class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 dark:text-white space-x-1 rtl:space-x-reverse">
-                                                    <i class="fa-regular fa-clock"></i>
-                                                    <span>Selesai</span>
-                                                </div>
-                                                <button @click.debounce="fetchResults" type="button" id="increment-button-2" data-input-counter-increment="bedrooms-input2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                                    </svg>
-                                                </button>
-                                            </div>
+                                            <button @click.debounce="fetchResults" type="button" id="increment-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <i class="fa-regular fa-clock"></i>
+                                            </button>
                                         </div>
 
-                                        <button type="button" id="set-max-button" class="px-2 py-1 mt-5 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            <i class="fa-solid fa-clock-rotate-left mr-2  dark:text-white"></i>
-                                            semua
-                                        </button>
-
-                                        <p id="helper-text-explanation" class="mt-3 text-[10px] text-gray-500 dark:text-gray-300">
-                                            Silahkan Pilih Jam ke-1 sampai jam ke-15
-                                        </p>
+                                        <!-- Selesai -->
+                                        <div class="selesai relative flex items-center mt-4">
+                                            <button @click.debounce="fetchResults" type="button" id="decrement-button-2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                </svg>
+                                            </button>
+                                            <input type="number" id="jam-mulai-input2" aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="0" required />
+                                            <div class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 dark:text-white space-x-1 rtl:space-x-reverse">
+                                                <i class="fa-regular fa-clock"></i>
+                                                <span>Selesai</span>
+                                            </div>
+                                            <button @click.debounce="fetchResults" type="button" id="increment-button-2" data-input-counter-increment="bedrooms-input2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
-                                </form>
+
+                                    <button type="button" id="set-max-button" class="px-2 py-1 mt-5 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        <i class="fa-solid fa-clock-rotate-left mr-2  dark:text-white"></i>
+                                        semua
+                                    </button>
+                                    <p id="helper-text-explanation" class="mt-3 text-[10px] text-gray-500 dark:text-gray-300">
+                                        Silahkan Pilih Jam ke-1 sampai jam ke-15
+                                    </p>
+                                </div>
                             </div>
                             <!-- === Filter Pemilihan Jam END === -->
                         </div>
 
                         <!-- === Filter Pemilihan Lantai Start ===-->
-                        <div class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
+                        <div x-data="{ open: false }" class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
                             <label class="block mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Lantai</label>
-                            <button id="buttonPilihLantai" class="text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium text-sm w-full py-3 px-4 text-center flex justify-between items-center" type="button">
+                            <button @click="open = ! open" id="buttonPilihLantai" class="rounded text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium text-sm w-full py-3 px-4 text-center flex justify-between items-center" type="button">
                                 Lantai
                                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -99,19 +107,15 @@
                             </button>
 
                             <!-- Dropdown menu lantai -->
-                            <div id="pilihLantai" class="w-full hidden bg-white rounded-b-lg shadow dark:bg-gray-700 font-sans">
-                                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownBgHoverButton">
-                                    <div class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownBgHoverButton">
-                                        <template x-for="(lantai, index) in lantaiOptions" :key="index">
-                                            <li>
-                                                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                    <input type="checkbox" :id="'lantai-' + index" :value="lantaiValue[index]" @click="checkSelectedLantai($event)" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                                    <label :for="'lantai-' + index" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300" x-text="lantai"></label>
-                                                </div>
-                                            </li>
-                                        </template>
-                                    </div>
-                                </ul>
+                            <div x-show="open" @click.outside="open = false" class="w-full bg-white rounded-b-lg shadow dark:bg-gray-700 font-sans">
+                                <div class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                                    <template x-for="(lantai, index) in lantaiOptions" :key="index">
+                                        <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                            <input type="checkbox" :id="'lantai-' + index" :value="lantaiValue[index]" @click="checkSelectedLantai($event)" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                            <label :for="'lantai-' + index" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300" x-text="lantai"></label>
+                                        </div>
+                                    </template>
+                                </div>
                             </div>
                         </div>
                         <!-- === Filter Pemilihan Lantai END === -->
@@ -120,36 +124,30 @@
                         <div class=" border p-3 rounded-md mt-4 dark:border-dark_grey2  ">
                             <!-- Dropdown menu -->
                             <div id="pilihStatus" class=" divide-y divide-gray-100 rounded shadow bg-bingu dark:bg-dark_grey5  dark:divide-gray-400 p-3">
-                                <label class="block mb-2 text-sm font-medium font-sans text-white dark:text-white">Jenis Lantai</label>
-                                <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownToggleButton">
-                                    <li>
-                                        <div class="flex p-2 group rounded hover:bg-gray-100 dark:hover:bg-bingu_hover">
-                                            <label class="relative inline-flex items-center w-full cursor-pointer ">
-                                                <input type="checkbox" value="" class="sr-only peer" />
-                                                <div class="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full rtl:peer-checked:after:translate-x-[-100%] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-blue-600"></div>
-                                                <span class="ms-3 text-sm font-medium text-white group-hover:text-bingu_hover dark:group-hover:text-white dark:text-gray-300">Ruang Teori</span>
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex p-2 group rounded hover:bg-gray-100 dark:hover:bg-bingu_hover">
-                                            <label class="relative inline-flex items-center w-full cursor-pointer ">
-                                                <input type="checkbox" value="" class="sr-only peer" />
-                                                <div class="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full rtl:peer-checked:after:translate-x-[-100%] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-blue-600"></div>
-                                                <span class="ms-3 text-sm font-medium text-white group group-hover:text-bingu_hover dark:group-hover:text-white dark:text-gray-300">Ruang Praktikum</span>
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex p-2 group rounded hover:bg-gray-100 dark:hover:bg-bingu_hover">
-                                            <label class="relative inline-flex items-center w-full cursor-pointer">
-                                                <input type="checkbox" value="" class="sr-only peer" />
-                                                <div class="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full rtl:peer-checked:after:translate-x-[-100%] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-blue-600"></div>
-                                                <span class="ms-3 text-sm font-medium text-white group-hover:text-bingu_hover dark:group-hover:text-white dark:text-gray-300">Ruang Gabungan</span>
-                                            </label>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <label class="block mb-3 text-sm font-medium font-sans text-white dark:text-white">Jenis Ruang</label>
+                                <div class="space-y-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownToggleButton">
+                                    <div class="flex p-2 group rounded hover:bg-gray-100 dark:hover:bg-bingu_hover">
+                                        <label class="relative inline-flex items-center w-full cursor-pointer ">
+                                            <input type="checkbox" value="" class="sr-only peer" />
+                                            <div class="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full rtl:peer-checked:after:translate-x-[-100%] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-blue-600"></div>
+                                            <span class="ms-3 text-sm font-medium text-white group-hover:text-bingu_hover dark:group-hover:text-white dark:text-gray-300">Ruang Teori</span>
+                                        </label>
+                                    </div>
+                                    <div class="flex p-2 group rounded hover:bg-gray-100 dark:hover:bg-bingu_hover">
+                                        <label class="relative inline-flex items-center w-full cursor-pointer ">
+                                            <input type="checkbox" value="" class="sr-only peer" />
+                                            <div class="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full rtl:peer-checked:after:translate-x-[-100%] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-blue-600"></div>
+                                            <span class="ms-3 text-sm font-medium text-white group group-hover:text-bingu_hover dark:group-hover:text-white dark:text-gray-300">Ruang Praktikum</span>
+                                        </label>
+                                    </div>
+                                    <div class="flex p-2 group rounded hover:bg-gray-100 dark:hover:bg-bingu_hover">
+                                        <label class="relative inline-flex items-center w-full cursor-pointer">
+                                            <input type="checkbox" value="" class="sr-only peer" />
+                                            <div class="w-9 h-5 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full rtl:peer-checked:after:translate-x-[-100%] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-500 peer-checked:bg-blue-600"></div>
+                                            <span class="ms-3 text-sm font-medium text-white group-hover:text-bingu_hover dark:group-hover:text-white dark:text-gray-300">Ruang Gabungan</span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- === Filter Jenis END === -->
@@ -159,7 +157,7 @@
             <!-- ###################### -->
             <!-- Colom 2 -->
             <!-- ###################### -->
-            <div class="col-span-6 font-sans ">
+            <div class="col-span-6 font-sans w-96 sm:w-full mx-auto">
                 <!-- content booking  start -->
                 <template x-for="item in listRuang">
                     <div class="group border-2 px-2 mt-3 rounded-xl shadow-md hover:bg-bingu dark:bg-dark_grey dark:bg-dark_grey5 dark:hover:bg-dark_grey3 dark:border-dark_grey2  dark:hover:border-dark_grey3 dark:shadow-gray-700 ">
@@ -323,16 +321,13 @@
                             </div>
                             <!-- tampilan untuk desktop start -->
                         </div>
-
                     </div>
                 </template>
-
                 <!-- content booking  end -->
             </div>
-            <div class="mb-96"></div>
         </div>
         <!-- tampilan untuk filter button mobile start -->
-        <div class="sm:hidden flex justify-end z-30 fixed text-white right-4 bottom-2">
+        <div class="sm:hidden flex justify-end z-50 fixed text-white right-4 bottom-2">
             <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full px-5 py-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" id="buttonsidebar" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
                 <i class="fa-solid fa-filter fa-flip" style="color: #ffffff"></i>
             </button>
@@ -340,7 +335,7 @@
         <!-- tampilan untuk filter button mobile end -->
 
         <!-- filter sidebar mobile -->
-        <div id="drawer-navigation" class=" sm:hidden block fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full w-72 bg-white  dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
+        <div id="drawer-navigation" class="sm:hidden block fixed top-0 left-0 z-50 h-screen p-4 overflow-y-auto transition-transform -translate-x-full w-72 bg-white  dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
             <!-- title start -->
             <div class="title flex justify-between">
                 <div class="flex items-center">
@@ -352,23 +347,23 @@
                 </button>
             </div>
             <!-- title end -->
-            <div class=" overflow-y-auto">
+            <div class="overflow-y-auto">
                 <div class="space-y-2 font-medium">
                     <div class="filter pt-5 ">
                         <div class="">
                             <!-- === Filter Tanggal Start === -->
                             <div class=" p-3 border rounded-md dark:border-dark_grey2">
                                 <label for="tanggal" class="block text-gray-900 dark:text-white font-sans text-sm font-medium mb-2">Pilih Tanggal</label>
-                                <input @input.debounce="fetchResults" type="date" id="tanggal" class="appearance-none border border-[#c8c8c8] dark:border-dark_grey3 rounded w-full py-3 px-4 text-gray-700 dark:bg-dark_grey3 dark:text-dark_grey2 font-sans text-sm leading-6 transform-none" />
+                                <input @input.debounce="fetchResults" type="date" id="tanggal-sidebar" class="appearance-none border border-[#c8c8c8] dark:border-dark_grey3 rounded w-full py-3 px-4 text-gray-700 dark:bg-dark_grey3 dark:text-dark_grey2 font-sans text-sm leading-6 transform-none" />
                             </div>
                             <!-- === Filter Tanggal END ===-->
 
                             <!-- === Filter Pemilihan Jam Start ===-->
-                            <div class="p-3  border rounded-md mt-4 dark:border-dark_grey2">
+                            <div x-data="{ open: false }" class="p-3  border rounded-md mt-4 dark:border-dark_grey2">
                                 <form>
                                     <label class="block  mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Jam</label>
 
-                                    <button id="buttonPilihJamSidebar" class="text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium w-full py-3 px-4  text-sm text-center flex justify-between items-center" type="button">
+                                    <button @click="open = ! open" class="text-white rounded bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium w-full py-3 px-4  text-sm text-center flex justify-between items-center" type="button">
                                         Jam
                                         <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -376,11 +371,11 @@
                                     </button>
 
                                     <!-- Dropdown menu jam -->
-                                    <div id="pilihJamSidebar" class="z-10 hidden w-full bg-white divide-y divide-gray-100 rounded-b-lg shadow p-5 dark:bg-gray-700">
+                                    <div x-show="open" @click.outside="open = false" class="z-10 w-full bg-white divide-y divide-gray-100 rounded-b-lg shadow p-5 dark:bg-gray-700">
                                         <div class="">
                                             <!-- Mulai -->
                                             <div class="mulai relative flex items-center ">
-                                                <button type="button" id="decrement-button-sidebar1" data-input-counter-decrement="bedrooms-input-sidebar" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <button @click.debounce="fetchResults" type="button" id="decrement-button-sidebar1" data-input-counter-decrement="bedrooms-input-sidebar" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
                                                     </svg>
@@ -390,7 +385,7 @@
                                                     <i class="fa-regular fa-clock dark:text-white"></i>
                                                     <span>Mulai</span>
                                                 </div>
-                                                <button type="button" id="increment-button-sidebar1" data-input-counter-increment="bedrooms-input-sidebar" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <button @click.debounce="fetchResults" type="button" id="increment-button-sidebar1" data-input-counter-increment="bedrooms-input-sidebar" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
                                                     </svg>
@@ -399,7 +394,7 @@
 
                                             <!-- Selesai -->
                                             <div class="selesai relative flex items-center mt-4">
-                                                <button type="button" id="decrement-button-sidebar2" data-input-counter-decrement="bedrooms-input-sidebar2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <button @click.debounce="fetchResults" type="button" id="decrement-button-sidebar2" data-input-counter-decrement="bedrooms-input-sidebar2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
                                                     </svg>
@@ -409,7 +404,7 @@
                                                     <i class="fa-regular fa-clock"></i>
                                                     <span>Selesai</span>
                                                 </div>
-                                                <button type="button" id="increment-button-sidebar2" data-input-counter-increment="bedrooms-input-sidebar2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                                <button @click.debounce="fetchResults" type="button" id="increment-button-sidebar2" data-input-counter-increment="bedrooms-input-sidebar2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
                                                     </svg>
@@ -432,9 +427,9 @@
                         </div>
 
                         <!-- === Filter Pemilihan Lantai Start ===-->
-                        <div class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
+                        <div x-data="{ open: false }" class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
                             <label class="block mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Lantai</label>
-                            <button id="buttonPilihLantaiSidebar" class="text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium text-sm w-full py-3 px-4 text-center flex justify-between items-center" type="button">
+                            <button @click="open = ! open" id="buttonPilihLantaiSidebar" class="rounded text-white bg-bingu hover:bg-bingu_hover dark:bg-dark_grey5  font-sans font-medium text-sm w-full py-3 px-4 text-center flex justify-between items-center" type="button">
                                 Lantai
                                 <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -442,33 +437,15 @@
                             </button>
 
                             <!-- Dropdown menu lantai -->
-                            <div id="pilihLantaiSidebar" class="w-full hidden bg-white rounded-b-lg shadow dark:bg-gray-700 font-sans">
-                                <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownBgHoverButton">
-                                    <li>
+                            <div x-show="open" @click.outside="open = false" class="w-full bg-white rounded-b-lg shadow dark:bg-gray-700 font-sans">
+                                <div class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+                                    <template x-for="(lantai, index) in lantaiOptions" :key="index">
                                         <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                            <input id="checkbox-item-4" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                            <label for="checkbox-item-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Lantai 5</label>
+                                            <input type="checkbox" :id="'lantai-sidebar-' + index" :value="lantaiValue[index]" @click="checkSelectedLantai($event)" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                                            <label :for="'lantai-sidebar-' + index" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300" x-text="lantai"></label>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                            <input checked id="checkbox-item-5" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                            <label for="checkbox-item-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Lantai 6</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                            <input id="checkbox-item-6" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                            <label for="checkbox-item-6" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Lantai 7</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                            <input id="checkbox-item-6" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                                            <label for="checkbox-item-6" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Lantai 8</label>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    </template>
+                                </div>
                             </div>
                         </div>
                         <!-- === Filter Pemilihan Lantai END === -->
@@ -477,7 +454,7 @@
                         <div class=" border p-3 rounded-md mt-4 dark:border-dark_grey2  ">
                             <!-- Dropdown menu -->
                             <div id="pilihStatus" class=" divide-y divide-gray-100 rounded shadow bg-bingu dark:bg-dark_grey5  dark:divide-gray-400 p-3">
-                                <label class="block mb-2 text-sm font-medium font-sans text-white dark:text-white">Pilih Lantai</label>
+                                <label class="block mb-2 text-sm font-medium font-sans text-white dark:text-white">Jenis Ruang</label>
                                 <ul class="space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownToggleButton">
                                     <li>
                                         <div class="flex p-2 group rounded hover:bg-gray-100 dark:hover:bg-bingu_hover">
