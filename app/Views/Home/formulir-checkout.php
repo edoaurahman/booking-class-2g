@@ -1,7 +1,69 @@
 <body class="bg-white  dark:bg-dark_grey1">
     <div>
         <div class="w-full">
-            ini step
+            <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
+                <li class="flex md:w-full items-center  text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-semibold">
+                    <div class="flex flex-none justify-end items-center w-36">
+                        <i class="fa-solid  fa-circle-check mr-3"></i>
+                        <p>Ruang </p>
+                    </div>
+                </li>
+                <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-bold">
+                    <div class="flex flex-none w-36  items-center">
+                        <i class="fa-solid fa-circle-check mr-3"></i>
+                        <p>Jam & Tanggal</p>
+                    </div>
+                </li>
+                <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-bold">
+                    <div class="flex flex-none items-center">
+                        <i class="fa-solid fa-circle-check mr-3"></i>
+                        <p>Isi Formulir</p>
+                    </div>
+
+                <li class="flex items-center">
+                    <div class="flex flex-none items-center text-biru">
+                        <i class="fa-solid fa-clipboard-check mr-3"></i>
+                        <p>Konfirmasi</p>
+                    </div>
+                </li>
+            </ol>
+
+
+            <!-- mobile  -->
+            <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500  border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+                <li class="flex items-center text-blue-600 dark:text-blue-500">
+                    <i class="fa-solid fa-circle-check ml-1 "></i>
+                    <div class="ml-2 mr-2">Ruang</div>
+                    <svg class="w-3 h-3 aria-hidden=" true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10" rtl:rotate-180">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                    </svg>
+                </li>
+                
+                <li  class="flex items-center text-blue-600 dark:text-blue-500">
+                    <i class="fa-solid fa-circle-check ml-1"></i>
+                    <div class="">Jam & Tanggal</div>
+                    <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                    </svg>
+                </li>
+                
+                <li class="flex items-center text-blue-600 dark:text-blue-500">
+                    <i class="fa-solid fa-circle-check ml-1"></i>
+                    <div class="mx-2">Isi Formulir</div>
+                    <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                    </svg>
+                </li>
+
+                <li class="flex items-center">
+                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+                        4
+                    </span>
+                    Review
+                </li>
+            </ol>
+
+            
         </div>
         <div class="md:grid md:grid-cols-5  md:grid-rows-3 md:px-10">
             <div class="h-auto rounded-md bg-white dark:bg-dark_grey6 shadow-md m-6 col-span-3 row-span-3 p-5 mx-4">
@@ -58,7 +120,9 @@
                         </div>
 
                         <div class="flex justify-end w-full mt-7 pr-6">
-                            <button type="submit" class=" mr-0 texy- text-white bg-bingu hover:bg-bingu_hover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-24  sm:w-auto px-5 py-2.5 text-center dark:bg-bingu dark:hover:bg-bingu_hover dark:focus:ring-blue-800">Submit</button>
+                            <button type="submit" class=" mr-0 texy- text-white bg-bingu hover:bg-bingu_hover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5  dark:bg-bingu dark:hover:bg-bingu_hover dark:focus:ring-blue-800">
+                                Selanjutnya
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -110,10 +174,10 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="sm:hidden block fixed z-50 right-0 top-[45%] w-10 h-10 p-2 bg-biru text-center rounded-l-md cursor-pointer" id="buttonFilter">
-        <i  class="fa-solid fa-eye " style="color: #ffffff; " id="imgButtonFilter"></i>
+        <i class="fa-solid fa-eye " style="color: #ffffff; " id="imgButtonFilter"></i>
     </div>
 </body>
 <script>
