@@ -156,11 +156,6 @@ buttonDecremmentSidebar2.addEventListener("click", function () {
   updateFormJamSelesaiSidebar(); // Memperbarui nilai form2 setelah form2 diperbarui
 });
 
-const selectedLantai = [];
-const checkSelectedLantai = (e) => {
-  console.log("checkSelectedLantai", e);
-}
-
 document.addEventListener('alpine:init', () => {
   Alpine.data('listRuang', () => ({
     listRuang: [],
@@ -180,12 +175,15 @@ document.addEventListener('alpine:init', () => {
       this.selectedLantai.forEach(lantai => {
         formData.append('id_lantai[]', lantai);
       });
-
+      this.selectedJenisRuang.forEach(jenisRuang => {
+        formData.append('id_jenis_ruang[]', jenisRuang);
+      });
       const response = await fetch('/api/ruang/filter', {
         method: 'POST',
         body: formData,
       });
       const data = await response.json();
+      console.log(data);
       this.listRuang = data;
       this.isLoading = false;
     },
@@ -210,7 +208,6 @@ document.addEventListener('alpine:init', () => {
       if (form_jam_selesai_sidebar.value >= 1) {
         this.formValues.jam_selesai = idJam[form_jam_selesai_sidebar.value - 1];
       }
-      console.log("this.formValues.jam_mulai", this.formValues.jam_mulai);
       await this.fetchData();
     },
     lantaiValue: ["'L001'", "'L002'", "'L003'", "'L004'"],
@@ -228,6 +225,39 @@ document.addEventListener('alpine:init', () => {
           this.selectedLantai.splice(index, 1);
         }
       }
+      this.fetchResults();
+    },
+    jenisRuangValue: ["'JR001'", "'JR002'", "'JR003'"],
+    jenisRuangOptions: ["Ruang Teori", "Ruang Praktikum", "Ruang Gabungan"],
+    selectedJenisRuang: [],
+    checkSelectedJenisRuang(event) {
+      const checkbox = event.target;
+      const jenisRuangValue = checkbox.value;
+
+      if (checkbox.checked) {
+        this.selectedJenisRuang.push(jenisRuangValue);
+      } else {
+        const index = this.selectedJenisRuang.indexOf(jenisRuangValue);
+        if (index !== -1) {
+          this.selectedJenisRuang.splice(index, 1);
+        }
+      }
+      // console.log("this.selectedJenisRuang", this.selectedJenisRuang);
+      this.fetchResults();
+    },
+    resetFilter() {
+      this.selectedLantai = [];
+      this.selectedJenisRuang = [];
+      // uncheck all checkboxes
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+      });
+      // set jam mulai and jam selesai to default
+      form_jam_mulai.value = 0;
+      form_jam_selesai.value = 0;
+      // reset tanggal
+      inputTanggal.value = formatDate(today);
       this.fetchResults();
     }
   }));
