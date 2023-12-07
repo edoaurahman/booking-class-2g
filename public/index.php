@@ -47,4 +47,6 @@ Router::add('GET', '/check-out', HomeController::class, 'keteranganCheckOut', [A
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');
 Router::add('GET', '/api/ruang/{page}', HomeController::class, 'apiRuang');
+// Filter ruang, hari, jam mulai, jam selesai, cateogry ruang, lantai
+Router::add('POST', '/api/ruang/filter', HomeController::class, 'apiRuangBooking');
 Router::run();
