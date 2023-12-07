@@ -54,8 +54,8 @@ class Ruang extends Model
         if (!empty($id_lantai)) {
             $sql_ruang .= " WHERE id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
-        $dataToAppend = print_r($sql_ruang, true) . "\n";
-        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+        // $dataToAppend = print_r($sql_ruang, true) . "\n";
+        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
         $result_ruang = $this->db->query($sql_ruang);
         $data_ruang = [];
         while ($row_ruang = $result_ruang->fetch_assoc()) {
@@ -71,8 +71,8 @@ class Ruang extends Model
             $sql .= " AND id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
         // print $sql to log
-        $dataToAppend = print_r($sql, true) . "\n";
-        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+        // $dataToAppend = print_r($sql, true) . "\n";
+        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
 
         $result = $this->db->query($sql);
         $data_booking = [];
