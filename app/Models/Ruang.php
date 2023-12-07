@@ -98,6 +98,7 @@ class Ruang extends Model
                 'id_ruang' => $ruang['id_ruang'],
                 'id_jenis_ruang' => $ruang['id_jenis_ruang'],
                 'nama_ruang' => $nama_ruang,
+                'nama_lantai' => $ruang['nama_lantai'],
                 'listJam' => array_filter($data_booking, function ($booking) use ($nama_ruang) {
                     return $booking['nama_ruang'] === $nama_ruang;
                 }),

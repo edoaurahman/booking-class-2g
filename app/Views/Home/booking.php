@@ -156,7 +156,7 @@
                                 <div class="col-span-2 py-3">
                                     <h1 class="sm:hidden inline-flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
                                         <span x-text="item.nama_ruang"></span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600" x-show="!item.nama_ruang.includes('Lantai 5')">Lantai 5</span>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600" x-text="item.nama_lantai">Lantai 5</span>
                                     </h1>
 
                                     <img class="object-cover rounded-md" src="/assets/img/booking/class1.jpg" alt="" />
@@ -165,7 +165,7 @@
                                 <div class="col-span-3 py-3">
                                     <h1 class="hidden mx-4 sm:flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
                                         <span x-text="item.nama_ruang"></span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600" x-show="!item.nama_ruang.includes('Lantai 5')">Lantai 5</span>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600" x-text="item.nama_lantai">Lantai 5</span>
                                     </h1>
 
                                     <div class="fasilitas sm:hidden mx-4">
