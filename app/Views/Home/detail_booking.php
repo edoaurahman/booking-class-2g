@@ -3,25 +3,29 @@
 
     <!-- Header start -->
 
-    <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
-        <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-semibold">
-            <div class="flex flex-none items-center ">
-                <i class="fa-solid fa-circle-check mr-3"></i>
-                <p>Ruang</p>
+
+    <div>
+        <div class="w-full">
+        <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
+        <li class="flex md:w-full items-center  text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-semibold">
+            <div class="flex flex-none justify-end items-center w-36">
+                <i class="fa-solid  fa-circle-check mr-3"></i>
+                <p>Ruang </p>
             </div>
         </li>
         <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-bold">
-            <div class="flex flex-none items-center">
+            <div class="flex flex-none w-36  items-center">
                 <i class="fa-solid fa-circle-check mr-3"></i>
                 <p>Jam & Tanggal</p>
             </div>
         </li>
         <li class="flex md:w-full items-center text-biru after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-            <div class="flex flex-none items-center">
+            <div class="flex flex-none w-36 items-center">
                 <i class="fa-solid fa-file-export mr-3"></i>
                 <p>Isi Formulir</p>
             </div>
         </li>
+       
         <li class="flex items-center">
             <div class="flex flex-none items-center text-biru">
                 <i class="fa-solid fa-clipboard-check mr-3"></i>
@@ -29,6 +33,7 @@
             </div>
         </li>
     </ol>
+
 
 
     <!-- mobile  -->
