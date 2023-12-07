@@ -38,8 +38,8 @@ function formatDate(date) {
 
 // =========== Filter Jam dekstop ===========
 // Mendapatkan elemen form_jam_mulai dan form_jam_selesai
-const form_jam_mulai = document.getElementById("bedrooms-input");
-const form_jam_selesai = document.getElementById("bedrooms-input2");
+const form_jam_mulai = document.getElementById("jam-mulai-input");
+const form_jam_selesai = document.getElementById("jam-mulai-input2");
 const form_jam_mulai_sidebar = document.getElementById("jam-mulai-input-sidebar");
 const form_jam_selesai_sidebar = document.getElementById("jam-selesai-input-sidebar");
 
@@ -93,8 +93,8 @@ form_jam_mulai.addEventListener("input", updateFormJamSelesai);
 buttonIncrement2.addEventListener("click", function () {
   let value2 = parseInt(form_jam_selesai.value, 10);
 
-  // Menambah satu ke nilai form2, tapi tidak lebih dari 15
-  form_jam_selesai.value = Math.min(value2 + 1, 15);
+  // Menambah satu ke nilai form2, tapi tidak lebih dari 11
+  form_jam_selesai.value = Math.min(value2 + 1, 11);
   updateFormJamSelesai(); // Memperbarui nilai form2 setelah form2 diperbarui
 });
 
@@ -109,7 +109,8 @@ buttonDecremment2.addEventListener("click", function () {
 });
 // Menambahkan penangan acara untuk tombol "Set Max"
 setMaxButton.addEventListener("click", function () {
-  form_jam_selesai.value = 15;
+  form_jam_mulai.value = 1;
+  form_jam_selesai.value = 11;
   updateFormJamSelesai();
 });
 
@@ -161,7 +162,6 @@ const pilihLantai = document.getElementById("pilihLantai");
 
 buttonPilihLantai.addEventListener("click", () => {
   pilihLantai.classList.toggle("hidden");
-  console.log(pilihLantai.classList);
 });
 
 // =========== Filter Jam Mobile ===========
@@ -181,5 +181,82 @@ const pilihLantaiSidebar = document.getElementById("pilihLantaiSidebar");
 
 buttonPilihLantaiSidebar.addEventListener("click", () => {
   pilihLantaiSidebar.classList.toggle("hidden");
-  console.log(pilihLantaiSidebar.classList);
 });
+const selectedLantai = [];
+const checkSelectedLantai = (e) => {
+  console.log("checkSelectedLantai", e);
+}
+
+document.addEventListener('alpine:init', () => {
+  Alpine.data('listRuang', () => ({
+    listRuang: [],
+    formValues: {
+      tanggal: new Date().toISOString().slice(0, 10),
+      jam_mulai: "",
+      jam_selesai: "",
+      id_lantai: "",
+    },
+    async fetchData() {
+      const formData = new FormData();
+      formData.append('tanggal', this.formValues.tanggal);
+      formData.append('jam_mulai', this.formValues.jam_mulai);
+      formData.append('jam_selesai', this.formValues.jam_selesai);
+      //init id_lantai with empty array
+      this.selectedLantai.forEach(lantai => {
+        formData.append('id_lantai[]', lantai);
+      });
+
+      const response = await fetch('/api/ruang/filter', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      console.log(data);
+      this.listRuang = data;
+    },
+    async init() {
+      await this.fetchData();
+    },
+    async fetchResults() {
+      const idJam = [
+        "J001", "J002", "J003", "J004", "J005",
+        "J006", "J007", "J008", "J009", "J010", "J011"
+      ];
+
+      if (form_jam_mulai.value >= 1) {
+        this.formValues.jam_mulai = idJam[form_jam_mulai.value - 1];
+      }
+      if (form_jam_mulai_sidebar.value >= 1) {
+        this.formValues.jam_mulai = idJam[form_jam_mulai_sidebar.value - 1];
+      }
+      if (form_jam_selesai.value >= 1) {
+        this.formValues.jam_selesai = idJam[form_jam_selesai.value - 1];
+      }
+      if (form_jam_selesai_sidebar.value >= 1) {
+        this.formValues.jam_selesai = idJam[form_jam_selesai_sidebar.value - 1];
+      }
+
+      console.log(`jam mulai: ${this.formValues.jam_mulai}, jam selesai: ${this.formValues.jam_selesai}`);
+      await this.fetchData();
+    },
+    lantaiValue: ["'L001'", "'L002'", "'L003'", "'L004'"],
+    lantaiOptions: ["Lantai 5", "Lantai 6", "Lantai 7", "Lantai 8"],
+    selectedLantai: [],
+    checkSelectedLantai(event) {
+      const checkbox = event.target;
+      const lantaiValue = checkbox.value;
+
+      if (checkbox.checked) {
+        this.selectedLantai.push(lantaiValue);
+      } else {
+        const index = this.selectedLantai.indexOf(lantaiValue);
+        if (index !== -1) {
+          this.selectedLantai.splice(index, 1);
+        }
+      }
+
+      this.fetchResults();
+    }
+  }));
+});
+

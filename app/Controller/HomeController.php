@@ -2,6 +2,7 @@
 
 namespace TugasBesar\BookingClass2g\Controller;
 
+use TugasBesar\BookingClass2g\App\Request;
 use TugasBesar\BookingClass2g\App\View;
 use TugasBesar\BookingClass2g\Models\Booking;
 use TugasBesar\BookingClass2g\Models\Dosen;
@@ -40,7 +41,7 @@ class HomeController
         return ['level' => $level, 'user' => $user, 'notification' => $notification];
     }
 
-    public function home()
+    public function home(): void
     {
         $ruang = new Ruang();
         $totalPage = $ruang->getTotalPage();
@@ -87,7 +88,7 @@ class HomeController
         View::render("Home/roomSchedule", ['ruang' => $ruang, 'id' => $id, 'jadwal' => $jadwal]);
         View::render("Templates/footer", []);
     }
-    public function keteranganCheckOut()
+    public function keteranganCheckOut(): void
 
     {
         $data = $this->getUser();
@@ -98,7 +99,7 @@ class HomeController
     }
 
 
-    public function apiRuang($page)
+    public function apiRuang($page): void
     {
         $ruang = new Ruang();
         $ruangan = $ruang->getRuangPaggination($page);
@@ -114,5 +115,15 @@ class HomeController
         $jadwal = new Jadwal();
         $jadwal = $jadwal->getJadwal($id, $hari);
         echo json_encode($jadwal);
+    }
+
+    public function apiRuangBooking(Request $request): void
+    {
+        $fmt = new \IntlDateFormatter('id_ID', 0, 0, 'Asia/Jakarta', 0, 'EEEE');
+        $hari = $fmt->format(new \DateTime($request->tanggal));
+        $ruang = new Ruang();
+
+        $data = $ruang->getRuang($hari, $request->jam_mulai, $request->jam_selesai, $request->id_lantai);
+        echo json_encode($data);
     }
 }
