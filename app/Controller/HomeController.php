@@ -68,7 +68,7 @@ class HomeController
         $data = $this->getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/detail_booking", []);
+        View::render("Home/detail-booking", []);
         View::render("Templates/footer", []);
     }
 

@@ -85,12 +85,12 @@ function transitionButton() {
 }
 
 // Informasi Jam Ke-
-const toolTip = document.getElementById('popover-no-arrow');
+const toolTip = document.getElementById("popover-no-arrow");
 
 function tampil() {
   if (window.innerWidth < 640) {
     return;
   }
-  toolTip.classList.toggle('invisible');
-  toolTip.classList.toggle('visible');
+  toolTip.classList.toggle("invisible");
+  toolTip.classList.toggle("visible");
 }
