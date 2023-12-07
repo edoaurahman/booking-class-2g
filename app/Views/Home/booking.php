@@ -146,7 +146,7 @@
             <!-- ###################### -->
             <!-- Colom 2 -->
             <!-- ###################### -->
-            <div x-show="!isLoading" class="col-span-6 font-sans w-[90%] md:w-[80%] mx-auto">
+            <div x-show="!isLoading" class="col-span-6 font-sans w-[80%] md:w-full mx-auto">
                 <!-- content booking  start -->
                 <template x-for="item in listRuang">a
                     <a :href="/detail_booking/+item.id_ruang">
