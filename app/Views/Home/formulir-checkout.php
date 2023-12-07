@@ -11,8 +11,8 @@
                 </li>
                 <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-bold">
                     <div class="flex flex-none w-36  items-center">
-                        <i class="fa-solid fa-circle-check mr-3"></i>
-                        <p>Jam & Tanggal</p>
+                        <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
+                        <p>Waktu</p>
                     </div>
                 </li>
                 <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru text-2xl font-sans font-bold">
@@ -32,31 +32,31 @@
             <!-- mobile  -->
             <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500   shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
                 <li class="flex items-center text-blue-600  ">
-                    <i class="fa-solid fa-circle-check ml-1 "></i>
+                    <i class="fa-solid fa-circle-check  "></i>
                     <div class="ml-2 mr-2">Ruang</div>
                     <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
                 </li>
 
-                <li class="flex items-center text-blue-600 ">
-                    <i class="fa-solid fa-circle-check ml-1"></i>
-                    <div class="">Jam & Tanggal</div>
+                <li class="flex items-center text-blue-600 px-2 ">
+                    <i class="fa-solid fa-circle-check mr-1 "></i>
+                    <div class="ml-2 mr-2">Waktu</div>
                     <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
                 </li>
 
                 <li class="flex items-center text-blue-600 ">
-                    <i class="fa-solid fa-circle-check mx-3"></i>
-                    Isi Formulir
+                    <i class="fa-solid fa-circle-check mr-3 "></i>
+                    <div class="ml-1.5 mr-1">Isi Formulir</div>
                 </li>
                 <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
 
                 <li class="flex items-center ">
-                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+                    <span class="flex items-center justify-center ml-2 w-4 h-4 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
                         4
                     </span>
                     Review

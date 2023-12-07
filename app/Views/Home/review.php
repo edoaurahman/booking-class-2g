@@ -32,31 +32,31 @@
         <!-- mobile  -->
         <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500   shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
             <li class="flex items-center text-blue-600  ">
-                <i class="fa-solid fa-circle-check ml-1 "></i>
+                <i class="fa-solid fa-circle-check  "></i>
                 <div class="ml-2 mr-2">Ruang</div>
-                <svg class="w-3 h-3 aria-hidden=" true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10" rtl:rotate-180">
+                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                </svg>
+            </li>
+
+            <li class="flex items-center text-blue-600 px-2 ">
+                <i class="fa-solid fa-circle-check mr-1 "></i>
+                <div class="ml-2 mr-2">Waktu</div>
+                <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
             </li>
 
             <li class="flex items-center text-blue-600 ">
-                <i class="fa-solid fa-circle-check ml-1"></i>
-                <div class="">Jam & Tanggal</div>
-                <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                <i class="fa-solid fa-circle-check mr-3 "></i>
+                <div class="ml-1.5 mr-1">Isi Formulir</div>
+                <svg class="w-3 h-3 ms-2 mr-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
             </li>
 
-            <li class="flex items-center text-blue-600 ">
-                <i class="fa-solid fa-circle-check mx-3"></i>
-                Isi Formulir
-                <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
-                </svg>
-            </li>
-
-            <li class="flex items-center text-blue-600">
-                <i class="fa-solid fa-circle-check mx-3"></i>
+            <li class="flex items-center  text-blue-600  ">
+                <i class="fa-solid fa-circle-check mr-3 "></i>
                 Review
             </li>
         </ol>
