@@ -21,7 +21,7 @@
                         <p>Isi Formulir</p>
                     </div>
 
-                <li class="flex items-center">
+                <li class="flex items-center mr-10">
                     <div class="flex flex-none items-center text-biru">
                         <i class="fa-solid fa-clipboard-check mr-3"></i>
                         <p>Konfirmasi</p>
@@ -34,7 +34,7 @@
                 <li class="flex items-center text-blue-600  ">
                     <i class="fa-solid fa-circle-check ml-1 "></i>
                     <div class="ml-2 mr-2">Ruang</div>
-                    <svg class="w-3 h-3 aria-hidden=" true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10" rtl:rotate-180">
+                    <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
                 </li>
@@ -42,7 +42,7 @@
                 <li class="flex items-center text-blue-600 ">
                     <i class="fa-solid fa-circle-check ml-1"></i>
                     <div class="">Jam & Tanggal</div>
-                    <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                    <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
                 </li>
@@ -55,21 +55,18 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
 
-                <li class="flex items-center">
+                <li class="flex items-center ">
                     <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
                         4
                     </span>
                     Review
                 </li>
             </ol>
-
-
-
         </div>
         <div class="md:grid md:grid-cols-5  md:grid-rows-3 md:px-10">
             <div class="h-auto rounded-md bg-white dark:bg-dark_grey6 shadow-md m-6 col-span-3 row-span-3 p-5 mx-4">
                 <!-- hedaer -->
-                <div class="header font-serif mb-6 text-[22px] bg-biru2 md:text-left text-center rounded-md text-white py-2 md:pl-4">
+                <div class="header font-serif mb-6 text-2xl bg-biru2 md:text-left text-center rounded-md text-white py-2 md:pl-4">
                     Formulir Peminjaman Ruang
                 </div>
 
