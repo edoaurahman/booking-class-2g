@@ -8,7 +8,7 @@
         <div class="w-full">
         <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
         <li class="flex md:w-full items-center  text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-semibold">
-            <div class="flex flex-none justify-end items-center w-36">
+            <div class="flex flex-none items-center w-36">
                 <i class="fa-solid  fa-circle-check mr-3"></i>
                 <p>Ruang </p>
             </div>
@@ -39,18 +39,16 @@
     <!-- mobile  -->
     <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500  border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
         <li class="flex items-center text-blue-600 dark:text-blue-500">
-            <p class="py-0.5 px-1.5 mr-1 text-xs border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
-                1
-            </p>
-            <p>Ruang</p>
-            <i class="fa-solid fa-circle-check ml-1"></i>
+            <i class="fa-solid fa-circle-check ml-1 "></i>
+            <p class="ml-2 mr-2">Ruang</p>
+            <svg class="w-3 h-3 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10" rtl:rotate-180" >
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+            </svg>
         </li>
-        <li class="flex items-center">
-            <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
-                2
-            </span>
-            Account <span class="hidden sm:inline-flex sm:ms-2">Info</span>
-            <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+        <li class="flex items-center  text-blue-600 dark:text-blue-500">
+        <i class="fa-solid fa-circle-check ml-1"></i>
+        <p class="">Jam & Tanggal</p>
+            <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
             </svg>
         </li>
@@ -58,7 +56,10 @@
             <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
                 3
             </span>
-            Review
+            Isi Formulir
+            <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+            </svg>
         </li>
         <li class="flex items-center">
             <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
