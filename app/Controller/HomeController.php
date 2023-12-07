@@ -88,13 +88,23 @@ class HomeController
         View::render("Home/roomSchedule", ['ruang' => $ruang, 'id' => $id, 'jadwal' => $jadwal]);
         View::render("Templates/footer", []);
     }
-    public function keteranganCheckOut(): void
+    public function isiForm(): void
 
     {
         $data = $this->getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
         View::render("Home/formulir-checkout", []);
+        View::render("Templates/footer", []);
+    }
+
+    public function review(): void
+
+    {
+        $data = $this->getUser();
+        extract($data);
+        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
+        View::render("Home/review", []);
         View::render("Templates/footer", []);
     }
 
