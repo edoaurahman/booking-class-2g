@@ -258,6 +258,7 @@ document.addEventListener('alpine:init', () => {
       form_jam_selesai.value = 0;
       // reset tanggal
       inputTanggal.value = formatDate(today);
+      inputTanggalSidebar.value = formatDate(today);
       this.fetchResults();
     }
   }));
