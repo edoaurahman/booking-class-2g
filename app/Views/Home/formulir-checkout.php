@@ -1,20 +1,21 @@
 <body class="bg-white  dark:bg-dark_grey1">
+
     <div>
-        <div class="w-full">
+        <div class="w-auto">
             <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
-                <li class="flex md:w-full items-center  text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-semibold">
+                <li class="flex md:w-full items-center  text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
                     <div class="flex flex-none justify-end items-center w-36">
                         <i class="fa-solid  fa-circle-check mr-3"></i>
                         <p>Ruang </p>
                     </div>
                 </li>
-                <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-bold">
+                <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-bold">
                     <div class="flex flex-none w-36  items-center">
                         <i class="fa-solid fa-circle-check mr-3"></i>
                         <p>Jam & Tanggal</p>
                     </div>
                 </li>
-                <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-bold">
+                <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru text-2xl font-sans font-bold">
                     <div class="flex flex-none items-center">
                         <i class="fa-solid fa-circle-check mr-3"></i>
                         <p>Isi Formulir</p>
@@ -28,32 +29,31 @@
                 </li>
             </ol>
 
-
             <!-- mobile  -->
-            <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500  border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
-                <li class="flex items-center text-blue-600 dark:text-blue-500">
+            <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500   shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+                <li class="flex items-center text-blue-600  ">
                     <i class="fa-solid fa-circle-check ml-1 "></i>
                     <div class="ml-2 mr-2">Ruang</div>
                     <svg class="w-3 h-3 aria-hidden=" true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10" rtl:rotate-180">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
                 </li>
-                
-                <li  class="flex items-center text-blue-600 dark:text-blue-500">
+
+                <li class="flex items-center text-blue-600 ">
                     <i class="fa-solid fa-circle-check ml-1"></i>
                     <div class="">Jam & Tanggal</div>
                     <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
                 </li>
-                
-                <li class="flex items-center text-blue-600 dark:text-blue-500">
-                    <i class="fa-solid fa-circle-check ml-1"></i>
-                    <div class="mx-2">Isi Formulir</div>
-                    <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
-                    </svg>
+
+                <li class="flex items-center text-blue-600 ">
+                    <i class="fa-solid fa-circle-check mx-3"></i>
+                    Isi Formulir
                 </li>
+                <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                </svg>
 
                 <li class="flex items-center">
                     <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
@@ -63,17 +63,18 @@
                 </li>
             </ol>
 
-            
+
+
         </div>
         <div class="md:grid md:grid-cols-5  md:grid-rows-3 md:px-10">
             <div class="h-auto rounded-md bg-white dark:bg-dark_grey6 shadow-md m-6 col-span-3 row-span-3 p-5 mx-4">
                 <!-- hedaer -->
-                <div class="header font-serif text-[22px] bg-biru2 md:text-left text-center rounded-md text-white py-2 md:pl-4">
-                    Formulir peminjaman ruang
+                <div class="header font-serif mb-6 text-[22px] bg-biru2 md:text-left text-center rounded-md text-white py-2 md:pl-4">
+                    Formulir Peminjaman Ruang
                 </div>
 
                 <form class="w-full  font-serif  grid md:grid-cols-2 grid-cols-1">
-                    <div class=" md:col-span-1 w-full m-3 md:ml-12">
+                    <div class=" md:col-span-1 w-full m-3 md:ml-12 ">
 
                         <div class="mb-5 hidden md:block">
                             <label for="nama" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
@@ -88,7 +89,7 @@
                             <input type="text" id="kelas" value="TI-2G" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-72  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <p class="md:mb-3 text-[15px] text-gray-900 dark:text-white">Kepentingan</p>
-                        <div class="flex flex-col  md: mb-5 ">
+                        <div class="flex flex-col  md:mb-5 ">
                             <div class="items-center flex mb-3">
                                 <input id="mendadak" type="radio" value="" name="kepentingan" class="w-4  h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="mendadak" class="items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 mr-5">Mendadak</label>
@@ -125,25 +126,25 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form>  
             </div>
             <div class="hidden md:block col-span-2 rounded-md bg-white dark:bg-dark_grey6 shadow-md m-6 p-5 row-span-2 font-serif">
-                <div class="header p-5  text-[22px] bg-biru2 rounded-md text-white py-2 pl-4">
+                <div class="header p-5  text-2xl bg-biru2 rounded-md text-white py-2 pl-4">
                     Preview
                 </div>
                 <div class="text-sm text-gray-900 dark:text-white p-4">
-                    <div class="font-bold mb-2">Ruang Teori 1</div>
+                    <div class="font-bold text-lg mb-2">Ruang Teori 1</div>
                     <span class="">Denah ruang: </span>
                     <div class="w-full justify-center flex">
                         <img src="/assets/img/lantai/Lantai6.png" class="w-[400px] h-auto mb-6" alt="">
                     </div>
-                    <div class="text-sm mb-2 font-semibold text-gray-900 dark:text-white">
+                    <div class="text-base mb-2  font-semibold text-gray-900 dark:text-white">
                         Jam ke <br>
-                        <p class="-my-1 font-thin">1,2,4</p>
+                        <p class="-my-0.5 font-thin">1,2,4</p>
                     </div>
-                    <div class="text-sm font-semibold text-gray-900 dark:text-white">
+                    <div class="text-base font-semibold text-gray-900 dark:text-white">
                         Tanggal <br>
-                        <p class="-my-1 font-thin">30 Desember 2023</p>
+                        <p class="-my-0.5 font-thin">30 Desember 2023</p>
                     </div>
                 </div>
             </div>
