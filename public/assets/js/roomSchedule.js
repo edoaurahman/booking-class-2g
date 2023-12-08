@@ -1,3 +1,6 @@
+const url = window.location.href;
+const id = url.substring(url.lastIndexOf('/') + 1);
+
 document.getElementById('ruang').addEventListener('change', function () {
   var selectedOption = this.options[this.selectedIndex];
   if (selectedOption.value) {
@@ -36,8 +39,6 @@ function updateDay() {
 }
 
 async function getJadwal(day) {
-  const url = window.location.href;
-  const id = url.substring(url.lastIndexOf('/') + 1);
   const response = await fetch('/api/jadwal/' + id + '/hari/' + day, {
     method: 'GET',
     headers: {
@@ -54,6 +55,7 @@ document.addEventListener('alpine:init', () => {
     currentTime: updateTime(),
     currentDay: updateDay(),
     isJadwalAvailable: false,
+    idRuang: id,
     async init() {
       this.currentDay = updateDay();
       this.currentTime = updateTime();
