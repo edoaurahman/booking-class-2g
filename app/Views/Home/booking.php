@@ -146,9 +146,9 @@
             <!-- ###################### -->
             <!-- Colom 2 -->
             <!-- ###################### -->
-            <div x-show="!isLoading" class="col-span-6 font-sans w-[70%] lg:w-full mx-auto">
+            <div x-show="!isLoading" class="col-span-6 font-sans w-[70%] md:w-[90%] lg:w-full mx-auto">
                 <!-- content booking  start -->
-                <template x-for="item in listRuang">a
+                <template x-for="(item,index) in listRuang">a
                     <a :href="/detail_booking/+item.id_ruang">
                         <div class="group border-2 px-2 mt-3 rounded-xl shadow-md hover:bg-bingu dark:bg-dark_grey dark:bg-dark_grey5 dark:hover:bg-dark_grey3 dark:border-dark_grey2  dark:hover:border-dark_grey3 dark:shadow-gray-700 ">
                             <div class="grid grid-cols-1 md:grid-cols-5 md:gap-4 items-center">
@@ -171,62 +171,62 @@
                                     <div class="fasilitas sm:hidden mx-4">
                                         <div class="text-sm">
                                             <!-- icon1dark  -->
-                                            <i data-tooltip-target="icon1dark" class="fa-solid fa-wifi border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
-                                            <div id="icon1dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon1dark-' + index" class="fa-solid fa-wifi border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                                            <div :id="'icon1dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Wifi
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon2dark  -->
-                                            <i data-tooltip-target="icon2dark" class="fa-solid fa-bars-progress border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon2dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon2dark-' + index" class="fa-solid fa-bars-progress border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon2dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Proyektor
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon3dark  -->
-                                            <i data-tooltip-target="icon3dark" class="fa-solid fa-desktop border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon3dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon3dark-' + index" class="fa-solid fa-desktop border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon3dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Monitor
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon4dark  -->
-                                            <i data-tooltip-target="icon4dark" class="fa-solid fa-plug border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon4dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon4dark-' + index" class="fa-solid fa-plug border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon4dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Stop Contact
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon5dark  -->
-                                            <i data-tooltip-target="icon5dark" class="fa-solid fa-chalkboard border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon5dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon5dark-' + index" class="fa-solid fa-chalkboard border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon5dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Papan Tulis
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon6dark  -->
-                                            <i data-tooltip-target="icon6dark" class="fa-solid fa-chair border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon6dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon6dark-' + index" class="fa-solid fa-chair border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon6dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Kursi
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon7dark  -->
-                                            <i data-tooltip-target="icon7dark" class="fa-solid fa-table border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon7dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon7dark-' + index" class="fa-solid fa-table border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon7dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Meja
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon8dark  -->
-                                            <i data-tooltip-target="icon8dark" class="fa-solid fa-marker border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon8dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon8dark-' + index" class="fa-solid fa-marker border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon8dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Spidol
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon9dark  -->
-                                            <i data-tooltip-target="icon9dark" class="fa-solid fa-eraser border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon9dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon9dark-' + index" class="fa-solid fa-eraser border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon9dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Penghapus
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon10dark  -->
-                                            <i data-tooltip-target="icon10dark" class="fa-solid fa-book border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon10dark" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon10dark-' + index" class="fa-solid fa-book border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon10dark-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Perpustakaan Kecil
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
@@ -250,62 +250,62 @@
                                     <div class="fasilitas hidden sm:block mx-4">
                                         <div class="text-sm">
                                             <!-- icon1  -->
-                                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
-                                            <div id="icon1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon1-' + index" class="fa-solid fa-wifi border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                                            <div :id="'icon1-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Wifi
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon2  -->
-                                            <i data-tooltip-target="icon2" class="fa-solid fa-bars-progress border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon2-' + index" class="fa-solid fa-bars-progress border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon2-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Proyektor
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon3  -->
-                                            <i data-tooltip-target="icon3" class="fa-solid fa-desktop border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon3" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon3-' + index" class="fa-solid fa-desktop border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon3-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Monitor
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon4  -->
-                                            <i data-tooltip-target="icon4" class="fa-solid fa-plug border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon4" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon4-' + index" class="fa-solid fa-plug border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon4-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Stop Contact
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon5  -->
-                                            <i data-tooltip-target="icon5" class="fa-solid fa-chalkboard border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon5" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon5-' + index" class="fa-solid fa-chalkboard border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon5-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Papan Tulis
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon6  -->
-                                            <i data-tooltip-target="icon6" class="fa-solid fa-chair border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon6" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon6-' + index" class="fa-solid fa-chair border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon6-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Kursi
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon7  -->
-                                            <i data-tooltip-target="icon7" class="fa-solid fa-table border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon7" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon7-' + index" class="fa-solid fa-table border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon7-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Meja
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon8  -->
-                                            <i data-tooltip-target="icon8" class="fa-solid fa-marker border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon8" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon8-' + index" class="fa-solid fa-marker border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon8-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Spidol
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon9  -->
-                                            <i data-tooltip-target="icon9" class="fa-solid fa-eraser border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon9" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon9-' + index" class="fa-solid fa-eraser border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon9-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Penghapus
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon10  -->
-                                            <i data-tooltip-target="icon10" class="fa-solid fa-book border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
-                                            <div id="icon10" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
+                                            <i :data-tooltip-target="'icon10-' + index" class="fa-solid fa-book border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
+                                            <div :id="'icon10-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
                                                 Perpustakaan Kecil
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
