@@ -47,12 +47,18 @@ class Ruang extends Model
         return $totalPage;
     }
 
-    public function getRuang(string $hari, string $jam_mulai, string $jam_selesai, ?array $id_lantai): array
+    public function getRuang(string $hari, string $jam_mulai, string $jam_selesai, ?array $id_lantai, ?array $id_jenis_ruang): array
     {
         // Query untuk mendapatkan informasi ruang
-        $sql_ruang = "SELECT * FROM ruang";
+        $sql_ruang = "SELECT * FROM view_getruang";
         if (!empty($id_lantai)) {
             $sql_ruang .= " WHERE id_lantai IN (" . implode(',', $id_lantai) . ")";
+
+            if (!empty($id_jenis_ruang)) {
+                $sql_ruang .= " AND id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
+            }
+        } elseif (!empty($id_jenis_ruang)) {
+            $sql_ruang .= " WHERE id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
         }
         // $dataToAppend = print_r($sql_ruang, true) . "\n";
         // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
@@ -90,8 +96,9 @@ class Ruang extends Model
                 'deskripsi_ruang' => $ruang['deskripsi_ruang'],
                 'id_lantai' => $ruang['id_lantai'],
                 'id_ruang' => $ruang['id_ruang'],
+                'id_jenis_ruang' => $ruang['id_jenis_ruang'],
                 'nama_ruang' => $nama_ruang,
-                'status_ruang' => $ruang['status_ruang'],
+                'nama_lantai' => $ruang['nama_lantai'],
                 'listJam' => array_filter($data_booking, function ($booking) use ($nama_ruang) {
                     return $booking['nama_ruang'] === $nama_ruang;
                 }),
