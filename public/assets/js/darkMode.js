@@ -7,8 +7,8 @@ const userTheme = localStorage.getItem("theme");
 const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 const darkIcon = `<i class="fa-regular fa-moon text-[20px]"></i>`
-
 const lightIcon = `<i class="fa-regular fa-sun text-[20px]"></i>`
+
 const setIcon = () => {
   if (userTheme === "dark" || (!userTheme && systemTheme)) {
     switchToggle.classList.add('bg-gray-500', 'translate-x-full');

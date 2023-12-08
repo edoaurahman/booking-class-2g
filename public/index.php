@@ -48,6 +48,9 @@ Router::add('GET', '/review', HomeController::class, 'review', [AuthMiddleware::
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');
 Router::add('GET', '/api/ruang/{page}', HomeController::class, 'apiRuang');
+Router::add('GET', '/api/dosen/{page}', AdminController::class, 'apiDosen');
+Router::add('GET', '/api/mahasiswa/{page}', AdminController::class, 'apiMahasiswa');
+Router::add('GET', '/api/jadwal/{page}', AdminController::class, 'apiJadwal');
 // Filter ruang, hari, jam mulai, jam selesai, cateogry ruang, lantai
 Router::add('POST', '/api/ruang/filter', HomeController::class, 'apiRuangBooking');
 Router::run();
