@@ -30,7 +30,7 @@ Router::add('POST', '/admin/signout', AuthController::class, 'adminSignout');
 
 Router::add('GET', '/', HomeController::class, 'home', [AuthMiddleware::class]);
 Router::add('GET', '/booking', HomeController::class, 'booking', [AuthMiddleware::class]);
-Router::add('GET', '/detail_booking', HomeController::class, 'detail_booking', [AuthMiddleware::class]);
+Router::add('GET', '/detail-booking', HomeController::class, 'detail_booking', [AuthMiddleware::class]);
 Router::add('GET', '/roomSchedule/{id}', HomeController::class, 'roomSchedule', [AuthMiddleware::class]);
 
 Router::add('GET', '/admin', AdminController::class, 'dashboard', [AuthMiddleware::class]);
