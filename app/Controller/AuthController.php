@@ -8,15 +8,15 @@ use TugasBesar\BookingClass2g\Models\Admin;
 use TugasBesar\BookingClass2g\Models\Dosen;
 use TugasBesar\BookingClass2g\Models\Mahasiswa;
 
-class AuthController
+class AuthController extends Controller
 {
     public function login()
     {
         session_start();
         if (isset($_SESSION['user']) && isset($_SESSION['level']) && $_SESSION['level'] == 'admin') {
-            header('Location: /admin');
+            $this->redirect('/admin');
         } elseif (isset($_SESSION['user']) && isset($_SESSION['level']) && $_SESSION['level'] == 'mahasiswa') {
-            header('Location: /');
+            $this->redirect('/');
         }
         $path = $_SERVER['REQUEST_URI'];
         if ($path == '/admin/login') {
@@ -48,7 +48,7 @@ class AuthController
                         header('Location: ' . $_SESSION['next_path']);
                         unset($_SESSION['next_path']);
                     } else {
-                        header('Location: /');
+                        $this->redirect('/');
                     }
                 } else {
                     View::render("Auth/login", [
@@ -76,7 +76,7 @@ class AuthController
                         header('Location: ' . $_SESSION['next_path']);
                         unset($_SESSION['next_path']);
                     } else {
-                        header('Location: /');
+                        $this->redirect('/');
                     }
                 } else {
                     View::render("Auth/login", [
@@ -112,7 +112,7 @@ class AuthController
                     header('Location: ' . $_SESSION['next_path']);
                     unset($_SESSION['next_path']);
                 } else {
-                    header('Location: /admin/login');
+                    $this->redirect('/admin/login');
                 }
             } else {
                 View::render("Auth/login", [
@@ -134,13 +134,13 @@ class AuthController
     {
         session_start();
         session_destroy();
-        header('Location: /login');
+        $this->redirect('/login');
     }
 
     public function adminSignout(): void
     {
         session_start();
         session_destroy();
-        header('Location: /admin/login');
+        $this->redirect('/admin/login');
     }
 }

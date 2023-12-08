@@ -10,7 +10,7 @@ use TugasBesar\BookingClass2g\Models\Jadwal;
 use TugasBesar\BookingClass2g\Models\Mahasiswa;
 use TugasBesar\BookingClass2g\Models\Ruang;
 
-class HomeController
+class HomeController extends Controller
 {
     private function getUser(): array
     {
@@ -47,9 +47,7 @@ class HomeController
         $totalPage = $ruang->getTotalPage();
         $data = $this->getUser();
         extract($data);
-        // echo "<pre>";
-        // var_dump($notification[0]);
-        // die;
+        // $this->ddd($notification);
         View::render("Templates/header", ['title' => 'Home', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/home", ['totalPage' => $totalPage]);
         View::render("Templates/footer", []);
