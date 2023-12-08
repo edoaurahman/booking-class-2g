@@ -71,42 +71,42 @@
             <!-- hedaer -->
 
             <form class="w-full  font-serif  grid md:grid-cols-3 grid-cols-1">
-                <div class=" md:col-span-1 w-full m-3 md:ml-12 ">
+                <div class=" md:col-span-1 w-full mx-3 md:my-3  md:ml-12 ">
 
-                    <div class="mb-5 hidden md:block">
+                    <div class="mb-5 ">
                         <label for="nama" class=" block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                        <input type="text" id="nama" value="Mahasiswa 1" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-72  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="nama" value="Mahasiswa 1" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mb-5 hidden md:block">
+                    <div class="mb-5  pr-6">
                         <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM</label>
-                        <input type="text" id="nim" value="224xxxxx01" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-72 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="nim" value="224xxxxx01" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mb-5 hidden md:block">
+                    <div class="mb-5 ">
                         <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <input type="text" id="kelas" value="TI-2G" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-72  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="kelas" value="TI-2G" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mb-5 hidden md:block">
+                    <div class="mb-5 ">
                         <label for="dosenPj" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen Penanggungjawab</label>
-                        <input type="text" id="dosenPj" value="Pak Yoppy" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-72 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="dosenPj" value="Pak Yoppy" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                 </div>
-                <div class="col-span-1 w-full m-3 md:ml-12 md:mr-12 sm:pr-24">
+                <div class="col-span-1 w-full md:mt-3 mx-3 md:my-3 md:ml-12 md:mr-12 sm:pr-24">
                     <div class="mb-5 -mt-1 pr-6">
                         <label for="ruang" class="text-sm  font-medium text-gray-900 dark:text-white text-[15px]">Ruang</label>
-                        <input type="text" id="ruang" value="Ruang Teori 1" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="ruang" value="Ruang Teori 1" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="mb-5 -mt-1 pr-6">
                         <label for="tanggal" class="text-sm  font-medium text-gray-900 dark:text-white text-[15px]">Tanggal</label>
-                        <input type="text" id="tanggal" value="30 Desember 2023" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="tanggal" value="30 Desember 2003" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="mb-5 -mt-1 pr-6">
                         <label for="jam" class="text-sm  font-medium text-gray-900 dark:text-white text-[15px]">Jam ke</label>
-                        <input type="text" id="jam" value="1, 2, 3" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="jam" value="1, 2, 3" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="pr-6">
 
                         <label for="keterangan" class="block  mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-                        <textarea id="keterangan" rows="4" class="block p-2.5 w-full  text-sm mb-5 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kelas materi tambahan" disabled></textarea>
+                        <textarea id="keterangan" rows="4" class="block p-2.5 w-80  text-sm mb-5 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kelas materi tambahan" disabled></textarea>
                     </div>
 
 
@@ -114,11 +114,11 @@
 
                     </div>
                 </div>
-                <div class="col-span-1 w-full m-3 md:ml-12 md:mr-12 sm:pr-24">
+                <div class="col-span-1 w-full  md:ml-12 md:mr-12 sm:pr-24">
                     <div class="text-sm text-gray-900 dark:text-white p-4">
                         <div class="font-bold text-lg mb-2">Ruang Teori 1</div>
                         <div class="w-full justify-center flex">
-                            <img src="/assets/img/booking/class1.jpg" class="w-[300px] h-auto mb-6" alt="">
+                            <img src="/assets/img/booking/class1.jpg" class="w-[250px] h-auto mb-6" alt="">
                         </div>
                         <div class="font-bold text-lg mb-2">Denah Ruang</div>
                         <div class="w-full justify-center flex">
@@ -131,7 +131,7 @@
 
             <div class="flex justify-center">
 
-                <button type="submit" class=" mr-0  sm:w-[800px] text-center   text-white  bg-bingu hover:bg-bingu_hover focus:ring-4 focus:outline-none  focus:ring-blue-300 font-medium rounded-lg text-xl   py-2.5  dark:bg-bingu dark:hover:bg-bingu_hover dark:focus:ring-blue-800">
+                <button type="submit" class=" mr-0 w-full sm:w-[800px] text-center px-4  text-white  bg-bingu hover:bg-bingu_hover focus:ring-4 focus:outline-none  focus:ring-blue-300 font-medium rounded-lg md:text-xl text-lg  py-2.5  dark:bg-bingu dark:hover:bg-bingu_hover dark:focus:ring-blue-800">
                     Create Booking
                 </button>
             </div>
