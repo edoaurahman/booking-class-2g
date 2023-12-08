@@ -48,12 +48,13 @@
             </li>
 
             <li class="flex items-center text-blue-600 ">
-                <i class="fa-solid fa-circle-check mr-3 "></i>
-                <div class="ml-1.5 mr-1">Isi Formulir</div>
+                <i class="fa-solid fa-circle-check mr-2 "></i>
+                <div class=" ">Isi Formulir</div>
                 <svg class="w-3 h-3 ms-2 mr-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
             </li>
+
 
             <li class="flex items-center  text-blue-600  ">
                 <i class="fa-solid fa-circle-check mr-3 "></i>
@@ -96,7 +97,7 @@
                     </div>
                     <div class="mb-5 -mt-1 pr-6">
                         <label for="tanggal" class="text-sm  font-medium text-gray-900 dark:text-white text-[15px]">Tanggal</label>
-                        <input type="text" id="tanggal" value="30 Desember 2003" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <input type="text" id="tanggal" value="30 Desember 2023" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="mb-5 -mt-1 pr-6">
                         <label for="jam" class="text-sm  font-medium text-gray-900 dark:text-white text-[15px]">Jam ke</label>
@@ -105,7 +106,7 @@
                     <div class="pr-6">
 
                         <label for="keterangan" class="block  mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-                        <textarea id="keterangan" rows="4" class="block p-2.5 w-full  text-sm mb-5 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kelas materi tambahan" disabled></textarea>
+                        <textarea id="keterangan" rows="4" class="block p-2.5 w-full  text-sm mb-5 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 placeholder-gray-900 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kelas materi tambahan" disabled></textarea>
                     </div>
 
 

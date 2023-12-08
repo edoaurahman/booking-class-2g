@@ -48,10 +48,10 @@
                 </li>
 
                 <li class="flex items-center text-blue-600 ">
-                    <i class="fa-solid fa-circle-check mr-3 "></i>
-                    <div class="ml-1.5 mr-1">Isi Formulir</div>
+                    <i class="fa-solid fa-circle-check mr-2 "></i>
+                    <div class=" ">Isi Formulir</div>
                 </li>
-                <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                <svg class="w-3 h-3 ms-2 mr-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
 
@@ -123,7 +123,7 @@
                             </button>
                         </div>
                     </div>
-                </form>  
+                </form>
             </div>
             <div class="hidden md:block col-span-2 rounded-md bg-white dark:bg-dark_grey6 shadow-md m-6 p-5 row-span-2 font-serif">
                 <div class="header p-5  text-2xl bg-biru2 rounded-md text-white py-2 pl-4">
