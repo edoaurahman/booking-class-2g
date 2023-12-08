@@ -153,8 +153,8 @@
                         <div class="group border-2 px-2 mt-3 rounded-xl shadow-md hover:bg-bingu dark:bg-dark_grey dark:bg-dark_grey5 dark:hover:bg-dark_grey3 dark:border-dark_grey2  dark:hover:border-dark_grey3 dark:shadow-gray-700 ">
                             <div class="grid grid-cols-1 md:grid-cols-5 md:gap-4 items-center">
                                 <!-- tampilan untuk desktop start -->
-                                <div class="col-span-2 py-3">
-                                    <h1 class="sm:hidden inline-flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
+                                <div class="col-span-2 py-3 mx-4">
+                                    <h1 class="py-3 sm:hidden inline-flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
                                         <span x-text="item.nama_ruang"></span>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600" x-text="item.nama_lantai">Lantai 5</span>
                                     </h1>
@@ -399,7 +399,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="button" class="px-2 py-1 mt-5 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        <button @click.debounce="fetchResults" type="button" id="set-max-button-sidebar" class="px-2 py-1 mt-5 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             <i class="fa-solid fa-clock-rotate-left mr-2  dark:text-white"></i>
                                             semua
                                         </button>

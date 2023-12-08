@@ -156,6 +156,12 @@ buttonDecremmentSidebar2.addEventListener("click", function () {
   updateFormJamSelesaiSidebar(); // Memperbarui nilai form2 setelah form2 diperbarui
 });
 
+setMaxButtonSidebar.addEventListener("click", function () {
+  form_jam_mulai_sidebar.value = 1;
+  form_jam_selesai_sidebar.value = 11;
+  updateFormJamSelesaiSidebar();
+});
+
 document.addEventListener('alpine:init', () => {
   Alpine.data('listRuang', () => ({
     listRuang: [],
