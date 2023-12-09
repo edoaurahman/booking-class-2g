@@ -76,14 +76,15 @@
                 <div class="font-sans top-24 p-3 lg:col-span-6 md:col-span-6">
                     <div class="col-span-2 py-3">
                         <h1 class="flex items-center  text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
-                            ruang teori 1<span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600">Lantai 5</span>
+                            <span>ruang teori 1</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600">Lantai 5</span>
                         </h1>
                     </div>
                     <!-- Fasilitas start -->
                     <div class="flex sm:flex-wrap sm:justify-start flex-nowrap overflow-x-auto pb-3 pt-8">
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Wifi 40 Mbps</p>
@@ -91,7 +92,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-bars-progress my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-bars-progress my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Proyektor</p>
@@ -99,7 +100,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-desktop my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-desktop my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Monitor</p>
@@ -107,7 +108,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-plug my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-plug my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Stop Kontak</p>
@@ -115,7 +116,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-chalkboard my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-chalkboard my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Papan Tulis</p>
@@ -123,7 +124,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-chair my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-chair my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Kursi</p>
@@ -131,7 +132,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-table my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-table my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Meja</p>
@@ -139,7 +140,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-marker my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-marker my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Spidol</p>
@@ -147,7 +148,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-eraser my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-eraser my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Penghapus</p>
@@ -155,7 +156,7 @@
                         </div>
                         <!-- fasilitas 1 -->
                         <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-book my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                            <i class="fa-solid fa-book my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
                                 <p class="text-sm font-semibold">Perpustakaan Kecil</p>
