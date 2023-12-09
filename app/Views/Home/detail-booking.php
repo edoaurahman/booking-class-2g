@@ -200,10 +200,10 @@
                             <!-- Item 1 -->
                             <div class=" bg-white duration-700 ease-in-out text-center px-8 py-4 dark:bg-dark_grey1" data-carousel-item="active">
                                 <div id="tanggalSekarang" class="text-gray-500 font-sans text-base font-bold dark:text-gray-200"></div>
-                                <div class="grid grid-cols-2 sm:grid-cols-6 gap-1 mt-10 ">
-                                    <div class="jam1 ">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                <div x-data class="grid grid-cols-2 sm:grid-cols-6 gap-1 mt-10 ">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -212,10 +212,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam2">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 02</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -224,10 +223,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam3">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 03</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -236,10 +234,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam4">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 04</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -248,10 +245,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam5">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 05</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -260,10 +256,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam6">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 06</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -272,10 +267,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam7">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 07</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -284,10 +278,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam8">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 08</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -296,10 +289,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam9">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 09</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -308,10 +300,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam10">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 10</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
@@ -320,10 +311,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="jam11">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam Ke - 11</button>
-
-                                        <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                    <div x-id="['popover-no-arrow']">
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
