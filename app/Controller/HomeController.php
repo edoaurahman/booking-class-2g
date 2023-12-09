@@ -131,7 +131,7 @@ class HomeController extends Controller
         $hari = $fmt->format(new \DateTime($request->tanggal));
         $ruang = new Ruang();
 
-        $data = $ruang->getRuang($hari, $request->jam_mulai, $request->jam_selesai, $request->id_lantai, $request->id_jenis_ruang);
+        $data = $ruang->getRuang($hari, $request->jam_mulai, $request->jam_selesai, $request->id_lantai, $request->id_jenis_ruang, $request->search);
         echo json_encode($data);
     }
 }

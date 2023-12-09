@@ -47,21 +47,28 @@ class Ruang extends Model
         return $totalPage;
     }
 
-    public function getRuang(string $hari, string $jam_mulai, string $jam_selesai, ?array $id_lantai, ?array $id_jenis_ruang): array
+    public function getRuang(string $hari, string $jam_mulai, string $jam_selesai, ?array $id_lantai, ?array $id_jenis_ruang, string $search): array
     {
         // Query untuk mendapatkan informasi ruang
         $sql_ruang = "SELECT * FROM view_getruang";
+        $whereClauses = [];
         if (!empty($id_lantai)) {
-            $sql_ruang .= " WHERE id_lantai IN (" . implode(',', $id_lantai) . ")";
-
-            if (!empty($id_jenis_ruang)) {
-                $sql_ruang .= " AND id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
-            }
-        } elseif (!empty($id_jenis_ruang)) {
-            $sql_ruang .= " WHERE id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
+            $whereClauses[] = "id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
-        // $dataToAppend = print_r($sql_ruang, true) . "\n";
-        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+
+        if (!empty($id_jenis_ruang)) {
+            $whereClauses[] = "id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
+        }
+
+        if (!empty($search)) {
+            $whereClauses[] = "nama_ruang LIKE '%$search%'";
+        }
+
+        if (!empty($whereClauses)) {
+            $sql_ruang .= " WHERE " . implode(' AND ', $whereClauses);
+        }
+        $dataToAppend = print_r($sql_ruang, true) . "\n";
+        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
         $result_ruang = $this->db->query($sql_ruang);
         $data_ruang = [];
         while ($row_ruang = $result_ruang->fetch_assoc()) {
@@ -77,8 +84,8 @@ class Ruang extends Model
             $sql .= " AND id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
         // print $sql to log
-        // $dataToAppend = print_r($sql, true) . "\n";
-        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+        $dataToAppend = print_r($sql, true) . "\n";
+        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
 
         $result = $this->db->query($sql);
         $data_booking = [];
@@ -91,7 +98,6 @@ class Ruang extends Model
 
         foreach ($data_ruang as $ruang) {
             $nama_ruang = $ruang['nama_ruang'];
-
             $result_data[] = [
                 'deskripsi_ruang' => $ruang['deskripsi_ruang'],
                 'id_lantai' => $ruang['id_lantai'],
