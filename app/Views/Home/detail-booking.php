@@ -3,73 +3,77 @@
     <!-- Header start -->
     <div class="w-full">
         <!-- header desktop start -->
-        <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
-            <li class="flex md:w-full items-center  text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-semibold">
-                <div class="flex flex-none items-center w-36">
-                    <i class="fa-solid  fa-circle-check mr-3"></i>
-                    <p>Ruang </p>
-                </div>
-            </li>
-            <li class="flex md:w-full items-center text-white dark:text-blue-500 sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700 text-2xl font-sans font-bold">
-                <div class="flex flex-none w-36  items-center">
-                    <i class="fa-solid fa-circle-check mr-3"></i>
-                    <p>Jam & Tanggal</p>
-                </div>
-            </li>
-            <li class="flex md:w-full items-center text-biru after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-                <div class="flex flex-none w-36 items-center">
-                    <i class="fa-solid fa-file-export mr-3"></i>
-                    <p>Isi Formulir</p>
-                </div>
-            </li>
+        <div class="w-auto">
+            <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
+                <li class="flex md:w-full items-center  text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
+                    <div class="flex flex-none justify-end items-center w-36 text-xl">
+                        <i class="fa-solid  fa-circle-check mr-3"></i>
+                        <p>Ruang </p>
+                    </div>
+                </li>
+                <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru text-2xl font-sans font-bold">
+                    <div class="flex flex-none w-36  items-center text-xl">
+                        <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
+                        <p>Waktu</p>
+                    </div>
+                </li>
+                <li class="flex md:w-full items-center text-biru dark:text sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru text-2xl font-sans font-bold">
+                    <div class="flex flex-none items-center text-xl">
+                        <i class="fa-solid fa-clipboard mr-3"></i>
+                        <p>Isi Formulir</p>
+                    </div>
 
-            <li class="flex items-center">
-                <div class="flex flex-none items-center text-biru">
-                    <i class="fa-solid fa-clipboard-check mr-3"></i>
-                    <p>Konfirmasi</p>
-                </div>
-            </li>
-        </ol>
-        <!-- header desktop end -->
-        <!-- mobile  -->
-        <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500  border border-gray-200 rounded-lg shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800 dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
-            <li class="flex items-center text-blue-600 dark:text-blue-500">
-                <i class="fa-solid fa-circle-check ml-1 "></i>
-                <p class="ml-2 mr-2">Ruang</p>
-                <svg class="w-3 h-3 aria-hidden=" true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10" rtl:rotate-180">
+                <li class="flex items-center mr-10">
+                    <div class="flex flex-none items-center text-biru">
+                        <i class="fa-solid fa-clipboard-check mr-3"></i>
+                        <p>Konfirmasi</p>
+                    </div>
+                </li>
+            </ol>
+
+            <!-- mobile  -->
+            <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500   shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+                <li class="flex items-center text-blue-600  ">
+                    <i class="fa-solid fa-circle-check  "></i>
+                    <div class="ml-2 mr-2">Ruang</div>
+                    <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                    </svg>
+                </li>
+
+                <li class="flex items-center text-blue-600 px-2 ">
+                    <i class="fa-solid fa-circle-check mr-1 "></i>
+                    <div class="ml-2 mr-2">Waktu</div>
+                    <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
+                    </svg>
+                </li>
+
+                <li class="flex items-center ">
+                    <span class="flex items-center justify-center  w-4 h-4 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+                        3
+                    </span>
+                    <div class=" ">Isi Formulir</div>
+                </li>
+                <svg class="w-3 h-3 ms-2 mr-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
-            </li>
-            <li class="flex items-center  text-blue-600 dark:text-blue-500">
-                <i class="fa-solid fa-circle-check ml-1"></i>
-                <p class="">Jam & Tanggal</p>
-                <svg class="w-3 h-3  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
-                </svg>
-            </li>
-            <li class="flex items-center">
-                <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
-                    3
-                </span>
-                Isi Formulir
-                <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
-                </svg>
-            </li>
-            <li class="flex items-center">
-                <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
-                    4
-                </span>
-                Review
-            </li>
-        </ol>
+
+                <li class="flex items-center ">
+                    <span class="flex items-center justify-center ml-2 w-4 h-4 me-2 text-xs border border-gray-500 rounded-full shrink-0 dark:border-gray-400">
+                        4
+                    </span>
+                    Review
+                </li>
+            </ol>
+        </div>
         <!-- Header end -->
         <div class="container py-10 px-3 mx-auto ">
-            <div class="grid grid-cols-1 sm:grid-cols-8 sm:gap-4 sm:mb-11">
+            <div class="grid grid-cols-1 lg:grid-cols-8 sm:gap-4 sm:mb-11 md:grid-cols-10">
                 <!-- ###################### -->
                 <!-- Colom 1 -->
                 <!-- ###################### -->
-                <div class=" top-24 p-3 sm:col-span-6 font-sans">
+                <div class="font-sans top-24 p-3 lg:col-span-6 md:col-span-6">
                     <div class="col-span-2 py-3">
                         <h1 class="flex items-center  text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
                             ruang teori 1<span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600">Lantai 5</span>
@@ -78,7 +82,7 @@
                     <!-- Fasilitas start -->
                     <div class="flex sm:flex-wrap sm:justify-start flex-nowrap overflow-x-auto pb-3 pt-8">
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
                             <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
@@ -86,75 +90,75 @@
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-bars-progress my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Proyektor</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-desktop my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Monitor</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-plug my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Stop Kontak</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-chalkboard my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Papan Tulis</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-chair my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Kursi</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-table my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Meja</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-marker my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Spidol</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-eraser my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Penghapus</p>
                             </div>
                         </div>
                         <!-- fasilitas 1 -->
-                        <div class="fas1 flex flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
-                            <i data-tooltip-target="icon1" class="fa-solid fa-wifi my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
+                        <div class="fas1 flex w-[150px] flex-none ml-8 mt-5 items-center text-gray-500 dark:text-white">
+                            <i data-tooltip-target="icon1" class="fa-solid fa-book my-auto mr-2 p-3 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
                             <div class="content ">
                                 <p class="uppercase text-[10px] font-normal">Fasilitas</p>
-                                <p class="text-sm font-semibold">Wifi 40 Mbps</p>
+                                <p class="text-sm font-semibold">Perpustakaan Kecil</p>
                             </div>
                         </div>
 
@@ -191,13 +195,13 @@
                     <!-- slide start -->
                     <div id="controls-carousel" class="relative w-full" data-carousel="static">
                         <!-- Carousel wrapper -->
-                        <div class="relative  overflow-hidden h-[340px] sm:h-52 rounded-lg md:h-52">
+                        <div class="relative  overflow-hidden h-[450px] sm:h-52 rounded-lg md:h-[340px]">
                             <!-- Item 1 -->
                             <div class=" bg-white duration-700 ease-in-out text-center px-8 py-4 dark:bg-dark_grey1" data-carousel-item="active">
                                 <div id="tanggalSekarang" class="text-gray-500 font-sans text-base font-bold dark:text-gray-200"></div>
                                 <div class="grid grid-cols-2 sm:grid-cols-6 gap-1 mt-10 ">
-                                    <div class="jam1">
-                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4 ">Jam ke - 01</button>
+                                    <div class="jam1text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4 ">
+                                        <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="">Jam ke - 01</button>
                                         <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
@@ -514,19 +518,19 @@
                     <!-- Denah start -->
                     <div class="Denah mt-7">
                         <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100">Denah Lantai</h2>
-                        <div class="flex flex-cols-1  flex-nowrap overflow-x-auto sm:flex-cols-3 gap-2  pb-6 pt-1">
+                        <div class="flex flex-col gap-2  pb-6 pt-6">
                             <!-- fasilitas 1 -->
-                            <div class="flex flex-none sm:flex-1 text-gray-500 mt-5  border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
+                            <div class="flex flex-initial w-64  text-gray-500  border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
                                 <i class="text-gray-500 fa-solid fa-list-ol mr-3 dark:text-gray-400"></i>
                                 <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Lift Bersama</p>
                             </div>
                             <!-- fasilitas 2 -->
-                            <div class="flex flex-none sm:flex-1 text-gray-500 mt-5 border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
+                            <div class="flex  flex-initial w-64 text-gray-500 border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
                                 <i class="text-gray-500 fa-solid fa-stairs mr-3 dark:text-gray-400"></i>
                                 <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Tangga Bersama</p>
                             </div>
                             <!-- fasilitas 3 -->
-                            <div class="flex flex-none sm:flex-1 text-gray-500 mt-5 border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
+                            <div class="flex flex-initial w-64 text-gray-500 border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
                                 <i class="text-gray-500 fa-solid fa-tower-broadcast mr-3 dark:text-gray-400"></i>
                                 <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Tangga Darurat </p>
                             </div>
@@ -538,7 +542,7 @@
                 <!-- ###################### -->
                 <!-- Colom 2 -->
                 <!-- ###################### -->
-                <div class=" sm:col-span-2 font-sans order-first sm:order-last">
+                <div class="font-sans order-first lg:order-last lg:col-span-2 md:col-span-4">
                     <div class="text-gray-600 block text-center font-semibold text-sm border p-5 mb-10 dark:text-dark_grey3">
                         <p>Pemesanan Ruang Gedung JTI</p>
                     </div>
@@ -555,11 +559,11 @@
                                 </div>
                                 <!-- === Booking Tanggal END ===-->
                             </div>
-                            <!-- === Filter Pemilihan Kelas Start ===-->
+                            <!-- === Pilihan booking jam Start ===-->
                             <div class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
                                 <label class="block mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Jam Booking</label>
                                 <div class=" bg-white text-center dark:bg-dark_grey1">
-                                    <div class="grid grid-cols-3 gap-2 mt-4 ">
+                                    <div class="grid grid-cols-3 gap-2 mt-4 md:gap-1">
                                         <div class="jam1">
                                             <button data-popover-target="popover-no-arrow" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-8 py-2 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4 ">01</button>
                                             <div id="popover-no-arrow" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">

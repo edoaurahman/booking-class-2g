@@ -270,7 +270,7 @@
                                             <!-- icon4  -->
                                             <i :data-tooltip-target="'icon4-' + index" class="fa-solid fa-plug border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover hover:border-dark_grey3 text-white hover:text-white dark:bg-dark_grey5"></i>
                                             <div :id="'icon4-' + index" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 uppercase text-xs font-semibold text-biru bg-white dark:bg-dark_grey2 dark:text-white dark:border-dark_grey2 rounded-lg shadow-sm opacity-0 tooltip">
-                                                Stop Contact
+                                                Stop kontak
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
                                             <!-- icon5  -->
