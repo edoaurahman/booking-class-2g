@@ -12,7 +12,7 @@ use TugasBesar\BookingClass2g\Models\Ruang;
 
 class HomeController extends Controller
 {
-    private function getUser(): array
+    private function _getUser(): array
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -45,7 +45,7 @@ class HomeController extends Controller
     {
         $ruang = new Ruang();
         $totalPage = $ruang->getTotalPage();
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
         // $this->ddd($notification);
         View::render("Templates/header", ['title' => 'Home', 'level' => $level, 'user' => $user, 'notification' => $notification]);
@@ -55,7 +55,7 @@ class HomeController extends Controller
 
     public function booking(): void
     {
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/booking", []);
@@ -63,7 +63,7 @@ class HomeController extends Controller
     }
     public function detail_booking(): void
     {
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/detail-booking", []);
@@ -72,7 +72,7 @@ class HomeController extends Controller
 
     public function roomSchedule($id): void
     {
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
 
         $ruang = new Ruang();
@@ -87,9 +87,8 @@ class HomeController extends Controller
         View::render("Templates/footer", []);
     }
     public function isiForm(): void
-
     {
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
         View::render("Home/formulir-checkout", []);
@@ -97,9 +96,8 @@ class HomeController extends Controller
     }
 
     public function review(): void
-
     {
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
         View::render("Home/review", []);
