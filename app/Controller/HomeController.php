@@ -2,7 +2,6 @@
 
 namespace TugasBesar\BookingClass2g\Controller;
 
-use TugasBesar\BookingClass2g\App\Request;
 use TugasBesar\BookingClass2g\App\View;
 use TugasBesar\BookingClass2g\Models\Booking;
 use TugasBesar\BookingClass2g\Models\Dosen;
@@ -53,23 +52,6 @@ class HomeController extends Controller
         View::render("Templates/footer", []);
     }
 
-    public function booking(): void
-    {
-        $data = $this->_getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/booking", []);
-        View::render("Templates/footer", []);
-    }
-    public function detail_booking(): void
-    {
-        $data = $this->_getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/detail-booking", []);
-        View::render("Templates/footer", []);
-    }
-
     public function roomSchedule($id): void
     {
         $data = $this->_getUser();
@@ -86,24 +68,6 @@ class HomeController extends Controller
         View::render("Home/roomSchedule", ['ruang' => $ruang, 'id' => $id, 'jadwal' => $jadwal]);
         View::render("Templates/footer", []);
     }
-    public function isiForm(): void
-    {
-        $data = $this->_getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/formulir-checkout", []);
-        View::render("Templates/footer", []);
-    }
-
-    public function review(): void
-    {
-        $data = $this->_getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/review", []);
-        View::render("Templates/footer", []);
-    }
-
 
     public function apiRuang($page): void
     {
@@ -121,15 +85,5 @@ class HomeController extends Controller
         $jadwal = new Jadwal();
         $jadwal = $jadwal->getJadwal($id, $hari);
         echo json_encode($jadwal);
-    }
-
-    public function apiRuangBooking(Request $request): void
-    {
-        $fmt = new \IntlDateFormatter('id_ID', 0, 0, 'Asia/Jakarta', 0, 'EEEE');
-        $hari = $fmt->format(new \DateTime($request->tanggal));
-        $ruang = new Ruang();
-
-        $data = $ruang->getRuang($hari, $request->jam_mulai, $request->jam_selesai, $request->id_lantai, $request->id_jenis_ruang, $request->search);
-        echo json_encode($data);
     }
 }
