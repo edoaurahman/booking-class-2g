@@ -1,5 +1,5 @@
 <!-- Booking -->
-<div x-data="listRuang" class="dark:bg-dark_grey1">
+<div x-data="listRuang" class="dark:bg-dark_grey1 min-h-screen">
     <div class="container py-3 mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-8 sm:gap-4 lg:mb-11">
             <!-- ###################### -->
