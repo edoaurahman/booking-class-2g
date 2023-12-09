@@ -161,7 +161,7 @@
                 </div>
                 <!-- content booking  start -->
                 <template x-for="(item,index) in listRuang" x-show="!isLoading">
-                    <a :href="/detail_booking/+item.id_ruang">
+                    <a :href="/detail-booking/+item.id_ruang">
                         <div class="group border-2 px-2 mt-3 rounded-xl shadow-md hover:bg-bingu dark:bg-dark_grey dark:bg-dark_grey5 dark:hover:bg-dark_grey3 dark:border-dark_grey2  dark:hover:border-dark_grey3 dark:shadow-gray-700 ">
                             <div class="grid grid-cols-1 md:grid-cols-5 md:gap-4 items-center">
                                 <!-- tampilan untuk desktop start -->
