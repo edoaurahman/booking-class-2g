@@ -213,112 +213,112 @@
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 02</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>7.50 - 8.40</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 03</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>8.40 - 9.30</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 04</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>9.40 - 10.30</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 05</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>10.30 - 11.20</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 06</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>11.20 - 12.10</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 07</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>12.50 - 13.40</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 08</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>13.40 - 14.30</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 09</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>14.30 - 15.20</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 10</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>15.20 - 16.20</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div x-id="['popover-no-arrow']">
-                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
+                                        <button :data-popover-target="$id('popover-no-arrow')" type="button" onclick="tampil()" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 11</button>
                                         <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
                                             <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
                                                 <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
                                             </div>
                                             <div class="px-3 py-2">
-                                                <p>7.00 - 7.50</p>
+                                                <p>16.20 - 17.10</p>
                                             </div>
                                         </div>
                                     </div>
@@ -529,6 +529,325 @@
                         <img class="object-cover sm:w-auto mx-auto pt-6" src="/assets/img/lantai/Lantai6.png" alt="" />
                     </div>
                     <!-- Lantai end -->
+
+                    <!-- refisi perbandingan start -->
+                    <div class="mt-16">
+                        <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100 mb-5">Informasi Jam Pembelajaran & Denah</h2>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="relative h-56 overflow-y-auto">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <thead class="text-xs text-gray-900 bg-slate-700 uppercase dark:text-gray-400 sticky top-0">
+                                        <tr>
+                                            <th scope="col" class="px-5 py-3">
+                                                Jam
+                                            </th>
+                                            <th scope="col" class="px-5 py-3">
+                                                Mulai
+                                            </th>
+                                            <th scope="col" class="px-5 py-3">
+                                                Selsai
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 01
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                07.00
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                07.50
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 02
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                07.50
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                08.40
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 03
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                08.40
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                09.30
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 04
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                09.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                10.30
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 05
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                10.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                11.20
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 06
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                11.20
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                12.10
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 07
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                12.50
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                13.40
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 08
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                13.40
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                14.30
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 09
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                14.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                15.20
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 10
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                15.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                16.20
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-white dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                Jam Ke - 11
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                16.20
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                17.10
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-span-2">
+                                <img class="object-cover sm:w-auto mx-auto pt-6" src="/assets/img/lantai/Lantai6.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- refisi perbandingan end -->
+
+                    <!-- refisi perbandingan start -->
+                    <div class="mt-16">
+                        <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100 mb-5">Informasi Jam Pembelajaran </h2>
+                        <div class="relative h-56 overflow-y-auto">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <thead class="text-xs text-gray-900 bg-slate-700 uppercase dark:text-gray-400 sticky top-0">
+                                    <tr>
+                                        <th scope="col" class="px-5 py-3">
+                                            Jam
+                                        </th>
+                                        <th scope="col" class="px-5 py-3">
+                                            Mulai
+                                        </th>
+                                        <th scope="col" class="px-5 py-3">
+                                            Selsai
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 01
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            07.00
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            07.50
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 02
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            07.50
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            08.40
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 03
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            08.40
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            09.30
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 04
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            09.30
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            10.30
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 05
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            10.30
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            11.20
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 06
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            11.20
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            12.10
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 07
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            12.50
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            13.40
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 08
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            13.40
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            14.30
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 09
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            14.30
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            15.20
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 10
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            15.30
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            16.20
+                                        </td>
+                                    </tr>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th scope="row" class="px-5 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            Jam Ke - 11
+                                        </th>
+                                        <td class="px-5 py-2">
+                                            16.20
+                                        </td>
+                                        <td class="px-5 py-2">
+                                            17.10
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="Denah mt-7">
+                            <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100">Denah Lantai</h2>
+                            <div class="flex flex-col gap-2  pb-6 pt-6">
+                                <!-- fasilitas 1 -->
+                                <div class="flex flex-initial w-64  text-gray-500  border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
+                                    <i class="text-gray-500 fa-solid fa-list-ol mr-3 dark:text-gray-400"></i>
+                                    <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Lift Bersama</p>
+                                </div>
+                                <!-- fasilitas 2 -->
+                                <div class="flex  flex-initial w-64 text-gray-500 border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
+                                    <i class="text-gray-500 fa-solid fa-stairs mr-3 dark:text-gray-400"></i>
+                                    <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Tangga Bersama</p>
+                                </div>
+                                <!-- fasilitas 3 -->
+                                <div class="flex flex-initial w-64 text-gray-500 border-gray-300 items-center px-3 py-1 border-2 rounded dark:text-white dark:border-gray-600">
+                                    <i class="text-gray-500 fa-solid fa-tower-broadcast mr-3 dark:text-gray-400"></i>
+                                    <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Tangga Darurat </p>
+                                </div>
+                            </div>
+                            <img class="object-cover sm:w-auto mx-auto pt-6" src="/assets/img/lantai/Lantai6.png" alt="" />
+                        </div>
+                    </div>
+                    <!-- refisi perbandingan end -->
+
                 </div>
                 <!-- ###################### -->
                 <!-- Colom 2 -->
