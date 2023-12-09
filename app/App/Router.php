@@ -14,11 +14,12 @@ class Router
         array $middlewares = []
     ): void {
         $variables = [];
-        $pattern = preg_replace_callback('/{([a-zA-Z0-9]+)}/', function ($matches) use (&$variables) {
+        $pattern = preg_replace_callback('/{([a-zA-Z0-9_]+)}/', function ($matches) use (&$variables) {
             $variables[] = $matches[1];
-            return '([a-zA-Z0-9]+)';
+            return '([a-zA-Z0-9_]+)';
         }, $path);
         $pattern = '#^' . $pattern . '$#';
+
 
         self::$_routes[] = [
             'method' => $method,

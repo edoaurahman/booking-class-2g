@@ -11,7 +11,9 @@ class Ruang extends Model
     public $nama_ruang = '';
     public $deskripsi_ruang = '';
     public $id_lantai = '';
+    public $id_jenis_ruang = '';
     public $status_ruang = '';
+    public $qr_code = '';
 
     public function getRuangAndLantai(): array
     {
@@ -111,6 +113,33 @@ class Ruang extends Model
             ];
         }
 
+        return $result_data;
+    }
+
+    public function getDetailRuang(string $id_ruang): object
+    {
+        $sql = "CALL getRuangDetailsById('$id_ruang')";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        // return as object
+        return (object) $data;
+    }
+
+    public function getStatusRuangPerDay(string $id_ruang): array
+    {
+        $sql = "SELECT * FROM view_getbookingstatus WHERE id_ruang = '$id_ruang'";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[$row['nama_hari']][] = $row;
+        }
+        $result_data = [];
+        foreach ($data as $key => $value) {
+            $result_data[] = [
+                'nama_hari' => $key,
+                'listJam' => $value,
+            ];
+        }
         return $result_data;
     }
 }
