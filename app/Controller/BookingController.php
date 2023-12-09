@@ -49,12 +49,17 @@ class BookingController extends Controller
         View::render("Templates/footer", []);
     }
 
-    public function detailBooking(): void
+    public function detailBooking(string $id_ruang): void
     {
         $data = $this->_getUser();
         extract($data);
+
+        $ruang = new Ruang();
+        $ruang = $ruang->getDetailRuang($id_ruang);
+        // $this->ddd($ruang);
+
         View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/detail-booking", []);
+        View::render("Home/detail-booking", ['ruang' => $ruang]);
         View::render("Templates/footer", []);
     }
 
@@ -84,6 +89,13 @@ class BookingController extends Controller
         $ruang = new Ruang();
 
         $data = $ruang->getRuang($hari, $request->jam_mulai, $request->jam_selesai, $request->id_lantai, $request->id_jenis_ruang, $request->search);
+        echo json_encode($data);
+    }
+
+    public function apiStatusRuang(string $id_ruang): void
+    {
+        $ruang = new Ruang();
+        $data = $ruang->getStatusRuangPerDay($id_ruang);
         echo json_encode($data);
     }
 }
