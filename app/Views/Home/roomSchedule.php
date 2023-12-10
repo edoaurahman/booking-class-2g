@@ -19,7 +19,7 @@
                 <div class=" max-w-lg text-[17px]/relaxed md:text-[25px] leading-normal dark:text-white current-schedule">
                 </div>
                 <div x-data="jadwalRuang" class="mt-8 flex flex-wrap gap-4 text-center w-auto  ">
-                    <a :href="'/detail_booking/' + idRuang" class="rounded-2xl block -mt-[12px]  bg-bingu px-5 py-3  md:text-[19px] text-[12px] text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
+                    <a :href="'/detail-booking/' + idRuang" class="rounded-2xl block -mt-[12px]  bg-bingu px-5 py-3  md:text-[19px] text-[12px] text-white shadow hover:bg-bingu_hover focus:outline-none focus:ring active:bg-bingu ">
                         CREATE BOOKING
                     </a>
                 </div>

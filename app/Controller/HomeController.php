@@ -2,7 +2,6 @@
 
 namespace TugasBesar\BookingClass2g\Controller;
 
-use TugasBesar\BookingClass2g\App\Request;
 use TugasBesar\BookingClass2g\App\View;
 use TugasBesar\BookingClass2g\Models\Booking;
 use TugasBesar\BookingClass2g\Models\Dosen;
@@ -12,7 +11,7 @@ use TugasBesar\BookingClass2g\Models\Ruang;
 
 class HomeController extends Controller
 {
-    private function getUser(): array
+    private function _getUser(): array
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -45,7 +44,7 @@ class HomeController extends Controller
     {
         $ruang = new Ruang();
         $totalPage = $ruang->getTotalPage();
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
         // $this->ddd($notification);
         View::render("Templates/header", ['title' => 'Home', 'level' => $level, 'user' => $user, 'notification' => $notification]);
@@ -53,26 +52,9 @@ class HomeController extends Controller
         View::render("Templates/footer", []);
     }
 
-    public function booking(): void
-    {
-        $data = $this->getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/booking", []);
-        View::render("Templates/footer", []);
-    }
-    public function detail_booking(): void
-    {
-        $data = $this->getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/detail-booking", []);
-        View::render("Templates/footer", []);
-    }
-
     public function roomSchedule($id): void
     {
-        $data = $this->getUser();
+        $data = $this->_getUser();
         extract($data);
 
         $ruang = new Ruang();
@@ -86,26 +68,6 @@ class HomeController extends Controller
         View::render("Home/roomSchedule", ['ruang' => $ruang, 'id' => $id, 'jadwal' => $jadwal]);
         View::render("Templates/footer", []);
     }
-    public function isiForm(): void
-
-    {
-        $data = $this->getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/formulir-checkout", []);
-        View::render("Templates/footer", []);
-    }
-
-    public function review(): void
-
-    {
-        $data = $this->getUser();
-        extract($data);
-        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/review", []);
-        View::render("Templates/footer", []);
-    }
-
 
     public function apiRuang($page): void
     {
@@ -123,15 +85,5 @@ class HomeController extends Controller
         $jadwal = new Jadwal();
         $jadwal = $jadwal->getJadwal($id, $hari);
         echo json_encode($jadwal);
-    }
-
-    public function apiRuangBooking(Request $request): void
-    {
-        $fmt = new \IntlDateFormatter('id_ID', 0, 0, 'Asia/Jakarta', 0, 'EEEE');
-        $hari = $fmt->format(new \DateTime($request->tanggal));
-        $ruang = new Ruang();
-
-        $data = $ruang->getRuang($hari, $request->jam_mulai, $request->jam_selesai, $request->id_lantai, $request->id_jenis_ruang);
-        echo json_encode($data);
     }
 }

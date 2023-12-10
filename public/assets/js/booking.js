@@ -1,3 +1,4 @@
+const searchRuang = document.getElementById("search-ruang");
 // button jam mulai dan selesai
 const buttonDecremment1 = document.getElementById("decrement-button-1")
 const buttonIncrement1 = document.getElementById("increment-button-1")
@@ -171,6 +172,7 @@ document.addEventListener('alpine:init', () => {
       jam_mulai: "",
       jam_selesai: "",
       id_lantai: "",
+      search: "",
     },
     async fetchData() {
       this.isLoading = true;
@@ -184,12 +186,13 @@ document.addEventListener('alpine:init', () => {
       this.selectedJenisRuang.forEach(jenisRuang => {
         formData.append('id_jenis_ruang[]', jenisRuang);
       });
+      formData.append('search', this.formValues.search);
       const response = await fetch('/api/ruang/filter', {
         method: 'POST',
         body: formData,
       });
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       this.listRuang = data;
       this.isLoading = false;
     },
@@ -213,6 +216,12 @@ document.addEventListener('alpine:init', () => {
       }
       if (form_jam_selesai_sidebar.value >= 1) {
         this.formValues.jam_selesai = idJam[form_jam_selesai_sidebar.value - 1];
+      }
+
+      if (searchRuang.value != "") {
+        this.formValues.search = searchRuang.value;
+      } else {
+        this.formValues.search = "";
       }
       await this.fetchData();
     },

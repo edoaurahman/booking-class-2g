@@ -11,7 +11,9 @@ class Ruang extends Model
     public $nama_ruang = '';
     public $deskripsi_ruang = '';
     public $id_lantai = '';
+    public $id_jenis_ruang = '';
     public $status_ruang = '';
+    public $qr_code = '';
 
     public function getRuangAndLantai(): array
     {
@@ -47,18 +49,25 @@ class Ruang extends Model
         return $totalPage;
     }
 
-    public function getRuang(string $hari, string $jam_mulai, string $jam_selesai, ?array $id_lantai, ?array $id_jenis_ruang): array
+    public function getRuang(string $hari, string $jam_mulai, string $jam_selesai, ?array $id_lantai, ?array $id_jenis_ruang, string $search): array
     {
         // Query untuk mendapatkan informasi ruang
         $sql_ruang = "SELECT * FROM view_getruang";
+        $whereClauses = [];
         if (!empty($id_lantai)) {
-            $sql_ruang .= " WHERE id_lantai IN (" . implode(',', $id_lantai) . ")";
+            $whereClauses[] = "id_lantai IN (" . implode(',', $id_lantai) . ")";
+        }
 
-            if (!empty($id_jenis_ruang)) {
-                $sql_ruang .= " AND id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
-            }
-        } elseif (!empty($id_jenis_ruang)) {
-            $sql_ruang .= " WHERE id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
+        if (!empty($id_jenis_ruang)) {
+            $whereClauses[] = "id_jenis_ruang IN (" . implode(',', $id_jenis_ruang) . ")";
+        }
+
+        if (!empty($search)) {
+            $whereClauses[] = "nama_ruang LIKE '%$search%'";
+        }
+
+        if (!empty($whereClauses)) {
+            $sql_ruang .= " WHERE " . implode(' AND ', $whereClauses);
         }
         // $dataToAppend = print_r($sql_ruang, true) . "\n";
         // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
@@ -91,7 +100,6 @@ class Ruang extends Model
 
         foreach ($data_ruang as $ruang) {
             $nama_ruang = $ruang['nama_ruang'];
-
             $result_data[] = [
                 'deskripsi_ruang' => $ruang['deskripsi_ruang'],
                 'id_lantai' => $ruang['id_lantai'],
@@ -106,5 +114,33 @@ class Ruang extends Model
         }
 
         return $result_data;
+    }
+
+    public function getDetailRuang(string $id_ruang): object
+    {
+        $sql = "CALL getRuangDetailsById('$id_ruang')";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        // return as object
+        return (object) $data;
+    }
+
+    public function getStatusRuangPerDay(string $id_ruang): array
+    {
+        $sql = "SELECT * FROM view_getbookingstatus WHERE id_ruang = '$id_ruang'";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[$row['nama_hari']][] = $row;
+        }
+        // $result_data = [];
+        // foreach ($data as $key => $value) {
+        //     $result_data[] = [
+        //         'nama_hari' => $key,
+        //         'listJam' => $value,
+        //     ];
+        // }
+        // return $result_data;
+        return $data;
     }
 }
