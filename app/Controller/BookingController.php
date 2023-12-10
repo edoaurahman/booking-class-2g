@@ -67,8 +67,12 @@ class BookingController extends Controller
     {
         $data = $this->_getUser();
         extract($data);
+        // $this->ddd($user);
+        $data_user = new Mahasiswa();
+        $data_user = $data_user->getDetailMahasiswa($user->nim);
+        // $this->ddd($data_user->nama_kelas);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/formulir-checkout", []);
+        View::render("Home/formulir-checkout", ['user' => $data_user, 'request' => $request]);
         View::render("Templates/footer", []);
     }
 
