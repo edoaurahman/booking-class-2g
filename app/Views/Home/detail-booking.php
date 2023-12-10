@@ -5,20 +5,20 @@
         <!-- header desktop start -->
         <div class="w-auto">
             <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
-                <li class="flex md:w-full items-center  text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
+                <li class="flex md:w-full items-center  text-white dark:text after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
                     <div class="flex flex-none justify-end items-center w-36 text-xl">
                         <i class="fa-solid  fa-circle-check mr-3"></i>
                         <p>Ruang </p>
                     </div>
                 </li>
-                <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru text-2xl font-sans font-bold">
+                <li class="flex md:w-full items-center text-white dark:text after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru text-2xl font-sans font-bold">
                     <div class="flex flex-none w-36  items-center text-xl">
                         <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
                         <p>Waktu</p>
                     </div>
                 </li>
-                <li class="flex md:w-full items-center text-biru dark:text sm:after:content-[''] after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru text-2xl font-sans font-bold">
-                    <div class="flex flex-none items-center text-xl">
+                <li class="flex md:w-full items-center text-biru dark:text after:w-full  after:border-b after:border-biru after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-biru font-sans">
+                    <div class="flex flex-none items-center">
                         <i class="fa-solid fa-clipboard mr-3"></i>
                         <p>Isi Formulir</p>
                     </div>
@@ -509,7 +509,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="w-full text-white bg-bingu hover:bg-bingu_hover  hover:text-white dark:bg-dark_grey5 dark:hover:bg-dark_grey4 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-dark_grey3/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5">Selanjutnya</button>
+                        <button type="button" class="w-full text-white bg-bingu hover:bg-bingu_hover  hover:text-white dark:bg-dark_grey5 dark:hover:bg-dark_grey4 shadow-lg shadow-blue-500/50 dark:shadow-none dark:shadow-dark_grey3/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5">Selanjutnya</button>
                     </div>
                 </div>
                 <!-- filter sidebar mobile -->
