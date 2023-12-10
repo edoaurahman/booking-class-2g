@@ -58,12 +58,12 @@ class BookingController extends Controller
         $ruang = $ruang->getDetailRuang($id_ruang);
         // $this->ddd($ruang);
 
-        View::render("Templates/header", ['title' => 'Room Schedule', 'level' => $level, 'user' => $user, 'notification' => $notification]);
+        View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/detail-booking", ['ruang' => $ruang]);
         View::render("Templates/footer", []);
     }
 
-    public function isiFormBooking(): void
+    public function isiFormBooking(Request $request): void
     {
         $data = $this->_getUser();
         extract($data);

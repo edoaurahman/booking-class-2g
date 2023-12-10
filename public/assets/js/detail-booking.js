@@ -1,131 +1,67 @@
+const inputTanggal = document.querySelector('#inputTanggal')
+// set max 6 heri kedepan
+const maxDate = new Date()
+maxDate.setDate(maxDate.getDate() + 6)
+inputTanggal.setAttribute('max', maxDate.toISOString().split('T')[0])
+inputTanggal.setAttribute('min', new Date().toISOString().split('T')[0])
+// set tanggal default
+inputTanggal.value = new Date().toISOString().split('T')[0]
+
 const padZero = (num) => {
   return String(num).padStart(2, '0')
 }
 
-
 document.addEventListener('alpine:init', () => {
   Alpine.data('detailBooking', () => ({
+    id_ruang: window.location.pathname.split('/')[2],
     detailBooking: [],
-    tanggal: [],
+    selectedHours: [],
+    listJam: ["J001", "J002", "J003", "J004", "J005", "J006", "J007", "J008", "J009", "J010", "J011"],
+    id_jam_mulai: '',
+    id_jam_selesai: '',
+    tanggal: '',
     async init() {
-      const id_ruang = window.location.pathname.split('/')[2]
-      // set tanggal dalam 1 minggu
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      const currentDate = new Date();
-
-      const tanggal = Array.from({ length: 7 }, (_, i) => {
-        const date = new Date(currentDate);
-        date.setDate(currentDate.getDate() + i);
-        return date.toLocaleDateString('id-ID', options);
-      });
+      const tanggal = inputTanggal.value
       this.tanggal = tanggal
-      const response = await fetch('/api/status-ruang/' + id_ruang)
+      const day = new Date(tanggal).toLocaleDateString('id-ID', { weekday: 'long' })
+      const response = await fetch('/api/status-ruang/' + this.id_ruang)
       const data = await response.json()
-      // console.log(data[tanggal[0].split(',')[0]]);
-      this.detailBooking = data
-      // console.log(this.detailBooking);
-    }
+      this.detailBooking = data[day]
+    },
+    async fetchDetailBooking() {
+      const tanggal = inputTanggal.value
+      this.tanggal = tanggal
+      const day = new Date(tanggal).toLocaleDateString('id-ID', { weekday: 'long' })
+      console.log(day);
+      const response = await fetch('/api/status-ruang/' + this.id_ruang)
+      const data = await response.json()
+      this.detailBooking = data[day]
+    },
+    toggleSelectedRange(hour) {
+      const currentIndex = this.selectedHours.indexOf(hour);
+      const maxHour = Math.max(...this.selectedHours);
+
+      if (hour < maxHour || (this.selectedHours.length > 2 && currentIndex === -1)) {
+        return;
+      }
+
+      if (currentIndex === -1) {
+        this.selectedHours.push(hour);
+      } else {
+        this.selectedHours.splice(currentIndex, maxHour);
+      }
+
+      if (this.selectedHours.length > 1) {
+        const minHour = Math.min(...this.selectedHours);
+        const maxHour = Math.max(...this.selectedHours);
+        for (let i = minHour + 1; i < maxHour; i++) {
+          if (!this.selectedHours.includes(i)) {
+            this.selectedHours.push(i);
+          }
+        }
+      }
+      this.id_jam_mulai = this.listJam[this.selectedHours[0] - 1]
+      this.id_jam_selesai = this.listJam[this.selectedHours[1] - 1]
+    },
   }));
-
-  Alpine.directive('log', (el, { expression }, { evaluate }) => {
-    console.log(
-      evaluate(expression)
-    )
-  });
 })
-// Pemilihan hari
-// document.addEventListener("DOMContentLoaded", function () {
-//   var tanggalSekarangElement = document.getElementById("tanggalSekarang");
-//   var satuHariKedepanElement = document.getElementById("satuHariKedepan");
-//   var duaHariKedepanElement = document.getElementById("duaHariKedepan");
-//   var tigaHariKedepanElement = document.getElementById("tigaHariKedepan");
-//   var empatHariKedepanElement = document.getElementById("empatHariKedepan");
-//   var limaHariKedepanElement = document.getElementById("limaHariKedepan");
-//   var enamHariKedepanElement = document.getElementById("enamHariKedepan");
-//   var tujuhHariKedepanElement = document.getElementById("tujuhHariKedepan");
-
-//   // Mendapatkan tanggal saat ini
-//   var tanggalSekarang = new Date();
-//   // Info Tgl saat ini
-//   var informasiTanggalSekarang = getInformasiTanggal(tanggalSekarang);
-//   tanggalSekarangElement.innerHTML = informasiTanggalSekarang;
-
-//   // Mendapatkan 1 hari ke depan
-//   var satuHariKedepan = new Date();
-//   satuHariKedepan.setDate(satuHariKedepan.getDate() + 1);
-//   // Info Tgl 1+
-//   var informasisatuHariKedepan = getInformasiTanggal(satuHariKedepan);
-//   satuHariKedepanElement.innerHTML = informasisatuHariKedepan;
-
-//   // Mendapatkan 2 hari ke depan
-//   var duaHariKedepan = new Date();
-//   duaHariKedepan.setDate(duaHariKedepan.getDate() + 2);
-//   // Info Tgl 2+
-//   var informasiduaHariKedepan = getInformasiTanggal(duaHariKedepan);
-//   duaHariKedepanElement.innerHTML = informasiduaHariKedepan;
-
-//   // Mendapatkan 3 hari ke depan
-//   var tigaHariKedepan = new Date();
-//   tigaHariKedepan.setDate(tigaHariKedepan.getDate() + 3);
-//   // Info Tgl 3+
-//   var informasitigaHariKedepan = getInformasiTanggal(tigaHariKedepan);
-//   tigaHariKedepanElement.innerHTML = informasitigaHariKedepan;
-
-//   // Mendapatkan 4 hari ke depan
-//   var empatHariKedepan = new Date();
-//   empatHariKedepan.setDate(empatHariKedepan.getDate() + 4);
-//   // Info Tgl 4+
-//   var informasiempatHariKedepan = getInformasiTanggal(empatHariKedepan);
-//   empatHariKedepanElement.innerHTML = informasiempatHariKedepan;
-
-//   // Mendapatkan 5 hari ke depan
-//   var limaHariKedepan = new Date();
-//   limaHariKedepan.setDate(limaHariKedepan.getDate() + 5);
-//   // Info Tgl 5+
-//   var informasilimaHariKedepan = getInformasiTanggal(limaHariKedepan);
-//   limaHariKedepanElement.innerHTML = informasilimaHariKedepan;
-
-//   // Mendapatkan 6 hari ke depan
-//   var enamHariKedepan = new Date();
-//   enamHariKedepan.setDate(enamHariKedepan.getDate() + 6);
-//   // Info Tgl 6+
-//   var informasienamHariKedepan = getInformasiTanggal(enamHariKedepan);
-//   enamHariKedepanElement.innerHTML = informasienamHariKedepan;
-
-//   // Mendapatkan 7 hari ke depan
-//   var tujuhHariKedepan = new Date();
-//   tujuhHariKedepan.setDate(tujuhHariKedepan.getDate() + 7);
-//   // Info Tgl 7+
-//   var informasiTujuhHariKedepan = getInformasiTanggal(tujuhHariKedepan);
-//   tujuhHariKedepanElement.innerHTML = informasiTujuhHariKedepan;
-// });
-
-// function getInformasiTanggal(tanggal) {
-//   var hari = tanggal.toLocaleDateString("id-ID", { weekday: "long" });
-//   var tanggalStr = tanggal.getDate();
-//   var bulan = tanggal.toLocaleDateString("id-ID", { month: "long" });
-//   var tahun = tanggal.getFullYear();
-
-//   return hari + ", " + tanggalStr + " " + bulan + " " + tahun;
-// }
-
-// // kalimat
-// function transitionButton() {
-//   var More = document.getElementById("readMore");
-//   var Less = document.getElementById("readLess");
-//   var Icon = document.getElementById("iconMoreAndLess");
-//   More.classList.toggle("hidden");
-//   Less.classList.toggle("hidden");
-//   Icon.classList.toggle("rotate-180");
-// }
-
-// // Informasi Jam Ke-
-// const toolTip = document.getElementById("popover-no-arrow");
-
-// function tampil() {
-//   if (window.innerWidth < 640) {
-//     return;
-//   }
-//   toolTip.classList.toggle("invisible");
-//   toolTip.classList.toggle("visible");
-// }
