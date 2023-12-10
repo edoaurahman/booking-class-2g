@@ -3,6 +3,7 @@ document.addEventListener('alpine:init', () => {
     detailBooking: [],
     tanggal: [],
     async init() {
+      const id_ruang = window.location.pathname.split('/')[2]
       // set tanggal dalam 1 minggu
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       const currentDate = new Date();
@@ -13,11 +14,19 @@ document.addEventListener('alpine:init', () => {
         return date.toLocaleDateString('id-ID', options);
       });
       this.tanggal = tanggal
-      const response = await fetch('/api/status-ruang/R002')
+      const response = await fetch('/api/status-ruang/' + id_ruang)
       const data = await response.json()
+      // console.log(data[tanggal[0].split(',')[0]]);
       this.detailBooking = data
+      // console.log(this.detailBooking);
     }
-  }))
+  }));
+
+  Alpine.directive('log', (el, { expression }, { evaluate }) => {
+    console.log(
+      evaluate(expression)
+    )
+  });
 })
 // Pemilihan hari
 // document.addEventListener("DOMContentLoaded", function () {
