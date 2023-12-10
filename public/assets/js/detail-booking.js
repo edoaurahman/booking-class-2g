@@ -1,3 +1,8 @@
+const padZero = (num) => {
+  return String(num).padStart(2, '0')
+}
+
+
 document.addEventListener('alpine:init', () => {
   Alpine.data('detailBooking', () => ({
     detailBooking: [],
