@@ -34,7 +34,7 @@ Router::add('GET', '/roomSchedule/{id}', HomeController::class, 'roomSchedule', 
 // Booking
 Router::add('GET', '/booking', BookingController::class, 'booking', [AuthMiddleware::class]);
 Router::add('GET', '/detail-booking/{id_ruang}', BookingController::class, 'detailBooking', [AuthMiddleware::class]);
-Router::add('GET', '/isi-formulir', BookingController::class, 'isiFormBooking', [AuthMiddleware::class]);
+Router::add('POST', '/isi-formulir', BookingController::class, 'isiFormBooking', [AuthMiddleware::class]);
 Router::add('GET', '/review', BookingController::class, 'reviewBooking', [AuthMiddleware::class]);
 // Admin
 Router::add('GET', '/admin', AdminController::class, 'dashboard', [AuthMiddleware::class]);
