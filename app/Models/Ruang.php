@@ -133,13 +133,14 @@ class Ruang extends Model
         while ($row = $result->fetch_assoc()) {
             $data[$row['nama_hari']][] = $row;
         }
-        $result_data = [];
-        foreach ($data as $key => $value) {
-            $result_data[] = [
-                'nama_hari' => $key,
-                'listJam' => $value,
-            ];
-        }
-        return $result_data;
+        // $result_data = [];
+        // foreach ($data as $key => $value) {
+        //     $result_data[] = [
+        //         'nama_hari' => $key,
+        //         'listJam' => $value,
+        //     ];
+        // }
+        // return $result_data;
+        return $data;
     }
 }

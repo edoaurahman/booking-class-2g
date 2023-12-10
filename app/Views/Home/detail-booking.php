@@ -198,131 +198,23 @@
                         <!-- Carousel wrapper -->
                         <div class="relative  overflow-hidden h-[450px] sm:h-52 rounded-lg md:h-[340px]">
                             <!-- Status Per 7 Hari kedepan -->
-                            <template x-for="(item,index) in detailBooking">
+                            <template x-for="(item,index) in tanggal">
                                 <div class=" bg-white duration-700 ease-in-out text-center px-8 py-4 dark:bg-dark_grey1" :data-carousel-item="index === 0 ? 'active' : '' ">
                                     <div x-text="tanggal[index]" class="text-gray-500 font-sans text-base font-bold dark:text-gray-200"></div>
-                                    <div x-data class="grid grid-cols-2 sm:grid-cols-6 gap-1 mt-10 ">
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
+                                    <div class="grid grid-cols-2 sm:grid-cols-6 gap-1 mt-10 ">
+                                        <template x-for="(item,index) in detailBooking[tanggal[index].split(',')[0]]">
+                                            <div x-id="['popover-no-arrow']">
+                                                <button :data-popover-target="$id('popover-no-arrow')" type="button" :class="item.status_jam === 'onprocess' ? 'bg-yellow-400 dark:bg-yellow-400' : item.status_jam === 'used' ? 'bg-red-400 dark:bg-red-400' : '' " class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4" x-text="`Jam ke - ${index+1}`">Jam ke - 01</button>
+                                                <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                    <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                        <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
+                                                    </div>
+                                                    <div class="px-3 py-2">
+                                                        <p x-text="item.jam_mulai + ' - ' + item.jam_selesai">7.00 - 7.50</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div x-id="['popover-no-arrow']">
-                                            <button :data-popover-target="$id('popover-no-arrow')" type="button" class="text-white bg-bingu hover:bg-bingu_hover font-medium text-xs px-9 py-3 text-center rounded dark:bg-dark_grey5 dark:hover:bg-dark_grey4">Jam ke - 01</button>
-                                            <div :id="$id('popover-no-arrow')" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-                                                <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                                    <h3 class="font-semibold text-gray-900 dark:text-white">Detail Jam</h3>
-                                                </div>
-                                                <div class="px-3 py-2">
-                                                    <p>7.00 - 7.50</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </template>
                                     </div>
                                 </div>
                             </template>
@@ -498,7 +390,7 @@
                 <!-- Colom 2 -->
                 <!-- ###################### -->
                 <div class="font-sans order-first lg:order-last lg:col-span-2 md:col-span-4">
-                    <div class="text-gray-600 block text-center font-semibold text-sm border p-5 mb-10 dark:text-dark_grey3">
+                    <div class="rounded text-gray-600 block text-center font-semibold text-sm border p-5 mb-10 dark:text-dark_grey3">
                         <p>Pemesanan Ruang Gedung JTI</p>
                     </div>
                     <div class="sm:sticky block top-24 p-3 border-2 dark:border-dark_grey2  rounded-md">
