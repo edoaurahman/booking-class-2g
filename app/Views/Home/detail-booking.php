@@ -1,5 +1,5 @@
 <!-- Detail -->
-<div class="detail dark:bg-dark_grey1 ">
+<div class="detail dark:bg-dark_grey1">
     <!-- Header start -->
     <div class="w-full">
         <!-- header desktop start -->
@@ -68,7 +68,7 @@
             </ol>
         </div>
         <!-- Header end -->
-        <div class="container py-10 px-4 mx-auto max-w-md md:max-w-3xl">
+        <div class="container py-10 px-4 mx-auto w-[80%] md:w-full">
             <div class="grid grid-cols-1 lg:grid-cols-8 sm:gap-4 sm:mb-11 md:grid-cols-10">
                 <!-- ###################### -->
                 <!-- Colom 1 -->
