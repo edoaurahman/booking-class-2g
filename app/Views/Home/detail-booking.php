@@ -436,12 +436,12 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="/isi-formulir" method="post">
+                        <form action="/isi-formulir" method="post" @submit="next($event)">
                             <input type="hidden" name="id_ruang" :value="id_ruang">
                             <input type="hidden" name="jam_mulai" :value="id_jam_mulai">
                             <input type="hidden" name="jam_selesai" :value="id_jam_selesai">
                             <input type="hidden" name="tanggal" :value="tanggal">
-                            <button :disabled="id_jam_mulai === '' || id_jam_selesai === ''" type="submit" class="w-full text-white bg-bingu hover:bg-bingu_hover  hover:text-white dark:bg-dark_grey5 dark:hover:bg-dark_grey4 shadow-lg shadow-blue-500/50 dark:shadow-none dark:shadow-dark_grey3/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5">Selanjutnya</button>
+                            <button type="submit" class="w-full text-white bg-bingu hover:bg-bingu_hover  hover:text-white dark:bg-dark_grey5 dark:hover:bg-dark_grey4 shadow-lg shadow-blue-500/50 dark:shadow-none dark:shadow-dark_grey3/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5">Selanjutnya</button>
                         </form>
                     </div>
                 </div>
