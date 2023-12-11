@@ -35,7 +35,7 @@ Router::add('GET', '/roomSchedule/{id}', HomeController::class, 'roomSchedule', 
 Router::add('GET', '/booking', BookingController::class, 'booking', [AuthMiddleware::class]);
 Router::add('GET', '/detail-booking/{id_ruang}', BookingController::class, 'detailBooking', [AuthMiddleware::class]);
 Router::add('POST', '/isi-formulir', BookingController::class, 'isiFormBooking', [AuthMiddleware::class]);
-Router::add('GET', '/review', BookingController::class, 'reviewBooking', [AuthMiddleware::class]);
+Router::add('POST', '/review', BookingController::class, 'reviewBooking', [AuthMiddleware::class]);
 // Admin
 Router::add('GET', '/admin', AdminController::class, 'dashboard', [AuthMiddleware::class]);
 Router::add('GET', '/admin/login', AuthController::class, 'login');
@@ -57,4 +57,5 @@ Router::add('GET', '/api/jadwal/{page}', AdminController::class, 'apiJadwal');
 // Filter ruang, hari, jam mulai, jam selesai, cateogry ruang, lantai
 Router::add('POST', '/api/ruang/filter', BookingController::class, 'apiRuangBooking');
 Router::add('GET', '/api/status-ruang/{id_ruang}', BookingController::class, 'apiStatusRuang');
+Router::add('GET', '/api/dosen', BookingController::class, 'apiGetDosen');
 Router::run();

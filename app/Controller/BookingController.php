@@ -67,21 +67,49 @@ class BookingController extends Controller
     {
         $data = $this->_getUser();
         extract($data);
-        // $this->ddd($user);
-        $data_user = new Mahasiswa();
-        $data_user = $data_user->getDetailMahasiswa($user->nim);
-        // $this->ddd($data_user->nama_kelas);
+        if ($level == 'mahasiswa') {
+            $data_user = new Mahasiswa();
+            $data_user = $data_user->getDetailMahasiswa($user->nim);
+        } else {
+            $data_user = new Dosen();
+            $data_user = $data_user->getDetailDosen($user->nip);
+        }
+        $listJam = [
+            'J001' => '1',
+            'J002' => '2',
+            'J003' => '3',
+            'J004' => '4',
+            'J005' => '5',
+            'J006' => '6',
+            'J007' => '7',
+            'J008' => '8',
+            'J009' => '9',
+            'J010' => '10',
+            'J011' => '11',
+        ];
+        $dosen = new Dosen();
+        $listDosen = $dosen->all();
+        $formatter = new \IntlDateFormatter('id_ID', \IntlDateFormatter::NONE, \IntlDateFormatter::NONE);
+        $formatter->setPattern('dd MMMM yyyy');
+        $tanggal = $formatter->format(strtotime($request->tanggal));
+        $jam_mulai = $listJam[$request->jam_mulai];
+        $jam_selesai = $listJam[$request->jam_selesai];
+        $bookingAvailability = new Dosen();
+        $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+        // $this->ddd($bookingAvailability);
+        // $this->ddd($data_user);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/formulir-checkout", ['user' => $data_user, 'request' => $request]);
+        View::render("Home/formulir-checkout", ['level' => $level, 'user' => $data_user, 'tanggal' => $tanggal, 'jam_mulai' => $jam_mulai, 'jam_selesai' => $jam_selesai, 'id_ruang' => $request->id_ruang, 'bookingAvailability' => $bookingAvailability, 'request' => $request, 'listDosen' => $listDosen]);
         View::render("Templates/footer", []);
     }
 
-    public function reviewBooking(): void
+    public function reviewBooking(Request $request): void
     {
         $data = $this->_getUser();
         extract($data);
+        // $this->ddd($request);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/review", []);
+        View::render("Home/review", ['request' => $request]);
         View::render("Templates/footer", []);
     }
 
@@ -100,6 +128,13 @@ class BookingController extends Controller
     {
         $ruang = new Ruang();
         $data = $ruang->getStatusRuangPerDay($id_ruang);
+        echo json_encode($data);
+    }
+
+    public function apiGetDosen(): void
+    {
+        $dosen = new Dosen();
+        $data = $dosen->all();
         echo json_encode($data);
     }
 }

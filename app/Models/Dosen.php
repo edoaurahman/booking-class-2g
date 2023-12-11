@@ -16,4 +16,25 @@ class Dosen extends Model
     public $tanggal_lahir = '';
     public $email = '';
     public $id_matkul = '';
+
+    public function getDetailDosen($nip): object
+    {
+        $sql = "SELECT * FROM view_getdosen  WHERE nip = '$nip' ";
+        $stmt = $this->db->query($sql);
+        return (object) $stmt->fetch_assoc();
+    }
+
+    public function getDosen(): array
+    {
+        $sql = "SELECT * FROM view_getdosen";
+        $stmt = $this->db->query($sql);
+        return $stmt->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkBookingAvailability(string $tanggal, string $id_ruang, string $jam_mulai, string $jam_selesai)
+    {
+        $sql = "CALL CheckBookingAvailability ('$tanggal', '$id_ruang', '$jam_mulai', '$jam_selesai')";
+        $stmt = $this->db->query($sql);
+        return $stmt->fetch_assoc();
+    }
 }
