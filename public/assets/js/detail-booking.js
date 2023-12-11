@@ -11,6 +11,14 @@ const padZero = (num) => {
   return String(num).padStart(2, '0')
 }
 
+function alert() {
+  swal({
+    title: "Eiits!",
+    text: "Pilih Jam Terlebih Dahulu!",
+    icon: "warning",
+  });
+}
+
 document.addEventListener('alpine:init', () => {
   Alpine.data('detailBooking', () => ({
     id_ruang: window.location.pathname.split('/')[2],
@@ -63,5 +71,18 @@ document.addEventListener('alpine:init', () => {
       this.id_jam_mulai = this.listJam[this.selectedHours[0] - 1]
       this.id_jam_selesai = this.listJam[this.selectedHours[1] - 1]
     },
+    next(e) {
+      if (this.id_jam_mulai !== '' && this.id_jam_selesai !== '') {
+        return true;
+      } else {
+        e.preventDefault();
+        swal({
+          title: "Warning !!!",
+          text: "Pilih Jam Terlebih Dahulu!",
+          icon: "warning",
+        });
+        return false;
+      }
+    }
   }));
 })
