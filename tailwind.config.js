@@ -12,7 +12,7 @@ module.exports = {
         royal_blue: "#0074B7",
         biru: "#0088ED",
         biru1: "#85B9E0",
-        biru2:"#005B9E", //buat header form
+        biru2: "#005B9E", //buat header form
         bingu: "#5E5CE6",
         bingu_hover: "#3E3C99",
         p10: "#cdd7e0",
@@ -31,7 +31,13 @@ module.exports = {
         // Menambahkan atau mengganti font family sesuai kebutuhan Anda
         sans: ["Roboto", "sans-serif"],
         serif: ["Lato", "Cambria", "Times New Roman", "Times", "serif"],
-        mono: ["Menlo", "Monaco", "Courier New", "Courier", "monospace"],
+        surat: [
+          "Times New Roman",
+          "Monaco",
+          "Courier New",
+          "Courier",
+          "monospace",
+        ],
         // Tambahkan konfigurasi font family lainnya jika diperlukan
       },
     },
