@@ -23,4 +23,27 @@ class Jadwal extends Model
         $result = $this->query($sql);
         return $result;
     }
+
+    public function getJadwalPagination(string $page): array
+    {
+        $page -= 1;
+        $page *= 10;
+        $sql = "SELECT * FROM view_getjadwaladmin LIMIT 10 OFFSET $page";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getTotalPage(): int
+    {
+        $sql = "SELECT COUNT(*) AS total FROM view_getjadwaladmin";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $total = $data['total'];
+        $totalPage = ceil($total / 10);
+        return $totalPage;
+    }
 }
