@@ -2,35 +2,35 @@
 
     <!-- header -->
     <div class="w-auto">
-        <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 py-16 px-28 ">
+        <ol class="hidden sm:flex items-center w-full  font-medium text-center text-white  dark:text-gray-400 sm:text-base bg-biru2 md:py-8 md:px-20 ">
             <li class="flex md:w-full items-center  text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
-                <div class="flex flex-none justify-end items-center w-36">
+                <div class="flex flex-none justify-end items-center text-xl">
                     <i class="fa-solid  fa-circle-check mr-3"></i>
                     <p>Ruang </p>
                 </div>
             </li>
-            <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-bold">
-                <div class="flex flex-none w-36  items-center">
+            <li class="flex md:w-full items-center  text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
+                <div class="flex flex-none items-center text-xl">
                     <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
                     <p>Waktu</p>
                 </div>
             </li>
-            <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-bold">
-                <div class="flex flex-none items-center">
-                    <i class="fa-solid fa-circle-check mr-3"></i>
+            <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white font-sans ">
+                <div class="flex flex-none items-center text-xl">
+                    <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
                     <p>Isi Formulir</p>
                 </div>
 
-            <li class="flex items-center text-white text-2xl font-sans font-bold mr-10">
-                <div class="flex flex-none items-center ">
-                    <i class="fa-solid fa-circle-check mr-3"></i>
+            <li class="flex items-center text-white">
+                <div class="flex flex-none items-center text-xl">
+                    <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
                     <p>Konfirmasi</p>
                 </div>
             </li>
         </ol>
 
         <!-- mobile  -->
-        <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500   shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+        <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 overflow-x-auto shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
             <li class="flex items-center text-blue-600  ">
                 <i class="fa-solid fa-circle-check  "></i>
                 <div class="ml-2 mr-2">Ruang</div>
@@ -47,8 +47,8 @@
                 </svg>
             </li>
 
-            <li class="flex items-center text-blue-600 ">
-                <i class="fa-solid fa-circle-check mr-2 "></i>
+            <li class="flex flex-none items-center text-blue-600 ">
+                <i class="fa-solid fa-circle-check mr-1 "></i>
                 <div class=" ">Isi Formulir</div>
                 <svg class="w-3 h-3 ms-2 mr-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
@@ -56,8 +56,8 @@
             </li>
 
 
-            <li class="flex items-center  text-blue-600  ">
-                <i class="fa-solid fa-circle-check mr-3 "></i>
+            <li class="flex items-center text-blue-600">
+                <i class="fa-solid fa-circle-check mr-1 "></i>
                 Review
             </li>
         </ol>
