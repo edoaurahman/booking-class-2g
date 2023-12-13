@@ -45,7 +45,14 @@ $_SESSION['csrf'] = $csrf;
                     <div class="block px-4 py-2 font-medium text-center text-gray-600 rounded-t-lg bg-gray-50 dark:bg-gray-700 dark:text-white">
                         Notifications
                     </div>
-                    <div x-data="notificationList" class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
+                    <div class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
+                        <?php if (empty($notification)) : ?>
+                            <div class="w-full h-20">
+                                <div class="flex justify-center items-center h-full">
+                                    <span class="text-gray-400 dark:text-gray-500">No notification</span>
+                                </div>
+                            </div>
+                        <?php endif ?>
                         <?php foreach ($notification as $key => $item) : ?>
                             <?php extract($item); ?>
                             <?php if ($status_booking === 'waiting_dosen_verification') : ?>

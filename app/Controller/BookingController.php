@@ -99,6 +99,12 @@ class BookingController extends Controller
         $jam_selesai = $listJam[$request->jam_selesai];
         $bookingAvailability = new Dosen();
         $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+        if (empty($bookingAvailability)) {
+            $bookingAvailability = new Dosen();
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+            // $this->ddd($bookingAvailability);
+        }
+        // $this->ddd($bookingAvailability);
         $status = '';
         if (!empty($bookingAvailability)) {
             $status = 'urgent';

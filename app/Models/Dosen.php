@@ -37,7 +37,14 @@ class Dosen extends Model
         $stmt = $this->db->query($sql);
         return $stmt->fetch_assoc();
     }
-    
+
+    public function checkJadwalAvailability(string $tanggal, string $id_ruang, string $jam_mulai, string $jam_selesai)
+    {
+        $sql = "CALL CheckJadwalAvailability ('$tanggal', '$id_ruang', '$jam_mulai', '$jam_selesai')";
+        $stmt = $this->db->query($sql);
+        return $stmt->fetch_assoc();
+    }
+
     public function getDosenPagination(string $page): array
     {
         $page -= 1;
@@ -61,7 +68,8 @@ class Dosen extends Model
         return $totalPage;
     }
 
-    public function addDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email): void {
+    public function addDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email): void
+    {
         $sql = "CALL addDosen('$nip', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$email')";
         $this->db->query($sql);
     }
