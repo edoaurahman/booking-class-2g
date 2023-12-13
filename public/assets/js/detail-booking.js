@@ -1,11 +1,13 @@
 const inputTanggal = document.querySelector('#inputTanggal')
-// set max 6 heri kedepan
-const maxDate = new Date()
+let timezoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
+
+const maxDate = new Date(Date.now() - timezoneOffset)
 maxDate.setDate(maxDate.getDate() + 6)
 inputTanggal.setAttribute('max', maxDate.toISOString().split('T')[0])
-inputTanggal.setAttribute('min', new Date().toISOString().split('T')[0])
-// set tanggal default
-inputTanggal.value = new Date().toISOString().split('T')[0]
+
+const today = new Date(Date.now() - timezoneOffset)
+inputTanggal.setAttribute('min', today.toISOString().split('T')[0])
+inputTanggal.value = today.toISOString().split('T')[0]
 
 const padZero = (num) => {
   return String(num).padStart(2, '0')
@@ -13,7 +15,7 @@ const padZero = (num) => {
 
 function alert() {
   swal({
-    title: "Eiits!",
+    title: "Warning !!!",
     text: "Pilih Jam Terlebih Dahulu!",
     icon: "warning",
   });
@@ -44,6 +46,8 @@ document.addEventListener('alpine:init', () => {
       const response = await fetch('/api/status-ruang/' + this.id_ruang)
       const data = await response.json()
       this.detailBooking = data[day]
+      // clear selected hours
+      this.selectedHours = []
     },
     toggleSelectedRange(hour) {
       const currentIndex = this.selectedHours.indexOf(hour);
@@ -72,7 +76,7 @@ document.addEventListener('alpine:init', () => {
       this.id_jam_selesai = this.listJam[this.selectedHours[1] - 1]
     },
     next(e) {
-      if (this.id_jam_mulai !== '' && this.id_jam_selesai !== '') {
+      if (this.id_jam_mulai !== '' && this.id_jam_selesai !== '' && this.id_jam_mulai !== undefined && this.id_jam_selesai !== undefined) {
         return true;
       } else {
         e.preventDefault();

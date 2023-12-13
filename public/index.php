@@ -58,4 +58,5 @@ Router::add('GET', '/api/jadwal/{page}', AdminController::class, 'apiJadwal');
 Router::add('POST', '/api/ruang/filter', BookingController::class, 'apiRuangBooking');
 Router::add('GET', '/api/status-ruang/{id_ruang}', BookingController::class, 'apiStatusRuang');
 Router::add('GET', '/api/dosen', BookingController::class, 'apiGetDosen');
+Router::add('POST', '/api/booking', BookingController::class, 'apiStoreBooking');
 Router::run();
