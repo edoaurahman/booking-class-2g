@@ -4,7 +4,7 @@ namespace TugasBesar\BookingClass2g\Controller;
 
 use TugasBesar\BookingClass2g\App\View;
 
-class AdminController
+class AdminController extends Controller
 {
     public function dashboard()
     {
@@ -43,8 +43,9 @@ class AdminController
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/report", []);
     }
-    public function pdf()
+    public function pdf($id_booking)
     {
+        // $this->ddd($id_booking);
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/pdf", []);
     }
