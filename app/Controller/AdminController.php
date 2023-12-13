@@ -194,12 +194,7 @@ class AdminController extends Controller
 
     public function apiReport($page)
     {
-        $report = new Laporan();
-        $jmlReport = $report->getReportPagination($page);
-        $data = [
-            'jmlReport' => $jmlReport,
-            'currentPage' => $page,
-        ];
-        echo json_encode($data);
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        View::render("Admin/pdf", []);
     }
 }
