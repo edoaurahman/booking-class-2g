@@ -67,8 +67,7 @@
                                         <td class="px-6 py-4 deskripsi">
                                             Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
                                         </td>
-                                        <td class="px-6 py-4">
-                                            Ruang Teori
+                                        <td x-text="item.jenis_ruang" class="px-6 py-4">
                                         </td>
                                         <td x-text="item.nama_lantai" class="px-6 py-4">
                                         </td>
@@ -185,12 +184,12 @@
             <form class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Ruang</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="RT_05" required="">
+                        <label for="kode_ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Ruang</label>
+                        <input type="text" name="kode_ruang" id="kode_ruang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="RT_05" required="">
                     </div>
                     <div class="col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Ruang</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ruang Teori_05" required="">
+                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Ruang</label>
+                        <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ruang Teori_05" required="">
                     </div>
                     <div class="col-span-1">
                         <label for="jenis-ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Ruang</label>
@@ -205,10 +204,10 @@
                         <label for="lantai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lantai</label>
                         <select id="lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Select Lantai</option>
-                            <option value="lantai-5">Lantai 5</option>
-                            <option value="lantai-6">Lantai 6</option>
-                            <option value="lantai-7">Lantai 7</option>
-                            <option value="lantai-8">Lantai 8</option>
+                            <option value="L001">Lantai 5</option>
+                            <option value="L002">Lantai 6</option>
+                            <option value="L003">Lantai 7</option>
+                            <option value="L004">Lantai 8</option>
                         </select>
                     </div>
                     <div class="col-span-2">

@@ -11,7 +11,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
 </head>
 
 <body>
@@ -173,18 +173,18 @@
             iconRotate.classList.toggle("rotate-180");
         });
 
-        
+
         // sidebarTablet bagian user
         let miniSidebar = "on";
-        
+
         const usersSvg = document.querySelector("#usersSvg");
         const usersPath = document.querySelector("#usersPath");
         const sidebarTablet = document.querySelector("#dropdown-users-sidebar-tablet")
         const sidebarLaptop = document.querySelector("#dropdown-users-sidebar")
-        
+
         window.addEventListener("click", (e) => {
             if (window.innerWidth <= 1024) {
-                if ((e.target === usersButton || e.target === usersSvg || e.target === usersPath) && miniSidebar === "on" ) {
+                if ((e.target === usersButton || e.target === usersSvg || e.target === usersPath) && miniSidebar === "on") {
                     sidebarTablet.classList.toggle("hidden");
                 } else if (e.target !== usersButton && e.target !== sidebarTablet && e.target !== usersSvg && e.target !== usersPath) {
                     sidebarTablet.classList.add("hidden");
@@ -236,10 +236,10 @@
             mahasiswaSidebar.classList.toggle("flex");
             dosenSidebar.classList.toggle("hidden");
             dosenSidebar.classList.toggle("flex");
-            iconRotate.classList.toggle("hidden"); 
-            
+            iconRotate.classList.toggle("hidden");
+
             miniSidebar = (miniSidebar === "on") ? "off" : "on";
         })
-        </script>
+    </script>
     <script src="/assets/js/flowbite.min.js"></script>
     <script src="/assets/js/darkMode.js"></script>

@@ -1,455 +1,132 @@
-<div class="p-4  ml-[77px] lg:ml-64 bg-white dark:bg-[#171622]" id="ruang">
-    <div class="p-4 mt-14">
-        <div class="pb-4 bg-white dark:bg-gray-900 flex justify-between">
-
-            <!-- Searching -->
-            <div>
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
-                    <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+<div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
+    <div class="p-4  ml-[77px] lg:ml-64">
+        <div class="p-4 mt-14">
+            <div class="pb-4  flex justify-between">
+                <!-- Searching -->
+                <div class="shadow-md rounded-lg">
+                    <label for="table-search" class="sr-only">Search</label>
+                    <div class="relative mt-1">
+                        <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
                     </div>
-                    <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
                 </div>
+
+                <!-- Button add report
+                <a class="px-4 py-2 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover" data-modal-target="add-report-modal" data-modal-toggle="add-report-modal">
+                    Cetak Report
+                </a> -->
             </div>
 
-            <!-- Button add ruang -->
-            <a class="px-4 py-2 bg-blue-600 rounded-lg cursor-pointer shadow-md text-white hover:scale-105" data-modal-target="add-ruang-modal" data-modal-toggle="add-ruang-modal">
-                Add Ruang
-            </a>
+
+            <!-- table -->
+            <section id="report" class="shadow-lg sm:rounded-lg">
+                <div x-data="tableData" x-init="$nextTick(() => {paggination(1) })">
+                    <div class="overflow-x-auto rounded-md overflow-hidden">
+                        <table class="w-[1200px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="w-[15%] px-6 py-3">
+                                        Mahasiswa
+                                    </th>
+                                    <th scope="col" class=" px-6 py-3">
+                                        Tanggal Pesan
+                                    </th>
+                                    <th scope="col" class=" px-6 py-3">
+                                        Tanggal Pakai
+                                    </th>
+                                    <th scope="col" class="w-[15%] px-6 py-3">
+                                        Dosen Penanggung Jawab
+                                    </th>
+                                    <th scope="col" class="w-[15%] px-6 py-3">
+                                        Dosen Pengguna Ruang
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Kelas
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Ruang
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Jam Mulai
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Jam Selesai
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Lampiran
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <template x-for="item in tableData">
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td x-text="item.mahasiswa" class="px-4 py-3">
+                                        </td>
+                                        <td x-text="item.tanggal_pesan" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.tanggal_pakai" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.dosen" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.dosen" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.kelas" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.ruang" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.jam_mulai" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.jam_selesai" class="px-6 py-4">
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <template x-if="item.lampiran == null">
+                                                <div>Tidak ada</div>
+                                            </template>
+                                            <template x-if="item.lampiran != null">
+                                                <div x-text="item.lampiran"></div>
+                                            </template>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <a class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover">
+                                                Cetak
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav class="w-full flex items-center justify-end py-4 px-3" aria-label="Table navigation">
+                        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                            <li>
+                                <a href="#report" @click="prev()" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                            </li>
+                            <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                                <li>
+                                    <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#report" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white hover:text-black"><?= $i ?></a>
+                                </li>
+                            <?php endfor; ?>
+                            <li>
+                                <a href="#report" @click="next()" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
         </div>
-
-        <!-- table -->
-        <div class="shadow-md overflow-x-auto sm:rounded-lg">
-            <table class="w-[800px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed relative" id="table">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="w-[5%] px-4 py-3">
-                            No
-                        </th>
-                        <th scope="col" class="w-[30%] px-6 py-3">
-                            Nama Ruang
-                        </th>
-                        <th scope="col" class="w-[25%] px-6 py-3">
-                            Deskripsi
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Jenis Ruang
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Lantai
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4 deskripsi">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-
-
-                </tbody>
-            </table>
-        </div>
-        <nav class="w-full flex items-center justify-center pt-4" aria-label="Table navigation">
-            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-<!-- Filter -->
-<div class="fixed z-50 -right-[320px] top-[120px] min-h-[450px] bg-gray-700 w-80 p-4 transition-all duration-1000 text-white" id="filter">
-    <div class="flex flex-col bg-gray-800 h-full w-full ">
-        <div class="flex justify-between items-center p-4 border-b border-white">
-            <div class="text-md font-semibold">Filters</div>
-            <div class="cursor-pointer" id="exitFilter">
-                <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
-            </div>
-        </div>
-        <form action="" class="divide-y divide-dashed w-full px-4">
-            <div class="flex w-full flex-col justify-start gap-2 items-center p-4">
-                <div class="">Jenis Ruang</div>
-                <div class="w-full">
-                    <input id="jenis-ruang-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-200 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-1" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Teori</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-2" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-2" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Praktikum</label>
-                </div>
-                <div class="w-full">
-                    <input checked id="jenis-ruang-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-3" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Gabungan</label>
-                </div>
-            </div>
-            <div class="flex w-full flex-col justify-start gap-2 items-center p-4">
-                <div class="">Tipe Lantai</div>
-                <div class="w-full">
-                    <input id="jenis-ruang-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-200 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-1" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 5</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-2" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-2" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 6</label>
-                </div>
-                <div class="w-full">
-                    <input checked id="jenis-ruang-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-3" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 7</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-3" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 8</label>
-                </div>
-            </div>
-
-            <div class="w-full flex justify-end items-center py-2 px-4">
-                <input type="submit" value="Apply" class="py-2 px-4 bg-blue-600 text-white text-sm font-medium rounded-lg hover:scale-105">
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="fixed z-50 right-0 top-[45%] w-10 h-10 p-2 bg-biru text-center rounded-l-md">
-    <div id="buttonFilter" class="cursor-pointer">
-        <i class="fa-solid fa-filter fa-flip" style="color: #ffffff;"></i>
     </div>
 </div>
 
 <!-- Main modal -->
-<div id="add-ruang-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
+<div id="add-report-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -458,7 +135,7 @@
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                     Add New Ruang
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="add-ruang-modal">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="add-report-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
@@ -510,51 +187,85 @@
                 </div>
             </form>
         </div>
-
     </div>
 </div>
 
 <script>
     // action modal
 
-    const buttonAction = document.querySelectorAll("i");
+    let buttonAction = document.querySelectorAll("i");
 
-    document.querySelector("#ruang").addEventListener("click", (e) => {
+    document.querySelector("#report").addEventListener("click", (e) => {
         buttonAction.forEach(node => {
-            if (node === e.target) {
-                node.nextElementSibling.classList.toggle("hidden")
-            } else if (e.target !== node && !e.target.classList.contains("delete-modal") && !e.target.classList.contains("edit-modal")) {
-                node.nextElementSibling.classList.add("hidden");
-            }
+            try {
+                if (node === e.target) {
+                    node.nextElementSibling.classList.toggle("hidden")
+                } else if (e.target !== node && !e.target.classList.contains("delete-modal") && !e.target.classList.contains("edit-modal")) {
+                    node.nextElementSibling.classList.add("hidden");
+                }
+            } catch (error) {}
         });
     });
 
-    // filter
+    // table & pagination
+    const buttonPaggination = document.querySelectorAll('#button-pagination');
 
-    const exitFilter = document.querySelector("#exitFilter");
-    const filter = document.querySelector("#filter");
-    const buttonFilter = document.querySelector("#buttonFilter");
+    function setActive(current_page) {
+        buttonPaggination.forEach((button) => {
+            if (button.innerText == current_page) {
+                button.classList.remove("dark:bg-gray-800");
+                button.classList.add("dark:bg-gray-700");
+                button.classList.add("bg-gray-200")
+            } else {
+                button.classList.add('dark:bg-gray-800');
+                button.classList.add('bg-white');
+                button.classList.remove("dark:bg-gray-700");
+                button.classList.remove("bg-gray-200");
+            }
+        });
+    }
 
-    exitFilter.addEventListener("click", () => {
-        filter.classList.add("-right-[320px]");
-        filter.classList.remove("right-0");
-        buttonFilter.parentElement.classList.remove("hidden")
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('tableData', () => ({
+            tableData: null,
+            current_page: 1,
+            paggination(page = '1') {
+                fetch('/api/report/' + page)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.tableData = data.jmlReport;
+                        this.current_page = data.currentPage;
+                        setActive(this.current_page);
+                    }).then(e => {
+                        buttonAction = document.querySelectorAll("i");
+                    });
+            },
+            next() {
+                if (this.current_page == <?= $totalPage ?>) {
+                    return;
+                }
+                fetch('/api/report/' + (parseInt(this.current_page) + 1))
+                    .then(response => response.json())
+                    .then(data => {
+                        this.tableData = data.jmlReport;
+                        this.current_page = data.currentPage;
+                        setActive(this.current_page);
+                    });
+            },
+            prev() {
+                if (this.current_page == 1) {
+                    return;
+                }
+                fetch('/api/report/' + (parseInt(this.current_page) - 1))
+                    .then(response => response.json())
+                    .then(data => {
+                        this.tableData = data.jmlReport;
+                        this.current_page = data.currentPage;
+                        setActive(this.current_page);
+                    });
+            }
+        }))
     })
-
-    buttonFilter.addEventListener("click", () => {
-        buttonFilter.parentElement.classList.add("hidden")
-        filter.classList.remove("-right-[320px]");
-        filter.classList.add("right-0");
-    })
-
-
-    // view more fitur (not yet)
-
-    // const deskripsiRuang = document.querySelectorAll(".deskripsi");
-
-    // deskripsiRuang.forEach(dr => {
-    //     console.log(dr.innerText.length);
-    // })
 </script>
 </body>
 
