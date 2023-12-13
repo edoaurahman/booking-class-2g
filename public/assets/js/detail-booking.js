@@ -119,10 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Change the text of the toggle button based on visibility
     if (tableContainer.classList.contains("hidden")) {
       toggleButton.innerHTML =
-        'Show Time Detail <i class="fa-solid fa-angles-right"></i>';
+        'Tampilkan Detail Jam <i class="fa-solid fa-angles-right"></i>';
     } else {
       toggleButton.innerHTML =
-        'Close Time Detail <i class="fa-solid fa-angles-right"></i>';
+        'Tutup Detail Jam <i class="fa-solid fa-angles-right"></i>';
     }
   });
 });

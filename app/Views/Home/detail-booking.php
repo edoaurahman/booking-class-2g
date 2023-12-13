@@ -437,7 +437,7 @@
                         </div>
                         <div class="relative mt-4">
                             <div class="judul">
-                                <h2 id="toggleButton" class="text-gray-600 font-sans font-bold text-sm dark:text-gray-100 mb-2 cursor-pointer">Show Time Detail <i class="fa-solid fa-angles-right"></i></h2>
+                                <h2 id="toggleButton" class="text-gray-600 font-sans font-bold text-sm dark:text-gray-100 mb-2 cursor-pointer">Tampilkan Detail Jam<i class="fa-solid fa-angles-right"></i></h2>
                             </div>
                             <div id="tableContainer" class="hidden">
                                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
