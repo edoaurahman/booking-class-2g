@@ -236,9 +236,9 @@
                     <!-- Description End  -->
 
                     <!-- refisi perbandingan start -->
-                    <div class="mt-16">
-                        <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100 mb-5">Informasi Jam Pembelajaran </h2>
-                        <div class="relative h-56 overflow-y-auto">
+                    <div class="mt-7">
+                        <!-- <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100 mb-5">Informasi Jam Pembelajaran </h2> -->
+                        <!-- <div class="relative h-56 overflow-y-auto">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-white bg-bingu dark:bg-slate-700 uppercase dark:text-white sticky top-0">
                                     <tr>
@@ -377,8 +377,8 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="Denah mt-7">
+                        </div> -->
+                        <div class="Denah mt-5">
                             <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100">Denah Lantai</h2>
                             <div class="flex flex-col gap-2  pb-6 pt-6">
                                 <!-- fasilitas 1 -->
@@ -431,9 +431,153 @@
                                         <template x-for="(item, index) in detailBooking">
                                             <button type="button" :class="item.status_jam === 'onprocess' && !selectedHours.includes(index + 1) ? 'bg-yellow-500' : item.status_jam === 'used' && !selectedHours.includes(index + 1) ? 'bg-red-500' : selectedHours.includes(index + 1) ? 'bg-blue-500' : '' " class="text-white font-medium text-xs px-8 py-2 text-center rounded bg-bingu" x-text="padZero(index+1)" @click="toggleSelectedRange(index + 1)"></button>
                                         </template>
-
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="relative mt-4">
+                            <div class="judul">
+                                <h2 id="toggleButton" class="text-gray-600 font-sans font-bold text-sm dark:text-gray-100 mb-2 cursor-pointer">Tampilkan Detail Jam<i class="fa-solid fa-angles-right"></i></h2>
+                            </div>
+                            <div id="tableContainer" class="hidden">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <thead class="text-xs text-white bg-bingu dark:bg-slate-700 uppercase dark:text-white sticky top-0 ">
+                                        <tr>
+                                            <th scope="col" class="px-5 py-3">
+                                                Jam
+                                            </th>
+                                            <th scope="col" class="px-5 py-3">
+                                                Mulai
+                                            </th>
+                                            <th scope="col" class="px-5 py-3">
+                                                Selesai
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 01
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                07.00
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                07.50
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 02
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                07.50
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                08.40
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 03
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                08.40
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                09.30
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 04
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                09.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                10.30
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 05
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                10.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                11.20
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 06
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                11.20
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                12.10
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 07
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                12.50
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                13.40
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 08
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                13.40
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                14.30
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 09
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                14.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                15.20
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 10
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                15.30
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                16.20
+                                            </td>
+                                        </tr>
+                                        <tr class="bg-gray-200 dark:bg-gray-800">
+                                            <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
+                                                Ke - 11
+                                            </th>
+                                            <td class="px-5 py-2">
+                                                16.20
+                                            </td>
+                                            <td class="px-5 py-2">
+                                                17.10
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <form action="/isi-formulir" method="post" @submit="next($event)">
