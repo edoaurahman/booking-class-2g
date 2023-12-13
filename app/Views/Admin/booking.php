@@ -165,37 +165,54 @@
             <!-- Modal body -->
             <form class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-cols-2">
-                    <div class="col-span-1">
-                        <label for="mahasiswa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM Mahasiswa</label>
-                        <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="NIM">
+                    <div class="col-span-1 relative">
+                        <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM Mahasiswa</label>
+                        <input id="nim" list="listNim" name="nim" placeholder="Masukkan NIM..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listNim">
+                            <?php foreach ($listNim as $item) : ?>
+                                <option value="<?= $item['nim'] ?>"><?= $item['nama'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
                         <label for="tgl_pakai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Pemakaian</label>
                         <input type="date" name="tgl_pakai" id="tgl_pakai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
-                    <div class="col-span-1">
+                    <div class="col-span-1 relative">
                         <label for="dosenPJ" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen Penanggung Jawab</label>
-                        <div class=" text-sm font-medium text-gray-900 dark:text-white w-full relative z-50">
-                            <input id="dosenPJ" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" type="text" name="dosenPJ">
-                        </div>
+                        <input id="dosenPJ" list="listDosenPJ" name="dosenPJ" placeholder="Masukkan NIP..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listDosenPJ">
+                            <?php foreach ($listDosenPJ as $item) : ?>
+                                <option value="<?= $item['nip'] ?>"><?= $item['nama'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
-                    <div class="col-span-1">
-                        <label for="dosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
-                        <div class="autocomplete  text-sm font-medium text-gray-900 dark:text-white w-full relative z-50">
-                            <input id="dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" type="text" name="dosen">
-                        </div>
+                    <div class="col-span-1 relative">
+                        <label for="dosenPR" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen Pengguna Ruang</label>
+                        <input id="dosenPR" list="listDosenPR" name="dosenPR" placeholder="Masukkan NIP..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listDosenPR">
+                            <?php foreach ($listDosenPR as $item) : ?>
+                                <option value="<?= $item['nip'] ?>"><?= $item['nama'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
-                    <div class="col-span-1">
+                    <div class="col-span-1 relative">
                         <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <div class="autocomplete  text-sm font-medium text-gray-900 dark:text-white w-full relative z-40">
-                            <input id="kelas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" type="text" name="kelas">
-                        </div>
+                        <input id="kelas" list="listKelas" name="kelas" placeholder="cth: TI-2G" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listKelas">
+                            <?php foreach ($listKelas as $item) : ?>
+                                <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
-                    <div class="col-span-1">
+                    <div class="col-span-1 relative">
                         <label for="ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ruang</label>
-                        <div class="autocomplete  text-sm font-medium text-gray-900 dark:text-white w-full relative z-40">
-                            <input id="ruang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" type="text" name="ruang">
-                        </div>
+                        <input id="ruang" list="listRuang" name="ruang" placeholder="cth: Ruang Teori-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listRuang">
+                            <?php foreach ($listRuang as $item) : ?>
+                                <option value="<?= $item['id_ruang'] ?>"><?= $item['nama_ruang'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
                         <label for="jam_mulai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Mulai</label>

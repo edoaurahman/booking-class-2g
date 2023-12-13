@@ -7,9 +7,12 @@ use TugasBesar\BookingClass2g\App\View;
 use TugasBesar\BookingClass2g\Models\Booking;
 use TugasBesar\BookingClass2g\Models\Laporan;
 use TugasBesar\BookingClass2g\Models\Mahasiswa;
+use TugasBesar\BookingClass2g\Models\MataKuliah;
 use TugasBesar\BookingClass2g\Models\Ruang;
 use TugasBesar\BookingClass2g\Models\Dosen;
+use TugasBesar\BookingClass2g\Models\Hari;
 use TugasBesar\BookingClass2g\Models\Jadwal;
+use TugasBesar\BookingClass2g\Models\Kelas;
 
 class AdminController extends Controller
 {
@@ -44,8 +47,11 @@ class AdminController extends Controller
         $mahasiswa = new Mahasiswa();
         $totalPage = $mahasiswa->getTotalPage();
 
+        $kelas = new Kelas();
+        $listKelas = $kelas->all();
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
-        View::render("Admin/mahasiswa", ['totalPage' => $totalPage]);
+        View::render("Admin/mahasiswa", ['totalPage' => $totalPage, 'listKelas' => $listKelas]);
     }
 
     public function apiMahasiswa($page)
@@ -80,8 +86,23 @@ class AdminController extends Controller
         $jadwal = new Jadwal();
         $totalPage = $jadwal->getTotalPage();
 
+        $kelas = new Kelas();
+        $listKelas = $kelas->all();
+
+        $matakuliah = new MataKuliah();
+        $listMK = $matakuliah->all();
+
+        $dosen = new Dosen();
+        $listDosen = $dosen->all();
+
+        $ruang = new Ruang();
+        $listRuang = $ruang->all();
+
+        $hari = new Hari();
+        $listHari = $hari->all();
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
-        View::render("Admin/jadwal", ['totalPage' => $totalPage]);
+        View::render("Admin/jadwal", ['totalPage' => $totalPage, 'listKelas' => $listKelas, 'listMK' => $listMK, 'listDosen' => $listDosen, 'listRuang' => $listRuang, 'listHari' => $listHari]);
     }
 
     public function apiJadwal($page)
@@ -134,8 +155,21 @@ class AdminController extends Controller
         $booking = new Booking();
         $totalPage = $booking->getTotalPage();
 
+        $mahasiswa = new Mahasiswa();
+        $listNim = $mahasiswa->all();
+        
+        $dosen = new Dosen();
+        $listDosenPJ = $dosen->all();
+        $listDosenPR = $dosen->all();
+
+        $kelas = new Kelas();
+        $listKelas = $kelas->all();
+
+        $ruang = new Ruang();
+        $listRuang = $ruang->all();
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
-        View::render("Admin/booking", ['totalPage' => $totalPage]);
+        View::render("Admin/booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
     }
 
     public function apiBooking($page)

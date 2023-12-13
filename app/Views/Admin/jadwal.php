@@ -192,40 +192,48 @@
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-1">
                         <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <input type="text" name="kelas" id="kelas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="TI-2G" required="">
+                        <input id="kelas" list="listKelas" name="kelas"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listKelas">
+                            <?php foreach ($listKelas as $item) : ?>
+                                <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
-                        <label for="matkul" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                        <input type="text" name="matkul" id="matkul" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ruang Teori_05" required="">
+                        <label for="matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
+                        <input id="matakuliah" list="listMK" name="matakuliah"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listMK">
+                            <?php foreach ($listMK as $item) : ?>
+                                <option value="<?= $item['id_matkul'] ?>"><?= $item['nama_matkul'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
                         <label for="dosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
-                        <select id="jenis-ruang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select Ruang</option>
-                            <option value="ruang-teori">Ruang Teori</option>
-                            <option value="ruang-praktikum">Ruang Praktikum</option>
-                            <option value="ruang-gabungan">Ruang Gabungan</option>
-                        </select>
+                        <input id="dosen" list="listDosen" name="dosen"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listDosen">
+                            <?php foreach ($listDosen as $item) : ?>
+                                <option value="<?= $item['nip'] ?>"><?= $item['nama'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
                         <label for="ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ruang</label>
-                        <select id="lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select Lantai</option>
-                            <option value="lantai-5">Lantai 5</option>
-                            <option value="lantai-6">Lantai 6</option>
-                            <option value="lantai-7">Lantai 7</option>
-                            <option value="lantai-8">Lantai 8</option>
-                        </select>
+                        <input id="ruang" list="listRuang" name="ruang"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listRuang">
+                            <?php foreach ($listRuang as $item) : ?>
+                                <option value="<?= $item['id_ruang'] ?>"><?= $item['nama_ruang'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
                         <label for="hari" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hari</label>
-                        <select id="lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select Lantai</option>
-                            <option value="lantai-5">Lantai 5</option>
-                            <option value="lantai-6">Lantai 6</option>
-                            <option value="lantai-7">Lantai 7</option>
-                            <option value="lantai-8">Lantai 8</option>
-                        </select>
+                        <input id="hari" list="listHari" name="hari"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <datalist id="listHari">
+                            <?php foreach ($listHari as $item) : ?>
+                                <option value="<?= $item['id_hari'] ?>"><?= $item['nama_hari'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
                         <div class="flex w-full gap-2">
