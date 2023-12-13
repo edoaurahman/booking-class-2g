@@ -158,7 +158,7 @@ class AdminController extends Controller
         View::render("Admin/report", ['totalPage' => $totalPage]);
     }
 
-    public function apiReport($page$id_booking)
+    public function apiReport($page)
     {
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/pdf", []);
