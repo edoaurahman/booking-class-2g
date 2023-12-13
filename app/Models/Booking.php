@@ -71,4 +71,27 @@ class Booking extends Model
 
         return $this->exec($sql);
     }
+
+    public function getBookingPagination(string $page): array
+    {
+        $page -= 1;
+        $page *= 10;
+        $sql = "SELECT * FROM view_getbookingadmin ORDER BY tanggal_pesan DESC LIMIT 10 OFFSET $page";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getTotalPage(): int
+    {
+        $sql = "SELECT COUNT(*) AS total FROM view_getbookingadmin";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $total = $data['total'];
+        $totalPage = ceil($total / 10);
+        return $totalPage;
+    }
 }

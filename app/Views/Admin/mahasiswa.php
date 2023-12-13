@@ -1,560 +1,311 @@
-<div class="p-4  ml-[77px] lg:ml-64 bg-white dark:bg-[#171622]" id="ruang">
-    <div class="p-4 mt-14">
-        <div class="pb-4 bg-white dark:bg-gray-900 flex justify-between">
+<div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
+    <div class="p-4  ml-[77px] lg:ml-64">
+        <div class="p-4 mt-14">
+            <div class="pb-4  flex justify-between">
 
-            <!-- Searching -->
-            <div>
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
-                    <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+                <!-- Searching -->
+                <div class="shadow-md rounded-lg">
+                    <label for="table-search" class="sr-only">Search</label>
+                    <div class="relative mt-1">
+                        <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
                     </div>
-                    <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
                 </div>
+
+                <!-- Button add ruang -->
+                <a class="px-4 py-2 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover" data-modal-target="add-mahasiswa-modal" data-modal-toggle="add-mahasiswa-modal">
+                    Add Mahasiswa
+                </a>
             </div>
 
-            <!-- Button add ruang -->
-            <a class="px-4 py-2 bg-blue-600 rounded-lg cursor-pointer shadow-md text-white hover:scale-105" data-modal-target="add-ruang-modal" data-modal-toggle="add-ruang-modal">
-                Add Ruang
-            </a>
+            <!-- table -->
+            <section id="mahasiswa" class="shadow-md sm:rounded-lg">
+                <div x-data="tableData" x-init="$nextTick(() => {paggination(1) })">
+                    <div class="overflow-x-auto rounded-md overflow-hidden">
+                        <table class="w-[900px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="w-[15%] px-4 py-3">
+                                        NIM
+                                    </th>
+                                    <th scope="col" class="w-[25%] px-6 py-3">
+                                        Nama Mahasiswa
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Password
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tempat Tanggal Lahir
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Jenis Kelamin
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Kelas
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template x-for="item in tableData">
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td x-text="item.nim" class="px-4 py-3">
+                                        </td>
+                                        <th class="px-6 py-4">
+                                            <div class="flex items-center gap-3 justify-start">
+                                                <img src="/assets/img/foto-profil.png" alt="contoh-profil" class="h-[40px] rounded-full">
+                                                <div x-text="item.nama" class="text-sm"></div>
+                                            </div>
+                                        </th>
+                                        <td x-text="item.password" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.ttl" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.jenis_kelamin" class="px-6 py-4">
+                                        </td>
+                                        <td x-text="item.nama_kelas" class="px-6 py-4">
+                                        </td>
+                                        <td class="px-6 py-4 relative">
+                                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
+
+                                            <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
+                                                <a href="/?aksi=edit&id=<?= $id; ?>" class="edit-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
+                                                </a>
+                                                <a href="/?aksi=delete&id=<?= $id; ?>" class="delete-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav class="w-full flex items-center justify-end py-4 px-3" aria-label="Table navigation">
+                        <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                            <li>
+                                <a href="#mahasiswa" @click="prev()" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                            </li>
+                            <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                                <li>
+                                    <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#mahasiswa" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white hover:text-black"><?= $i ?></a>
+                                </li>
+                            <?php endfor; ?>
+                            <li>
+                                <a href="#mahasiswa" @click="next()" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+
         </div>
-
-        <!-- table -->
-        <div class="shadow-md overflow-x-auto sm:rounded-lg">
-            <table class="w-[800px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed relative" id="table">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="w-[5%] px-4 py-3">
-                            No
-                        </th>
-                        <th scope="col" class="w-[30%] px-6 py-3">
-                            Nama Ruang
-                        </th>
-                        <th scope="col" class="w-[25%] px-6 py-3">
-                            Deskripsi
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Jenis Ruang
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Lantai
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4 deskripsi">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-4 py-3">
-                            1
-                        </td>
-                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <div class="flex items-center gap-3 justify-start">
-                                <img src="/assets/img/contoh-ruang-kelas.jpg" alt="contoh-ruang" class="h-[70px] rounded-md">
-                                <div class="flex flex-col">
-                                    <div class="text-sm font-normal text-slate-400">RT-05</div>
-                                    <div class="text-md font-medium">Ruang Teori 05</div>
-                                </div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Proyektor, AC, Kursi-meja-50, Papan Tulis, Dan lain sebagainya
-                        </td>
-                        <td class="px-6 py-4">
-                            Ruang Teori
-                        </td>
-                        <td class="px-6 py-4">
-                            Lantai 5
-                        </td>
-                        <td class="px-6 py-4 relative">
-                            <i class="fa-solid fa-ellipsis fa-lg cursor-pointer" style="color: #ffffff;"></i>
-
-                            <div id="action-modal-1" aria-labelledby="button-action-1" class="hidden absolute -left-[80px] top-[45px] text-left w-[100px] bg-gray-600 gap text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
-                                <div class="py-2 px-4 hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
-                            </div>
-                        </td>
-                    </tr>
-
-
-                </tbody>
-            </table>
-        </div>
-        <nav class="w-full flex items-center justify-center pt-4" aria-label="Table navigation">
-            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</div>
-
-<!-- Filter -->
-<div class="fixed z-50 -right-[320px] top-[120px] min-h-[450px] bg-gray-700 w-80 p-4 transition-all duration-1000 text-white" id="filter">
-    <div class="flex flex-col bg-gray-800 h-full w-full ">
-        <div class="flex justify-between items-center p-4 border-b border-white">
-            <div class="text-md font-semibold">Filters</div>
-            <div class="cursor-pointer" id="exitFilter">
-                <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
-            </div>
-        </div>
-        <form action="" class="divide-y divide-dashed w-full px-4">
-            <div class="flex w-full flex-col justify-start gap-2 items-center p-4">
-                <div class="">Jenis Ruang</div>
-                <div class="w-full">
-                    <input id="jenis-ruang-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-200 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-1" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Teori</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-2" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-2" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Praktikum</label>
-                </div>
-                <div class="w-full">
-                    <input checked id="jenis-ruang-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-3" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Gabungan</label>
-                </div>
-            </div>
-            <div class="flex w-full flex-col justify-start gap-2 items-center p-4">
-                <div class="">Tipe Lantai</div>
-                <div class="w-full">
-                    <input id="jenis-ruang-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-200 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-1" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 5</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-2" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-2" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 6</label>
-                </div>
-                <div class="w-full">
-                    <input checked id="jenis-ruang-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-3" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 7</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-3" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-3" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 8</label>
-                </div>
-            </div>
-
-            <div class="w-full flex justify-end items-center py-2 px-4">
-                <input type="submit" value="Apply" class="py-2 px-4 bg-blue-600 text-white text-sm font-medium rounded-lg hover:scale-105">
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="fixed z-50 right-0 top-[45%] w-10 h-10 p-2 bg-biru text-center rounded-l-md">
-    <div id="buttonFilter" class="cursor-pointer">
-        <i class="fa-solid fa-filter fa-flip" style="color: #ffffff;"></i>
     </div>
 </div>
 
 <!-- Main modal -->
-<div id="add-ruang-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
+<div id="add-mahasiswa-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Add New Ruang
+                    Add New Mahasiswa
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="add-ruang-modal">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="add-mahasiswa-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5">
+            <form class="p-4 md:p-5" method="POST" action="">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Ruang</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="RT_05" required="">
+                        <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM</label>
+                        <input type="text" name="nim" id="nim" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="12345678910" required="">
                     </div>
                     <div class="col-span-1">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Ruang</label>
-                        <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ruang Teori_05" required="">
+                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Mahasiswa</label>
+                        <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Lengkap" required="">
                     </div>
                     <div class="col-span-1">
-                        <label for="jenis-ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Ruang</label>
-                        <select id="jenis-ruang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select Ruang</option>
-                            <option value="ruang-teori">Ruang Teori</option>
-                            <option value="ruang-praktikum">Ruang Praktikum</option>
-                            <option value="ruang-gabungan">Ruang Gabungan</option>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="text" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="abc123#$%" required="">
+                    </div>
+                    <div class="col-span-1 relative">
+                        <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
+                        <select x-data="getKelas" id="kelas" name="kelas" placeholder="Pilih kelas..." class="absolute z-[9999] w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                            <option value="">Select Kelas</option>
+                            <template x-for="kelas in listKelas">
+                                <option x-text="kelas.nama" :value='kelas.id'></option>
+                            </template>
                         </select>
                     </div>
                     <div class="col-span-1">
-                        <label for="lantai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lantai</label>
-                        <select id="lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select Lantai</option>
-                            <option value="lantai-5">Lantai 5</option>
-                            <option value="lantai-6">Lantai 6</option>
-                            <option value="lantai-7">Lantai 7</option>
-                            <option value="lantai-8">Lantai 8</option>
-                        </select>
+                        <label for="tglLahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
+                        <input type="date" name="tglLahir" id="tglLahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+                    <div class="col-span-1">
+                        <label for="tmptLahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
+                        <input type="text" name="tmptLahir" id="tmptLahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="cth: Malang" required="">
                     </div>
                     <div class="col-span-2">
-                        <label for="deskripsi ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Ruang</label>
-                        <textarea id="deskripsi ruang" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="deskripsi ruang"></textarea>
-                    </div>
-                    <div class="col-span-2">
-                        <label for="gambar-ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar Ruangan</label>
-                        <input type="file" name="gambar-ruang" id="gambar-ruang" class=" text-white">
+                        <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</div>
+                        <div class="flex flex-row w-full justify-evenly">
+                            <div class="flex items-center me-4">
+                                <input id="laki-laki" type="radio" value="L" name="jenis_kelamin" class="w-4 h-4 text-biru bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="laki-laki" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laki-Laki</label>
+                            </div>
+                            <div class="flex items-center me-4">
+                                <input id="perempuan" type="radio" value="P" name="jenis_kelamin" class="w-4 h-4 text-biru bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="perempuan" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Perempuan</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="flex w-full justify-end items-center">
-                    <button type="submit" class="text-white items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-end dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Add
-                    </button>
+                    <input value="Add" type="submit" class="text-white items-center bg-indigo-600 hover:bg-bingu_hover focus:ring-4 focus:outline-none focus:ring-indigo-900 font-medium rounded-lg text-sm px-5 py-2.5 text-end ">
+                    </input>
                 </div>
             </form>
         </div>
-
     </div>
 </div>
 
 <script>
     // action modal
 
-    const buttonAction = document.querySelectorAll("i");
+    let buttonAction = document.querySelectorAll("i");
 
-    document.querySelector("#ruang").addEventListener("click", (e) => {
+    document.querySelector("#mahasiswa").addEventListener("click", (e) => {
         buttonAction.forEach(node => {
-            if (node === e.target) {
-                node.nextElementSibling.classList.toggle("hidden")
-            } else if (e.target !== node && !e.target.classList.contains("delete-modal") && !e.target.classList.contains("edit-modal")) {
-                node.nextElementSibling.classList.add("hidden");
+            try {
+                if (node === e.target) {
+                    node.nextElementSibling.classList.toggle("hidden")
+                } else if (e.target !== node && !e.target.classList.contains("delete-modal") && !e.target.classList.contains("edit-modal")) {
+                    node.nextElementSibling.classList.add("hidden");
+                }
+            } catch (error) {
+
             }
         });
     });
 
-    // filter
+    // table & pagination
+    const buttonPaggination = document.querySelectorAll('#button-pagination');
 
-    const exitFilter = document.querySelector("#exitFilter");
-    const filter = document.querySelector("#filter");
-    const buttonFilter = document.querySelector("#buttonFilter");
+    function setActive(current_page) {
+        buttonPaggination.forEach((button) => {
+            if (button.innerText == current_page) {
+                button.classList.remove("dark:bg-gray-800");
+                button.classList.add("dark:bg-gray-700");
+                button.classList.add("bg-gray-200")
+            } else {
+                button.classList.add('dark:bg-gray-800');
+                button.classList.add('bg-white');
+                button.classList.remove("dark:bg-gray-700");
+                button.classList.remove("bg-gray-200");
+            }
+        });
+    }
 
-    exitFilter.addEventListener("click", () => {
-        filter.classList.add("-right-[320px]");
-        filter.classList.remove("right-0");
-        buttonFilter.parentElement.classList.remove("hidden")
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('tableData', () => ({
+            tableData: null,
+            current_page: 1,
+
+            paggination(page = '1') {
+                fetch('/api/mahasiswa/' + page)
+                    .then(response => response.json())
+                    .then(data => {
+                        this.tableData = data.jmlMahasiswa;
+                        this.current_page = data.currentPage;
+                        setActive(this.current_page);
+                    }).then(e => {
+                        buttonAction = document.querySelectorAll("i");
+                    });
+            },
+            next() {
+                if (this.current_page == <?= $totalPage ?>) {
+                    return;
+                }
+                fetch('/api/mahasiswa/' + (parseInt(this.current_page) + 1))
+                    .then(response => response.json())
+                    .then(data => {
+                        this.tableData = data.jmlMahasiswa;
+                        this.current_page = data.currentPage;
+                        setActive(this.current_page);
+                    });
+            },
+            prev() {
+                if (this.current_page == 1) {
+                    return;
+                }
+                fetch('/api/mahasiswa/' + (parseInt(this.current_page) - 1))
+                    .then(response => response.json())
+                    .then(data => {
+                        this.tableData = data.jmlMahasiswa;
+                        this.current_page = data.currentPage;
+                        setActive(this.current_page);
+                    });
+            }
+        }))
     })
 
-    buttonFilter.addEventListener("click", () => {
-        buttonFilter.parentElement.classList.add("hidden")
-        filter.classList.remove("-right-[320px]");
-        filter.classList.add("right-0");
-    })
+    const kelas = [
 
+    ];
 
-    // view more fitur (not yet)
-
-    // const deskripsiRuang = document.querySelectorAll(".deskripsi");
-
-    // deskripsiRuang.forEach(dr => {
-    //     console.log(dr.innerText.length);
-    // })
+    const getKelas = () => {
+        return {
+            listKelas: [{
+                    id: 'K001',
+                    nama: 'TI-2A'
+                },
+                {
+                    id: 'K002',
+                    nama: 'TI-2B'
+                },
+                {
+                    id: 'K003',
+                    nama: 'TI-2C'
+                },
+                {
+                    id: 'K004',
+                    nama: 'TI-2D'
+                },
+                {
+                    id: 'K005',
+                    nama: 'TI-2E'
+                },
+                {
+                    id: 'K006',
+                    nama: 'TI-2F'
+                },
+                {
+                    id: 'K007',
+                    nama: 'TI-2G'
+                },
+                {
+                    id: 'K008',
+                    nama: 'TI-2H'
+                },
+                {
+                    id: 'K009',
+                    nama: 'TI-2I'
+                },
+            ]
+        }
+    }
 </script>
 </body>
 
