@@ -70,7 +70,7 @@
             </div>
             <!-- hedaer -->
 
-            <div class="w-full  font-serif  grid md:grid-cols-3 grid-cols-1">
+            <form class="w-full  font-serif  grid md:grid-cols-3 grid-cols-1">
                 <div class=" md:col-span-1 w-full m-3 md:ml-12 ">
 
                     <div class="mb-5 hidden md:block">
@@ -118,7 +118,7 @@
                     <div class="text-sm text-gray-900 dark:text-white p-4">
                         <div class="font-bold text-lg mb-2">Ruang Teori 1</div>
                         <div class="w-full justify-center flex">
-                            <img src="/assets/img/booking/class1.jpg" class="w-[400px] h-auto mb-6" alt="">
+                            <img src="/assets/img/booking/class1.jpg" class="w-[300px] h-auto mb-6" alt="">
                         </div>
                         <div class="font-bold text-lg mb-2">Denah Ruang</div>
                         <div class="w-full justify-center flex">
@@ -126,23 +126,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
 
-            <div x-data="formulir" class="flex justify-center">
-                <form id="formulir" action="/booking" method="post" @submit.prevent="handleSubmit">
+            <div class="flex justify-center">
+                <form action="/booking" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_dosen" value="<?= $request->id_dosen ?>">
                     <input type="hidden" name="keterangan" value="<?= $request->keterangan ?>">
                     <input type="hidden" name="id_ruang" value="<?= $request->id_ruang ?>">
-                    <input type="hidden" name="id_mahasiswa" value="<?= $request->id_mahasiswa ?? null ?>">
+                    <input type="hidden" name="id_mahasiswa" value="<?= $request->id_mahasiswa ?>">
                     <input type="hidden" name="status" value="<?= $request->status ?>">
                     <input type="hidden" name="tanggal" value="<?= $request->tanggal ?>">
                     <input type="hidden" name="id_kelas" value="<?= $request->id_kelas ?>">
                     <input type="hidden" name="jam_mulai" value="<?= $request->jam_mulai ?>">
                     <input type="hidden" name="jam_selesai" value="<?= $request->jam_selesai ?>">
-                    <input type="hidden" name="lampiran" value="<?= $lampiran ?>">
-                    <input type="hidden" name="id_last_dosen" value="<?= $request->id_dosen_last ?? null ?>">
-                    <button type="submit" class=" mr-0 px-3 sm:w-[800px] text-center  text-white  bg-bingu hover:bg-bingu_hover focus:ring-4 focus:outline-none  focus:ring-blue-300 font-medium rounded-lg text-xl py-2.5  dark:bg-bingu dark:hover:bg-bingu_hover dark:focus:ring-blue-800">
+                    <input type="text" class="hidden" name="lampiran" value="<?= $lampiran ?>">
+                    <button type="submit" class=" mr-0  sm:w-[800px] text-center   text-white  bg-bingu hover:bg-bingu_hover focus:ring-4 focus:outline-none  focus:ring-blue-300 font-medium rounded-lg text-xl   py-2.5  dark:bg-bingu dark:hover:bg-bingu_hover dark:focus:ring-blue-800">
                         Create Booking
                     </button>
                 </form>
@@ -172,5 +171,3 @@
     </div>
 
 </body>
-
-<script src="/assets/js/review.js"></script>

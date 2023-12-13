@@ -16,6 +16,14 @@ class HomeController extends Controller
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+        // cek lampiran
+        if (isset($_COOKIE['lampiran'])) {
+            // delete old file
+            $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+            unlink($oldFile);
+            // delete cookie
+            setcookie('lampiran', '', time() - 3600);
+        }
 
         if (isset($_SESSION['user'])) {
 

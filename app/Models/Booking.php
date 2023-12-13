@@ -15,8 +15,8 @@ class Booking extends Model
             $sql = "SELECT * FROM view_getbooking WHERE id_kelas = '$id_kelas' ORDER BY created_at DESC";
             $result = $this->query($sql);
             return $result;
-        } else
-            $nip = $user->nip;
+        }
+        $nip = $user->nip;
         $sql = "SELECT * FROM view_getbooking WHERE id_dosen = '$nip' ORDER BY created_at DESC";
         $result = $this->query($sql);
         return $result;
@@ -32,7 +32,6 @@ class Booking extends Model
             $id_booking = 'B001';
         } else {
             $id_booking = $result[0]['id_booking'];
-            //  B001,B002,B003
             $id_booking = substr($id_booking, 1);
             $last_id = intval(substr($id_booking, -3));
             $last_id_padded = str_pad($last_id + 1, 3, '0', STR_PAD_LEFT);
@@ -93,5 +92,10 @@ class Booking extends Model
         $total = $data['total'];
         $totalPage = ceil($total / 10);
         return $totalPage;
+    }
+
+    public function dosenVerif(string $id_booking, string $status): bool
+    {
+        return $this->update(['status' => $status], $id_booking, 'id_booking');
     }
 }
