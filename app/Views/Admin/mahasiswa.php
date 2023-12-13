@@ -143,12 +143,12 @@
                     </div>
                     <div class="col-span-1 relative">
                         <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <select x-data="getKelas" id="kelas" name="kelas" placeholder="Pilih kelas..." class="absolute z-[9999] w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                            <option value="">Select Kelas</option>
-                            <template x-for="kelas in listKelas">
-                                <option x-text="kelas.nama" :value='kelas.id'></option>
-                            </template>
-                        </select>
+                        <input id="kelas" list="listKelas" name="kelas" placeholder="Pilih kelas..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <datalist id="listKelas">
+                                <?php foreach ($listKelas as $item) : ?>
+                                    <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
+                                <?php endforeach ?>
+                            </datalist>
                     </div>
                     <div class="col-span-1">
                         <label for="tglLahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
@@ -260,52 +260,6 @@
             }
         }))
     })
-
-    const kelas = [
-
-    ];
-
-    const getKelas = () => {
-        return {
-            listKelas: [{
-                    id: 'K001',
-                    nama: 'TI-2A'
-                },
-                {
-                    id: 'K002',
-                    nama: 'TI-2B'
-                },
-                {
-                    id: 'K003',
-                    nama: 'TI-2C'
-                },
-                {
-                    id: 'K004',
-                    nama: 'TI-2D'
-                },
-                {
-                    id: 'K005',
-                    nama: 'TI-2E'
-                },
-                {
-                    id: 'K006',
-                    nama: 'TI-2F'
-                },
-                {
-                    id: 'K007',
-                    nama: 'TI-2G'
-                },
-                {
-                    id: 'K008',
-                    nama: 'TI-2H'
-                },
-                {
-                    id: 'K009',
-                    nama: 'TI-2I'
-                },
-            ]
-        }
-    }
 </script>
 </body>
 

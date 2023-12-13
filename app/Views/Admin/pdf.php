@@ -23,7 +23,7 @@
         <div class="bodySurat text-xs mt-4 font-">
             <div class="flex justify-between">
                 <div class="font-surat">
-                    <p>Nomor &emsp;: 002/HCK/WRI/X/2023</p>
+                    <p>Nomor &emsp;: 002/HCK/polinema/X/2023</p>
                     <p>Lampiran : -</p>
                     <p>Hal &emsp;&emsp;&ensp;: Peminjaman Gedung</p>
                     <p class="mt-7">Yth. Ketua Jurusan Teknologi Informasi</p>
@@ -36,7 +36,7 @@
 
             <div class="isi font-surat">
                 <p class="mt-5">Dengan hormat,</p>
-                <p class="mt-2">Sehubungan dengan adanya kegiatan “Hactoberfest – Business and Design Elux Space”, kami mohon bantuan peminjaman ruangan LSI 1, LSI 2, LSI 3, LPY 2, dan LPY 3 Lantai 6 Gedung Sipil Politeknik Negeri Malang beserta fasilitas yang ada didalamnya dan daya listrik di gedung tersebut.</p>
+                <p class="mt-2">Sehubungan dengan adanya kegiatan “Peminjaman Ruang Kelas”, kami mohon bantuan peminjaman ruangan LSI 1, LSI 2, LSI 3, LPY 2, dan LPY 3 Lantai 6 Gedung Sipil Politeknik Negeri Malang beserta fasilitas yang ada didalamnya dan daya listrik di gedung tersebut.</p>
                 <p class="mt-4">Kegiatan ini akan diselenggarakan pada:</p>
                 <div class="acara ml-5 mt-1">
                     <p>hari, tanggal &ensp;: &thinsp; Sabtu, 21 Oktober 2023</p>

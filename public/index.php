@@ -49,7 +49,7 @@ Router::add('POST', '/admin/dosen', AdminController::class, 'storeDosen', [AuthM
 Router::add('GET', '/admin/jadwal', AdminController::class, 'jadwal', [AuthMiddleware::class]);
 Router::add('GET', '/admin/booking', AdminController::class, 'booking', [AuthMiddleware::class]);
 Router::add('GET', '/admin/report', AdminController::class, 'report', [AuthMiddleware::class]);
-Router::add('GET', '/admin/pdf', AdminController::class, 'pdf', [AuthMiddleware::class]);
+Router::add('GET', '/admin/pdf/{id_booking}', AdminController::class, 'pdf', [AuthMiddleware::class]);
 
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');
