@@ -163,4 +163,10 @@ class AdminController extends Controller
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/pdf", []);
     }
+
+    public function pdf($id_booking)
+    {
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        View::render("Admin/pdf", []);
+    }
 }
