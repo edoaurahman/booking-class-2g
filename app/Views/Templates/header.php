@@ -86,7 +86,7 @@ $_SESSION['csrf'] = $csrf;
                                 <?php if ($status_booking === 'waiting_dosen_verification') : ?>
                                     <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
                                         <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                                            <div class="grid grid-cols-4 gap-4">
+                                            <div class="grid grid-cols-2 gap-4">
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300"> <?= $jam_mulai ?></p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>
