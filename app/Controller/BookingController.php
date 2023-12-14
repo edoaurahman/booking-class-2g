@@ -17,6 +17,14 @@ class BookingController extends Controller
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+        // cek lampiran
+        if (isset($_COOKIE['lampiran'])) {
+            // delete old file
+            $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+            unlink($oldFile);
+            // delete cookie
+            setcookie('lampiran', '', time() - 3600);
+        }
 
         if (isset($_SESSION['user'])) {
 
@@ -24,7 +32,7 @@ class BookingController extends Controller
             $level = $_SESSION['level'];
             if ($level == 'mahasiswa') {
                 $user = new Mahasiswa();
-                $user = $user->find($username, 'nim');
+                $user = $user->getDetailMahasiswa($username);
                 $booking = new Booking();
                 $notification = $booking->getNotification($level, $user);
             } else {
