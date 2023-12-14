@@ -179,31 +179,51 @@
 
 
     <!-- mobile -->
-    <div class="md:hidden fixed z-50 -right-[560px] left-[800px]  top-[120px] h-auto rounded-sm dark:bg-dark_grey6 bg-gray-100 p-4 transition-all ease-in-out duration-1000 text-white " id="filter">
-        <div class="block col-span-2 bg-gray-100 dark:bg-dark_grey6 row-span-2 font-serif">
-            <div class="header p-5  text-[22px] bg-biru2 rounded-md text-white py-2 pl-4">
-                Preview
-            </div>
-            <div class="text-sm text-gray-900 dark:text-white p-4">
-                <div class="font-bold mb-2">Ruang Teori 1</div>
-                <span class="">Denah ruang: </span>
-                <div class="w-full justify-center flex">
-                    <img src="/assets/img/lantai/Lantai6.png" class="w-[400px] h-auto mb-6" alt="">
+    <div x-data @click.outside="exitFilter()">
+        <div class="md:hidden fixed z-[9999] -right-[560px] top-[120px] h-auto rounded-sm dark:bg-dark_grey6 bg-gray-100 p-4 transition-all ease-in-out duration-1000 text-white " id="filter">
+            <div class="block col-span-2 bg-gray-100 dark:bg-dark_grey6 row-span-2 font-serif">
+                <div class="header p-5  text-[22px] bg-biru2 rounded-md text-white py-2 pl-4">
+                    Preview
                 </div>
-                <div class="text-sm mb-2 font-semibold text-gray-900 dark:text-white">
-                    Jam ke <br>
-                    <p class="-my-1 font-thin">1,2,4</p>
-                </div>
-                <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                    Tanggal <br>
-                    <p class="-my-1 font-thin">30 Desember 2023</p>
+                <div class="text-sm text-gray-900 dark:text-white p-4">
+                    <div class="font-bold mb-2">Ruang Teori 1</div>
+                    <span class="">Denah ruang: </span>
+                    <div class="w-full justify-center flex">
+                        <img src="/assets/img/lantai/Lantai6.png" class="w-[400px] h-auto mb-6" alt="">
+                    </div>
+                    <div class="text-sm mb-2 font-semibold text-gray-900 dark:text-white">
+                        Jam ke <br>
+                        <p class="-my-0.5 font-thin"><?= $jam_mulai . ' - ' . $jam_selesai ?></p>
+                    </div>
+                    <div class="text-sm font-semibold text-gray-900 dark:text-white">
+                        Tanggal <br>
+                        <p class="-my-0.5 font-thin"><?= $tanggal; ?></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="sm:hidden block fixed z-50 right-0 top-[45%] w-10 h-10 p-2 bg-biru text-center rounded-l-md cursor-pointer" id="buttonFilter">
-        <i class="fa-solid fa-eye " style="color: #ffffff; " id="imgButtonFilter"></i>
+        <div class="sm:hidden block fixed z-50 right-0 top-[45%] w-10 h-10 p-2 bg-biru text-center rounded-l-md cursor-pointer" id="buttonFilter">
+            <i class="fa-solid fa-eye " style="color: #ffffff; " id="imgButtonFilter"></i>
+        </div>
     </div>
 </body>
+
+<script>
+    const filter = document.getElementById('filter');
+    const buttonFilter = document.getElementById('buttonFilter');
+    const imgButtonFilter = document.getElementById('imgButtonFilter');
+
+    buttonFilter.addEventListener("click", () => {
+        buttonFilter.classList.add("hidden")
+        filter.classList.remove("-right-[560px]");
+        filter.classList.add("right-0");
+    })
+
+    const exitFilter = () => {
+        filter.classList.add("-right-[560px]");
+        filter.classList.remove("right-0");
+        buttonFilter.classList.remove("hidden")
+    }
+</script>
