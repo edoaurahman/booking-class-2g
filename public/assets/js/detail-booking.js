@@ -1,96 +1,130 @@
-// Pemilihan hari
-document.addEventListener("DOMContentLoaded", function () {
-  var tanggalSekarangElement = document.getElementById("tanggalSekarang");
-  var satuHariKedepanElement = document.getElementById("satuHariKedepan");
-  var duaHariKedepanElement = document.getElementById("duaHariKedepan");
-  var tigaHariKedepanElement = document.getElementById("tigaHariKedepan");
-  var empatHariKedepanElement = document.getElementById("empatHariKedepan");
-  var limaHariKedepanElement = document.getElementById("limaHariKedepan");
-  var enamHariKedepanElement = document.getElementById("enamHariKedepan");
-  var tujuhHariKedepanElement = document.getElementById("tujuhHariKedepan");
+const inputTanggal = document.querySelector('#inputTanggal')
+let timezoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
 
-  // Mendapatkan tanggal saat ini
-  var tanggalSekarang = new Date();
-  // Info Tgl saat ini
-  var informasiTanggalSekarang = getInformasiTanggal(tanggalSekarang);
-  tanggalSekarangElement.innerHTML = informasiTanggalSekarang;
+const maxDate = new Date(Date.now() - timezoneOffset)
+maxDate.setDate(maxDate.getDate() + 6)
+inputTanggal.setAttribute('max', maxDate.toISOString().split('T')[0])
 
-  // Mendapatkan 1 hari ke depan
-  var satuHariKedepan = new Date();
-  satuHariKedepan.setDate(satuHariKedepan.getDate() + 1);
-  // Info Tgl 1+
-  var informasisatuHariKedepan = getInformasiTanggal(satuHariKedepan);
-  satuHariKedepanElement.innerHTML = informasisatuHariKedepan;
+const today = new Date(Date.now() - timezoneOffset)
+inputTanggal.setAttribute('min', today.toISOString().split('T')[0])
+inputTanggal.value = today.toISOString().split('T')[0]
 
-  // Mendapatkan 2 hari ke depan
-  var duaHariKedepan = new Date();
-  duaHariKedepan.setDate(duaHariKedepan.getDate() + 2);
-  // Info Tgl 2+
-  var informasiduaHariKedepan = getInformasiTanggal(duaHariKedepan);
-  duaHariKedepanElement.innerHTML = informasiduaHariKedepan;
+const padZero = (num) => {
+  return String(num).padStart(2, "0");
+};
 
-  // Mendapatkan 3 hari ke depan
-  var tigaHariKedepan = new Date();
-  tigaHariKedepan.setDate(tigaHariKedepan.getDate() + 3);
-  // Info Tgl 3+
-  var informasitigaHariKedepan = getInformasiTanggal(tigaHariKedepan);
-  tigaHariKedepanElement.innerHTML = informasitigaHariKedepan;
+function alert() {
+  swal({
+    title: "Warning !!!",
+    text: "Pilih Jam Terlebih Dahulu!",
+    icon: "warning",
+  });
+}
 
-  // Mendapatkan 4 hari ke depan
-  var empatHariKedepan = new Date();
-  empatHariKedepan.setDate(empatHariKedepan.getDate() + 4);
-  // Info Tgl 4+
-  var informasiempatHariKedepan = getInformasiTanggal(empatHariKedepan);
-  empatHariKedepanElement.innerHTML = informasiempatHariKedepan;
+document.addEventListener("alpine:init", () => {
+  Alpine.data("detailBooking", () => ({
+    id_ruang: window.location.pathname.split("/")[2],
+    detailBooking: [],
+    selectedHours: [],
+    listJam: [
+      "J001",
+      "J002",
+      "J003",
+      "J004",
+      "J005",
+      "J006",
+      "J007",
+      "J008",
+      "J009",
+      "J010",
+      "J011",
+    ],
+    id_jam_mulai: "",
+    id_jam_selesai: "",
+    tanggal: "",
+    async init() {
+      const tanggal = inputTanggal.value;
+      this.tanggal = tanggal;
+      const day = new Date(tanggal).toLocaleDateString("id-ID", {
+        weekday: "long",
+      });
+      const response = await fetch("/api/status-ruang/" + this.id_ruang);
+      const data = await response.json();
+      this.detailBooking = data[day];
+    },
+    async fetchDetailBooking() {
+      const tanggal = inputTanggal.value;
+      this.tanggal = tanggal;
+      const day = new Date(tanggal).toLocaleDateString("id-ID", {
+        weekday: "long",
+      });
+      console.log(day);
+      const response = await fetch('/api/status-ruang/' + this.id_ruang)
+      const data = await response.json()
+      this.detailBooking = data[day]
+    },
+    toggleSelectedRange(hour) {
+      const currentIndex = this.selectedHours.indexOf(hour);
+      const maxHour = Math.max(...this.selectedHours);
 
-  // Mendapatkan 5 hari ke depan
-  var limaHariKedepan = new Date();
-  limaHariKedepan.setDate(limaHariKedepan.getDate() + 5);
-  // Info Tgl 5+
-  var informasilimaHariKedepan = getInformasiTanggal(limaHariKedepan);
-  limaHariKedepanElement.innerHTML = informasilimaHariKedepan;
+      if (
+        hour < maxHour ||
+        (this.selectedHours.length > 2 && currentIndex === -1)
+      ) {
+        return;
+      }
 
-  // Mendapatkan 6 hari ke depan
-  var enamHariKedepan = new Date();
-  enamHariKedepan.setDate(enamHariKedepan.getDate() + 6);
-  // Info Tgl 6+
-  var informasienamHariKedepan = getInformasiTanggal(enamHariKedepan);
-  enamHariKedepanElement.innerHTML = informasienamHariKedepan;
+      if (currentIndex === -1) {
+        this.selectedHours.push(hour);
+      } else {
+        this.selectedHours.splice(currentIndex, maxHour);
+      }
 
-  // Mendapatkan 7 hari ke depan
-  var tujuhHariKedepan = new Date();
-  tujuhHariKedepan.setDate(tujuhHariKedepan.getDate() + 7);
-  // Info Tgl 7+
-  var informasiTujuhHariKedepan = getInformasiTanggal(tujuhHariKedepan);
-  tujuhHariKedepanElement.innerHTML = informasiTujuhHariKedepan;
+      if (this.selectedHours.length > 1) {
+        const minHour = Math.min(...this.selectedHours);
+        const maxHour = Math.max(...this.selectedHours);
+        for (let i = minHour + 1; i < maxHour; i++) {
+          if (!this.selectedHours.includes(i)) {
+            this.selectedHours.push(i);
+          }
+        }
+      }
+      this.id_jam_mulai = this.listJam[this.selectedHours[0] - 1];
+      this.id_jam_selesai = this.listJam[this.selectedHours[1] - 1];
+    },
+    next(e) {
+      if (this.id_jam_mulai !== '' && this.id_jam_selesai !== '') {
+        return true;
+      } else {
+        e.preventDefault();
+        swal({
+          title: "Warning !!!",
+          text: "Pilih Jam Terlebih Dahulu!",
+          icon: "warning",
+        });
+        return false;
+      }
+    },
+  }));
 });
 
-function getInformasiTanggal(tanggal) {
-  var hari = tanggal.toLocaleDateString("id-ID", { weekday: "long" });
-  var tanggalStr = tanggal.getDate();
-  var bulan = tanggal.toLocaleDateString("id-ID", { month: "long" });
-  var tahun = tanggal.getFullYear();
+document.addEventListener("DOMContentLoaded", function () {
+  // Get references to the elements
+  const toggleButton = document.getElementById("toggleButton");
+  const tableContainer = document.getElementById("tableContainer");
 
-  return hari + ", " + tanggalStr + " " + bulan + " " + tahun;
-}
+  // Add click event listener to the toggle button
+  toggleButton.addEventListener("click", function () {
+    // Toggle the visibility of the table container
+    tableContainer.classList.toggle("hidden");
 
-// kalimat
-function transitionButton() {
-  var More = document.getElementById("readMore");
-  var Less = document.getElementById("readLess");
-  var Icon = document.getElementById("iconMoreAndLess");
-  More.classList.toggle("hidden");
-  Less.classList.toggle("hidden");
-  Icon.classList.toggle("rotate-180");
-}
-
-// Informasi Jam Ke-
-const toolTip = document.getElementById("popover-no-arrow");
-
-function tampil() {
-  if (window.innerWidth < 640) {
-    return;
-  }
-  toolTip.classList.toggle("invisible");
-  toolTip.classList.toggle("visible");
-}
+    // Change the text of the toggle button based on visibility
+    if (tableContainer.classList.contains("hidden")) {
+      toggleButton.innerHTML =
+        'Tampilkan Detail Jam <i class="fa-solid fa-angles-right"></i>';
+    } else {
+      toggleButton.innerHTML =
+        'Tutup Detail Jam <i class="fa-solid fa-angles-right"></i>';
+    }
+  });
+});

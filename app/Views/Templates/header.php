@@ -41,11 +41,18 @@ $_SESSION['csrf'] = $csrf;
                 </button>
 
                 <!-- Dropdown menu -->
-                <div id="dropdownNotification" class="z-20 hidden w-[85%] md:w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" aria-labelledby="dropdownNotificationButton">
+                <div x-data="notificationList" id="dropdownNotification" class="z-20 hidden w-[85%] md:w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" aria-labelledby="dropdownNotificationButton">
                     <div class="block px-4 py-2 font-medium text-center text-gray-600 rounded-t-lg bg-gray-50 dark:bg-gray-700 dark:text-white">
                         Notifications
                     </div>
-                    <div x-data="notificationList" class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
+                    <div class="divide-y divide-gray-100 dark:divide-gray-600 max-h-[500px] overflow-y-auto">
+                        <?php if (empty($notification)) : ?>
+                            <div class="w-full h-20">
+                                <div class="flex justify-center items-center h-full">
+                                    <span class="text-gray-400 dark:text-gray-500">No notification</span>
+                                </div>
+                            </div>
+                        <?php endif ?>
                         <?php foreach ($notification as $key => $item) : ?>
                             <?php extract($item); ?>
                             <?php if ($status_booking === 'waiting_dosen_verification') : ?>
@@ -66,8 +73,18 @@ $_SESSION['csrf'] = $csrf;
                                     <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
                                         <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
                                             <p class="mb-2 text-gray-500 dark:text-gray-400">Verification Booking</p>
-                                            <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Proses</button>
-                                            <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Tolak</button>
+                                            <div class="flex">
+                                                <form action="/booking/dosen/verificaton" method="post">
+                                                    <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                    <input type="hidden" name="status" value="onprocess">
+                                                    <input type="submit" value="Proses" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
+                                                </form>
+                                                <form action="/booking/dosen/verificaton" method="post">
+                                                    <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                    <input type="hidden" name="status" value="canceled">
+                                                    <input type="submit" value="Tolak" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -90,6 +107,9 @@ $_SESSION['csrf'] = $csrf;
                                             <?php elseif ($status_booking === 'done') : ?>
                                                 <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
                                                 Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is done.
+                                            <?php elseif ($status_booking === 'urgent') : ?>
+                                                <span class="bg-red-700 p-0.5 rounded-md font-semibold text-white">urgent</span><br>
+                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
                                             <?php endif ?>
                                         </div>
                                         <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
