@@ -55,23 +55,49 @@ $_SESSION['csrf'] = $csrf;
                         <?php endif ?>
                         <?php foreach ($notification as $key => $item) : ?>
                             <?php extract($item); ?>
-                            <?php if ($status_booking === 'waiting_dosen_verification') : ?>
-                                <div <?= $level == 'dosen' ? 'id="accordion-collapse-' . $key . '"' : 'accordion-collapse' ?> data-accordion="collapse">
-                                    <span <?= $level == 'dosen' ? 'aria-controls="accordion-collapse-body-' . $key . '"' : '' ?> <?= $level == 'dosen' ? 'data-accordion-target="#accordion-collapse-body-' . $key . '"' : '' ?> aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                                        <div class="flex-shrink-0">
-                                            <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                                        </div>
-                                        <div class="w-full ps-3">
-                                            <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                                <span class="bg-bingu p-0.5 rounded-md font-semibold text-white">waiting verification</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?></span> is waiting lecture verification.
-                                            </div>
-                                            <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
-                                        </div>
-                                    </span>
-
+                            <div <?= $level == 'dosen' ? 'id="accordion-collapse-' . $key . '"' : 'accordion-collapse' ?> data-accordion="collapse">
+                                <span <?= $level == 'dosen' ? 'aria-controls="accordion-collapse-body-' . $key . '"' : '' ?> <?= $level == 'dosen' ? 'data-accordion-target="#accordion-collapse-body-' . $key . '"' : '' ?> aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                    <div class="flex-shrink-0">
+                                        <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
+                                    </div>
+                                    <div class="w-full ps-3 text-gray-500 text-sm mb-1.5 dark:text-gray-400">
+                                        <?php if ($status_booking === 'success') : ?>
+                                            <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
+                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is success.
+                                        <?php elseif ($status_booking === 'onprocess') : ?>
+                                            <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
+                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
+                                        <?php elseif ($status_booking === 'canceled') : ?>
+                                            <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is cancelled by something.
+                                        <?php elseif ($status_booking === 'done') : ?>
+                                            <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is done.
+                                        <?php elseif ($status_booking === 'urgent') : ?>
+                                            <span class="bg-red-700 p-0.5 rounded-md font-semibold text-white">urgent</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
+                                        <?php elseif ($status_booking === 'waiting_dosen_verification') : ?>
+                                            <span class="bg-bingu p-0.5 rounded-md font-semibold text-white">waiting verification</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?></span> is waiting lecture verification.
+                                        <?php endif ?>
+                                        <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
+                                    </div>
+                                </span>
+                                <?php if ($status_booking === 'waiting_dosen_verification') : ?>
                                     <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
                                         <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                            <div class="grid grid-cols-4 gap-4">
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"> <?= $jam_mulai ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_selesai ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Kelas</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama_kelas ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
+                                                <div class="col-span-2">
+                                                    <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
+                                                </div>
+                                            </div>
                                             <p class="mb-2 text-gray-500 dark:text-gray-400">Verification Booking</p>
                                             <div class="flex">
                                                 <form action="/booking/dosen/verificaton" method="post">
@@ -87,35 +113,22 @@ $_SESSION['csrf'] = $csrf;
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php else : ?>
-                                <span class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                                    <div class="flex-shrink-0">
-                                        <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                                    </div>
-                                    <div class="w-full ps-3">
-                                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                            <?php if ($status_booking === 'success') : ?>
-                                                <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
-                                                Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is success.
-                                            <?php elseif ($status_booking === 'onprocess') : ?>
-                                                <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
-                                                Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
-                                            <?php elseif ($status_booking === 'canceled') : ?>
-                                                <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is cancelled by something.
-                                            <?php elseif ($status_booking === 'done') : ?>
-                                                <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is done.
-                                            <?php elseif ($status_booking === 'urgent') : ?>
-                                                <span class="bg-red-700 p-0.5 rounded-md font-semibold text-white">urgent</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
-                                            <?php endif ?>
+                                <?php endif ?>
+                                <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
+                                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                        <div class="grid grid-cols-2">
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_mulai ?></p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_selesai ?></p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Kelas</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama_kelas ?></p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
                                         </div>
-                                        <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
                                     </div>
-                                </span>
-                            <?php endif ?>
+                                </div>
+                            </div>
                         <?php endforeach ?>
                     </div>
                 </div>
