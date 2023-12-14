@@ -46,7 +46,7 @@ class BookingController extends Controller
         $data = $this->_getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/booking", []);
+        View::render("Booking/booking", []);
         View::render("Templates/footer", []);
     }
 
@@ -60,7 +60,7 @@ class BookingController extends Controller
         // $this->ddd($ruang);
 
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/detail-booking", ['ruang' => $ruang]);
+        View::render("Booking/detail-booking", ['ruang' => $ruang]);
         View::render("Templates/footer", []);
     }
 
@@ -118,7 +118,7 @@ class BookingController extends Controller
         // $this->ddd($status);
         // $this->ddd($data_user);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/formulir-checkout", [
+        View::render("Booking/formulir-checkout", [
             'level' => $level,
             'user' => $data_user,
             'tanggal' => $tanggal,
@@ -195,7 +195,7 @@ class BookingController extends Controller
         }
 
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/review", [
+        View::render("Booking/review", [
             'request' => $request,
             'user' => $data_user,
             'level' => $level,
