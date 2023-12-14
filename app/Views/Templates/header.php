@@ -94,9 +94,7 @@ $_SESSION['csrf'] = $csrf;
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Kelas</p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama_kelas ?></p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
-                                                <div class="col-span-2">
-                                                    <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
-                                                </div>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
                                             </div>
                                             <p class="mb-2 text-gray-500 dark:text-gray-400">Verification Booking</p>
                                             <div class="flex">
