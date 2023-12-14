@@ -193,6 +193,10 @@ class BookingController extends Controller
             setcookie('lampiran', $filename, time() + 86400, '/');
             $file = $filename;
         }
+        $nama_kelas = '';
+        $kelas = new Kelas();
+        $kelas = $kelas->find($request->id_kelas, 'id_kelas');
+        $nama_kelas = $kelas->nama_kelas;
 
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
         View::render("Booking/review", [
@@ -204,7 +208,8 @@ class BookingController extends Controller
             'tanggal' => $tanggal,
             'jam_mulai' => $jam_mulai,
             'jam_selesai' => $jam_selesai,
-            'lampiran' => $file
+            'lampiran' => $file,
+            'nama_kelas' => $nama_kelas,
         ]);
         View::render("Templates/footer", []);
     }
