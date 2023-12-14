@@ -152,8 +152,11 @@ $_SESSION['csrf'] = $csrf;
 
                 <div id="dropdownAvatarName" class="z-10 hidden bg-white rounded-lg shadow w-44 dark:bg-gray-700">
                     <div class="divide-y divide-gray-300  dark:divide-gray-600">
+                        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white md:hidden">
+                            <div class="font-medium "><?= $user->nama ?? '' ?></div>
+                        </div>
                         <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                            <div class="font-medium ">TI - 2G</div>
+                            <div class="font-medium "><?= $user->nama_kelas ?? 'Dosen' ?></div>
                         </div>
                         <ul class=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownAvatarNameButton">
                             <li>

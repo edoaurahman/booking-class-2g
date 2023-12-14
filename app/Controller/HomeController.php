@@ -31,7 +31,7 @@ class HomeController extends Controller
             $level = $_SESSION['level'];
             if ($level == 'mahasiswa') {
                 $user = new Mahasiswa();
-                $user = $user->find($username, 'nim');
+                $user = $user->getDetailMahasiswa($username);
                 $booking = new Booking();
                 $notification = $booking->getNotification($level, $user);
             } else {
@@ -54,7 +54,7 @@ class HomeController extends Controller
         $totalPage = $ruang->getTotalPage();
         $data = $this->_getUser();
         extract($data);
-        // $this->ddd($notification);
+        // $this->ddd($user);
         View::render("Templates/header", ['title' => 'Home', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/home", ['totalPage' => $totalPage]);
         View::render("Templates/footer", []);
