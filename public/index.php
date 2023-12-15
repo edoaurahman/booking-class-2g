@@ -37,6 +37,7 @@ Router::add('GET', '/detail-booking/{id_ruang}', BookingController::class, 'deta
 Router::add('POST', '/isi-formulir', BookingController::class, 'isiFormBooking', [AuthMiddleware::class]);
 Router::add('POST', '/review', BookingController::class, 'reviewBooking', [AuthMiddleware::class]);
 Router::add('POST', '/booking/dosen/verificaton', BookingController::class, 'dosenVerification', [AuthMiddleware::class]);
+Router::add('POST', '/booking/mark/done', BookingController::class, 'markDone', [AuthMiddleware::class]);
 // Admin
 Router::add('GET', '/admin', AdminController::class, 'dashboard', [AuthMiddleware::class]);
 Router::add('GET', '/admin/login', AuthController::class, 'login');

@@ -98,4 +98,9 @@ class Booking extends Model
     {
         return $this->update(['status' => $status], $id_booking, 'id_booking');
     }
+
+    public function markDone(string $id_booking): bool
+    {
+        return $this->update(['status' => 'done'], $id_booking, 'id_booking');
+    }
 }

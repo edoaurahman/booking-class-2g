@@ -229,6 +229,13 @@ class BookingController extends Controller
         $this->redirect('/');
     }
 
+    public function markDone(Request $request): void
+    {
+        $booking = new Booking();
+        $booking->markDone($request->id_booking);
+        $this->redirect('/');
+    }
+
     public function apiStoreBooking(Request $request): void
     {
         $booking = new Booking();
