@@ -55,8 +55,8 @@ $_SESSION['csrf'] = $csrf;
                         <?php endif ?>
                         <?php foreach ($notification as $key => $item) : ?>
                             <?php extract($item); ?>
-                            <div <?= $level == 'dosen' ? 'id="accordion-collapse-' . $key . '"' : 'accordion-collapse' ?> data-accordion="collapse">
-                                <span <?= $level == 'dosen' ? 'aria-controls="accordion-collapse-body-' . $key . '"' : '' ?> <?= $level == 'dosen' ? 'data-accordion-target="#accordion-collapse-body-' . $key . '"' : '' ?> aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <div id="accordion-collapse-<?= $key ?>" data-accordion="collapse">
+                                <span aria-controls="accordion-collapse-body-<?= $key ?>" data-accordion-target="#accordion-collapse-body-<?= $key ?>" aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                                     <div class="flex-shrink-0">
                                         <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                                     </div>
@@ -84,9 +84,11 @@ $_SESSION['csrf'] = $csrf;
                                     </div>
                                 </span>
                                 <?php if ($status_booking === 'waiting_dosen_verification') : ?>
-                                    <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
+                                    <div id="accordion-collapse-body-<?= $key ?>" class="hidden">
                                         <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                                            <div class="grid grid-cols-2 gap-4">
+                                            <div class="grid grid-cols-2">
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Tanggal</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $tanggal ?></p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300"> <?= $jam_mulai ?></p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>
@@ -96,25 +98,29 @@ $_SESSION['csrf'] = $csrf;
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
                                             </div>
-                                            <p class="mb-2 text-gray-500 dark:text-gray-400">Verification Booking</p>
-                                            <div class="flex">
-                                                <form action="/booking/dosen/verificaton" method="post">
-                                                    <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
-                                                    <input type="hidden" name="status" value="onprocess">
-                                                    <input type="submit" value="Proses" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
-                                                </form>
-                                                <form action="/booking/dosen/verificaton" method="post">
-                                                    <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
-                                                    <input type="hidden" name="status" value="canceled">
-                                                    <input type="submit" value="Tolak" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
-                                                </form>
-                                            </div>
+                                            <?php if ($level === 'dosen') : ?>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-400">Verification Booking</p>
+                                                <div class="flex">
+                                                    <form action="/booking/dosen/verificaton" method="post">
+                                                        <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                        <input type="hidden" name="status" value="onprocess">
+                                                        <input type="submit" value="Proses" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
+                                                    </form>
+                                                    <form action="/booking/dosen/verificaton" method="post">
+                                                        <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                        <input type="hidden" name="status" value="canceled">
+                                                        <input type="submit" value="Tolak" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
+                                                    </form>
+                                                </div>
+                                            <?php endif ?>
                                         </div>
                                     </div>
                                 <?php endif ?>
-                                <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
+                                <div id="accordion-collapse-body-<?= $key ?>" class="hidden">
                                     <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
                                         <div class="grid grid-cols-2">
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Tanggal</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $tanggal ?></p>
                                             <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
                                             <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_mulai ?></p>
                                             <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>

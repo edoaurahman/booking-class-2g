@@ -54,7 +54,7 @@ class HomeController extends Controller
         $totalPage = $ruang->getTotalPage();
         $data = $this->_getUser();
         extract($data);
-        // $this->ddd($user);
+        // $this->ddd($notification);
         View::render("Templates/header", ['title' => 'Home', 'level' => $level, 'user' => $user, 'notification' => $notification]);
         View::render("Home/home", ['totalPage' => $totalPage]);
         View::render("Templates/footer", []);
