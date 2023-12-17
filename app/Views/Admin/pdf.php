@@ -25,23 +25,23 @@
                 <div class="font-surat">
                     <p>Nomor &emsp;: 002/HCK/polinema/X/2023</p>
                     <p>Lampiran : -</p>
-                    <p>Hal &emsp;&emsp;&ensp;: Peminjaman Gedung</p>
+                    <p>Hal &emsp;&emsp;&ensp;: Peminjaman Kelas</p>
                     <p class="mt-7">Yth. Ketua Jurusan Teknologi Informasi</p>
                     <p>Politeknik Negeri Malang</p>
                 </div>
                 <div class="font-surat">
-                    <p>9 Oktober 2023</p>
+                    <p><?= $report["tanggal_pesan"] ?></p>
                 </div>
             </div>
 
             <div class="isi font-surat">
                 <p class="mt-5">Dengan hormat,</p>
-                <p class="mt-2">Sehubungan dengan adanya kegiatan “Peminjaman Ruang Kelas”, kami mohon bantuan peminjaman ruangan LSI 1, LSI 2, LSI 3, LPY 2, dan LPY 3 Lantai 6 Gedung Sipil Politeknik Negeri Malang beserta fasilitas yang ada didalamnya dan daya listrik di gedung tersebut.</p>
+                <p class="mt-2">Sehubungan dengan adanya kegiatan “Peminjaman Ruang Kelas”, kami mohon bantuan peminjaman ruangan <?= $report["ruang"] ?> <?= $report["lantai"] ?> Gedung Sipil Politeknik Negeri Malang beserta fasilitas yang ada didalamnya dan daya listrik di gedung tersebut.</p>
                 <p class="mt-4">Kegiatan ini akan diselenggarakan pada:</p>
                 <div class="acara ml-5 mt-1">
-                    <p>hari, tanggal &ensp;: &thinsp; Sabtu, 21 Oktober 2023</p>
-                    <p>pukul &emsp;&emsp; &emsp;&thinsp;: &thinsp; 07.00 – 17.00 WIB</p>
-                    <p>tempat &emsp;&emsp;&ensp;&thinsp;: &thinsp; Ruang LSI 1, LSI 2, LSI 3, LPY 2, dan LPY 3 Lantai 6 Gedung Sipil Politeknik Negeri Malang</p>
+                    <p>hari, tanggal &ensp;: &thinsp; <?= $tanggal_pakai ?></p>
+                    <p>pukul &emsp;&emsp; &emsp;&thinsp;: &thinsp; <?= $report["jam_mulai"] ?> – <?= $report["jam_selesai"] ?> WIB</p>
+                    <p>tempat &emsp;&emsp;&ensp;&thinsp;: &thinsp; Ruang <?= $report["ruang"] ?> <?= $report["lantai"] ?> Gedung Sipil Politeknik Negeri Malang</p>
                 </div>
                 <p class="mt-3">Demikian surat peminjaman ini kami buat, atas izin dan bantuan yang diberikan kami sampaikan terima kasih.</p>
             </div>
@@ -58,8 +58,8 @@
                 <div class="col-start-1 col-end-3 text-center">
                     <p>Dosen Penanggung Jawab,</p>
                     <br><br><br><br>
-                    <p>Muhammad Unggul Pamenang, S.ST., M.T.</p>
-                    <p>NIP. 198010102005011001</p>
+                    <p><?= $report["dosen"] ?></p>
+                    <p>NIP. <?= $report["nip"] ?></p>
                 </div>
             </div>
         </div>
