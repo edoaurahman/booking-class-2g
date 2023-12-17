@@ -33,7 +33,7 @@
             <section id="mahasiswa" class="shadow-md sm:rounded-lg">
                 <div x-data="tableData" x-init="$nextTick(() => {paggination(1) })">
                     <div class="overflow-x-auto rounded-md overflow-hidden">
-                        <table class="w-[900px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                        <table class="w-[900px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto" id="table">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="w-[15%] px-4 py-3">
@@ -61,6 +61,7 @@
                             </thead>
                             <tbody>
                                 <template x-for="item in tableData">
+
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td x-text="item.nim" class="px-4 py-3">
                                         </td>
@@ -81,19 +82,21 @@
                                         <td class="px-6 py-4 relative">
                                             <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
                                             <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                                <a :href="'/admin/mahasiswa/edit/' + item.nim" class="edit-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
+                                                <a class="edit-modal cursor-pointer" :onclick="'modal(' + item.nim + ')'" data-modal-target="edit-mahasiswa-modal" data-modal-toggle="edit-mahasiswa-modal" :value="item.nim">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Edit</div>
                                                 </a>
                                                 <a :href="'/admin/mahasiswa/delete/' + item.nim" class="delete-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Delete</div>
                                                 </a>
                                             </div>
                                         </td>
                                     </tr>
+
                                 </template>
                             </tbody>
                         </table>
                     </div>
+
                     <nav class="w-full flex items-center justify-end py-4 px-3" aria-label="Table navigation">
                         <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                             <li>
@@ -115,6 +118,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- ADD Mahasiswa modal -->
 <div id="add-mahasiswa-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
@@ -196,70 +200,39 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Add New Mahasiswa
+                    Edit Data Mahasiswa
                 </h3>
-                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="add-mahasiswa-modal">
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="edit-mahasiswa-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" method="POST" action="">
-                <div class="grid gap-4 mb-4 grid-cols-2">
-                    <div class="col-span-1">
-                        <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM</label>
-                        <input type="text" name="nim" id="nim" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="12345678910" required="">
-                    </div>
-                    <div class="col-span-1">
-                        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Mahasiswa</label>
-                        <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nama Lengkap" required="">
-                    </div>
-                    <div class="col-span-1">
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                        <input type="text" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="abc123#$%" required="">
-                    </div>
-                    <div class="col-span-1 relative">
-                        <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <input id="kelas" list="listKelas" name="kelas" placeholder="Pilih kelas..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <datalist id="listKelas">
-                            <?php foreach ($listKelas as $item) : ?>
-                                <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
-                            <?php endforeach ?>
-                        </datalist>
-                    </div>
-                    <div class="col-span-1">
-                        <label for="tglLahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
-                        <input type="date" name="tglLahir" id="tglLahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </div>
-                    <div class="col-span-1">
-                        <label for="tmptLahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
-                        <input type="text" name="tmptLahir" id="tmptLahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="cth: Malang" required="">
-                    </div>
-                    <div class="col-span-2">
-                        <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</div>
-                        <div class="flex flex-row w-full justify-evenly">
-                            <div class="flex items-center me-4">
-                                <input id="laki-laki" type="radio" value="L" name="jenis_kelamin" class="w-4 h-4 text-biru bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="laki-laki" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laki-Laki</label>
-                            </div>
-                            <div class="flex items-center me-4">
-                                <input id="perempuan" type="radio" value="P" name="jenis_kelamin" class="w-4 h-4 text-biru bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="perempuan" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Perempuan</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex w-full justify-end items-center">
-                    <input value="Add" type="submit" class="text-white items-center bg-indigo-600 hover:bg-bingu_hover focus:ring-4 focus:outline-none focus:ring-indigo-900 font-medium rounded-lg text-sm px-5 py-2.5 text-end ">
-                    </input>
-                </div>
-            </form>
+            <div id="content-modal"></div>
         </div>
     </div>
 </div>
 
+
+
 <script>
+
+    // edit modal
+    const modal = (nim) => {
+        const modal = document.querySelector('#content-modal')
+
+        fetch(`/admin/mahasiswa/edit/${nim}`, {
+                method: 'GET'
+            })
+            .then(res => res.text())
+            .then(res => {
+                modal.innerHTML = res
+            })
+            .catch(err => console.log(err))
+
+    }
+
     // action modal
 
     let buttonAction = document.querySelectorAll("i");

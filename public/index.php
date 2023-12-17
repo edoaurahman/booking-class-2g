@@ -47,7 +47,6 @@ Router::add('GET', '/admin/ruang', AdminController::class, 'ruang', [AuthMiddlew
 Router::add('POST', '/admin/ruang', AdminController::class, 'storeRuang', [AuthMiddleware::class]);
 Router::add('GET', '/admin/mahasiswa', AdminController::class, 'mahasiswa', [AuthMiddleware::class]);
 Router::add('POST', '/admin/mahasiswa', AdminController::class, 'storeMahasiswa', [AuthMiddleware::class]);
-Router::add('GET', '/admin/mahasiswa/edit/{nim}', AdminController::class, 'editMahasiswa', [AuthMiddleware::class]);
 Router::add('GET', '/admin/mahasiswa/delete/{nim}', AdminController::class, 'deleteMahasiswa', [AuthMiddleware::class]);
 Router::add('GET', '/admin/dosen', AdminController::class, 'dosen', [AuthMiddleware::class]);
 Router::add('POST', '/admin/dosen', AdminController::class, 'storeDosen', [AuthMiddleware::class]);
@@ -74,7 +73,10 @@ Router::add('GET', '/api/status-ruang/{id_ruang}', BookingController::class, 'ap
 Router::add('GET', '/api/dosen', BookingController::class, 'apiGetDosen');
 Router::add('POST', '/api/booking', BookingController::class, 'apiStoreBooking');
 
-// contoh modal edit
-Router::add('GET', '/modal', ModalController::class, 'index');
-Router::add('GET', '/modal/edit/{id}', ModalController::class, 'modal');
+Router::add('GET', '/admin/mahasiswa/edit/{id}', AdminController::class, 'mahasiswaModal');
+Router::add('POST', '/admin/mahasiswa/edit', AdminController::class, 'editMahasiswa');
+
+Router::add('GET', '/admin/dosen/edit/{id}', AdminController::class, 'dosenModal');
+Router::add('POST', '/admin/dosen/edit', AdminController::class, 'editDosen');
+
 Router::run();
