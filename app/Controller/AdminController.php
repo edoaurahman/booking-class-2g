@@ -126,7 +126,8 @@ class AdminController extends Controller
         View::render('Admin/Modal/mahasiswaModal', ['id' => $id, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
     }
 
-    public function deleteMahasiswa($nim) {
+    public function deleteMahasiswa($nim)
+    {
         $mahasiswa = new Mahasiswa();
         $mahasiswa->deleteMahasiswa($nim);
 
@@ -177,7 +178,7 @@ class AdminController extends Controller
         $hari = $request->hari;
         $jam_mulai = $request->jam_mulai;
         $jam_selesai = $request->jam_selesai;
-        
+
 
         $jadwal = new Jadwal();
         $jadwal->addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai);
@@ -251,13 +252,14 @@ class AdminController extends Controller
         View::render('Admin/Modal/mahasiswaModal', ['id' => $id, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
     }
 
-    public function deleteDosen($nim) {
+    public function deleteDosen($nim)
+    {
         $mahasiswa = new Mahasiswa();
         $mahasiswa->deleteMahasiswa($nim);
 
         $this->redirect("/admin/mahasiswa");
     }
-    
+
     public function booking()
     {
         $booking = new Booking();
@@ -291,6 +293,22 @@ class AdminController extends Controller
         echo json_encode($data);
     }
 
+    public function apiBookingUrgent(): void
+    {
+        $booking = new Booking();
+        $ruangUrgent = $booking->getBookingUrgent();
+        $bookingIntersect = [];
+        // $this->ddd($ruangUrgent);
+        foreach ($ruangUrgent as $item) {
+            extract($item);
+            $bookingIntersect[] = $booking->getBookingIntersect($date, $id_ruang, $jam_mulai, $jam_selesai);
+        }
+        $data = [
+            'bookingIntersect' => $bookingIntersect,
+        ];
+        echo json_encode($data);
+    }
+
     public function storeBooking(Request $request)
     {
         $mahasiswa = $request->mahasiswa;
@@ -302,7 +320,7 @@ class AdminController extends Controller
         $jam_mulai = $request->jam_mulai;
         $jam_selesai = $request->jam_selesai;
         $jam_selesai = $request->jam_selesai;
-        
+
 
         $booking = new Booking();
         $booking->addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai);
@@ -335,7 +353,7 @@ class AdminController extends Controller
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/pdf", []);
     }
-    
+
     public function adminVerification(Request $request): void
     {
         $booking = new Booking();
