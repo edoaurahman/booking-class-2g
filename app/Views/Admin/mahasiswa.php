@@ -82,7 +82,7 @@
                                         <td class="px-6 py-4 relative">
                                             <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
                                             <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                                <a class="edit-modal cursor-pointer" :onclick="'modal(' + item.nim + ')'" data-modal-target="edit-mahasiswa-modal" data-modal-toggle="edit-mahasiswa-modal" :value="item.nim">
+                                                <a class="edit-modal cursor-pointer" @click="modal(item.nim)" data-modal-target="edit-mahasiswa-modal" data-modal-toggle="edit-mahasiswa-modal" :value="item.nim">
                                                     <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Edit</div>
                                                 </a>
                                                 <a :href="'/admin/mahasiswa/delete/' + item.nim" class="delete-modal">
@@ -217,7 +217,6 @@
 
 
 <script>
-
     // edit modal
     const modal = (nim) => {
         const modal = document.querySelector('#content-modal')
