@@ -80,14 +80,14 @@ class Ruang extends Model
         // Query untuk mendapatkan status booking
         $sql = "SELECT * FROM view_getbookingstatus WHERE nama_hari = '$hari'";
         if (!empty($jam_mulai) && !empty($jam_selesai)) {
-            $sql .= " AND id_jam BETWEEN '$jam_mulai' AND '$jam_selesai'";
+            $sql .= " AND id_jam BETWEEN '$jam_mulai' AND '$jam_selesai' AND status_jam = 'available'";
         }
         if (!empty($id_lantai)) {
             $sql .= " AND id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
         // print $sql to log
-        // $dataToAppend = print_r($sql, true) . "\n";
-        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+        $dataToAppend = print_r($sql, true) . "\n";
+        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
 
         $result = $this->db->query($sql);
         $data_booking = [];
@@ -136,7 +136,8 @@ class Ruang extends Model
         return $data;
     }
 
-    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void {
+    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void
+    {
         $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang' )";
         $this->exec($sql);
     }

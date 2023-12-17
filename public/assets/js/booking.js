@@ -192,7 +192,7 @@ document.addEventListener('alpine:init', () => {
         body: formData,
       });
       const data = await response.json();
-      // console.log(data);
+      console.log(data);
       this.listRuang = data;
       this.isLoading = false;
     },
@@ -275,7 +275,10 @@ document.addEventListener('alpine:init', () => {
       inputTanggal.value = formatDate(today);
       inputTanggalSidebar.value = formatDate(today);
       this.fetchResults();
-    }
+    },
+    shouldShowDetails(item) {
+      return item.listJam.length != 0;
+    },
   }));
 });
 
