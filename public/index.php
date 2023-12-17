@@ -57,6 +57,7 @@ Router::add('GET', '/admin/booking', AdminController::class, 'booking', [AuthMid
 Router::add('POST', '/admin/booking', AdminController::class, 'storeBooking', [AuthMiddleware::class]);
 Router::add('GET', '/admin/report', AdminController::class, 'report', [AuthMiddleware::class]);
 Router::add('GET', '/admin/pdf/{id_booking}', AdminController::class, 'pdf', [AuthMiddleware::class]);
+Router::add('POST', '/admin/booking/verif', AdminController::class, 'adminVerification', [AuthMiddleware::class]);
 
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');

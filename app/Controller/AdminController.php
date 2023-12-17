@@ -101,7 +101,8 @@ class AdminController extends Controller
         // $mahasiswa->
     }
 
-    public function deleteMahasiswa($nim) {
+    public function deleteMahasiswa($nim)
+    {
         $mahasiswa = new Mahasiswa();
         $mahasiswa->deleteMahasiswa($nim);
 
@@ -152,7 +153,7 @@ class AdminController extends Controller
         $hari = $request->hari;
         $jam_mulai = $request->jam_mulai;
         $jam_selesai = $request->jam_selesai;
-        
+
 
         $jadwal = new Jadwal();
         $jadwal->addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai);
@@ -238,7 +239,7 @@ class AdminController extends Controller
         $jam_mulai = $request->jam_mulai;
         $jam_selesai = $request->jam_selesai;
         $jam_selesai = $request->jam_selesai;
-        
+
 
         $booking = new Booking();
         $booking->addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai);
@@ -270,5 +271,12 @@ class AdminController extends Controller
     {
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/pdf", []);
+    }
+
+    public function adminVerification(Request $request): void
+    {
+        $booking = new Booking();
+        $booking->verifikasiBooking($request->id_booking, $request->status);
+        $this->redirect('/admin/booking');
     }
 }

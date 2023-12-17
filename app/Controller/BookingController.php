@@ -225,7 +225,7 @@ class BookingController extends Controller
     public function dosenVerification(Request $request): void
     {
         $booking = new Booking();
-        $booking->dosenVerif($request->id_booking, $request->status);
+        $booking->verifikasiBooking($request->id_booking, $request->status);
         $this->redirect('/');
     }
 
