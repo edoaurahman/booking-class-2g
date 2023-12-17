@@ -135,4 +135,9 @@ class Ruang extends Model
         }
         return $data;
     }
+
+    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void {
+        $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang' )";
+        $this->exec($sql);
+    }
 }

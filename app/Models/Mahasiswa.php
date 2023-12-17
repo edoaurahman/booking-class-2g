@@ -49,6 +49,11 @@ class Mahasiswa extends Model
 
     public function addMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas): void {
         $sql = "CALL addMahasiswa('$nim', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$kelas')";
-        $this->db->query($sql);
+        $this->exec($sql);
+    }
+
+    public function deleteMahasiswa($nim): void {
+        $sql = "DELETE FROM mahasiswa WHERE nim = '$nim'";
+        $this->exec($sql);
     }
 }

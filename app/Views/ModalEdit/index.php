@@ -53,7 +53,7 @@
     const modal = () => {
         const modal = document.querySelector('#content-modal')
 
-        fetch('/modal/edit/testing123123123123', {
+        fetch('/modal/edit/', {
                 method: 'GET'
             })
             .then(res => res.text())
@@ -61,6 +61,7 @@
                 modal.innerHTML = res
             })
             .catch(err => console.log(err))
+
     }
 </script>
 

@@ -71,6 +71,6 @@ class Dosen extends Model
     public function addDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email): void
     {
         $sql = "CALL addDosen('$nip', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$email')";
-        $this->db->query($sql);
+        $this->exec($sql);
     }
 }

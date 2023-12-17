@@ -103,4 +103,9 @@ class Booking extends Model
     {
         return $this->update(['status' => 'done'], $id_booking, 'id_booking');
     }
+
+    public function addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai): void {
+        $sql = "CALL addBooking('$mahasiswa', '$tgl_pakai', '$dosenPJ', '$dosenPR', '$kelas', '$ruang', '$jam_mulai', '$jam_selesai')";
+        $this->exec($sql);
+    }
 }

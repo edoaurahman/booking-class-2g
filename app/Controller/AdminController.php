@@ -42,6 +42,20 @@ class AdminController extends Controller
         echo json_encode($data);
     }
 
+    public function storeRuang(Request $request)
+    {
+        $kode_ruang = $request->kode_ruang;
+        $nama = $request->nama;
+        $jenis_ruang = $request->jenis_ruang;
+        $lantai = $request->lantai;
+        // $deskripsi_ruang = $request->deskripsi_ruang;
+
+        $ruang = new Ruang();
+        $ruang->addRuang($kode_ruang, $nama, $jenis_ruang, $lantai);
+
+        $this->redirect("/admin/ruang");
+    }
+
     public function mahasiswa()
     {
         $mahasiswa = new Mahasiswa();
@@ -81,6 +95,19 @@ class AdminController extends Controller
         $this->redirect("/admin/mahasiswa");
     }
 
+    public function editMahasiswa($nim)
+    {
+        $mahasiswa = new Mahasiswa();
+        // $mahasiswa->
+    }
+
+    public function deleteMahasiswa($nim) {
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->deleteMahasiswa($nim);
+
+        $this->redirect("/admin/mahasiswa");
+    }
+
     public function jadwal()
     {
         $jadwal = new Jadwal();
@@ -114,6 +141,23 @@ class AdminController extends Controller
             'currentPage' => $page,
         ];
         echo json_encode($data);
+    }
+
+    public function storeJadwal(Request $request)
+    {
+        $matakuliah = $request->matakuliah;
+        $kelas = $request->kelas;
+        $dosen = $request->dosen;
+        $ruang = $request->ruang;
+        $hari = $request->hari;
+        $jam_mulai = $request->jam_mulai;
+        $jam_selesai = $request->jam_selesai;
+        
+
+        $jadwal = new Jadwal();
+        $jadwal->addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai);
+
+        $this->redirect("/admin/jadwal");
     }
     public function dosen()
     {
@@ -157,7 +201,7 @@ class AdminController extends Controller
 
         $mahasiswa = new Mahasiswa();
         $listNim = $mahasiswa->all();
-        
+
         $dosen = new Dosen();
         $listDosenPJ = $dosen->all();
         $listDosenPR = $dosen->all();
@@ -181,6 +225,25 @@ class AdminController extends Controller
             'currentPage' => $page,
         ];
         echo json_encode($data);
+    }
+
+    public function storeBooking(Request $request)
+    {
+        $mahasiswa = $request->mahasiswa;
+        $tgl_pakai = $request->tgl_pakai;
+        $dosenPJ = $request->dosenPJ;
+        $dosenPR = $request->dosenPR;
+        $kelas = $request->kelas;
+        $ruang = $request->ruang;
+        $jam_mulai = $request->jam_mulai;
+        $jam_selesai = $request->jam_selesai;
+        $jam_selesai = $request->jam_selesai;
+        
+
+        $booking = new Booking();
+        $booking->addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai);
+
+        $this->redirect("/admin/jadwal");
     }
 
     public function report()
