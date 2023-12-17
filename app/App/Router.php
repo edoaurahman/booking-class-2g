@@ -5,7 +5,6 @@ namespace TugasBesar\BookingClass2g\App;
 class Router
 {
     private static array $_routes = [];
-
     public static function add(
         string $method,
         string $path,
@@ -62,9 +61,19 @@ class Router
                     call_user_func_array([$controller, $function], $variables);
                     return;
                 } catch (\Throwable $e) {
-                    http_response_code(500);
-                    echo "INTERNAL SERVER ERROR: " . $e->getMessage();
-                    return;
+                    $env = parse_ini_file(__DIR__ . '/../../.env');
+                    if ($env['ENVIRONMENT'] == 'development') {
+                        http_response_code(500);
+                        echo "INTERNAL SERVER ERROR: ";
+                        echo "<pre>"
+                            . $e->getMessage() . "\n"
+                            . $e->getTraceAsString() . "\n"
+                            . "</pre>";
+                        return;
+                    } else {
+                        http_response_code(500);
+                        return;
+                    }
                 }
             }
         }

@@ -1,8 +1,15 @@
 <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
     <div class="p-4  ml-[77px] lg:ml-64 ">
         <div class="p-4 mt-14">
-            <div class="pb-4  flex justify-between">
 
+            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                <svg class="flex-shrink-0 w-4 h-4 text-white transition duration-75 group-hover:text-white dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21" id="usersSvg">
+                    <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" id="usersPath" />
+                </svg>
+                Admin / User / Dosen
+            </div>
+
+            <div class="pb-4  flex justify-between">
                 <!-- Searching -->
                 <div class="shadow-md rounded-lg">
                     <label for="table-search" class="sr-only">Search</label>
@@ -33,7 +40,7 @@
                                         NIP
                                     </th>
                                     <th scope="col" class="w-[23%] px-6 py-3">
-                                        Nama Dosen
+                                        Nama
                                     </th>
                                     <th scope="col" class="w-[10%] px-6 py-3">
                                         Password
@@ -42,7 +49,7 @@
                                         Email
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Tempat Tanggal Lahir
+                                        TTL
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Jenis Kelamin
@@ -73,13 +80,12 @@
                                         </td>
                                         <td class="px-6 py-4 relative">
                                             <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
-
                                             <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                                <a href="/?aksi=edit&id=<?= $id; ?>" class="edit-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
+                                                <a class="edit-modal cursor-pointer" :onclick="'modal(' + item.nip + ')'" data-modal-target="edit-dosen-modal" data-modal-toggle="edit-dosen-modal" :value="item.nip">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Edit</div>
                                                 </a>
-                                                <a href="/?aksi=delete&id=<?= $id; ?>" class="delete-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
+                                                <a :href="'/admin/dosen/delete/' + item.nip" class="delete-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Delete</div>
                                                 </a>
                                             </div>
                                         </td>
@@ -109,7 +115,7 @@
     </div>
 </div>
 
-<!-- Main modal -->
+<!-- Add Dosen modal -->
 <div id="add-dosen-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
@@ -175,7 +181,44 @@
     </div>
 </div>
 
+<!-- Edit Mahasiswa modal -->
+<div id="edit-dosen-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Edit Data Dosen
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="edit-dosen-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div id="content-modal"></div>
+        </div>
+    </div>
+</div>
+
 <script>
+    // edit modal
+    const modal = (nip) => {
+        const modal = document.querySelector('#content-modal')
+
+        fetch(`/admin/dosen/edit/${nip}`, {
+                method: 'GET'
+            })
+            .then(res => res.text())
+            .then(res => {
+                modal.innerHTML = res
+            })
+            .catch(err => console.log(err))
+
+    }
+
     // action modal
 
     let buttonAction = document.querySelectorAll("i");

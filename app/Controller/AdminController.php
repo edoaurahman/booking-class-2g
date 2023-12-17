@@ -42,6 +42,20 @@ class AdminController extends Controller
         echo json_encode($data);
     }
 
+    public function storeRuang(Request $request)
+    {
+        $kode_ruang = $request->kode_ruang;
+        $nama = $request->nama;
+        $jenis_ruang = $request->jenis_ruang;
+        $lantai = $request->lantai;
+        // $deskripsi_ruang = $request->deskripsi_ruang;
+
+        $ruang = new Ruang();
+        $ruang->addRuang($kode_ruang, $nama, $jenis_ruang, $lantai);
+
+        $this->redirect("/admin/ruang");
+    }
+
     public function mahasiswa()
     {
         $mahasiswa = new Mahasiswa();
@@ -81,6 +95,44 @@ class AdminController extends Controller
         $this->redirect("/admin/mahasiswa");
     }
 
+    public function editMahasiswa(Request $request)
+    {
+        $nim = $request->nim;
+        $nama = $request->nama;
+        $password = $request->password;
+        $tmpt_lahir = $request->tmptLahir;
+        $tgl_lahir = $request->tglLahir;
+        $jenis_kelamin = $request->jenis_kelamin;
+        $kelas = $request->kelas;
+
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->editMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas);
+
+        $this->redirect("/admin/mahasiswa");
+    }
+
+    public function mahasiswaModal($id): void
+    {
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa = $mahasiswa->getMahasiswaById($id);
+
+        $nama = $mahasiswa->nama;
+        $password = $mahasiswa->password;
+        $tempat_lahir = $mahasiswa->tempat_lahir;
+        $tanggal_lahir = $mahasiswa->tanggal_lahir;
+        $jenis_kelamin = $mahasiswa->jenis_kelamin;
+        $id_kelas = $mahasiswa->id_kelas;
+
+        View::render('Admin/Modal/mahasiswaModal', ['id' => $id, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
+    }
+
+    public function deleteMahasiswa($nim) {
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->deleteMahasiswa($nim);
+
+        $this->redirect("/admin/mahasiswa");
+    }
+
     public function jadwal()
     {
         $jadwal = new Jadwal();
@@ -114,6 +166,23 @@ class AdminController extends Controller
             'currentPage' => $page,
         ];
         echo json_encode($data);
+    }
+
+    public function storeJadwal(Request $request)
+    {
+        $matakuliah = $request->matakuliah;
+        $kelas = $request->kelas;
+        $dosen = $request->dosen;
+        $ruang = $request->ruang;
+        $hari = $request->hari;
+        $jam_mulai = $request->jam_mulai;
+        $jam_selesai = $request->jam_selesai;
+        
+
+        $jadwal = new Jadwal();
+        $jadwal->addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai);
+
+        $this->redirect("/admin/jadwal");
     }
     public function dosen()
     {
@@ -150,6 +219,45 @@ class AdminController extends Controller
 
         $this->redirect("/admin/dosen");
     }
+
+    public function editDosen(Request $request)
+    {
+        $nim = $request->nim;
+        $nama = $request->nama;
+        $password = $request->password;
+        $tmpt_lahir = $request->tmptLahir;
+        $tgl_lahir = $request->tglLahir;
+        $jenis_kelamin = $request->jenis_kelamin;
+        $kelas = $request->kelas;
+
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->editMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas);
+
+        $this->redirect("/admin/mahasiswa");
+    }
+
+    public function dosenModal($id): void
+    {
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa = $mahasiswa->getMahasiswaById($id);
+
+        $nama = $mahasiswa->nama;
+        $password = $mahasiswa->password;
+        $tempat_lahir = $mahasiswa->tempat_lahir;
+        $tanggal_lahir = $mahasiswa->tanggal_lahir;
+        $jenis_kelamin = $mahasiswa->jenis_kelamin;
+        $id_kelas = $mahasiswa->id_kelas;
+
+        View::render('Admin/Modal/mahasiswaModal', ['id' => $id, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
+    }
+
+    public function deleteDosen($nim) {
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->deleteMahasiswa($nim);
+
+        $this->redirect("/admin/mahasiswa");
+    }
+    
     public function booking()
     {
         $booking = new Booking();
@@ -181,6 +289,25 @@ class AdminController extends Controller
             'currentPage' => $page,
         ];
         echo json_encode($data);
+    }
+
+    public function storeBooking(Request $request)
+    {
+        $mahasiswa = $request->mahasiswa;
+        $tgl_pakai = $request->tgl_pakai;
+        $dosenPJ = $request->dosenPJ;
+        $dosenPR = $request->dosenPR;
+        $kelas = $request->kelas;
+        $ruang = $request->ruang;
+        $jam_mulai = $request->jam_mulai;
+        $jam_selesai = $request->jam_selesai;
+        $jam_selesai = $request->jam_selesai;
+        
+
+        $booking = new Booking();
+        $booking->addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai);
+
+        $this->redirect("/admin/jadwal");
     }
 
     public function report()
@@ -217,5 +344,12 @@ class AdminController extends Controller
             'report' => $report,
             'tanggal_pakai' => $tanggal_pakai
         ]);
+    }
+    
+    public function adminVerification(Request $request): void
+    {
+        $booking = new Booking();
+        $booking->verifikasiBooking($request->id_booking, $request->status);
+        $this->redirect('/admin/booking');
     }
 }

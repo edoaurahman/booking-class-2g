@@ -53,70 +53,115 @@ $_SESSION['csrf'] = $csrf;
                                 </div>
                             </div>
                         <?php endif ?>
-                        <?php foreach ($notification as $key => $item) : ?>
-                            <?php extract($item); ?>
-                            <?php if ($status_booking === 'waiting_dosen_verification') : ?>
-                                <div <?= $level == 'dosen' ? 'id="accordion-collapse-' . $key . '"' : 'accordion-collapse' ?> data-accordion="collapse">
-                                    <span <?= $level == 'dosen' ? 'aria-controls="accordion-collapse-body-' . $key . '"' : '' ?> <?= $level == 'dosen' ? 'data-accordion-target="#accordion-collapse-body-' . $key . '"' : '' ?> aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
-                                        <div class="flex-shrink-0">
-                                            <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
-                                        </div>
-                                        <div class="w-full ps-3">
-                                            <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                                <span class="bg-bingu p-0.5 rounded-md font-semibold text-white">waiting verification</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?></span> is waiting lecture verification.
-                                            </div>
-                                            <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
-                                        </div>
-                                    </span>
-
-                                    <div <?= $level == 'dosen' ? 'id="accordion-collapse-body-' . $key . '"' : '' ?> class="hidden">
-                                        <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                                            <p class="mb-2 text-gray-500 dark:text-gray-400">Verification Booking</p>
-                                            <div class="flex">
-                                                <form action="/booking/dosen/verificaton" method="post">
-                                                    <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
-                                                    <input type="hidden" name="status" value="onprocess">
-                                                    <input type="submit" value="Proses" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
-                                                </form>
-                                                <form action="/booking/dosen/verificaton" method="post">
-                                                    <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
-                                                    <input type="hidden" name="status" value="canceled">
-                                                    <input type="submit" value="Tolak" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php else : ?>
-                                <span class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
+                        <div id="accordion-collapse" data-accordion="collapse">
+                            <?php foreach ($notification as $key => $item) : ?>
+                                <?php extract($item); ?>
+                                <span aria-controls="accordion-collapse-body-<?= $key ?>" data-accordion-target="#accordion-collapse-body-<?= $key ?>" aria-expanded="false" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600">
                                     <div class="flex-shrink-0">
                                         <img class="rounded-full w-11 h-11" src="/assets/img/logo.png" alt="Robert image">
                                     </div>
-                                    <div class="w-full ps-3">
-                                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">
-                                            <?php if ($status_booking === 'success') : ?>
-                                                <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
-                                                Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is success.
-                                            <?php elseif ($status_booking === 'onprocess') : ?>
-                                                <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
-                                                Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
-                                            <?php elseif ($status_booking === 'canceled') : ?>
-                                                <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is cancelled by something.
-                                            <?php elseif ($status_booking === 'done') : ?>
-                                                <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is done.
-                                            <?php elseif ($status_booking === 'urgent') : ?>
-                                                <span class="bg-red-700 p-0.5 rounded-md font-semibold text-white">urgent</span><br>
-                                                Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
-                                            <?php endif ?>
-                                        </div>
+                                    <div class="w-full ps-3 text-gray-500 text-sm mb-1.5 dark:text-gray-400">
+                                        <?php if ($status_booking === 'success') : ?>
+                                            <span class="bg-green-500 p-0.5 rounded-md font-semibold text-white">Success</span><br>
+                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is success.
+                                        <?php elseif ($status_booking === 'onprocess') : ?>
+                                            <span class="bg-yellow-500 p-0.5 rounded-md font-semibold text-white">On Process</span><br>
+                                            Your booking room on <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
+                                        <?php elseif ($status_booking === 'canceled') : ?>
+                                            <span class="bg-red-500 p-0.5 rounded-md font-semibold text-white">Cancelled</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is cancelled by something.
+                                        <?php elseif ($status_booking === 'done') : ?>
+                                            <span class="bg-gray-500 p-0.5 rounded-md font-semibold text-white">done</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is done.
+                                        <?php elseif ($status_booking === 'urgent') : ?>
+                                            <span class="bg-red-700 p-0.5 rounded-md font-semibold text-white">urgent</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?> </span> is on process please waiting.
+                                        <?php elseif ($status_booking === 'waiting_dosen_verification') : ?>
+                                            <span class="bg-bingu p-0.5 rounded-md font-semibold text-white">waiting verification</span><br>
+                                            Your class in <span class="font-medium text-gray-900 dark:text-white"><?= $nama_ruang ?></span> is waiting lecture verification.
+                                        <?php endif ?>
                                         <div class="text-xs text-blue-600 dark:text-blue-500" x-text="formatCreatedAt('<?= $created_at ?>')"></div>
                                     </div>
                                 </span>
-                            <?php endif ?>
-                        <?php endforeach ?>
+                                <?php if ($status_booking === 'waiting_dosen_verification') : ?>
+                                    <div id="accordion-collapse-body-<?= $key ?>" class="hidden">
+                                        <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                            <div class="grid grid-cols-2">
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Tanggal</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $tanggal ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"> <?= $jam_mulai ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_selesai ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Kelas</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama_kelas ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
+                                            </div>
+                                            <?php if ($level === 'dosen') : ?>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-400">Verification Booking</p>
+                                                <div class="flex">
+                                                    <form action="/booking/dosen/verificaton" method="post">
+                                                        <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                        <input type="hidden" name="status" value="onprocess">
+                                                        <input type="submit" value="Proses" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
+                                                    </form>
+                                                    <form action="/booking/dosen/verificaton" method="post">
+                                                        <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                        <input type="hidden" name="status" value="canceled">
+                                                        <input type="submit" value="Tolak" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"></input>
+                                                    </form>
+                                                </div>
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
+                                <?php endif ?>
+                                <?php if ($status_booking === 'success') : ?>
+                                    <div id="accordion-collapse-body-<?= $key ?>" class="hidden">
+                                        <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                            <div class="grid grid-cols-2">
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Tanggal</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $tanggal ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"> <?= $jam_mulai ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_selesai ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Kelas</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama_kelas ?></p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
+                                                <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
+                                            </div>
+                                            <?php if ($level === 'dosen') : ?>
+                                                <!-- <p class="mb-2 text-gray-500 dark:text-gray-400">Checkout Booking</p> -->
+                                                <div class="flex">
+                                                    <form action="/booking/mark/done" method="post">
+                                                        <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                        <input type="hidden" name="status" value="done">
+                                                        <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Mark As Done</button>
+                                                    </form>
+                                                </div>
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
+                                <?php endif ?>
+                                <div id="accordion-collapse-body-<?= $key ?>" class="hidden">
+                                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
+                                        <div class="grid grid-cols-2">
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Tanggal</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $tanggal ?></p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Mulai</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_mulai ?></p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Jam Selesai</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $jam_selesai ?></p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Kelas</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama_kelas ?></p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
+                                            <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
                     </div>
                 </div>
 
@@ -139,8 +184,11 @@ $_SESSION['csrf'] = $csrf;
 
                 <div id="dropdownAvatarName" class="z-10 hidden bg-white rounded-lg shadow w-44 dark:bg-gray-700">
                     <div class="divide-y divide-gray-300  dark:divide-gray-600">
+                        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white md:hidden">
+                            <div class="font-medium "><?= $user->nama ?? '' ?></div>
+                        </div>
                         <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                            <div class="font-medium ">TI - 2G</div>
+                            <div class="font-medium "><?= $user->nama_kelas ?? 'Dosen' ?></div>
                         </div>
                         <ul class=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownAvatarNameButton">
                             <li>

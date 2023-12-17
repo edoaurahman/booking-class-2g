@@ -23,6 +23,7 @@ use TugasBesar\BookingClass2g\Controller\HomeController;
 use TugasBesar\BookingClass2g\Middleware\AuthMiddleware;
 use TugasBesar\BookingClass2g\Controller\AdminController;
 use TugasBesar\BookingClass2g\Controller\BookingController;
+use TugasBesar\BookingClass2g\Controller\ModalController;
 // Auth
 Router::add('GET', '/login', AuthController::class, 'login');
 Router::add('POST', '/login', AuthController::class, 'prosesLogin');
@@ -37,19 +38,25 @@ Router::add('GET', '/detail-booking/{id_ruang}', BookingController::class, 'deta
 Router::add('POST', '/isi-formulir', BookingController::class, 'isiFormBooking', [AuthMiddleware::class]);
 Router::add('POST', '/review', BookingController::class, 'reviewBooking', [AuthMiddleware::class]);
 Router::add('POST', '/booking/dosen/verificaton', BookingController::class, 'dosenVerification', [AuthMiddleware::class]);
+Router::add('POST', '/booking/mark/done', BookingController::class, 'markDone', [AuthMiddleware::class]);
 // Admin
 Router::add('GET', '/admin', AdminController::class, 'dashboard', [AuthMiddleware::class]);
 Router::add('GET', '/admin/login', AuthController::class, 'login');
 Router::add('POST', '/admin/login', AuthController::class, 'adminLogin');
 Router::add('GET', '/admin/ruang', AdminController::class, 'ruang', [AuthMiddleware::class]);
+Router::add('POST', '/admin/ruang', AdminController::class, 'storeRuang', [AuthMiddleware::class]);
 Router::add('GET', '/admin/mahasiswa', AdminController::class, 'mahasiswa', [AuthMiddleware::class]);
 Router::add('POST', '/admin/mahasiswa', AdminController::class, 'storeMahasiswa', [AuthMiddleware::class]);
+Router::add('GET', '/admin/mahasiswa/delete/{nim}', AdminController::class, 'deleteMahasiswa', [AuthMiddleware::class]);
 Router::add('GET', '/admin/dosen', AdminController::class, 'dosen', [AuthMiddleware::class]);
 Router::add('POST', '/admin/dosen', AdminController::class, 'storeDosen', [AuthMiddleware::class]);
 Router::add('GET', '/admin/jadwal', AdminController::class, 'jadwal', [AuthMiddleware::class]);
+Router::add('POST', '/admin/jadwal', AdminController::class, 'storeJadwal', [AuthMiddleware::class]);
 Router::add('GET', '/admin/booking', AdminController::class, 'booking', [AuthMiddleware::class]);
+Router::add('POST', '/admin/booking', AdminController::class, 'storeBooking', [AuthMiddleware::class]);
 Router::add('GET', '/admin/report', AdminController::class, 'report', [AuthMiddleware::class]);
 Router::add('GET', '/admin/pdf/{id_booking}', AdminController::class, 'pdf', [AuthMiddleware::class]);
+Router::add('POST', '/admin/booking/verif', AdminController::class, 'adminVerification', [AuthMiddleware::class]);
 
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');
@@ -65,4 +72,11 @@ Router::add('POST', '/api/ruang/filter', BookingController::class, 'apiRuangBook
 Router::add('GET', '/api/status-ruang/{id_ruang}', BookingController::class, 'apiStatusRuang');
 Router::add('GET', '/api/dosen', BookingController::class, 'apiGetDosen');
 Router::add('POST', '/api/booking', BookingController::class, 'apiStoreBooking');
+
+Router::add('GET', '/admin/mahasiswa/edit/{id}', AdminController::class, 'mahasiswaModal');
+Router::add('POST', '/admin/mahasiswa/edit', AdminController::class, 'editMahasiswa');
+
+Router::add('GET', '/admin/dosen/edit/{id}', AdminController::class, 'dosenModal');
+Router::add('POST', '/admin/dosen/edit', AdminController::class, 'editDosen');
+
 Router::run();

@@ -17,6 +17,14 @@ class BookingController extends Controller
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+        // cek lampiran
+        if (isset($_COOKIE['lampiran'])) {
+            // delete old file
+            $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+            unlink($oldFile);
+            // delete cookie
+            setcookie('lampiran', '', time() - 3600);
+        }
 
         if (isset($_SESSION['user'])) {
 
@@ -24,7 +32,7 @@ class BookingController extends Controller
             $level = $_SESSION['level'];
             if ($level == 'mahasiswa') {
                 $user = new Mahasiswa();
-                $user = $user->find($username, 'nim');
+                $user = $user->getDetailMahasiswa($username);
                 $booking = new Booking();
                 $notification = $booking->getNotification($level, $user);
             } else {
@@ -46,7 +54,7 @@ class BookingController extends Controller
         $data = $this->_getUser();
         extract($data);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/booking", []);
+        View::render("Booking/booking", []);
         View::render("Templates/footer", []);
     }
 
@@ -60,7 +68,7 @@ class BookingController extends Controller
         // $this->ddd($ruang);
 
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, 'notification' => $notification]);
-        View::render("Home/detail-booking", ['ruang' => $ruang]);
+        View::render("Booking/detail-booking", ['ruang' => $ruang]);
         View::render("Templates/footer", []);
     }
 
@@ -118,7 +126,7 @@ class BookingController extends Controller
         // $this->ddd($status);
         // $this->ddd($data_user);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/formulir-checkout", [
+        View::render("Booking/formulir-checkout", [
             'level' => $level,
             'user' => $data_user,
             'tanggal' => $tanggal,
@@ -193,9 +201,13 @@ class BookingController extends Controller
             setcookie('lampiran', $filename, time() + 86400, '/');
             $file = $filename;
         }
+        $nama_kelas = '';
+        $kelas = new Kelas();
+        $kelas = $kelas->find($request->id_kelas, 'id_kelas');
+        $nama_kelas = $kelas->nama_kelas;
 
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
-        View::render("Home/review", [
+        View::render("Booking/review", [
             'request' => $request,
             'user' => $data_user,
             'level' => $level,
@@ -204,7 +216,8 @@ class BookingController extends Controller
             'tanggal' => $tanggal,
             'jam_mulai' => $jam_mulai,
             'jam_selesai' => $jam_selesai,
-            'lampiran' => $file
+            'lampiran' => $file,
+            'nama_kelas' => $nama_kelas,
         ]);
         View::render("Templates/footer", []);
     }
@@ -212,7 +225,14 @@ class BookingController extends Controller
     public function dosenVerification(Request $request): void
     {
         $booking = new Booking();
-        $booking->dosenVerif($request->id_booking, $request->status);
+        $booking->verifikasiBooking($request->id_booking, $request->status);
+        $this->redirect('/');
+    }
+
+    public function markDone(Request $request): void
+    {
+        $booking = new Booking();
+        $booking->markDone($request->id_booking);
         $this->redirect('/');
     }
 

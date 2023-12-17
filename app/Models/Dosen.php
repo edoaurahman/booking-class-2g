@@ -71,6 +71,27 @@ class Dosen extends Model
     public function addDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email): void
     {
         $sql = "CALL addDosen('$nip', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$email')";
-        $this->db->query($sql);
+        $this->exec($sql);
+    }
+
+    public function getDosenById($nip): object
+    {
+        $sql = "SELECT * FROM dosen WHERE nip = '$nip'";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return (object) $data[0];
+    }
+
+    public function editDosen($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas) {
+        $sql = "Call editMahasiswa('$nim', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$kelas')";
+        $this->exec($sql);
+    }
+
+    public function deleteDosen($nip): void {
+        $sql = "DELETE FROM dosen WHERE nip = '$nip'";
+        $this->exec($sql);
     }
 }

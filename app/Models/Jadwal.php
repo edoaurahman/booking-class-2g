@@ -46,4 +46,9 @@ class Jadwal extends Model
         $totalPage = ceil($total / 10);
         return $totalPage;
     }
+
+    public function addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai): void {
+        $sql = "CALL addJadwal('$matakuliah', '$kelas', '$dosen', '$ruang', '$hari', '$jam_mulai', '$jam_selesai')";
+        $this->exec($sql);
+    }
 }

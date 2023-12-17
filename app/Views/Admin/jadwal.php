@@ -1,6 +1,12 @@
 <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
     <div class="p-4  ml-[77px] lg:ml-64">
         <div class="p-4 mt-14">
+
+            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                <i class="fa-solid fa-calendar-days fa-sm dark:text-gray-400 group-hover:text-white"></i>
+                Admin / Jadwal
+            </div>
+
             <div class="pb-4  flex justify-between">
                 <!-- Searching -->
                 <div class="shadow-md rounded-lg">
@@ -192,7 +198,7 @@
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-1">
                         <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                        <input id="kelas" list="listKelas" name="kelas"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <input id="kelas" list="listKelas" name="kelas" placeholder="cth: TI-2G" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <datalist id="listKelas">
                             <?php foreach ($listKelas as $item) : ?>
                                 <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
@@ -201,7 +207,7 @@
                     </div>
                     <div class="col-span-1">
                         <label for="matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                        <input id="matakuliah" list="listMK" name="matakuliah"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <input id="matakuliah" list="listMK" name="matakuliah" placeholder="cth: Dasar Pemrograman Web" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <datalist id="listMK">
                             <?php foreach ($listMK as $item) : ?>
                                 <option value="<?= $item['id_matkul'] ?>"><?= $item['nama_matkul'] ?></option>
@@ -210,7 +216,7 @@
                     </div>
                     <div class="col-span-1">
                         <label for="dosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
-                        <input id="dosen" list="listDosen" name="dosen"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <input id="dosen" list="listDosen" name="dosen" placeholder="Pilih Dosen ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <datalist id="listDosen">
                             <?php foreach ($listDosen as $item) : ?>
                                 <option value="<?= $item['nip'] ?>"><?= $item['nama'] ?></option>
@@ -219,7 +225,7 @@
                     </div>
                     <div class="col-span-1">
                         <label for="ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ruang</label>
-                        <input id="ruang" list="listRuang" name="ruang"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <input id="ruang" list="listRuang" name="ruang" placeholder="Pilih Ruang ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <datalist id="listRuang">
                             <?php foreach ($listRuang as $item) : ?>
                                 <option value="<?= $item['id_ruang'] ?>"><?= $item['nama_ruang'] ?></option>
@@ -228,7 +234,7 @@
                     </div>
                     <div class="col-span-1">
                         <label for="hari" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hari</label>
-                        <input id="hari" list="listHari" name="hari"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <input id="hari" list="listHari" name="hari" placeholder="Pilih Hari ..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <datalist id="listHari">
                             <?php foreach ($listHari as $item) : ?>
                                 <option value="<?= $item['id_hari'] ?>"><?= $item['nama_hari'] ?></option>
@@ -240,18 +246,21 @@
                             <div class="w-full">
                                 <label for="jam_mulai" class="text-center block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Mulai</label>
                                 <div class="relative flex items-center px-3">
-                                    <input type="text" id="jam_mulai" data-input-counter aria-describedby="helper-text-explanation" class="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="1" required>
+                                    <input type="number" id="jam_mulai" oninput="changeValueJamMulai()" min="1" max="11" class="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="1" required>
                                 </div>
                             </div>
                             <div class="w-full">
                                 <label for="jam_selesai" class="text-center block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
                                 <div class="relative flex items-center px-3">
-                                    <input type="text" id="jam_selesai" class="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="1" required>
+                                    <input type="number" id="jam_selesai" oninput="changeValueJamSelesai()" min="1" max="11" class="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="1" required>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <input type="hidden" name="jam_mulai" id="id_jam_mulai">
+                <input type="hidden" name="jam_selesai" id="id_jam_selesai">
                 <div class="flex w-full justify-end items-center">
                     <button type="submit" class="text-white items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-end dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Add
@@ -262,124 +271,68 @@
     </div>
 </div>
 
-<script>
-    function autocomplete(inp, arr) {
-        /*the autocomplete function takes two arguments,
-        the text field element and an array of possible autocompleted values:*/
-        var currentFocus;
-        /*execute a function when someone writes in the text field:*/
-        inp.addEventListener("input", function(e) {
-            var a, b, i, val = this.value;
-            /*close any already open lists of autocompleted values*/
-            closeAllLists();
-            if (!val) {
-                return false;
-            }
-            currentFocus = -1;
-            /*create a DIV element that will contain the items (values):*/
-            a = document.createElement("DIV");
-            a.setAttribute("id", this.id + "autocomplete-list");
-            a.setAttribute("class", "autocomplete-items absolute bg-white w-full p-5 overflow-y-auto h-[100px] border rounded-lg dark:bg-dark_grey5");
-            /*append the DIV element as a child of the autocomplete container:*/
-            this.parentNode.appendChild(a);
-            /*for each item in the array...*/
-            for (i = 0; i < arr.length; i++) {
-                /*check if the item starts with the same letters as the text field value:*/
-                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                    /*create a DIV element for each matching element:*/
-                    b = document.createElement("DIV");
-                    /*make the matching letters bold:*/
-                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                    b.innerHTML += arr[i].substr(val.length);
-                    /*insert a input field that will hold the current array item's value:*/
-                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                    /*execute a function when someone clicks on the item value (DIV element):*/
-                    b.addEventListener("click", function(e) {
-                        /*insert the value for the autocomplete text field:*/
-                        inp.value = this.getElementsByTagName("input")[0].value;
-                        /*close the list of autocompleted values,
-                        (or any other open lists of autocompleted values:*/
-                        closeAllLists();
-                    });
-                    a.appendChild(b);
-                }
-            }
-        });
-        /*execute a function presses a key on the keyboard:*/
-        inp.addEventListener("keydown", function(e) {
-            var x = document.getElementById(this.id + "autocomplete-list");
-            if (x) x = x.getElementsByTagName("div");
-            if (e.keyCode == 40) {
-                /*If the arrow DOWN key is pressed,
-                increase the currentFocus variable:*/
-                currentFocus++;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 38) { //up
-                /*If the arrow UP key is pressed,
-                decrease the currentFocus variable:*/
-                currentFocus--;
-                /*and and make the current item more visible:*/
-                addActive(x);
-            } else if (e.keyCode == 13) {
-                /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                e.preventDefault();
-                if (currentFocus > -1) {
-                    /*and simulate a click on the "active" item:*/
-                    if (x) x[currentFocus].click();
-                }
-            }
-        });
-
-        function addActive(x) {
-            /*a function to classify an item as "active":*/
-            if (!x) return false;
-            /*start by removing the "active" class on all items:*/
-            removeActive(x);
-            if (currentFocus >= x.length) currentFocus = 0;
-            if (currentFocus < 0) currentFocus = (x.length - 1);
-            /*add class "autocomplete-active":*/
-            x[currentFocus].classList.add("autocomplete-active");
-        }
-
-        function removeActive(x) {
-            /*a function to remove the "active" class from all autocomplete items:*/
-            for (var i = 0; i < x.length; i++) {
-                x[i].classList.remove("autocomplete-active");
-            }
-        }
-
-        function closeAllLists(elmnt) {
-            /*close all autocomplete lists in the document,
-            except the one passed as an argument:*/
-            var x = document.getElementsByClassName("autocomplete-items");
-            for (var i = 0; i < x.length; i++) {
-                if (elmnt != x[i] && elmnt != inp) {
-                    x[i].parentNode.removeChild(x[i]);
-                }
-            }
-        }
-        /*execute a function when someone clicks in the document:*/
-        document.addEventListener("click", function(e) {
-            closeAllLists(e.target);
-        });
+<!-- CSS For Styling input type number (agar tidak menampilkan number arrows) -->
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 
-    var dosen = ["pak yoppy", "pak bagas", "pak afif", "pak hasyim", "pak unggul", "pak ade", "bu retno", "pak anisa", "pak dodit"];
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
 
-    // var dosenPJ = [
-    //     {
-    //         id: '2837298791',
-    //         nama: 'Pak Yo'
-    //     }
-    // ]
+<script>
+    // input jam mulai dan selesai
 
-    autocomplete(document.getElementById("dosenPJ"), dosen);
-    autocomplete(document.getElementById("dosen"), dosen);
-    autocomplete(document.getElementById("ruang"), dosen);
-    autocomplete(document.getElementById("mahasiswa"), dosen);
+    const input1 = document.querySelector("#jam_mulai");
+    const input2 = document.querySelector("#jam_selesai");
+    const id_jam_mulai = document.querySelector("#id_jam_mulai");
+    const id_jam_selesai = document.querySelector("#id_jam_selesai");
+
+    const jam = [
+        "J001",
+        "J002",
+        "J003",
+        "J004",
+        "J005",
+        "J006",
+        "J007",
+        "J008",
+        "J009",
+        "J010",
+        "J011",
+    ]
+
+    const changeValueJamMulai = () => {
+        input1.value = Math.min(11, Math.max(1, parseInt(input1.value, 10)));
+        let inputValue = input1.value;
+
+        // if ((inputValue + 1 > parseInt(input2.value)) && input2.value != 11) {
+        //     input2.innerHTML = Math.min(inputValue + 1, 11);
+        //     changeValueJamSelesai();
+        // }
+
+        id_jam_mulai.value = jam[inputValue - 1];
+    }
+
+    const changeValueJamSelesai = () => {
+        input2.value = Math.min(11, Math.max(1, parseInt(input2.value, 10)));
+        let inputValue = input2.value;
+
+        // if ((inputValue == parseInt(input1.value)) && input1.value != 1) {
+        //     input1.innerHTML = Math.max(parseInt(input1.value) - 1, 1);
+        //     changeValueJamMulai();
+        // }
+
+
+        id_jam_selesai.value = jam[inputValue - 1];
+    }
 </script>
-
 <script>
     // action modal
 

@@ -31,7 +31,7 @@ class HomeController extends Controller
             $level = $_SESSION['level'];
             if ($level == 'mahasiswa') {
                 $user = new Mahasiswa();
-                $user = $user->find($username, 'nim');
+                $user = $user->getDetailMahasiswa($username);
                 $booking = new Booking();
                 $notification = $booking->getNotification($level, $user);
             } else {

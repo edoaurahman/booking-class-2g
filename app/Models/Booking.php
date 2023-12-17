@@ -94,8 +94,19 @@ class Booking extends Model
         return $totalPage;
     }
 
-    public function dosenVerif(string $id_booking, string $status): bool
+    public function verifikasiBooking(string $id_booking, string $status): bool
     {
         return $this->update(['status' => $status], $id_booking, 'id_booking');
+    }
+
+    public function markDone(string $id_booking): bool
+    {
+        return $this->update(['status' => 'done'], $id_booking, 'id_booking');
+    }
+
+    public function addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai): void
+    {
+        $sql = "CALL addBooking('$mahasiswa', '$tgl_pakai', '$dosenPJ', '$dosenPR', '$kelas', '$ruang', '$jam_mulai', '$jam_selesai')";
+        $this->exec($sql);
     }
 }
