@@ -157,7 +157,7 @@ class AdminController extends Controller
 
         $mahasiswa = new Mahasiswa();
         $listNim = $mahasiswa->all();
-        
+
         $dosen = new Dosen();
         $listDosenPJ = $dosen->all();
         $listDosenPR = $dosen->all();
@@ -205,7 +205,17 @@ class AdminController extends Controller
 
     public function pdf($id_booking)
     {
+        $fmt = new \IntlDateFormatter('id_ID', 0, 0, 'Asia/Jakarta', 0, 'EEEE, MM MMMM YYYY');
+        $report = new Laporan();
+        $report = $report->getReport($id_booking);
+        $tanggal_pakai = $fmt->format(new \DateTime($report['tanggal_pakai']));
+
+        // $this->ddd($tanggal_pakai);
+        // $this->ddd($report);
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
-        View::render("Admin/pdf", []);
+        View::render("Admin/pdf", [
+            'report' => $report,
+            'tanggal_pakai' => $tanggal_pakai
+        ]);
     }
 }

@@ -95,7 +95,7 @@
                                             </template>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover">
+                                            <a class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover" :href="'/admin/pdf/' + item.id_booking">
                                                 Cetak
                                             </a>
                                         </td>
