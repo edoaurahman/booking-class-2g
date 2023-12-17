@@ -23,6 +23,8 @@ use TugasBesar\BookingClass2g\Controller\HomeController;
 use TugasBesar\BookingClass2g\Middleware\AuthMiddleware;
 use TugasBesar\BookingClass2g\Controller\AdminController;
 use TugasBesar\BookingClass2g\Controller\BookingController;
+use TugasBesar\BookingClass2g\Controller\ModalController;
+
 // Auth
 Router::add('GET', '/login', AuthController::class, 'login');
 Router::add('POST', '/login', AuthController::class, 'prosesLogin');
@@ -66,4 +68,10 @@ Router::add('POST', '/api/ruang/filter', BookingController::class, 'apiRuangBook
 Router::add('GET', '/api/status-ruang/{id_ruang}', BookingController::class, 'apiStatusRuang');
 Router::add('GET', '/api/dosen', BookingController::class, 'apiGetDosen');
 Router::add('POST', '/api/booking', BookingController::class, 'apiStoreBooking');
+
+
+
+// contoh modal edit
+Router::add('GET', '/modal', ModalController::class, 'index');
+Router::add('GET', '/modal/edit/{id}', ModalController::class, 'modal');
 Router::run();
