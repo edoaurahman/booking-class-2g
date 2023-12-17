@@ -109,4 +109,18 @@ class Booking extends Model
         $sql = "CALL addBooking('$mahasiswa', '$tgl_pakai', '$dosenPJ', '$dosenPR', '$kelas', '$ruang', '$jam_mulai', '$jam_selesai')";
         $this->exec($sql);
     }
+
+    public function getBookingUrgent(): array
+    {
+        $sql = "SELECT * FROM booking WHERE status = 'urgent'";
+        $result = $this->query($sql);
+        return $result;
+    }
+
+    public function getBookingIntersect(string $tgl_booking, string $id_ruang, string $jam_mulai, string $jam_selesai): array
+    {
+        $sql = "CALL CheckBookingAvailability('$tgl_booking','$id_ruang','$jam_mulai','$jam_selesai')";
+        $result = $this->query($sql);
+        return $result;
+    }
 }

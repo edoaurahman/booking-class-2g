@@ -86,8 +86,8 @@ class Ruang extends Model
             $sql .= " AND id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
         // print $sql to log
-        $dataToAppend = print_r($sql, true) . "\n";
-        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+        // $dataToAppend = print_r($sql, true) . "\n";
+        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
 
         $result = $this->db->query($sql);
         $data_booking = [];

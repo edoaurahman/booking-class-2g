@@ -1,7 +1,6 @@
 <div x-data="tableData">
-
-
     <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
+
         <div class="p-4  ml-[77px] lg:ml-64">
             <div class="p-4 mt-14">
 
@@ -11,6 +10,207 @@
                     </svg>
                     Admin / Booking
                 </div>
+
+                <template x-if="tableUrgent">
+                    <!-- <div class="p-4  ml-[77px] lg:ml-64"> -->
+                    <div class="pb-4">
+                        <div class="w-full text-center">
+                            <h1 class="font-bold text-2xl text-red-600 pb-4">Terdapat Booking yang urgent</h1>
+                        </div>
+                        <!-- table -->
+                        <section id="booking" class="shadow-lg sm:rounded-lg">
+                            <div x-init="$nextTick(() => {paggination(1) })">
+                                <div class="overflow-x-auto rounded-md overflow-hidden">
+                                    <table class="w-[1400px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                                        <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                                            <tr>
+                                                <th scope="col" class="w-[15%] px-6 py-3">
+                                                    Peminjam
+                                                </th>
+                                                <th scope="col" class=" px-6 py-3">
+                                                    Tanggal Pesan
+                                                </th>
+                                                <th scope="col" class=" px-6 py-3">
+                                                    Tanggal Pakai
+                                                </th>
+                                                <th scope="col" class="w-[15%] px-6 py-3">
+                                                    Dosen Penanggung Jawab
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Kelas
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Ruang
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Jam Mulai
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Jam Selesai
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Lampiran
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Keterangan
+                                                </th>
+                                                <th scope="col" class="w-[9%] px-6 py-3">
+                                                    Status
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template x-for="(item,index) in tableUrgent">
+                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <template x-if="item.mahasiswa">
+                                                        <td x-text="item.mahasiswa" class="px-4 py-3">
+                                                        </td>
+                                                    </template>
+                                                    <template x-if="!item.mahasiswa">
+                                                        <td x-text="item.dosen" class="px-4 py-3">
+                                                        </td>
+                                                    </template>
+                                                    <td x-text="item.tanggal_pesan" class="px-6 py-4">
+                                                    </td>
+                                                    <td x-text="item.tanggal_pakai" class="px-6 py-4">
+                                                    </td>
+                                                    <td x-text="item.dosen" class="px-6 py-4">
+                                                    </td>
+                                                    <td x-text="item.kelas" class="px-6 py-4">
+                                                    </td>
+                                                    <td x-text="item.ruang" class="px-6 py-4">
+                                                    </td>
+                                                    <td x-text="item.jam_mulai" class="px-6 py-4">
+                                                    </td>
+                                                    <td x-text="item.jam_selesai" class="px-6 py-4">
+                                                    </td>
+                                                    <td class="px-6 py-4">
+                                                        <a :href="'/assets/lampiran/' + item.lampiran">
+                                                            <div class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                                Lihat Lampiran
+                                                            </div>
+                                                        </a>
+                                                    </td>
+                                                    <td class="px-6 py-4">
+                                                        <!-- Modal toggle -->
+                                                        <span :data-modal-target="'modal-keterangan-' + index" :data-modal-toggle="'modal-keterangan-' + index" x-text="item && item.keterangan ? item.keterangan.substring(0, 20) : ''"></span>
+                                                        <!-- Main modal -->
+                                                        <div :id="'modal-keterangan-' + index" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                                                <!-- Modal content -->
+                                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                                    <!-- Modal header -->
+                                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                                            Keterangan
+                                                                        </h3>
+                                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" :data-modal-hide="'modal-keterangan-' + index">
+                                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                                            </svg>
+                                                                            <span class="sr-only">Close modal</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <!-- Modal body -->
+                                                                    <div class="p-4 md:p-5 space-y-4">
+                                                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400" x-text="item.keterangan">
+                                                                        </p>
+                                                                    </div>
+                                                                    <!-- Modal footer -->
+                                                                    <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                                                        <button :data-modal-hide="'modal-keterangan-' + index" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                    <td class="px-6 py-4 font-medium">
+                                                        <template x-if="item.status == 'success'">
+                                                            <div>
+                                                                <div class="bg-green-500 px-2 py-[2px] text-center text-white rounded-md">
+                                                                    <p x-text="item.status"></p>
+                                                                </div>
+                                                                <div class="flex justify-between w-full py-2">
+                                                                    <form action="/admin/booking/verif" method="post">
+                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                        <input type="hidden" name="status" value="canceled">
+                                                                        <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
+                                                                            <i class="fa-solid fa-xmark"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                    <form action="/admin/booking/verif" method="post">
+                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                        <input type="hidden" name="status" value="success">
+                                                                        <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
+                                                                            <i class="fa-solid fa-check"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </template>
+
+                                                        <template x-if="item.status == 'canceled'">
+                                                            <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
+                                                                <p x-text="item.status"></p>
+                                                            </div>
+                                                        </template>
+
+                                                        <template x-if="item.status == 'urgent'">
+                                                            <div>
+                                                                <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
+                                                                    <p x-text="item.status"></p>
+                                                                </div>
+                                                                <template x-if="tableUrgent.length == 1">
+                                                                    <div class="flex justify-between w-full py-2">
+                                                                        <form action="/admin/booking/verif" method="post">
+                                                                            <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                            <input type="hidden" name="status" value="canceled">
+                                                                            <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
+                                                                                <i class="fa-solid fa-xmark"></i>
+                                                                            </button>
+                                                                        </form>
+                                                                        <form action="/admin/booking/verif" method="post">
+                                                                            <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                            <input type="hidden" name="status" value="success">
+                                                                            <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
+                                                                                <i class="fa-solid fa-check"></i>
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </template>
+                                                            </div>
+                                                        </template>
+
+                                                        <template x-if="item.status == 'onprocess'">
+                                                            <div class="flex gap-3 w-full">
+                                                                <form action="/admin/booking/verif" method="post">
+                                                                    <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                    <input type="hidden" name="status" value="canceled">
+                                                                    <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </form>
+                                                                <form action="/admin/booking/verif" method="post">
+                                                                    <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                    <input type="hidden" name="status" value="success">
+                                                                    <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
+                                                                        <i class="fa-solid fa-check"></i>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </template>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- </div> -->
+                </template>
 
                 <div class="pb-4  flex justify-between">
                     <!-- Searching -->
@@ -42,7 +242,7 @@
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="w-[15%] px-6 py-3">
-                                            Mahasiswa
+                                            Peminjam
                                         </th>
                                         <th scope="col" class=" px-6 py-3">
                                             Tanggal Pesan
@@ -52,9 +252,6 @@
                                         </th>
                                         <th scope="col" class="w-[15%] px-6 py-3">
                                             Dosen Penanggung Jawab
-                                        </th>
-                                        <th scope="col" class="w-[15%] px-6 py-3">
-                                            Dosen Pengguna Ruang
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             Kelas
@@ -71,6 +268,9 @@
                                         <th scope="col" class="px-6 py-3">
                                             Lampiran
                                         </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Keterangan
+                                        </th>
                                         <th scope="col" class="w-[9%] px-6 py-3">
                                             Status
                                         </th>
@@ -79,13 +279,17 @@
                                 <tbody>
                                     <template x-for="(item,index) in tableData">
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td x-text="item.mahasiswa" class="px-4 py-3">
-                                            </td>
+                                            <template x-if="item.mahasiswa">
+                                                <td x-text="item.mahasiswa" class="px-4 py-3">
+                                                </td>
+                                            </template>
+                                            <template x-if="!item.mahasiswa">
+                                                <td x-text="item.dosen" class="px-4 py-3">
+                                                </td>
+                                            </template>
                                             <td x-text="item.tanggal_pesan" class="px-6 py-4">
                                             </td>
                                             <td x-text="item.tanggal_pakai" class="px-6 py-4">
-                                            </td>
-                                            <td x-text="item.dosen" class="px-6 py-4">
                                             </td>
                                             <td x-text="item.dosen" class="px-6 py-4">
                                             </td>
@@ -98,17 +302,26 @@
                                             <td x-text="item.jam_selesai" class="px-6 py-4">
                                             </td>
                                             <td class="px-6 py-4">
-                                                <button :data-modal-target="'modal-lampiran-'+index" :data-modal-toggle="'modal-lampiran-'+index" type="button" class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Lihat Lampiran</button>
-                                                <div :id="'modal-lampiran-'+index" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                    <div class="relative p-4 w-full max-w-5xl max-h-full">
+                                                <a :href="'/assets/lampiran/' + item.lampiran">
+                                                    <div class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                        Lihat Lampiran
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <!-- Modal toggle -->
+                                                <span :data-modal-target="'modal-keterangan-' + index" :data-modal-toggle="'modal-keterangan-' + index" x-text="item && item.keterangan ? item.keterangan.substring(0, 20) + '...' : ''"></span>
+                                                <!-- Main modal -->
+                                                <div :id="'modal-keterangan-' + index" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                                    <div class="relative p-4 w-full max-w-2xl max-h-full">
                                                         <!-- Modal content -->
                                                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                                             <!-- Modal header -->
                                                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                                                    Lampiran
+                                                                    Keterangan
                                                                 </h3>
-                                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" :data-modal-hide="'modal-lampiran-'+index">
+                                                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" :data-modal-hide="'modal-keterangan-' + index">
                                                                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                                     </svg>
@@ -117,15 +330,17 @@
                                                             </div>
                                                             <!-- Modal body -->
                                                             <div class="p-4 md:p-5 space-y-4">
-                                                                <iframe :src="'/assets/lampiran/' + item.lampiran" frameborder="0" class="w-full h-[500px]"></iframe>
+                                                                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400" x-text="item.keterangan">
+                                                                </p>
                                                             </div>
                                                             <!-- Modal footer -->
                                                             <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                                <button :data-modal-hide="'modal-lampiran-'+index" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
+                                                                <button :data-modal-hide="'modal-keterangan-' + index" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </td>
                                             <td class="px-6 py-4 font-medium">
                                                 <template x-if="item.status == 'success' || item.status == 'done'">
@@ -137,6 +352,30 @@
                                                 <template x-if="item.status == 'canceled'">
                                                     <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
                                                         <p x-text="item.status"></p>
+                                                    </div>
+                                                </template>
+
+                                                <template x-if="item.status == 'urgent'">
+                                                    <div>
+                                                        <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
+                                                            <p x-text="item.status"></p>
+                                                        </div>
+                                                        <div class="flex justify-between w-full py-2">
+                                                            <form action="/admin/booking/verif" method="post">
+                                                                <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                <input type="hidden" name="status" value="canceled">
+                                                                <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            </form>
+                                                            <form action="/admin/booking/verif" method="post">
+                                                                <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                <input type="hidden" name="status" value="success">
+                                                                <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
+                                                                    <i class="fa-solid fa-check"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </template>
 
@@ -428,17 +667,20 @@
     document.addEventListener('alpine:init', () => {
         Alpine.data('tableData', () => ({
             tableData: null,
+            tableUrgent: null,
             current_page: 1,
             paggination(page = '1') {
                 fetch('/api/booking/' + page)
                     .then(response => response.json())
                     .then(data => {
                         this.tableData = data.jmlBooking;
+                        console.log(this.tableData);
                         this.current_page = data.currentPage;
                         setActive(this.current_page);
                     }).then(e => {
                         buttonAction = document.querySelectorAll("i");
                     });
+                this.urgent();
             },
             next() {
                 if (this.current_page == <?= $totalPage ?>) {
@@ -463,7 +705,15 @@
                         this.current_page = data.currentPage;
                         setActive(this.current_page);
                     });
-            }
+            },
+            urgent() {
+                fetch('/api/admin/booking/urgent')
+                    .then(response => response.json())
+                    .then(data => {
+                        this.tableUrgent = data.bookingIntersect[0];
+                        console.log(this.tableUrgent);
+                    });
+            },
         }))
     })
 </script>

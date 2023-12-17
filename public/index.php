@@ -78,5 +78,6 @@ Router::add('POST', '/admin/mahasiswa/edit', AdminController::class, 'editMahasi
 
 Router::add('GET', '/admin/dosen/edit/{id}', AdminController::class, 'dosenModal');
 Router::add('POST', '/admin/dosen/edit', AdminController::class, 'editDosen');
+Router::add('GET', '/api/admin/booking/urgent', AdminController::class, 'apiBookingUrgent');
 
 Router::run();
