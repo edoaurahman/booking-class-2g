@@ -19,7 +19,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
+                        <input type="text" id="table-search" @input.debounce.750="fetchResults" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
                     </div>
                 </div>
 
@@ -82,7 +82,7 @@
                                         <td class="px-6 py-4 relative">
                                             <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
                                             <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                                <a class="edit-modal cursor-pointer" @click="modal(item.nim)" data-modal-target="edit-mahasiswa-modal" data-modal-toggle="edit-mahasiswa-modal" :value="item.nim">
+                                                <a class="edit-modal cursor-pointer" @click="modal(item.nim)" data-modal-target="edit-mahasiswa-modal" data-modal-toggle="edit-mahasiswa-modal">
                                                     <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Edit</div>
                                                 </a>
                                                 <a :href="'/admin/mahasiswa/delete/' + item.nim" class="delete-modal">
@@ -245,7 +245,7 @@
                     node.nextElementSibling.classList.add("hidden");
                 }
             } catch (error) {
-
+                console.log(error);
             }
         });
     });

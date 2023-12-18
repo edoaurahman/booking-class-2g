@@ -85,8 +85,8 @@ class Dosen extends Model
         return (object) $data[0];
     }
 
-    public function editDosen($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas) {
-        $sql = "Call editMahasiswa('$nim', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$kelas')";
+    public function editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email) {
+        $sql = "Call editDosen('$nip', '$nama', '$password', '$jenis_kelamin', '$tmpt_lahir', '$tgl_lahir', '$email')";
         $this->exec($sql);
     }
 

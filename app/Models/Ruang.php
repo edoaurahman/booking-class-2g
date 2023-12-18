@@ -30,7 +30,7 @@ class Ruang extends Model
     {
         $page -= 1;
         $page *= 10;
-        $sql = "SELECT * FROM view_getruang LIMIT 10 OFFSET $page";
+        $sql = "SELECT * FROM view_getruang ORDER BY created_at DESC, id_ruang ASC LIMIT 10 OFFSET $page";
         $result = $this->db->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {
@@ -86,8 +86,8 @@ class Ruang extends Model
             $sql .= " AND id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
         // print $sql to log
-        // $dataToAppend = print_r($sql, true) . "\n";
-        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+        $dataToAppend = print_r($sql, true) . "\n";
+        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
 
         $result = $this->db->query($sql);
         $data_booking = [];
@@ -139,6 +139,27 @@ class Ruang extends Model
     public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void
     {
         $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang' )";
+        $this->exec($sql);
+    }
+
+    public function getRuangByID($id): object
+    {
+        $sql = "SELECT * FROM view_getruang WHERE id_ruang = '$id'";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return (object) $data[0];
+    }
+
+    public function editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai) {
+        $sql = "CALL editRuang('$id', '$kode_ruang', '$nama', '$jenis_ruang', '$lantai')";
+        $this->exec($sql);
+    }
+
+    public function deleteRuang($id): void {
+        $sql = "DELETE FROM ruang WHERE id_ruang = '$id'";
         $this->exec($sql);
     }
 }

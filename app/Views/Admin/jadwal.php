@@ -86,13 +86,12 @@
                                         </td>
                                         <td class="px-6 py-4 relative">
                                             <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
-
                                             <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                                <a href="/?aksi=edit&id=<?= $id; ?>" class="edit-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
+                                                <a class="edit-modal cursor-pointer" @click="modal(item.id_jadwal)" data-modal-target="edit-jadwal-modal" data-modal-toggle="edit-jadwal-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Edit</div>
                                                 </a>
-                                                <a href="/?aksi=delete&id=<?= $id; ?>" class="delete-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
+                                                <a :href="'/admin/jadwal/delete/' + item.id_jadwal" class="delete-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Delete</div>
                                                 </a>
                                             </div>
                                         </td>
@@ -120,61 +119,6 @@
             </section>
         </div>
     </div>
-</div>
-<!-- Filter -->
-<div class="fixed z-50 -right-[320px] top-[120px] min-h-[450px] bg-navy_blue dark:bg-gray-700 w-80 p-4 transition-all duration-1000 text-black dark:text-white" id="filter">
-    <div class="flex flex-col bg-white dark:bg-gray-800 h-full w-full ">
-        <div class="flex justify-between items-center p-4 border-b border-black dark:border-white">
-            <div class="text-md font-semibold ">Filters</div>
-            <div class="cursor-pointer" id="exitFilter">
-                <i class="fa-solid fa-xmark"></i>
-            </div>
-        </div>
-        <form action="" class="divide-y divide-black dark:divide-white divide-dashed w-full px-4">
-            <div class="flex w-full flex-col justify-start gap-2 items-center p-4">
-                <div class="font-medium">Jenis Ruang</div>
-                <div class="w-full">
-                    <input id="jenis-ruang-1" type="checkbox" value="" name="jenis-ruang-1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-200 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-1" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Teori</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-2" type="checkbox" value="" name="jenis-ruang-2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-2" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Praktikum</label>
-                </div>
-                <div class="w-full">
-                    <input id="jenis-ruang-3" checked type="checkbox" value="" name="jenis-ruang-3" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="jenis-ruang-3" class="text-sm font-normal text-gray-900 dark:text-gray-300">Ruang Gabungan</label>
-                </div>
-            </div>
-            <div class="flex w-full flex-col justify-start gap-2 items-center p-4">
-                <div class="font-medium">Tipe Lantai</div>
-                <div class="w-full">
-                    <input id="lantai-5" type="checkbox" value="" name="lantai-5" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-200 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="lantai-5" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 5</label>
-                </div>
-                <div class="w-full">
-                    <input id="lantai-6" type="checkbox" value="" name="lantai-6" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="lantai-6" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 6</label>
-                </div>
-                <div class="w-full">
-                    <input checked id="lantai-7" type="checkbox" value="" name="lantai-7" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="lantai-7" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 7</label>
-                </div>
-                <div class="w-full">
-                    <input id="lantai-8" type="checkbox" value="" name="lantai-8" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="lantai-8" class="text-sm font-normal text-gray-900 dark:text-gray-300">Lantai 8</label>
-                </div>
-            </div>
-
-            <div class="w-full flex justify-end items-center py-2 px-4">
-                <input type="submit" value="Apply" class="px-4 py-2 text-white text-sm font-medium rounded-lg bg-indigo-600 hover:bg-bingu_hover">
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="fixed z-50 right-0 top-[45%] w-10 h-10 p-2 bg-biru text-center rounded-l-md cursor-pointer hover:bg-[#005fa8]" id="buttonFilter">
-    <i class="fa-solid fa-filter fa-flip" style="color: #ffffff;"></i>
 </div>
 
 <!-- Main modal -->
@@ -271,6 +215,28 @@
     </div>
 </div>
 
+<!-- Edit Jadwal modal -->
+<div id="edit-jadwal-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Edit Data Jadwal
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="edit-jadwal-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div id="content-modal"></div>
+        </div>
+    </div>
+</div>
+
 <!-- CSS For Styling input type number (agar tidak menampilkan number arrows) -->
 <style>
     /* Chrome, Safari, Edge, Opera */
@@ -287,6 +253,21 @@
 </style>
 
 <script>
+     // edit modal
+     const modal = (id_jadwal) => {
+        const modal = document.querySelector('#content-modal')
+
+        fetch(`/admin/jadwal/edit/${id_jadwal}`, {
+                method: 'GET'
+            })
+            .then(res => res.text())
+            .then(res => {
+                modal.innerHTML = res
+            })
+            .catch(err => console.log(err))
+
+    }
+
     // input jam mulai dan selesai
 
     const input1 = document.querySelector("#jam_mulai");
@@ -332,8 +313,7 @@
 
         id_jam_selesai.value = jam[inputValue - 1];
     }
-</script>
-<script>
+
     // action modal
 
     let buttonAction = document.querySelectorAll("i");
@@ -349,24 +329,6 @@
             } catch (error) {}
         });
     });
-
-    // filter
-
-    const exitFilter = document.querySelector("#exitFilter");
-    const filter = document.querySelector("#filter");
-    const buttonFilter = document.querySelector("#buttonFilter");
-
-    exitFilter.addEventListener("click", () => {
-        filter.classList.add("-right-[320px]");
-        filter.classList.remove("right-0");
-        buttonFilter.classList.remove("hidden")
-    })
-
-    buttonFilter.addEventListener("click", () => {
-        buttonFilter.classList.add("hidden")
-        filter.classList.remove("-right-[320px]");
-        filter.classList.add("right-0");
-    })
 
     // table & pagination
     const buttonPaggination = document.querySelectorAll('#button-pagination');

@@ -28,7 +28,7 @@ class Jadwal extends Model
     {
         $page -= 1;
         $page *= 10;
-        $sql = "SELECT * FROM view_getjadwaladmin LIMIT 10 OFFSET $page";
+        $sql = "SELECT * FROM view_getjadwaladmin ORDER BY created_at DESC LIMIT 10 OFFSET $page";
         $result = $this->db->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {
@@ -49,6 +49,27 @@ class Jadwal extends Model
 
     public function addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai): void {
         $sql = "CALL addJadwal('$matakuliah', '$kelas', '$dosen', '$ruang', '$hari', '$jam_mulai', '$jam_selesai')";
+        $this->exec($sql);
+    }
+
+    public function getJadwalById($id): object
+    {
+        $sql = "SELECT * FROM view_getjadwaladmin WHERE id_jadwal = '$id'";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return (object) $data[0];
+    }
+
+    public function editJadwal($id, $matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai) {
+        $sql = "CALL editJadwal('$id', '$matakuliah', '$kelas', '$dosen', '$ruang', '$hari', '$jam_mulai', '$jam_selesai')";
+        $this->exec($sql);
+    }
+
+    public function deleteJadwal($id): void {
+        $sql = "DELETE FROM jadwal WHERE id_jadwal = '$id'";
         $this->exec($sql);
     }
 }

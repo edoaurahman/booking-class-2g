@@ -56,6 +56,42 @@ class AdminController extends Controller
         $this->redirect("/admin/ruang");
     }
 
+    public function editRuang(Request $request)
+    {
+        $id = $request->id_ruang;
+        $kode_ruang = $request->kode_ruang;
+        $nama = $request->nama;
+        $jenis_ruang = $request->jenis_ruang;
+        $lantai = $request->lantai;
+
+        $ruang = new Ruang();
+        $ruang->editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai);
+
+        $this->redirect("/admin/ruang");
+    }
+
+    public function ruangModal($id_ruang): void
+    {
+        $ruang = new Ruang();
+        $ruang = $ruang->getRuangByID($id_ruang);
+
+        $id = $ruang->id_ruang;
+        $kode_ruang = $ruang->nama_ruang;
+        $nama = $ruang->deskripsi_ruang;
+        $jenis_ruang = $ruang->jenis_ruang;
+        $lantai = $ruang->nama_lantai;
+
+        View::render('Admin/Modal/ruangModal', ['id' => $id, 'nama' => $nama, 'kode_ruang' => $kode_ruang, 'jenis_ruang' => $jenis_ruang, 'lantai' => $lantai]);
+    }
+
+    public function deleteRuang($id_ruang)
+    {
+        $ruang = new Ruang();
+        $ruang->deleteRuang($id_ruang);
+
+        $this->redirect("/admin/ruang");
+    }
+
     public function mahasiswa()
     {
         $mahasiswa = new Mahasiswa();
@@ -111,10 +147,10 @@ class AdminController extends Controller
         $this->redirect("/admin/mahasiswa");
     }
 
-    public function mahasiswaModal($id): void
+    public function mahasiswaModal($nim): void
     {
         $mahasiswa = new Mahasiswa();
-        $mahasiswa = $mahasiswa->getMahasiswaById($id);
+        $mahasiswa = $mahasiswa->getMahasiswaById($nim);
 
         $nama = $mahasiswa->nama;
         $password = $mahasiswa->password;
@@ -123,7 +159,7 @@ class AdminController extends Controller
         $jenis_kelamin = $mahasiswa->jenis_kelamin;
         $id_kelas = $mahasiswa->id_kelas;
 
-        View::render('Admin/Modal/mahasiswaModal', ['id' => $id, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
+        View::render('Admin/Modal/mahasiswaModal', ['id' => $nim, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
     }
 
     public function deleteMahasiswa($nim)
@@ -185,6 +221,52 @@ class AdminController extends Controller
 
         $this->redirect("/admin/jadwal");
     }
+
+    public function editJadwal(Request $request)
+    {
+        $id = $request->id_jadwal;
+        $matakuliah = $request->matakuliah;
+        $kelas = $request->kelas;
+        $dosen = $request->dosen;
+        $ruang = $request->ruang;
+        $hari = $request->hari;
+        $jam_mulai = $request->jam_mulai;
+        $jam_selesai = $request->jam_selesai;
+
+
+        $jadwal = new Jadwal();
+        $jadwal->editJadwal($id, $matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai);
+
+        $this->redirect("/admin/jadwal");
+    }
+
+    public function jadwalModal($id_jadwal): void
+    {
+        $jadwal = new Jadwal();
+        $jadwal = $jadwal->getJadwalById($id_jadwal);
+
+        $id = $id_jadwal;
+        $matakuliah = $jadwal->id_matkul;
+        $kelas = $jadwal->id_kelas;
+        $dosen = $jadwal->id_dosen;
+        $ruang = $jadwal->id_ruang;
+        $hari = $jadwal->id_hari;
+        $jam_mulai = $jadwal->jam_mulai;
+        $jam_selesai = $jadwal->jam_selesai;
+        $id_jam_mulai = $jadwal->id_jam_mulai;
+        $id_jam_selesai = $jadwal->id_jam_selesai;
+
+        View::render('Admin/Modal/jadwalModal', ['id' => $id, 'matakuliah' => $matakuliah, 'kelas' => $kelas, 'dosen' => $dosen, 'ruang' => $ruang, 'hari' => $hari, 'jam_mulai' => $jam_mulai, 'jam_selesai' => $jam_selesai, 'id_jam_mulai' => $id_jam_mulai, 'id_jam_selesai' => $id_jam_selesai]);
+    }
+
+    public function deleteJadwal($id_jadwal)
+    {
+        $jadwal = new Jadwal();
+        $jadwal->deleteJadwal($id_jadwal);
+
+        $this->redirect("/admin/jadwal");
+    }
+
     public function dosen()
     {
         $dosen = new Dosen();
@@ -223,46 +305,46 @@ class AdminController extends Controller
 
     public function editDosen(Request $request)
     {
-        $nim = $request->nim;
+        $nip = $request->nip;
         $nama = $request->nama;
         $password = $request->password;
+        $email = $request->email;
         $tmpt_lahir = $request->tmptLahir;
         $tgl_lahir = $request->tglLahir;
         $jenis_kelamin = $request->jenis_kelamin;
-        $kelas = $request->kelas;
 
-        $mahasiswa = new Mahasiswa();
-        $mahasiswa->editMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas);
+        $dosen = new Dosen();
+        $dosen->editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email);
 
-        $this->redirect("/admin/mahasiswa");
+        $this->redirect("/admin/dosen");
     }
 
-    public function dosenModal($id): void
+    public function dosenModal($nip): void
     {
-        $mahasiswa = new Mahasiswa();
-        $mahasiswa = $mahasiswa->getMahasiswaById($id);
+        $dosen = new Dosen();
+        $dosen = $dosen->getDosenById($nip);
 
-        $nama = $mahasiswa->nama;
-        $password = $mahasiswa->password;
-        $tempat_lahir = $mahasiswa->tempat_lahir;
-        $tanggal_lahir = $mahasiswa->tanggal_lahir;
-        $jenis_kelamin = $mahasiswa->jenis_kelamin;
-        $id_kelas = $mahasiswa->id_kelas;
+        $nama = $dosen->nama;
+        $password = $dosen->password;
+        $email = $dosen->email;
+        $tempat_lahir = $dosen->tempat_lahir;
+        $tanggal_lahir = $dosen->tanggal_lahir;
+        $jenis_kelamin = $dosen->jenis_kelamin;
 
-        View::render('Admin/Modal/mahasiswaModal', ['id' => $id, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
+        View::render('Admin/Modal/dosenModal', ['id' => $nip, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'email' => $email]);
     }
 
-    public function deleteDosen($nim)
+    public function deleteDosen($nip)
     {
-        $mahasiswa = new Mahasiswa();
-        $mahasiswa->deleteMahasiswa($nim);
+        $dosen = new Dosen();
+        $dosen->deleteDosen($nip);
 
-        $this->redirect("/admin/mahasiswa");
+        $this->redirect("/admin/dosen");
     }
 
     public function booking()
     {
-        // cek lampiran\
+    	// cek lampiran\
         if (isset($_COOKIE['lampiran'])) {
             // delete old file
             $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
@@ -271,6 +353,7 @@ class AdminController extends Controller
             setcookie('lampiran', '', time() - 3600, '/');
             unset($_COOKIE['lampiran']);
         }
+        
         $booking = new Booking();
         $totalPage = $booking->getTotalPage();
 
@@ -301,7 +384,7 @@ class AdminController extends Controller
         ];
         echo json_encode($data);
     }
-
+    
     public function apiBookingUrgent(): void
     {
         $booking = new Booking();
@@ -404,7 +487,7 @@ class AdminController extends Controller
         $booking->verifikasiBooking($request->id_booking, $request->status);
         $this->redirect('/admin/booking');
     }
-
+    
     public function apiCheckLastDosen(Request $request): void
     {
         $bookingAvailability = new Dosen();
@@ -415,7 +498,7 @@ class AdminController extends Controller
         }
         echo json_encode($bookingAvailability);
     }
-
+    
     public function apiBookingSearch(Request $request): void
     {
         $booking = new Booking();
