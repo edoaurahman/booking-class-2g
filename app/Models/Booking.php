@@ -22,7 +22,7 @@ class Booking extends Model
         return $result;
     }
 
-    public function create(object $request): bool
+    public function create(object $request, string $lampiran = null): bool
     {
         // get latest id_booking
         $sql = "SELECT id_booking FROM booking ORDER BY id_booking DESC LIMIT 1";
@@ -47,7 +47,7 @@ class Booking extends Model
         $id_kelas = $request->id_kelas;
         $jam_mulai = $request->jam_mulai;
         $jam_selesai = $request->jam_selesai;
-        $lampiran = $_COOKIE['lampiran'];
+        $lampiran = $_COOKIE['lampiran'] ?? $lampiran;
         $id_last_dosen = $request->id_last_dosen;
         $id_mahasiswa = empty($id_mahasiswa) ? 'NULL' : "'$id_mahasiswa'";
         $id_last_dosen = empty($id_last_dosen) ? 'NULL' : "'$id_last_dosen'";
@@ -66,8 +66,6 @@ class Booking extends Model
             '$keterangan',
             $id_last_dosen
         )";
-
-
         return $this->exec($sql);
     }
 
@@ -102,12 +100,6 @@ class Booking extends Model
     public function markDone(string $id_booking): bool
     {
         return $this->update(['status' => 'done'], $id_booking, 'id_booking');
-    }
-
-    public function addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai): void
-    {
-        $sql = "CALL addBooking('$mahasiswa', '$tgl_pakai', '$dosenPJ', '$dosenPR', '$kelas', '$ruang', '$jam_mulai', '$jam_selesai')";
-        $this->exec($sql);
     }
 
     public function getBookingUrgent(): array
