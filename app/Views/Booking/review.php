@@ -6,13 +6,13 @@
             <li class="flex md:w-full items-center  text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
                 <div class="flex flex-none justify-end items-center text-xl">
                     <i class="fa-solid  fa-circle-check mr-3"></i>
-                    <p>Ruang </p>
+                    <p>Search </p>
                 </div>
             </li>
             <li class="flex md:w-full items-center  text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white text-2xl font-sans font-semibold">
                 <div class="flex flex-none items-center text-xl">
                     <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
-                    <p>Waktu</p>
+                    <p>Ruang</p>
                 </div>
             </li>
             <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white font-sans ">
