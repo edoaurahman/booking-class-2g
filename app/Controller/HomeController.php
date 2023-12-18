@@ -22,7 +22,8 @@ class HomeController extends Controller
             $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
             unlink($oldFile);
             // delete cookie
-            setcookie('lampiran', '', time() - 3600);
+            setcookie('lampiran', '', time() - 3600, '/');
+            unset($_COOKIE['lampiran']);
         }
 
         if (isset($_SESSION['user'])) {

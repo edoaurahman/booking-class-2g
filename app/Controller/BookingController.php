@@ -248,6 +248,8 @@ class BookingController extends Controller
                 // delete old file
                 $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
                 unlink($oldFile);
+                // delete cookie
+                setcookie('lampiran', '', time() - 3600, '/');
             }
             http_response_code(500);
             echo json_encode(['status' => $result]);
