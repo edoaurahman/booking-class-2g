@@ -344,7 +344,7 @@ class AdminController extends Controller
 
     public function booking()
     {
-    	// cek lampiran\
+        // cek lampiran\
         if (isset($_COOKIE['lampiran'])) {
             // delete old file
             $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
@@ -353,7 +353,7 @@ class AdminController extends Controller
             setcookie('lampiran', '', time() - 3600, '/');
             unset($_COOKIE['lampiran']);
         }
-        
+
         $booking = new Booking();
         $totalPage = $booking->getTotalPage();
 
@@ -384,7 +384,7 @@ class AdminController extends Controller
         ];
         echo json_encode($data);
     }
-    
+
     public function apiBookingUrgent(): void
     {
         $booking = new Booking();
@@ -487,7 +487,7 @@ class AdminController extends Controller
         $booking->verifikasiBooking($request->id_booking, $request->status);
         $this->redirect('/admin/booking');
     }
-    
+
     public function apiCheckLastDosen(Request $request): void
     {
         $bookingAvailability = new Dosen();
@@ -498,11 +498,18 @@ class AdminController extends Controller
         }
         echo json_encode($bookingAvailability);
     }
-    
+
     public function apiBookingSearch(Request $request): void
     {
         $booking = new Booking();
         $booking = $booking->getBookingSearch($request);
         echo json_encode($booking);
+    }
+
+    public function getTotalBookingOnproccess(): void
+    {
+        $booking = new Booking();
+        $booking = $booking->getTotalBookingOnprocess();
+        echo json_encode(['total_booking' => $booking]);
     }
 }

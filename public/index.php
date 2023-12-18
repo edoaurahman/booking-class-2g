@@ -87,5 +87,6 @@ Router::add('POST', '/api/booking', BookingController::class, 'apiStoreBooking')
 
 Router::add('GET', '/api/admin/booking/urgent', AdminController::class, 'apiBookingUrgent');
 Router::add('POST', '/api/admin/booking/check-dosen-last', AdminController::class, 'apiCheckLastDosen');
+Router::add('GET', '/api/admin/booking/total-onprocess', AdminController::class, 'getTotalBookingOnproccess');
 
 Router::run();

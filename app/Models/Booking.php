@@ -127,4 +127,11 @@ class Booking extends Model
         $result = $this->query($sql);
         return $result;
     }
+
+    public function getTotalBookingOnprocess(): int
+    {
+        $sql = "SELECT COUNT(*) AS total FROM booking WHERE status = 'onprocess'";
+        $result = $this->query($sql);
+        return $result[0]['total'];
+    }
 }
