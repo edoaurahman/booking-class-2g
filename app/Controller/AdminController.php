@@ -415,4 +415,11 @@ class AdminController extends Controller
         }
         echo json_encode($bookingAvailability);
     }
+
+    public function apiBookingSearch(Request $request): void
+    {
+        $booking = new Booking();
+        $booking = $booking->getBookingSearch($request);
+        echo json_encode($booking);
+    }
 }

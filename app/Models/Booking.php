@@ -82,6 +82,18 @@ class Booking extends Model
         return $data;
     }
 
+    public function getBookingSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getbookingadmin WHERE id_booking LIKE '%$keyword%' OR mahasiswa LIKE '%$keyword%' OR dosen LIKE '%$keyword%' OR ruang LIKE '%$keyword%' OR tanggal_pesan LIKE '%$keyword%' OR tanggal_pakai LIKE '%$keyword%' OR jam_mulai LIKE '%$keyword%' OR jam_selesai LIKE '%$keyword%' OR status LIKE '%$keyword%' OR keterangan LIKE '%$keyword%' OR nip LIKE '%$keyword%' ORDER BY tanggal_pesan DESC";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
     public function getTotalPage(): int
     {
         $sql = "SELECT COUNT(*) AS total FROM view_getbookingadmin";

@@ -86,7 +86,7 @@
                                                     </td>
                                                     <td class="px-6 py-4">
                                                         <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
-                                                            <div class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                            <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-900 dark:focus:ring-blue-800">
                                                                 Lihat Lampiran
                                                             </div>
                                                         </a>
@@ -139,13 +139,13 @@
                                                                             <i class="fa-solid fa-xmark"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <form action="/admin/booking/verif" method="post">
+                                                                    <!-- <form action="/admin/booking/verif" method="post">
                                                                         <input type="hidden" name="id_booking" :value="item.id_booking">
                                                                         <input type="hidden" name="status" value="success">
                                                                         <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
                                                                             <i class="fa-solid fa-check"></i>
                                                                         </button>
-                                                                    </form>
+                                                                    </form> -->
                                                                 </div>
                                                             </div>
                                                         </template>
@@ -169,13 +169,15 @@
                                                                             <i class="fa-solid fa-xmark"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <form action="/admin/booking/verif" method="post">
-                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                        <input type="hidden" name="status" value="success">
-                                                                        <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
-                                                                            <i class="fa-solid fa-check"></i>
-                                                                        </button>
-                                                                    </form>
+                                                                    <div x-show="tableUrgent.length == 1">
+                                                                        <form action="/admin/booking/verif" method="post">
+                                                                            <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                            <input type="hidden" name="status" value="success">
+                                                                            <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
+                                                                                <i class="fa-solid fa-check"></i>
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </template>
@@ -220,7 +222,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                 </svg>
                             </div>
-                            <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
+                            <input type="search" @input.debounce.750="searchBooking()" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
                         </div>
                     </div>
 
@@ -301,7 +303,7 @@
                                             </td>
                                             <td class="px-6 py-4">
                                                 <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
-                                                    <div class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                    <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                         Lihat Lampiran
                                                     </div>
                                                 </a>
@@ -480,9 +482,9 @@
                             <label for="tgl_pakai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Pemakaian</label>
                             <input required type="date" @input.debounce="fetchDetailBooking" name="tanggal" id="tgl_pakai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white ">
                         </div>
-                        <div class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
+                        <div class="p-3 border rounded-md mt-4 dark:bg-gray-600 dark:border-gray-500">
                             <label class="mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Jam Booking</label>
-                            <div class=" bg-white text-center dark:bg-dark_grey1">
+                            <div class=" bg-white text-center dark:bg-gray-600">
                                 <div class="grid grid-cols-3 gap-2 mt-4 md:gap-1">
                                     <template x-for="(item, index) in detailBooking">
                                         <button type="button" :class="item.status_jam === 'onprocess' && !selectedHours.includes(index + 1) ? 'bg-yellow-500' : item.status_jam === 'used' && !selectedHours.includes(index + 1) ? 'bg-red-500' : selectedHours.includes(index + 1) ? 'bg-blue-500' : '!bg-bingu' " class=" text-white font-medium text-xs px-8 py-2 text-center rounded" x-text="padZero(index+1)" @click="toggleSelectedRange(index + 1)"></button>
@@ -491,14 +493,14 @@
                             </div>
                             <template x-if="detailBooking.length == 0">
                                 <!-- pilih ruang dan tanggal terlebih dahulu -->
-                                <div class="w-full text-center">
+                                <div class="w-full text-center dark:text-white">
                                     <span>Pilih ruang dan tanggal terlebih dahulu</span>
                                 </div>
                             </template>
                         </div>
                         <div class="col-span-1 relative">
                             <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-                            <textarea required name="keterangan" id="keterangan" rows="10" class="rounded w-full border border-gray-500 dark:bg-gray-600" value="Kepentingan kelas"></textarea>
+                            <textarea required name="keterangan" id="keterangan" rows="10" class="rounded w-full border border-gray-500 dark:bg-gray-600 dark:text-white" value="Kepentingan kelas"></textarea>
                         </div>
                         <template x-if="lastDosen">
                             <div class="col-span-1 relative">
@@ -771,6 +773,17 @@
                         window.location.href = '/admin/booking'
                     })
                 }
+            },
+            async searchBooking() {
+                const keyword = document.querySelector("#table-search").value;
+                const formData = new FormData();
+                formData.append("keyword", keyword);
+                const response = await fetch('/api/admin/booking/search', {
+                    method: "POST",
+                    body: formData
+                })
+                const data = await response.json()
+                this.tableData = data;
             }
         }))
     })
