@@ -33,7 +33,7 @@
         <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 overflow-x-auto shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
             <li class="flex items-center text-blue-600  ">
                 <i class="fa-solid fa-circle-check  "></i>
-                <div class="ml-2 mr-2">Ruang</div>
+                <div class="ml-2 mr-2">Search</div>
                 <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
@@ -41,7 +41,7 @@
 
             <li class="flex items-center text-blue-600 px-2 ">
                 <i class="fa-solid fa-circle-check mr-1 "></i>
-                <div class="ml-2 mr-2">Waktu</div>
+                <div class="ml-2 mr-2">Ruang</div>
                 <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                 </svg>
