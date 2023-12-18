@@ -85,7 +85,7 @@
                                                     <td x-text="item.jam_selesai" class="px-6 py-4">
                                                     </td>
                                                     <td class="px-6 py-4">
-                                                        <a :href="'/assets/lampiran/' + item.lampiran">
+                                                        <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
                                                             <div class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                                 Lihat Lampiran
                                                             </div>
@@ -161,24 +161,22 @@
                                                                 <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
                                                                     <p x-text="item.status"></p>
                                                                 </div>
-                                                                <template x-if="tableUrgent.length == 1">
-                                                                    <div class="flex justify-between w-full py-2">
-                                                                        <form action="/admin/booking/verif" method="post">
-                                                                            <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                            <input type="hidden" name="status" value="canceled">
-                                                                            <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
-                                                                                <i class="fa-solid fa-xmark"></i>
-                                                                            </button>
-                                                                        </form>
-                                                                        <form action="/admin/booking/verif" method="post">
-                                                                            <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                            <input type="hidden" name="status" value="success">
-                                                                            <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
-                                                                                <i class="fa-solid fa-check"></i>
-                                                                            </button>
-                                                                        </form>
-                                                                    </div>
-                                                                </template>
+                                                                <div class="flex justify-between w-full py-2">
+                                                                    <form action="/admin/booking/verif" method="post">
+                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                        <input type="hidden" name="status" value="canceled">
+                                                                        <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
+                                                                            <i class="fa-solid fa-xmark"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                    <form action="/admin/booking/verif" method="post">
+                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                        <input type="hidden" name="status" value="success">
+                                                                        <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
+                                                                            <i class="fa-solid fa-check"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </template>
 
@@ -302,7 +300,7 @@
                                             <td x-text="item.jam_selesai" class="px-6 py-4">
                                             </td>
                                             <td class="px-6 py-4">
-                                                <a :href="'/assets/lampiran/' + item.lampiran">
+                                                <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
                                                     <div class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                         Lihat Lampiran
                                                     </div>
@@ -355,9 +353,15 @@
                                                     </div>
                                                 </template>
 
-                                                <template x-if="item.status == 'urgent'">
+                                                <template x-if="item.status == 'waiting_dosen_verification'">
+                                                    <div class="bg-blue-600 px-2 py-[2px] text-center text-white rounded-md">
+                                                        <p>waiting dosen verification</p>
+                                                    </div>
+                                                </template>
+
+                                                <template x-if=" item.status=='urgent'">
                                                     <div>
-                                                        <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
+                                                        <div class=" bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
                                                             <p x-text="item.status"></p>
                                                         </div>
                                                         <div class="flex justify-between w-full py-2">
@@ -428,7 +432,7 @@
 
     <!-- Main modal -->
     <div id="add-booking-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative p-4 w-full max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
@@ -443,24 +447,11 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form class="p-4 md:p-5">
-                    <div class="grid gap-4 mb-4 grid-cols-2">
-                        <div class="col-span-1 relative">
-                            <label for="mahasiswa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIM Mahasiswa</label>
-                            <input id="mahasiswa" list="listNim" name="mahasiswa" placeholder="Masukkan NIM..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
-                            <datalist id="listNim">
-                                <?php foreach ($listNim as $item) : ?>
-                                    <option value="<?= $item['nim'] ?>"><?= $item['nama'] ?></option>
-                                <?php endforeach ?>
-                            </datalist>
-                        </div>
-                        <div class="col-span-1">
-                            <label for="tgl_pakai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Pemakaian</label>
-                            <input type="date" name="tgl_pakai" id="tgl_pakai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white ">
-                        </div>
+                <form id="formulir" method="post" class="p-4 md:p-5" method="POST" action="/admin/booking" @submit.prevent="checkJam($event)" enctype="multipart/form-data">
+                    <div class=" grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-1 relative">
                             <label for="dosenPJ" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen Penanggung Jawab</label>
-                            <input id="dosenPJ" list="listDosenPJ" name="dosenPJ" placeholder="Masukkan NIP..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
+                            <input required id="dosenPJ" list="listDosenPJ" name="id_dosen" placeholder="Masukkan NIP..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
                             <datalist id="listDosenPJ">
                                 <?php foreach ($listDosenPJ as $item) : ?>
                                     <option value="<?= $item['nip'] ?>"><?= $item['nama'] ?></option>
@@ -468,17 +459,8 @@
                             </datalist>
                         </div>
                         <div class="col-span-1 relative">
-                            <label for="dosenPR" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen Pengguna Ruang</label>
-                            <input id="dosenPR" list="listDosenPR" name="dosenPR" placeholder="Masukkan NIP..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
-                            <datalist id="listDosenPR">
-                                <?php foreach ($listDosenPR as $item) : ?>
-                                    <option value="<?= $item['nip'] ?>"><?= $item['nama'] ?></option>
-                                <?php endforeach ?>
-                            </datalist>
-                        </div>
-                        <div class="col-span-1 relative">
                             <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
-                            <input id="kelas" list="listKelas" name="kelas" placeholder="cth: TI-2G" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
+                            <input required id="kelas" list="listKelas" name="id_kelas" placeholder="cth: TI-2G" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
                             <datalist id="listKelas">
                                 <?php foreach ($listKelas as $item) : ?>
                                     <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
@@ -487,7 +469,7 @@
                         </div>
                         <div class="col-span-1 relative">
                             <label for="ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ruang</label>
-                            <input id="ruang" list="listRuang" name="ruang" placeholder="cth: Ruang Teori-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  dark:focus:border-primary-500">
+                            <input required id="ruang" list="listRuang" @input.debounce="setRuang" name="id_ruang" placeholder="cth: Ruang Teori-2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white  dark:focus:border-primary-500">
                             <datalist id="listRuang">
                                 <?php foreach ($listRuang as $item) : ?>
                                     <option value="<?= $item['id_ruang'] ?>"><?= $item['nama_ruang'] ?></option>
@@ -495,45 +477,46 @@
                             </datalist>
                         </div>
                         <div class="col-span-1">
-                            <label for="jam_mulai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Mulai</label>
-                            <div class="relative flex items-center max-w-[8rem]">
-                                <button type="button" id="decrement-button" onclick="decrementJamMulaiFunc()" data-input-counter-decrement="jam_mulai" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none dark:hover:border-gray-500">
-                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-                                    </svg>
-                                </button>
-                                <input type="number" id="jam_mulai" oninput="changeValueJamMulai()" value="1" min="1" max="11" class="bg-gray-50 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 block w-full py-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:border-white dark:focus:ring-white" placeholder="1" required>
-                                <button type="button" id="increment-button" onclick="incrementJamMulaiFunc()" data-input-counter-increment="jam_mulai" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none dark:hover:border-gray-500">
-                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                    </svg>
-                                </button>
-                            </div>
+                            <label for="tgl_pakai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Pemakaian</label>
+                            <input required type="date" @input.debounce="fetchDetailBooking" name="tanggal" id="tgl_pakai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white ">
                         </div>
-                        <div class="col-span-1">
-                            <label for="jam_selesai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Selesai</label>
-                            <div class="relative flex items-center max-w-[8rem]">
-                                <button type="button" id="decrement-button" onclick="decrementJamSelesaiFunc()" data-input-counter-decrement="jam_selesai" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none dark:hover:border-gray-500">
-                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-                                    </svg>
-                                </button>
-                                <input type="number" id="jam_selesai" oninput="changeValueJamSelesai()" value="1" min="1" max="11" class="bg-gray-50 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500  block w-full py-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:border-white dark:focus:ring-white" placeholder="1" required>
-                                <button type="button" id="increment-button" onclick="incrementJamSelesaiFunc()" data-input-counter-increment="jam_selesai" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none dark:hover:border-gray-500">
-                                    <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                    </svg>
-                                </button>
+                        <div class="p-3 border rounded-md mt-4 dark:border-dark_grey2">
+                            <label class="mb-2 text-sm font-medium font-sans text-gray-900 dark:text-white">Pilih Jam Booking</label>
+                            <div class=" bg-white text-center dark:bg-dark_grey1">
+                                <div class="grid grid-cols-3 gap-2 mt-4 md:gap-1">
+                                    <template x-for="(item, index) in detailBooking">
+                                        <button type="button" :class="item.status_jam === 'onprocess' && !selectedHours.includes(index + 1) ? 'bg-yellow-500' : item.status_jam === 'used' && !selectedHours.includes(index + 1) ? 'bg-red-500' : selectedHours.includes(index + 1) ? 'bg-blue-500' : '!bg-bingu' " class=" text-white font-medium text-xs px-8 py-2 text-center rounded" x-text="padZero(index+1)" @click="toggleSelectedRange(index + 1)"></button>
+                                    </template>
+                                </div>
                             </div>
+                            <template x-if="detailBooking.length == 0">
+                                <!-- pilih ruang dan tanggal terlebih dahulu -->
+                                <div class="w-full text-center">
+                                    <span>Pilih ruang dan tanggal terlebih dahulu</span>
+                                </div>
+                            </template>
                         </div>
-
+                        <div class="col-span-1 relative">
+                            <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                            <textarea required name="keterangan" id="keterangan" rows="10" class="rounded w-full border border-gray-500 dark:bg-gray-600" value="Kepentingan kelas"></textarea>
+                        </div>
+                        <template x-if="lastDosen">
+                            <div class="col-span-1 relative">
+                                <label for="lastDosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen Pengguna saat ini</label>
+                                <input disabled :value="lastDosen.dosen" id="lastDosen" placeholder="Masukkan NIP..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
+                            </div>
+                        </template>
                         <!-- input hidden to get id jam -->
-                        <input type="hidden" name="jam_mulai" id="id_jam_mulai">
-                        <input type="hidden" name="jam_selesai" id="id_jam_selesai">
+                        <input required type="hidden" name="jam_mulai" id="id_jam_mulai">
+                        <input required type="hidden" name="jam_selesai" id="id_jam_selesai">
+                        <input type="hidden" name="status" :value="lastDosen == null ? 'success' : 'urgent' " id="status_booking">
+                        <template x-if="lastDosen">
+                            <input type="hidden" :value="lastDosen.nip" id="lastDosen" name="id_dosen_last" placeholder="Masukkan NIP..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-white">
+                        </template>
 
                         <div class="col-span-2">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="lampiran">Lampiran</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="lampiran_help" id="lampiran" type="file">
+                            <input required name="lampiran" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="lampiran_help" id="lampiran" type="file">
                         </div>
                     </div>
                     <div class="flex w-full justify-end items-center">
@@ -561,75 +544,24 @@
         -moz-appearance: textfield;
     }
 </style>
-
-<script>
-    // input jam mulai dan selesai
-
-    const input1 = document.querySelector("#jam_mulai");
-    const input2 = document.querySelector("#jam_selesai");
-    const id_jam_mulai = document.querySelector("#id_jam_mulai");
-    const id_jam_selesai = document.querySelector("#id_jam_selesai");
-
-    const jam = [
-        "J001",
-        "J002",
-        "J003",
-        "J004",
-        "J005",
-        "J006",
-        "J007",
-        "J008",
-        "J009",
-        "J010",
-        "J011",
-    ]
-
-    const changeValueJamMulai = () => {
-        let inputValue = Math.min(11, Math.max(1, parseInt(input1.value, 10)));
-
-        if ((inputValue + 1 > parseInt(input2.value)) && input2.value != 11) {
-            input2.value = Math.min(inputValue + 1, 11)
-            changeValueJamSelesai();
-        }
-
-        id_jam_mulai.value = jam[inputValue - 1];
-    }
-
-    const changeValueJamSelesai = () => {
-        let inputValue = Math.min(11, Math.max(1, parseInt(input2.value, 10)));
-
-        if ((inputValue == parseInt(input1.value)) && input1.value != 1) {
-            input1.value = Math.max(parseInt(input1.value) - 1, 1);
-            changeValueJamMulai();
-        }
-
-        id_jam_selesai.value = jam[inputValue - 1];
-    }
-
-    const decrementJamMulaiFunc = () => {
-        input1.value = Math.max(parseInt(input1.value, 10) - 1, 1)
-        changeValueJamMulai();
-    }
-
-    const incrementJamMulaiFunc = () => {
-        input1.value = Math.min(parseInt(input1.value, 10) + 1, 11);
-        changeValueJamMulai();
-    }
-
-    const decrementJamSelesaiFunc = () => {
-        input2.value = Math.max(parseInt(input2.value, 10) - 1, 1)
-        changeValueJamSelesai();
-    }
-
-    const incrementJamSelesaiFunc = () => {
-        input2.value = Math.min(parseInt(input2.value, 10) + 1, 11);
-        changeValueJamSelesai();
-    }
-</script>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+<script src="/assets/js/sweetalert.min.js"></script>
 <script>
+    // set tanggal hari ini dan maks 6 hari kedepan
+    const tanggalInput = document.querySelector("#tgl_pakai");
+    const tanggalNow = new Date();
+    const tanggalNowString = tanggalNow.toISOString().split("T")[0];
+    tanggalInput.setAttribute("min", tanggalNowString);
+    tanggalNow.setDate(tanggalNow.getDate() + 6);
+    const tanggalMaxString = tanggalNow.toISOString().split("T")[0];
+    tanggalInput.setAttribute("max", tanggalMaxString);
+
+    tanggalInput.value = tanggalNowString;
+
+    // input jam mulai dan selesai
+    const input_jam_mulai = document.querySelector("#id_jam_mulai");
+    const input_jam_selesai = document.querySelector("#id_jam_selesai");
+
     // action modal
 
     let buttonAction = document.querySelectorAll("i");
@@ -663,24 +595,107 @@
             }
         });
     }
+    const padZero = (num) => {
+        return String(num).padStart(2, "0");
+    };
+
+
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('tableData', () => ({
             tableData: null,
             tableUrgent: null,
             current_page: 1,
+            detailBooking: [],
+            id_ruang: null,
+            selectedHours: [],
+            listJam: [
+                "J001",
+                "J002",
+                "J003",
+                "J004",
+                "J005",
+                "J006",
+                "J007",
+                "J008",
+                "J009",
+                "J010",
+                "J011",
+            ],
+            id_jam_mulai: "",
+            id_jam_selesai: "",
+            lastDosen: null,
+            init() {
+                this.urgent();
+            },
+            checkJam() {
+                if (this.id_jam_mulai == "" || this.id_jam_selesai == "") {
+                    alert("Pilih ruang dan jam terlebih dahulu");
+                    return;
+                }
+                this.handleSubmit();
+            },
+            toggleSelectedRange(hour) {
+                const currentIndex = this.selectedHours.indexOf(hour);
+                const maxHour = Math.max(...this.selectedHours);
+
+                if (
+                    hour < maxHour ||
+                    (this.selectedHours.length > 2 && currentIndex === -1)
+                ) {
+                    return;
+                }
+
+                if (currentIndex === -1) {
+                    this.selectedHours.push(hour);
+                } else {
+                    this.selectedHours.splice(currentIndex, maxHour);
+                }
+
+                if (this.selectedHours.length > 1) {
+                    const minHour = Math.min(...this.selectedHours);
+                    const maxHour = Math.max(...this.selectedHours);
+                    for (let i = minHour + 1; i < maxHour; i++) {
+                        if (!this.selectedHours.includes(i)) {
+                            this.selectedHours.push(i);
+                        }
+                    }
+                }
+                this.id_jam_mulai = this.listJam[this.selectedHours[0] - 1];
+                this.id_jam_selesai = this.listJam[this.selectedHours[1] - 1];
+                input_jam_mulai.value = this.id_jam_mulai;
+                input_jam_selesai.value = this.id_jam_selesai;
+                // checkLastDosen if jam_mulai and jam_selesai is not empty and not undefined
+                if (this.id_jam_mulai != "" && this.id_jam_selesai != "" && this.id_jam_mulai != undefined && this.id_jam_selesai != undefined) {
+                    this.checkDosenLast();
+                }
+            },
             paggination(page = '1') {
                 fetch('/api/booking/' + page)
                     .then(response => response.json())
                     .then(data => {
                         this.tableData = data.jmlBooking;
-                        console.log(this.tableData);
                         this.current_page = data.currentPage;
                         setActive(this.current_page);
                     }).then(e => {
                         buttonAction = document.querySelectorAll("i");
                     });
-                this.urgent();
+            },
+            async fetchDetailBooking() {
+                const tanggal = document.querySelector("#tgl_pakai").value;
+                const day = new Date(tanggal).toLocaleDateString("id-ID", {
+                    weekday: "long",
+                });
+                if (this.id_ruang == null || tanggal == "" || this.id_ruang == "") {
+                    return;
+                }
+                const response = await fetch('/api/status-ruang/' + this.id_ruang)
+                const data = await response.json()
+                this.detailBooking = data[day]
+            },
+            setRuang() {
+                this.id_ruang = document.querySelector("#ruang").value;
+                this.fetchDetailBooking();
             },
             next() {
                 if (this.current_page == <?= $totalPage ?>) {
@@ -711,9 +726,52 @@
                     .then(response => response.json())
                     .then(data => {
                         this.tableUrgent = data.bookingIntersect[0];
-                        console.log(this.tableUrgent);
                     });
             },
+            async checkDosenLast() {
+                // post id_ruang, jam_mulai, jam_selesai, tanggal
+                const formData = new FormData();
+                formData.append("id_ruang", this.id_ruang);
+                formData.append("jam_mulai", this.id_jam_mulai);
+                formData.append("jam_selesai", this.id_jam_selesai);
+                formData.append("tanggal", document.querySelector("#tgl_pakai").value);
+                const response = await fetch('/api/admin/booking/check-dosen-last', {
+                    method: "POST",
+                    body: formData
+                })
+                const data = await response.json()
+                console.log(data);
+                this.lastDosen = data;
+            },
+            async handleSubmit() {
+                const formData = new FormData(document.querySelector('#formulir'));
+                // console.log(data);
+                const response = await fetch('/admin/booking', {
+                    method: 'POST',
+                    body: formData
+                })
+                const data = await response.json()
+                console.log(data);
+                if (data.status) {
+                    swal({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'Data berhasil dikirim',
+                    }).then(() => {
+                        document.cookie = "lampiran=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                        window.location.href = '/admin/booking'
+                    })
+                } else {
+                    await swal({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Data gagal dikirim',
+                    }).then(() => {
+                        document.cookie = "lampiran=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                        window.location.href = '/admin/booking'
+                    })
+                }
+            }
         }))
     })
 </script>
