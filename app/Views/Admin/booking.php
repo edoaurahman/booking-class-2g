@@ -335,7 +335,21 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 font-medium">
-                                                <template x-if="item.status == 'success' || item.status == 'done'">
+                                                <template x-if="item.status == 'success'">
+                                                    <div class="text-center">
+                                                        <div class="bg-green-500 px-2 py-[2px] text-center text-white rounded-md">
+                                                            <p x-text="item.status"></p>
+                                                        </div>
+                                                        <form action="/admin/booking/verif" method="post" class="pt-2">
+                                                            <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                            <input type="hidden" name="status" value="done">
+                                                            <button class="rounded bg-gray-500 text-white hover:bg-gray-600">
+                                                                Mark as done
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </template>
+                                                <template x-if="item.status == 'done'">
                                                     <div class="bg-green-500 px-2 py-[2px] text-center text-white rounded-md">
                                                         <p x-text="item.status"></p>
                                                     </div>
