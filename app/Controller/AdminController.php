@@ -262,6 +262,15 @@ class AdminController extends Controller
 
     public function booking()
     {
+        // cek lampiran\
+        if (isset($_COOKIE['lampiran'])) {
+            // delete old file
+            $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+            unlink($oldFile);
+            // delete cookie
+            setcookie('lampiran', '', time() - 3600, '/');
+            unset($_COOKIE['lampiran']);
+        }
         $booking = new Booking();
         $totalPage = $booking->getTotalPage();
 
@@ -309,23 +318,48 @@ class AdminController extends Controller
         echo json_encode($data);
     }
 
-    public function storeBooking(Request $request)
+    public function storeBooking(Request $request): void
     {
-        $mahasiswa = $request->mahasiswa;
-        $tgl_pakai = $request->tgl_pakai;
-        $dosenPJ = $request->dosenPJ;
-        $dosenPR = $request->dosenPR;
-        $kelas = $request->kelas;
-        $ruang = $request->ruang;
-        $jam_mulai = $request->jam_mulai;
-        $jam_selesai = $request->jam_selesai;
-        $jam_selesai = $request->jam_selesai;
+        $lampiran = $request->lampiran;
+        $file = '';
+        if (empty($lampiran['name'])) {
+            $lampiran = null;
+        } else {
+            if (isset($_COOKIE['lampiran'])) {
+                // delete old file
+                $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+                unlink($oldFile);
+                // delete cookie
+                setcookie('lampiran', '', time() - 3600, '/');
+            }
+            $extension = pathinfo($lampiran['name'], PATHINFO_EXTENSION);
+            $uploadDir = '/assets/lampiran/';
+            $filename = uniqid() . '.' . $extension;
+            $uploadPath = __DIR__ . '/../../public' . $uploadDir . $filename;
 
-
+            // $this->ddd($uploadPath);
+            move_uploaded_file($_FILES['lampiran']['tmp_name'], $uploadPath);
+            // set lampiran to cookie
+            setcookie('lampiran', $filename, time() + 86400, '/');
+            $file = $filename;
+        }
+        // $this->ddd($request);
         $booking = new Booking();
-        $booking->addBooking($mahasiswa, $tgl_pakai, $dosenPJ, $dosenPR, $kelas, $ruang, $jam_mulai, $jam_selesai);
-
-        $this->redirect("/admin/jadwal");
+        $result = $booking->create($request, $file);
+        if ($result) {
+            http_response_code(200);
+            echo json_encode(['status' => $result]);
+        } else {
+            if (isset($_COOKIE['lampiran'])) {
+                // delete old file
+                $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+                unlink($oldFile);
+                // delete cookie
+                setcookie('lampiran', '', time() - 3600, '/');
+            }
+            http_response_code(500);
+            echo json_encode(['status' => $result]);
+        }
     }
 
     public function report()
@@ -369,5 +403,16 @@ class AdminController extends Controller
         $booking = new Booking();
         $booking->verifikasiBooking($request->id_booking, $request->status);
         $this->redirect('/admin/booking');
+    }
+
+    public function apiCheckLastDosen(Request $request): void
+    {
+        $bookingAvailability = new Dosen();
+        $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+        if (empty($bookingAvailability)) {
+            $bookingAvailability = new Dosen();
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);;
+        }
+        echo json_encode($bookingAvailability);
     }
 }
