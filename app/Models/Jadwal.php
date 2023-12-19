@@ -80,4 +80,11 @@ class Jadwal extends Model
     {
         return $this->update(['status' => $status], $id_jadwal, 'id_jadwal');
     }
+
+    public function getSchedule($hari): array
+    {
+        $sql = "SELECT * FROM view_getjadwaladmin WHERE hari = '$hari'";
+        $result = $this->query($sql);
+        return $result;
+    }
 }

@@ -79,6 +79,7 @@ Router::add('GET', '/api/booking/{page}', AdminController::class, 'apiBooking');
 Router::add('POST', '/api/admin/booking/search', AdminController::class, 'apiBookingSearch');
 Router::add('GET', '/api/report/{page}', AdminController::class, 'apiReport');
 Router::add('GET', '/api/dashboard1', AdminController::class, 'apiDashboard1');
+Router::add('POST','/api/dashboard2', AdminController::class, 'apiDashboard2');
 
 // Filter ruang, hari, jam mulai, jam selesai, cateogry ruang, lantai
 Router::add('POST', '/api/ruang/filter', BookingController::class, 'apiRuangBooking');

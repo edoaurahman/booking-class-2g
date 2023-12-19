@@ -535,7 +535,8 @@ class AdminController extends Controller
         $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
         if (empty($bookingAvailability)) {
             $bookingAvailability = new Dosen();
-            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);;
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+            ;
         }
         echo json_encode($bookingAvailability);
     }
@@ -561,14 +562,27 @@ class AdminController extends Controller
 
         $ruang = new Ruang();
         $topBook = $ruang->getTopBookedRoom();
-        // $this->ddd($newBook);
-        $data = [
-            'newBook' => $newBook,
-            'topBook' => $topBook
-        ];
+
+        $jadwal = new Jadwal();
+        $schedule =
+            // $this->ddd($newBook);
+            $data = [
+                'newBook' => $newBook,
+                'topBook' => $topBook
+            ];
 
         echo json_encode($data);
     }
+
+    public function apiDashboard2(Request $request): void
+    {
+        $hari = $request->hari;
+        $jadwal = new Jadwal();
+        $listJadwal = $jadwal->getSchedule($hari);
+        // $this->ddd($listJadwal);
+        echo json_encode($listJadwal);
+    }
+
 
     public function setJadwalStatus(Request $request): void
     {
