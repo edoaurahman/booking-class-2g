@@ -122,7 +122,7 @@
                         </div>
                         <div class="font-bold text-lg mb-2">Denah Ruang</div>
                         <div class="w-full justify-center flex">
-                            <img src="/assets/img/lantai/Lantai6.png" class="w-[400px] h-auto mb-6" alt="">
+                            <img src="/assets/img/lantai/<?= $gambar ?>" class="w-[400px] h-auto mb-6" alt="">
                         </div>
                     </div>
                 </div>

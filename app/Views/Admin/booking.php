@@ -752,7 +752,7 @@
             },
             async handleSubmit() {
                 const formData = new FormData(document.querySelector('#formulir'));
-                // console.log(data);
+                console.log(formData.get);
                 const response = await fetch('/admin/booking', {
                     method: 'POST',
                     body: formData
