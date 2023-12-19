@@ -278,7 +278,7 @@
                                 </thead>
                                 <tbody>
                                     <template x-for="(item,index) in tableData">
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <tr x-show="item.status != 'urgent'" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <template x-if="item.mahasiswa">
                                                 <td x-text="item.mahasiswa" class="px-4 py-3">
                                                 </td>
@@ -549,6 +549,7 @@
 
     /* Firefox */
     input[type=number] {
+        appearance: textfield;
         -moz-appearance: textfield;
     }
 </style>
