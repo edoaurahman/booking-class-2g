@@ -21,9 +21,9 @@ class BookingController extends Controller
         if (isset($_COOKIE['lampiran'])) {
             // delete old file
             $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+            setcookie('lampiran', '', time() - 3600, '/');
             unlink($oldFile);
             // delete cookie
-            setcookie('lampiran', '', time() - 3600);
         }
 
         if (isset($_SESSION['user'])) {
@@ -126,6 +126,7 @@ class BookingController extends Controller
         // $this->ddd($status);
         $ruang = new Ruang();
         $ruang = $ruang->where('id_ruang', '=', $request->id_ruang);
+        // $this->ddd($ruang);
         View::render("Templates/header", ['title' => 'Booking', 'level' => $level, 'user' => $user, "notification" => $notification]);
         View::render("Booking/formulir-checkout", [
             'level' => $level,
@@ -139,7 +140,7 @@ class BookingController extends Controller
             'listDosen' => $listDosen,
             'listKelas' => $listKelas,
             'status' => $status,
-            'gambar' => $ruang->gambar,
+            'ruang' => $ruang,
         ]);
         View::render("Templates/footer", []);
     }

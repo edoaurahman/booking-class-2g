@@ -116,7 +116,7 @@
                     <div class="col-span-1 w-full m-3 md:ml-12 md:mr-12 sm:pr-24">
                         <?php if ($level === 'mahasiswa') : ?>
                             <div class="mb-5 relative">
-                                <label for="id_dosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen penanggungjawab</label>
+                                <label for="id_dosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen penanggung jawab</label>
                                 <div class="text-sm font-medium text-gray-900 dark:text-white pr-6">
                                     <input required id="id_dosen" list="listDosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" name="id_dosen" placeholder="">
                                     <datalist id="listDosen">
@@ -159,10 +159,10 @@
                     Preview
                 </div>
                 <div class="text-sm text-gray-900 dark:text-white p-4">
-                    <div class="font-bold text-lg mb-2">Ruang Teori 1</div>
+                    <div class="font-bold text-lg mb-2"><?= $ruang->deskripsi_ruang ?></div>
                     <span class="">Denah ruang: </span>
                     <div class="w-full justify-center flex">
-                        <img src="/assets/img/lantai/<?= $gambar ?>" class="w-[400px] h-auto mb-6" alt="">
+                        <img src="/assets/img/lantai/<?= $ruang->gambar ?>" class="w-[400px] h-auto mb-6" alt="">
                     </div>
                     <div class="text-base mb-2  font-semibold text-gray-900 dark:text-white">
                         Jam ke <br>
