@@ -70,9 +70,17 @@
                                                         <td x-text="item.dosen" class="px-4 py-3">
                                                         </td>
                                                     </template>
-                                                    <td x-text="item.tanggal_pesan" class="px-6 py-4">
+                                                    <td class="px-6 py-4">
+                                                        <template x-if="item.tanggal_pesan == null">
+                                                            <span x-text="getFormattedDate()"></span>
+                                                        </template>
+                                                        <span x-text="item.tanggal_pesan"></span>
                                                     </td>
-                                                    <td x-text="item.tanggal_pakai" class="px-6 py-4">
+                                                    <td class="px-6 py-4">
+                                                        <template x-if="item.tanggal_pesan == null">
+                                                            <span x-text="getFormattedDate()"></span>
+                                                        </template>
+                                                        <span x-text="item.tanggal_pakai"></span>
                                                     </td>
                                                     <td x-text="item.dosen" class="px-6 py-4">
                                                     </td>
@@ -85,14 +93,24 @@
                                                     <td x-text="item.jam_selesai" class="px-6 py-4">
                                                     </td>
                                                     <td class="px-6 py-4">
-                                                        <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
-                                                            <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-900 dark:focus:ring-blue-800">
-                                                                Lihat Lampiran
+                                                        <template x-if="item.lampiran != null">
+                                                            <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
+                                                                <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-900 dark:focus:ring-blue-800">
+                                                                    Lihat Lampiran
+                                                                </div>
+                                                            </a>
+                                                        </template>
+                                                        <template x-if="item.lampiran == null" class="text-center">
+                                                            <div class="px-3 py-2 text-xs font-medium text-center dark:text-white text-black">
+                                                                -
                                                             </div>
-                                                        </a>
+                                                        </template>
                                                     </td>
                                                     <td class="px-6 py-4">
                                                         <!-- Modal toggle -->
+                                                        <template x-if="item.keterangan == null">
+                                                            <span>Dari Jadwal</span>
+                                                        </template>
                                                         <span :data-modal-target="'modal-keterangan-' + index" :data-modal-toggle="'modal-keterangan-' + index" x-text="item && item.keterangan ? item.keterangan.substring(0, 20) : ''"></span>
                                                         <!-- Main modal -->
                                                         <div :id="'modal-keterangan-' + index" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -139,13 +157,6 @@
                                                                             <i class="fa-solid fa-xmark"></i>
                                                                         </button>
                                                                     </form>
-                                                                    <!-- <form action="/admin/booking/verif" method="post">
-                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                        <input type="hidden" name="status" value="success">
-                                                                        <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
-                                                                            <i class="fa-solid fa-check"></i>
-                                                                        </button>
-                                                                    </form> -->
                                                                 </div>
                                                             </div>
                                                         </template>
@@ -178,6 +189,23 @@
                                                                             </button>
                                                                         </form>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </template>
+
+                                                        <template x-if="item.id_jadwal != null">
+                                                            <div>
+                                                                <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
+                                                                    <p>offline</p>
+                                                                </div>
+                                                                <div class="flex justify-between w-full py-2">
+                                                                    <form action="/api/admin/booking/set-jadwal-status" method="post">
+                                                                        <input type="hidden" name="id_jadwal" :value="item.id_jadwal">
+                                                                        <input type="hidden" name="status" value="online">
+                                                                        <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
+                                                                            <i class="fa-solid fa-xmark"></i>
+                                                                        </button>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </template>
@@ -733,7 +761,7 @@
                 fetch('/api/admin/booking/urgent')
                     .then(response => response.json())
                     .then(data => {
-                        this.tableUrgent = data.bookingIntersect[0];
+                        this.tableUrgent = data.bookingIntersect;
                     });
             },
             async checkDosenLast() {
@@ -790,6 +818,13 @@
                 })
                 const data = await response.json()
                 this.tableData = data;
+            },
+            getFormattedDate() {
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                const yyyy = today.getFullYear();
+                return `${yyyy}-${mm}-${dd}`;
             }
         }))
     })

@@ -17,20 +17,20 @@ use TugasBesar\BookingClass2g\Models\Kelas;
 class AdminController extends Controller
 {
     public function dashboard()
-    {   
+    {
         $booking = new Booking();
         $totBookHistory = $booking->getAllBookHistory();
-        
+
         $dosen = new Dosen();
         $totalDosen = $dosen->totalDosen();
-        
+
         $mahasiswa = new Mahasiswa();
         $totalMahasiswa = $mahasiswa->totalMahasiswa();
-        
+
         $ruang = new Ruang();
         $totRuang = $ruang->getTotalRuangByIdJenis();
         // $this->ddd($totBookHistory);
-        
+
         //semua data yang diperlukan di dashboard
         $data = [
             //total data history jam untuk 
@@ -38,11 +38,11 @@ class AdminController extends Controller
             'totUsed' => $totBookHistory[1],
             'totDone' => $totBookHistory[2],
             'totUnavailable' => $totBookHistory[3],
-            
+
             //graph dosen dan mahasiswa
             'totalDosen' => $totalDosen,
             'totalMahasiswa' => $totalMahasiswa,
-            
+
             //Perbandingan jumlah kelas
             'totRTeori' => $totRuang['counter'][0],
             'totRPraktik' => $totRuang['counter'][1],
@@ -50,9 +50,9 @@ class AdminController extends Controller
             'persenTeori' => $totRuang['percentage'][0],
             'persenPraktik' => $totRuang['percentage'][1],
             'persenCampuran' => $totRuang['percentage'][2]
-            
+
         ];
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/dashboard", ['data' => $data]);
     }
@@ -426,10 +426,16 @@ class AdminController extends Controller
         $ruangUrgent = $booking->getBookingUrgent();
         $bookingIntersect = [];
         // $this->ddd($ruangUrgent);
-        foreach ($ruangUrgent as $item) {
+        $bookingUrgent = $booking->getDetailBookingUrgent();
+        // $this->ddd($bookingUrgent[0]);
+        foreach ($ruangUrgent as $key => $item) {
             extract($item);
-            $bookingIntersect[] = $booking->getBookingIntersect($date, $id_ruang, $jam_mulai, $jam_selesai);
+            if (!empty($booking->getBookingIntersect($date, $id_ruang, $jam_mulai, $jam_selesai))) {
+                $bookingIntersect[] = $booking->getBookingIntersect($date, $id_ruang, $jam_mulai, $jam_selesai)[0];
+            }
+            $bookingIntersect[] = $bookingUrgent[$key];
         }
+        // $this->ddd($bookingIntersect);
         $data = [
             'bookingIntersect' => $bookingIntersect,
         ];
@@ -558,9 +564,19 @@ class AdminController extends Controller
         // $this->ddd($newBook);
         $data = [
             'newBook' => $newBook,
-            'topBook' => $topBook 
+            'topBook' => $topBook
         ];
 
         echo json_encode($data);
+    }
+
+    public function setJadwalStatus(Request $request): void
+    {
+        $status = $request->status;
+        $id_jadwal = $request->id_jadwal;
+        $jadwal = new Jadwal();
+        $jadwal->setJadwalStatus($status, $id_jadwal);
+        // get back user to previous page
+        $this->redirect($_SERVER['HTTP_REFERER']);
     }
 }

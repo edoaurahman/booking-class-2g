@@ -113,6 +113,7 @@ class Booking extends Model
     {
         return $this->update(['status' => 'done'], $id_booking, 'id_booking');
     }
+
     public function getBookingUrgent(): array
     {
         $sql = "SELECT * FROM booking WHERE status = 'urgent'";
@@ -120,10 +121,25 @@ class Booking extends Model
         return $result;
     }
 
-    public function getBookingIntersect(string $tgl_booking, string $id_ruang, string $jam_mulai, string $jam_selesai): array
+    public function getDetailBookingUrgent(): array
     {
-        $sql = "CALL CheckBookingAvailability('$tgl_booking','$id_ruang','$jam_mulai','$jam_selesai')";
+        $sql = "SELECT * FROM view_getbookingadmin WHERE status = 'urgent'";
         $result = $this->query($sql);
+        return $result;
+    }
+
+    public function getBookingIntersect(string $tgl_booking, string $id_ruang, string $jam_mulai, string $jam_selesai): array | null
+    {
+        $sql = "CALL CheckJadwalAvailability('$tgl_booking','$id_ruang','$jam_mulai','$jam_selesai')";
+        $result = $this->query($sql);
+        if (empty($result)) {
+            $sql = "CALL CheckBookingAvailability('$tgl_booking','$id_ruang','$jam_mulai','$jam_selesai')";
+            $result = $this->query($sql);
+            return $result;
+        }
+        if (empty($result)) {
+            return null;
+        }
         return $result;
     }
 
@@ -133,7 +149,7 @@ class Booking extends Model
         $result = $this->query($sql);
         return $result[0]['total'];
     }
-    public function getNewestBooking() : array
+    public function getNewestBooking(): array
     {
         $sql = "SELECT * FROM view_getbookingadmin ORDER BY tanggal_pesan DESC LIMIT 10";
         $result = $this->db->query($sql);
@@ -144,33 +160,32 @@ class Booking extends Model
         return $data;
     }
 
-    public function getAllBookHistory() : array
+    public function getAllBookHistory(): array
     {
         $sql1 = "SELECT COUNT(*) AS totalavailable FROM view_gethistorybooking WHERE status_jam = 'available' AND nama_hari = DAYNAME(CURRENT_DATE())";
         $sql2 = "SELECT COUNT(*) AS totalused FROM view_gethistorybooking WHERE status_jam = 'used' AND nama_hari = DAYNAME(CURRENT_DATE())";
         $sql3 = "SELECT COUNT(*) AS totaldone FROM view_gethistorybooking WHERE status_jam = 'done' AND nama_hari = DAYNAME(CURRENT_DATE())";
         $sql4 = "SELECT COUNT(*) AS totalunavailable FROM view_gethistorybooking WHERE (status_jam = 'done' OR status_jam = 'used') AND nama_hari = DAYNAME(CURRENT_DATE())";
-     
+
         $result1 = $this->db->query($sql1);
         $result2 = $this->db->query($sql2);
         $result3 = $this->db->query($sql3);
         $result4 = $this->db->query($sql4);
-        
+
         $data = [];
-        while ($row = $result1->fetch_assoc()){
+        while ($row = $result1->fetch_assoc()) {
             $data[] = $row['totalavailable'];
         }
-        while ($row = $result2->fetch_assoc()){
+        while ($row = $result2->fetch_assoc()) {
             $data[] = $row['totalused'];
         }
-        while ($row = $result3->fetch_assoc()){
+        while ($row = $result3->fetch_assoc()) {
             $data[] = $row['totaldone'];
         }
-        while ($row = $result4->fetch_assoc()){
+        while ($row = $result4->fetch_assoc()) {
             $data[] = $row['totalunavailable'];
         }
 
         return $data;
     }
-
 }

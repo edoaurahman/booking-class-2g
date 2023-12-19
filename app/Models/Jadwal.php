@@ -47,7 +47,8 @@ class Jadwal extends Model
         return $totalPage;
     }
 
-    public function addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai): void {
+    public function addJadwal($matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai): void
+    {
         $sql = "CALL addJadwal('$matakuliah', '$kelas', '$dosen', '$ruang', '$hari', '$jam_mulai', '$jam_selesai')";
         $this->exec($sql);
     }
@@ -63,13 +64,20 @@ class Jadwal extends Model
         return (object) $data[0];
     }
 
-    public function editJadwal($id, $matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai) {
+    public function editJadwal($id, $matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai)
+    {
         $sql = "CALL editJadwal('$id', '$matakuliah', '$kelas', '$dosen', '$ruang', '$hari', '$jam_mulai', '$jam_selesai')";
         $this->exec($sql);
     }
 
-    public function deleteJadwal($id): void {
+    public function deleteJadwal($id): void
+    {
         $sql = "DELETE FROM jadwal WHERE id_jadwal = '$id'";
         $this->exec($sql);
+    }
+
+    public function setJadwalStatus(string $status, string $id_jadwal): bool
+    {
+        return $this->update(['status' => $status], $id_jadwal, 'id_jadwal');
     }
 }
