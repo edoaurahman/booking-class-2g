@@ -39,7 +39,7 @@
                                     <div class="">
                                         <!-- Mulai -->
                                         <div class="mulai relative flex items-center ">
-                                            <button @click.debounce="fetchResults" type="button" id="decrement-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                            <button @click="fetchResults" type="button" id="decrement-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                 <i class="fa-solid fa-minus"></i>
                                             </button>
                                             <input type="number" id="jam-mulai-input" aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="0" required />
@@ -47,14 +47,14 @@
                                                 <i class="fa-regular fa-clock dark:text-white"></i>
                                                 <span>Mulai</span>
                                             </div>
-                                            <button @click.debounce="fetchResults" type="button" id="increment-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                            <button @click="fetchResults" type="button" id="increment-button-1" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                 <i class="fa-solid fa-plus"></i>
                                             </button>
                                         </div>
 
                                         <!-- Selesai -->
                                         <div class="selesai relative flex items-center mt-4">
-                                            <button @click.debounce="fetchResults" type="button" id="decrement-button-2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                            <button @click="fetchResults" type="button" id="decrement-button-2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                 <i class="fa-solid fa-minus"></i>
 
                                             </button>
@@ -63,13 +63,13 @@
                                                 <i class="fa-regular fa-clock"></i>
                                                 <span>Selesai</span>
                                             </div>
-                                            <button @click.debounce="fetchResults" type="button" id="increment-button-2" data-input-counter-increment="bedrooms-input2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                                            <button @click="fetchResults" type="button" id="increment-button-2" data-input-counter-increment="bedrooms-input2" class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                 <i class="fa-solid fa-plus"></i>
                                             </button>
                                         </div>
                                     </div>
 
-                                    <button @click.debounce="fetchResults" type="button" id="set-max-button" class="px-2 py-1 mt-5 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <button @click="fetchResults" type="button" id="set-max-button" class="px-2 py-1 mt-5 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         <i class="fa-solid fa-clock-rotate-left mr-2  dark:text-white"></i>
                                         semua
                                     </button>
@@ -161,7 +161,7 @@
                 </div>
                 <!-- content booking  start -->
                 <template x-for="(item,index) in listRuang" x-show="!isLoading">
-                    <a :href="/detail-booking/+item.id_ruang">
+                    <a :href="/detail-booking/+item.id_ruang" x-show="shouldShowDetails(item)">
                         <div class="group border-2 px-2 mt-3 rounded-xl shadow-md hover:bg-bingu dark:bg-dark_grey dark:bg-dark_grey5 dark:hover:bg-dark_grey3 dark:border-dark_grey2  dark:hover:border-dark_grey3 dark:shadow-gray-700 ">
                             <div class="grid grid-cols-1 md:grid-cols-5 md:gap-4 items-center">
                                 <!-- tampilan untuk desktop start -->

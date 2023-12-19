@@ -81,7 +81,7 @@
     $path = $_SERVER['PATH_INFO'];
     ?>
 
-    <aside id="sidebar" class="fixed top-0 left-0 z-40 w-[77px] lg:w-64 h-screen pt-20 -translate-x-full bg-navy_blue border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 duration-1000 transition-all" aria-label="Sidebar">
+    <aside x-data="total_booking" id="sidebar" class="fixed top-0 left-0 z-40 w-[77px] lg:w-64 h-screen pt-20 -translate-x-full bg-navy_blue border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700 duration-1000 transition-all" aria-label="Sidebar">
         <div class="h-full px-3 pb-4 ">
             <ul class="space-y-2 font-medium">
                 <li>
@@ -98,8 +98,7 @@
                         <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                             <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                         </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap hidden lg:block" id="bookingSidebar">Booking</span>
-                        <span class="items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 hidden lg:inline-flex">3</span>
+                        <span class="flex-1 ms-3 whitespace-nowrap hidden lg:block" id="bookingSidebar">Booking</span><span class="flex items-center justify-center text-sm w-5 h-5 me-3 bg-bingu rounded-full" x-show="total_booking != 0" x-text="total_booking"></span>
                     </a>
                 </li>
                 <li>
@@ -126,7 +125,7 @@
                             <a href="/admin/mahasiswa" id="mahasiswaSidebar" class="hidden lg:flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-[#012e59] dark:text-white dark:hover:bg-gray-700 <?= $path == '/admin/mahasiswa' ? 'dark:bg-gray-700 bg-[#012e59]' : ''; ?>">Mahasiswa</a>
                         </li>
                     </ul>
-                    <ul id="dropdown-users-sidebar-tablet" class="hidden top-[220px] -right-[100px] absolute z-[999999] bg-[#00487E] dark:bg-gray-600 text-white flex flex-col justify-center items-center rounded-md overflow-hidden">
+                    <ul id="dropdown-users-sidebar-tablet" class="hidden top-[220px] -right-[100px] absolute z-[999999] bg-[#00487E] dark:bg-gray-600 text-white flex-col justify-center items-center rounded-md overflow-hidden">
                         <a href="/admin/dosen" class="flex items-center w-full p-2 text-white transition duration-75  group hover:bg-[#003B67] dark:text-white dark:hover:bg-gray-700 <?= $path == '/admin/dosen' ? 'dark:bg-gray-700 bg-[#012e59]' : ''; ?>">Dosen</a>
                         <a href="/admin/mahasiswa" class="flex items-center w-full p-2 text-white transition duration-75  group hover:bg-[#003B67] dark:text-white dark:hover:bg-gray-700 <?= $path == '/admin/mahasiswa' ? 'dark:bg-gray-700 bg-[#012e59]' : ''; ?>">Mahasiswa</a>
                     </ul>
@@ -164,6 +163,19 @@
     </aside>
 
     <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('total_booking', () => ({
+                total_booking: 0,
+                async init() {
+                    fetch('/api/admin/booking/total-onprocess')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.total_booking = data.total_booking;
+                            console.log(this.total_booking);
+                        })
+                },
+            }))
+        })
         // icon user rotate sidebar
 
         const usersButton = document.querySelector("#usersButton");

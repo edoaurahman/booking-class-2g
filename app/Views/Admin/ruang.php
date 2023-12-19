@@ -1,7 +1,13 @@
 <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
     <div class="p-4  ml-[77px] lg:ml-64">
         <div class="p-4 mt-14">
-        <div class="pb-4  flex justify-between">
+
+            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                <i class="fa-solid fa-door-open fa-sm dark:text-gray-400 group-hover:text-white"></i>
+                Admin / Ruang
+            </div>
+
+            <div class="pb-4  flex justify-between">
                 <!-- Searching -->
                 <div class="shadow-md rounded-lg">
                     <label for="table-search" class="sr-only">Search</label>
@@ -73,13 +79,12 @@
                                         </td>
                                         <td class="px-6 py-4 relative">
                                             <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
-
-                                            <div class="hidden absolute -left-[80px] top-[20px] text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                                <a href="/?aksi=edit&id=<?= $id; ?>" class="edit-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
+                                            <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
+                                                <a class="edit-modal cursor-pointer" @click="modal(item.id_ruang)" data-modal-target="edit-ruang-modal" data-modal-toggle="edit-ruang-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Edit</div>
                                                 </a>
-                                                <a href="/?aksi=delete&id=<?= $id; ?>" class="delete-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
+                                                <a :href="'/admin/ruang/delete/' + item.id_ruang" class="delete-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Delete</div>
                                                 </a>
                                             </div>
                                         </td>
@@ -181,7 +186,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5">
+            <form class="p-4 md:p-5" method="POST" action="">
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-1">
                         <label for="kode_ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Ruang</label>
@@ -192,8 +197,8 @@
                         <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ruang Teori_05" required="">
                     </div>
                     <div class="col-span-1">
-                        <label for="jenis-ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Ruang</label>
-                        <select id="jenis-ruang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <label for="jenis_ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Ruang</label>
+                        <select name="jenis_ruang" id="jenis_ruang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Select Ruang</option>
                             <option value="JR001">Ruang Teori</option>
                             <option value="JR002">Ruang Praktikum</option>
@@ -202,7 +207,7 @@
                     </div>
                     <div class="col-span-1">
                         <label for="lantai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lantai</label>
-                        <select id="lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <select id="lantai" name="lantai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected="">Select Lantai</option>
                             <option value="L001">Lantai 5</option>
                             <option value="L002">Lantai 6</option>
@@ -211,12 +216,12 @@
                         </select>
                     </div>
                     <div class="col-span-2">
-                        <label for="deskripsi ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Ruang</label>
-                        <textarea id="deskripsi ruang" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="deskripsi ruang"></textarea>
+                        <label for="deskripsi_ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi Ruang</label>
+                        <textarea id="deskripsi_ruang" name="deskripsi_ruang" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="deskripsi ruang"></textarea>
                     </div>
                     <div class="col-span-2">
-                        <label for="gambar-ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar Ruangan</label>
-                        <input type="file" name="gambar-ruang" id="gambar-ruang" class=" text-white">
+                        <label for="gambar_ruang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar Ruangan</label>
+                        <input type="file" name="gambar_ruang" id="gambar_ruang" class=" text-white">
                     </div>
                 </div>
                 <div class="flex w-full justify-end items-center">
@@ -229,7 +234,44 @@
     </div>
 </div>
 
+<!-- Edit Ruang modal -->
+<div id="edit-ruang-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Edit Data Ruang
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="edit-ruang-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div id="content-modal"></div>
+        </div>
+    </div>
+</div>
+
 <script>
+    // edit modal
+    const modal = (id_ruang) => {
+        const modal = document.querySelector('#content-modal');
+
+        fetch(`/admin/ruang/edit/${id_ruang}`, {
+                method: 'GET'
+            })
+            .then(res => res.text())
+            .then(res => {
+                modal.innerHTML = res
+            })
+            .catch(err => console.log(err))
+
+    }
+
     // action modal
 
     let buttonAction = document.querySelectorAll("i");
@@ -242,8 +284,7 @@
                 } else if (e.target !== node && !e.target.classList.contains("delete-modal") && !e.target.classList.contains("edit-modal")) {
                     node.nextElementSibling.classList.add("hidden");
                 }
-            } catch (error) {
-            }
+            } catch (error) {}
         });
     });
 

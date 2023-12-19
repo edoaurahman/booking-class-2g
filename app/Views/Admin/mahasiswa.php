@@ -1,8 +1,15 @@
 <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
     <div class="p-4  ml-[77px] lg:ml-64">
         <div class="p-4 mt-14">
-            <div class="pb-4  flex justify-between">
 
+            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                <svg class="flex-shrink-0 w-4 h-4 text-white transition duration-75 group-hover:text-white dark:text-gray-400 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21" id="usersSvg">
+                    <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" id="usersPath" />
+                </svg>
+                Admin / User / Mahasiswa
+            </div>
+
+            <div class="pb-4  flex justify-between">
                 <!-- Searching -->
                 <div class="shadow-md rounded-lg">
                     <label for="table-search" class="sr-only">Search</label>
@@ -12,7 +19,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
+                        <input type="text" id="table-search" @input.debounce.750="fetchResults" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
                     </div>
                 </div>
 
@@ -26,7 +33,7 @@
             <section id="mahasiswa" class="shadow-md sm:rounded-lg">
                 <div x-data="tableData" x-init="$nextTick(() => {paggination(1) })">
                     <div class="overflow-x-auto rounded-md overflow-hidden">
-                        <table class="w-[900px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                        <table class="w-[900px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto" id="table">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="w-[15%] px-4 py-3">
@@ -54,6 +61,7 @@
                             </thead>
                             <tbody>
                                 <template x-for="item in tableData">
+
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <td x-text="item.nim" class="px-4 py-3">
                                         </td>
@@ -73,21 +81,22 @@
                                         </td>
                                         <td class="px-6 py-4 relative">
                                             <i class="fa-solid fa-ellipsis fa-lg cursor-pointer text-black dark:text-white"></i>
-
                                             <div class="hidden absolute -left-[80px] top-0 text-left w-[100px] bg-[#00487E] dark:bg-gray-600 gap text-white dark:text-slate-300 font-medium text-md rounded-md overflow-hidden">
-                                                <a href="/?aksi=edit&id=<?= $id; ?>" class="edit-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white edit-modal">Edit</div>
+                                                <a class="edit-modal cursor-pointer" @click="modal(item.nim)" data-modal-target="edit-mahasiswa-modal" data-modal-toggle="edit-mahasiswa-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Edit</div>
                                                 </a>
-                                                <a href="/?aksi=delete&id=<?= $id; ?>" class="delete-modal">
-                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white delete-modal">Delete</div>
+                                                <a :href="'/admin/mahasiswa/delete/' + item.nim" class="delete-modal">
+                                                    <div class="py-2 px-4 hover:bg-[#003B67] dark:hover:bg-gray-400 hover:text-white">Delete</div>
                                                 </a>
                                             </div>
                                         </td>
                                     </tr>
+
                                 </template>
                             </tbody>
                         </table>
                     </div>
+
                     <nav class="w-full flex items-center justify-end py-4 px-3" aria-label="Table navigation">
                         <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                             <li>
@@ -110,7 +119,8 @@
     </div>
 </div>
 
-<!-- Main modal -->
+
+<!-- ADD Mahasiswa modal -->
 <div id="add-mahasiswa-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
@@ -144,11 +154,11 @@
                     <div class="col-span-1 relative">
                         <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelas</label>
                         <input id="kelas" list="listKelas" name="kelas" placeholder="Pilih kelas..." class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <datalist id="listKelas">
-                                <?php foreach ($listKelas as $item) : ?>
-                                    <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
-                                <?php endforeach ?>
-                            </datalist>
+                        <datalist id="listKelas">
+                            <?php foreach ($listKelas as $item) : ?>
+                                <option value="<?= $item['id_kelas'] ?>"><?= $item['nama_kelas'] ?></option>
+                            <?php endforeach ?>
+                        </datalist>
                     </div>
                     <div class="col-span-1">
                         <label for="tglLahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
@@ -181,7 +191,47 @@
     </div>
 </div>
 
+
+<!-- Edit Mahasiswa modal -->
+<div id="edit-mahasiswa-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full inset-0 max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Edit Data Mahasiswa
+                </h3>
+                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="edit-mahasiswa-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div id="content-modal"></div>
+        </div>
+    </div>
+</div>
+
+
+
 <script>
+    // edit modal
+    const modal = (nim) => {
+        const modal = document.querySelector('#content-modal')
+
+        fetch(`/admin/mahasiswa/edit/${nim}`, {
+                method: 'GET'
+            })
+            .then(res => res.text())
+            .then(res => {
+                modal.innerHTML = res
+            })
+            .catch(err => console.log(err))
+
+    }
+
     // action modal
 
     let buttonAction = document.querySelectorAll("i");
@@ -195,7 +245,7 @@
                     node.nextElementSibling.classList.add("hidden");
                 }
             } catch (error) {
-
+                console.log(error);
             }
         });
     });

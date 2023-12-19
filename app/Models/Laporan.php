@@ -30,4 +30,12 @@ class Laporan extends Model
         $totalPage = ceil($total / 10);
         return $totalPage;
     }
+
+    public function getReport(string $id_booking): array
+    {
+        $sql = "SELECT * FROM view_getreport WHERE id_booking = '$id_booking'";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        return $data;
+    }
 }

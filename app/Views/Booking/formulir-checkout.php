@@ -33,7 +33,7 @@
             <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 overflow-x-auto shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
                 <li class="flex items-center text-blue-600  ">
                     <i class="fa-solid fa-circle-check  "></i>
-                    <div class="ml-2 mr-2">Ruang</div>
+                    <div class="ml-2 mr-2">Search</div>
                     <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
@@ -41,7 +41,7 @@
 
                 <li class="flex items-center text-blue-600 px-2 ">
                     <i class="fa-solid fa-circle-check mr-1 "></i>
-                    <div class="ml-2 mr-2">Waktu</div>
+                    <div class="ml-2 mr-2">Ruang</div>
                     <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4" />
                     </svg>
@@ -116,7 +116,7 @@
                     <div class="col-span-1 w-full m-3 md:ml-12 md:mr-12 sm:pr-24">
                         <?php if ($level === 'mahasiswa') : ?>
                             <div class="mb-5 relative">
-                                <label for="id_dosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen penanggungjawab</label>
+                                <label for="id_dosen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dosen penanggung jawab</label>
                                 <div class="text-sm font-medium text-gray-900 dark:text-white pr-6">
                                     <input required id="id_dosen" list="listDosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="text" name="id_dosen" placeholder="">
                                     <datalist id="listDosen">
@@ -129,7 +129,7 @@
                         <?php endif ?>
                         <div class="mb-5 -mt-1 pr-6">
                             <label for="id_dosen_last" class="text-sm  font-medium text-gray-900 dark:text-white text-[15px]">Dosen pengguna ruang saat ini</label>
-                            <input type="text" id="id_dosen_last" value="<?= empty($bookingAvailability) ? 'Tidak ada dosen' : $bookingAvailability['nama'] ?>" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <input type="text" id="id_dosen_last" value="<?= empty($bookingAvailability) ? 'Tidak ada dosen' : $bookingAvailability['dosen'] ?>" disabled class="bg-gray-50 border mt-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div class="pr-6">
                             <label class="block  mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload file</label>
@@ -159,10 +159,10 @@
                     Preview
                 </div>
                 <div class="text-sm text-gray-900 dark:text-white p-4">
-                    <div class="font-bold text-lg mb-2">Ruang Teori 1</div>
+                    <div class="font-bold text-lg mb-2"><?= $ruang->deskripsi_ruang ?></div>
                     <span class="">Denah ruang: </span>
                     <div class="w-full justify-center flex">
-                        <img src="/assets/img/lantai/Lantai6.png" class="w-[400px] h-auto mb-6" alt="">
+                        <img src="/assets/img/lantai/<?= $ruang->gambar ?>" class="w-[400px] h-auto mb-6" alt="">
                     </div>
                     <div class="text-base mb-2  font-semibold text-gray-900 dark:text-white">
                         Jam ke <br>

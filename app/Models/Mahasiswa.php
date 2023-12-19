@@ -47,9 +47,30 @@ class Mahasiswa extends Model
         return $totalPage;
     }
 
+    public function getMahasiswaById($nim): object
+    {
+        $sql = "SELECT * FROM mahasiswa WHERE nim = '$nim'";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return (object) $data[0];
+    }
+
     public function addMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas): void {
         $sql = "CALL addMahasiswa('$nim', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$kelas')";
-        $this->db->query($sql);
+        $this->exec($sql);
+    }
+
+    public function editMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas) {
+        $sql = "Call editMahasiswa('$nim', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$kelas')";
+        $this->exec($sql);
+    }
+
+    public function deleteMahasiswa($nim): void {
+        $sql = "DELETE FROM mahasiswa WHERE nim = '$nim'";
+        $this->exec($sql);
     }
 
     public function totalMahasiswa() : int

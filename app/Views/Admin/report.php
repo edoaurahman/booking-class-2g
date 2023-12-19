@@ -1,6 +1,12 @@
 <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
     <div class="p-4  ml-[77px] lg:ml-64">
         <div class="p-4 mt-14">
+
+            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+                <i class="fa-solid fa-clipboard-list fa-sm dark:text-gray-400 group-hover:text-white"></i>
+                Admin / Report
+            </div>
+
             <div class="pb-4  flex justify-between">
                 <!-- Searching -->
                 <div class="shadow-md rounded-lg">
@@ -26,7 +32,7 @@
             <section id="report" class="shadow-lg sm:rounded-lg">
                 <div x-data="tableData" x-init="$nextTick(() => {paggination(1) })">
                     <div class="overflow-x-auto rounded-md overflow-hidden">
-                        <table class="w-[1200px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                        <table class="w-[1200px] lg:w-[1600px] overflow-y-auto text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="w-[15%] px-6 py-3">
@@ -95,7 +101,7 @@
                                             </template>
                                         </td>
                                         <td class="px-6 py-4">
-                                            <a class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover">
+                                            <a class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover" :href="'/admin/pdf/' + item.id_booking">
                                                 Cetak
                                             </a>
                                         </td>

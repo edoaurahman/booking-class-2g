@@ -80,7 +80,7 @@ class Ruang extends Model
         // Query untuk mendapatkan status booking
         $sql = "SELECT * FROM view_getbookingstatus WHERE nama_hari = '$hari'";
         if (!empty($jam_mulai) && !empty($jam_selesai)) {
-            $sql .= " AND id_jam BETWEEN '$jam_mulai' AND '$jam_selesai'";
+            $sql .= " AND id_jam BETWEEN '$jam_mulai' AND '$jam_selesai' AND status_jam = 'available'";
         }
         if (!empty($id_lantai)) {
             $sql .= " AND id_lantai IN (" . implode(',', $id_lantai) . ")";
@@ -135,7 +135,34 @@ class Ruang extends Model
         }
         return $data;
     }
+    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void
+    {
+        $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang' )";
+        $this->exec($sql);
+    }
 
+    public function getRuangByID($id): object
+    {
+        $sql = "SELECT * FROM view_getruang WHERE id_ruang = '$id'";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return (object) $data[0];
+    }
+
+    public function editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai)
+    {
+        $sql = "CALL editRuang('$id', '$kode_ruang', '$nama', '$jenis_ruang', '$lantai')";
+        $this->exec($sql);
+    }
+
+    public function deleteRuang($id): void
+    {
+        $sql = "DELETE FROM ruang WHERE id_ruang = '$id'";
+        $this->exec($sql);
+    }
     public function getTotalRuangByIdJenis() : array
     {
         $sql = "SELECT COUNT(*) FROM `view_getruang` GROUP BY id_jenis_ruang";
