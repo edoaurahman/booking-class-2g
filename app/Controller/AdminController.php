@@ -17,9 +17,44 @@ use TugasBesar\BookingClass2g\Models\Kelas;
 class AdminController extends Controller
 {
     public function dashboard()
-    {
+    {   
+        $booking = new Booking();
+        $totBookHistory = $booking->getAllBookHistory();
+        
+        $dosen = new Dosen();
+        $totalDosen = $dosen->totalDosen();
+        
+        $mahasiswa = new Mahasiswa();
+        $totalMahasiswa = $mahasiswa->totalMahasiswa();
+        
+        $ruang = new Ruang();
+        $totRuang = $ruang->getTotalRuangByIdJenis();
+        // $this->ddd($totBookHistory);
+        
+        //semua data yang diperlukan di dashboard
+        $data = [
+            //total data history jam untuk 
+            'totAvailable' => $totBookHistory[0],
+            'totUsed' => $totBookHistory[1],
+            'totDone' => $totBookHistory[2],
+            'totUnavailable' => $totBookHistory[3],
+            
+            //graph dosen dan mahasiswa
+            'totalDosen' => $totalDosen,
+            'totalMahasiswa' => $totalMahasiswa,
+            
+            //Perbandingan jumlah kelas
+            'totRTeori' => $totRuang['counter'][0],
+            'totRPraktik' => $totRuang['counter'][1],
+            'totRCampuran' => $totRuang['counter'][2],
+            'persenTeori' => $totRuang['percentage'][0],
+            'persenPraktik' => $totRuang['percentage'][1],
+            'persenCampuran' => $totRuang['percentage'][2]
+            
+        ];
+        
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
-        View::render("Admin/dashboard", []);
+        View::render("Admin/dashboard", ['data' => $data]);
     }
 
     public function ruang()
@@ -207,5 +242,21 @@ class AdminController extends Controller
     {
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
         View::render("Admin/pdf", []);
+    }
+
+    public function apiDashboard1()
+    {
+        $booking = new Booking();
+        $newBook = $booking->getNewestBooking();
+
+        $ruang = new Ruang();
+        $topBook = $ruang->getTopBookedRoom();
+        // $this->ddd($newBook);
+        $data = [
+            'newBook' => $newBook,
+            'topBook' => $topBook 
+        ];
+
+        echo json_encode($data);
     }
 }

@@ -73,4 +73,13 @@ class Dosen extends Model
         $sql = "CALL addDosen('$nip', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$email')";
         $this->db->query($sql);
     }
+
+    public function totalDosen(): int
+    {
+        $sql = "SELECT COUNT(*) AS total FROM view_getdosen";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $total = $data['total'];
+        return $total;
+    }
 }
