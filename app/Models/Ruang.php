@@ -135,7 +135,6 @@ class Ruang extends Model
         }
         return $data;
     }
-
     public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void
     {
         $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang' )";
@@ -163,5 +162,41 @@ class Ruang extends Model
     {
         $sql = "DELETE FROM ruang WHERE id_ruang = '$id'";
         $this->exec($sql);
+    }
+    public function getTotalRuangByIdJenis() : array
+    {
+        $sql = "SELECT COUNT(*) FROM `view_getruang` GROUP BY id_jenis_ruang";
+        $result = $this->query($sql);
+        $data = [];
+        $i=0;
+        while ($i<count($result)) {  
+            $data['counter'][] = $result[$i]['COUNT(*)'];
+            $i++;
+        }
+        
+        $j = 0;
+        while($j<count($data['counter'])){
+            $k = 0;
+            $total = 0;
+            while($k<count($data['counter'])){
+                $total += $data['counter'][$k];
+                $k++;
+            }
+            $percentOfTotal = ($data['counter'][$j] / $total) * 100; 
+            $data['percentage'][$j] =(float) number_format($percentOfTotal,2);
+            $j++;
+        }
+        return $data;
+    }
+
+    public function getTopBookedRoom() : array
+    {
+        $sql = "SELECT * FROM `view_persentasekelas`";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+        return $data;
     }
 }

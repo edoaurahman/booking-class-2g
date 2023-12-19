@@ -94,4 +94,13 @@ class Dosen extends Model
         $sql = "DELETE FROM dosen WHERE nip = '$nip'";
         $this->exec($sql);
     }
+
+    public function totalDosen(): int
+    {
+        $sql = "SELECT COUNT(*) AS total FROM view_getdosen";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $total = $data['total'];
+        return $total;
+    }
 }

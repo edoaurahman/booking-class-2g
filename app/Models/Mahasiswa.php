@@ -72,4 +72,13 @@ class Mahasiswa extends Model
         $sql = "DELETE FROM mahasiswa WHERE nim = '$nim'";
         $this->exec($sql);
     }
+
+    public function totalMahasiswa() : int
+    {
+        $sql = "SELECT COUNT(*) AS total FROM view_getmahasiswa";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $total = $data['total'];
+        return $total;
+    }
 }
