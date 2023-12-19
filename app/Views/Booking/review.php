@@ -15,13 +15,13 @@
                     <p>Ruang</p>
                 </div>
             </li>
-            <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white font-sans ">
+            <li class="flex md:w-full items-center text-white dark:text sm:after:content-[''] after:w-full  after:border-b after:border-white after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-white font-sans font-semibold">
                 <div class="flex flex-none items-center text-xl">
                     <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
                     <p>Isi Formulir</p>
                 </div>
 
-            <li class="flex items-center text-white">
+            <li class="flex items-center text-white font-semibold">
                 <div class="flex flex-none items-center text-xl">
                     <i class="fa-solid fa-circle-check ml-3 mr-3"></i>
                     <p>Konfirmasi</p>
@@ -116,13 +116,13 @@
                 </div>
                 <div class="col-span-1 w-full  md:ml-12 md:mr-12 sm:pr-24">
                     <div class="text-sm text-gray-900 dark:text-white p-4">
-                        <div class="font-bold text-lg mb-2">Ruang Teori 1</div>
+                        <div class="font-bold text-lg mb-2"><?= $ruang->deskripsi_ruang ?></div>
                         <div class="w-full justify-center flex">
                             <img src="/assets/img/booking/class1.jpg" class="w-[400px] h-auto mb-6" alt="">
                         </div>
                         <div class="font-bold text-lg mb-2">Denah Ruang</div>
                         <div class="w-full justify-center flex">
-                            <img src="/assets/img/lantai/<?= $gambar ?>" class="w-[400px] h-auto mb-6" alt="">
+                            <img src="/assets/img/lantai/<?= $ruang->gambar ?>" class="w-[400px] h-auto mb-6" alt="">
                         </div>
                     </div>
                 </div>

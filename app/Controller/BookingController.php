@@ -182,28 +182,26 @@ class BookingController extends Controller
 
         // upload lampiran
         $lampiran = $request->lampiran;
-        $file = '';
-        if (empty($lampiran['name'])) {
-            $lampiran = null;
-        } else {
-            if (isset($_COOKIE['lampiran'])) {
-                // delete old file
-                $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
-                unlink($oldFile);
-                // delete cookie
-                setcookie('lampiran', '', time() - 3600, '/');
-            }
-            $extension = pathinfo($lampiran['name'], PATHINFO_EXTENSION);
-            $uploadDir = '/assets/lampiran/';
-            $filename = uniqid() . '.' . $extension;
-            $uploadPath = __DIR__ . '/../../public' . $uploadDir . $filename;
-
-            // $this->ddd($uploadPath);
-            move_uploaded_file($_FILES['lampiran']['tmp_name'], $uploadPath);
-            // set lampiran to cookie
-            setcookie('lampiran', $filename, time() + 86400, '/');
-            $file = $filename;
+        // $this->ddd($lampiran);
+        // check file size
+        // max 10MB
+        if ($lampiran['size'] > 10000000) {
+            echo "<script>alert('Ukuran file terlalu besar!')</script>";
+            // gp back to previous page
+            echo "<script>window.location = '/booking'</script>";
         }
+        $file = '';
+        $extension = pathinfo($lampiran['name'], PATHINFO_EXTENSION);
+        $uploadDir = '/assets/lampiran/';
+        $filename = uniqid() . '.' . $extension;
+        $uploadPath = __DIR__ . '/../../public' . $uploadDir . $filename;
+
+        // $this->ddd($uploadPath);
+        move_uploaded_file($_FILES['lampiran']['tmp_name'], $uploadPath);
+        // set lampiran to cookie
+        setcookie('lampiran', $filename, time() + 86400, '/');
+        $file = $filename;
+
         $nama_kelas = '';
         $kelas = new Kelas();
         $kelas = $kelas->find($request->id_kelas, 'id_kelas');
@@ -222,7 +220,7 @@ class BookingController extends Controller
             'jam_selesai' => $jam_selesai,
             'lampiran' => $file,
             'nama_kelas' => $nama_kelas,
-            'gambar' => $ruang->gambar,
+            'ruang' => $ruang,
         ]);
         View::render("Templates/footer", []);
     }
