@@ -2,11 +2,6 @@
     <div class="p-4  ml-[77px] lg:ml-64">
         <div class="p-4 mt-14">
 
-            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
-                <i class="fa-solid fa-calendar-days fa-sm dark:text-gray-400 group-hover:text-white"></i>
-                Admin / Jadwal
-            </div>
-
             <div class="pb-4  flex justify-between">
                 <!-- Searching -->
                 <div class="shadow-md rounded-lg">
