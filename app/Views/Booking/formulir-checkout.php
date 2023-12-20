@@ -189,7 +189,7 @@
                     <div class="font-bold mb-2">Ruang Teori 1</div>
                     <span class="">Denah ruang: </span>
                     <div class="w-full justify-center flex">
-                        <img src="/assets/img/lantai/Lantai6.png" class="w-[400px] h-auto mb-6" alt="">
+                        <img src="/assets/img/lantai/<?= $ruang->gambar ?>" class="w-[400px] h-auto mb-6" alt="">
                     </div>
                     <div class="text-sm mb-2 font-semibold text-gray-900 dark:text-white">
                         Jam ke <br>

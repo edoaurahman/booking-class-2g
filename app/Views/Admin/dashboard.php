@@ -147,7 +147,7 @@
             </div>
         </div>
 
-        <!-- ucer Percentage -->
+        <!-- user Percentage -->
         <div class="mt-4 mb-4 grid grid-rows-2 grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 max-h-[810px]">
             <div
                 class="flex flex-col justify-between rounded col-start-1 lg:row-span-2 bg-gray-50 shadow-lg h-full dark:bg-gray-800 p-2">
@@ -256,7 +256,7 @@
                         </button>
                         <span tabindex="0"
                             class="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800"
-                            id="calendarHead">October 2020</span>
+                            id="calendarHead"></span>
                         <button id="next" aria-label="calendar forward" @click="next()"
                             class="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100 button-calendar">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler  icon-tabler-chevron-right"
@@ -330,9 +330,10 @@
 
                 <!-- Newest Booking -->
                 <div x-data="tableData3" x-init="dataFetchForNewBook()"
-                    class="basis-1/2 p-4 dark:bg-gray-700 bg-gray-50 rounded-b flex flex-col gap-4 h-[380px]">
+                    class="basis-1/2 p-4 m-1 dark:bg-gray-700 bg-gray-50 rounded-b flex flex-col gap-4 h-[380px]">
                     <div class="text-xl lg:text-2xl font-semibold text-black dark:text-white">Newest Booking</div>
-                    <div class="flex flex-col lg:flex-row lg:flex-wrap gap-4 lg:justify-between overflow-y-scroll scr-gone">
+                    <div
+                        class="flex flex-col lg:flex-row lg:flex-wrap gap-4 lg:justify-between overflow-y-scroll scr-gone">
                         <template x-for="item in tableData3">
                             <div class="flex border border-gray-400 p-4 rounded-md gap-4 items-start lg:w-[48%]">
                                 <img src="/assets/img/foto-profil.png" alt="img-user" class="h-[45px] rounded-full">
@@ -640,14 +641,14 @@
             dataUseCalendar: [],
             init() {
                 this.dataFetchForCalendarChange()
-                // this.dataFetchForSchedule()
                 this.setDay(new Date().getDate());
             },
             dataFetchForCalendarChange() {
                 fetch('/api/dashboard1')
                     .then(response => response.json())
                     .then(data => {
-                        this.dataUseCalendar = data.topBook
+                        console.log(data);
+                        this.dataUseCalendar = data
                     }).catch(e => {
                         console.log(e);
                     })

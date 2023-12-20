@@ -171,7 +171,7 @@ class Ruang extends Model
     public function getRuangSearch(object $request): array
     {
         $keyword = $request->keyword;
-        $sql = "SELECT * FROM view_getruang WHERE nama_ruang LIKE '%$keyword%' OR deskripsi_ruang LIKE '%$keyword%' OR jenis_ruang LIKE '%$keyword%' OR nama_lantai LIKE '%$keyword%' OR keterangan LIKE '%$keyword%' ORDER BY created_at DESC";
+        $sql = "SELECT * FROM view_getruang WHERE nama_ruang LIKE '%$keyword%' OR deskripsi_ruang LIKE '%$keyword%' OR jenis_ruang LIKE '%$keyword%' OR nama_lantai LIKE '%$keyword%' OR keterangan LIKE '%$keyword%'";
         $result = $this->db->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {

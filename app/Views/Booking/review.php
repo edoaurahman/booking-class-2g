@@ -149,26 +149,7 @@
             </div>
 
         </div>
-        <!-- <div class="hidden md:block col-span-2 rounded-md bg-white dark:bg-dark_grey6 shadow-md m-6 p-5 row-span-2 font-serif">
-            <div class="header p-5  text-2xl bg-biru2 rounded-md text-white py-2 pl-4">
-                Preview
-            </div>
-            <div class="text-sm text-gray-900 dark:text-white p-4">
-                <div class="font-bold text-lg mb-2">Ruang Teori 1</div>
-                <span class="">Denah ruang: </span>
-                <div class="w-full justify-center flex">
-                    <img src="/assets/img/lantai/Lantai6.png" class="w-[400px] h-auto mb-6" alt="">
-                </div>
-                <div class="text-base mb-2  font-semibold text-gray-900 dark:text-white">
-                    Jam ke <br>
-                    <p class="-my-0.5 font-thin">1,2,4</p>
-                </div>
-                <div class="text-base font-semibold text-gray-900 dark:text-white">
-                    Tanggal <br>
-                    <p class="-my-0.5 font-thin">30 Desember 2023</p>
-                </div>
-            </div>
-        </div> -->
+
     </div>
 
 </body>
