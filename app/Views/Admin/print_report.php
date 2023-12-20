@@ -1,8 +1,12 @@
 <!-- font awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="py-4 px-16 dark:bg-[#ffffff] dark:text-black" id="ruang">
     <div data-dial-init class="fixed end-6 bottom-6 group animate-bounce">
-        <button type="button" onclick="printJS('printJS-form', 'html')" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default" aria-expanded="false" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
+        <button type="button" onclick="printJS('printJS-form', 'html')" data-dial-toggle="speed-dial-menu-default"
+            aria-controls="speed-dial-menu-default" aria-expanded="false"
+            class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
             <i class="fa-solid fa-print  text-xl"></i>
             <span class="sr-only">Open actions menu</span>
         </button>
@@ -73,38 +77,42 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th class="px-6 py-4">
-                                1.
-                            </th>
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Aldo
-                            </th>
-                            <td class="px-6 py-4">
-                                08-12-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                9-12-2023
-                            </td>
-                            <td class="px-6 py-4">
-                                Dr.Eng. Rosa Andrie Asmara, ST, MT.
-                            </td>
-                            <td class="px-6 py-4">
-                                TI-2A
-                            </td>
-                            <td class="px-6 py-4">
-                                RT01_5B
-                            </td>
-                            <td class="px-6 py-4">
-                                07:00:00
-                            </td>
-                            <td class="px-6 py-4">
-                                08:40:00
-                            </td>
-                            <td class="px-6 py-4">
-                                Testing mahasiswa
-                            </td>
-                        </tr>
+                        <?php foreach ($report as $key => $item): ?>
+                            <tr
+                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <th class="px-6 py-4">
+                                    <?= $key + 1 ?>
+                                </th>
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <?= $item['mahasiswa'] ?? $item['dosen'] ?>
+                                </th>
+                                <td class="px-6 py-4">
+                                    <?= $item['tanggal_pesan'] ?>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?= $item['tanggal_pakai'] ?>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?= $item['dosen'] ?>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?= $item['kelas'] ?>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?= $item['ruang'] ?>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?= $item['jam_mulai'] ?>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?= $item['jam_selesai'] ?>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <?= $item['keterangan'] ?>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

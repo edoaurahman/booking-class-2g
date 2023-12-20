@@ -24,6 +24,7 @@ use TugasBesar\BookingClass2g\Middleware\AuthMiddleware;
 use TugasBesar\BookingClass2g\Controller\AdminController;
 use TugasBesar\BookingClass2g\Controller\BookingController;
 use TugasBesar\BookingClass2g\Controller\ModalController;
+
 // Auth
 Router::add('GET', '/login', AuthController::class, 'login');
 Router::add('POST', '/login', AuthController::class, 'prosesLogin');
@@ -68,7 +69,7 @@ Router::add('POST', '/admin/booking', AdminController::class, 'storeBooking', [A
 Router::add('GET', '/admin/report', AdminController::class, 'report', [AuthMiddleware::class]);
 Router::add('GET', '/admin/pdf/{id_booking}', AdminController::class, 'pdf', [AuthMiddleware::class]);
 Router::add('POST', '/admin/booking/verif', AdminController::class, 'adminVerification', [AuthMiddleware::class]);
-Router::add('GET', '/admin/print_report', AdminController::class, 'print_report', [AuthMiddleware::class]);
+Router::add('GET', '/admin/print-report/{month}/{year}', AdminController::class, 'print_report', [AuthMiddleware::class]);
 
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');

@@ -509,12 +509,13 @@ class AdminController extends Controller
         ]);
     }
 
-    public function print_report()
+    public function print_report($month, $year)
     {
         $report = new Laporan();
-
+        $result = $report->getReportByDate($month, $year);
+        // $this->ddd($result);
         View::render("Admin/print_report", [
-            'report' => $report
+            'report' => $result
         ]);
     }
 
@@ -572,7 +573,8 @@ class AdminController extends Controller
         $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
         if (empty($bookingAvailability)) {
             $bookingAvailability = new Dosen();
-            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);;
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+            ;
         }
         echo json_encode($bookingAvailability);
     }

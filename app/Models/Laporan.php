@@ -38,4 +38,12 @@ class Laporan extends Model
         $data = $result->fetch_assoc();
         return $data;
     }
+
+    public function getReportByDate(string $month, string $year): array
+    {
+        $date = $year . '-' . $month;
+        $sql = "SELECT * FROM view_getreport WHERE tanggal_pakai LIKE '%$date%'";
+        $result = $this->query($sql);
+        return $result;
+    }
 }

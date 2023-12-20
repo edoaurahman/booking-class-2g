@@ -330,7 +330,7 @@
 
                 <!-- Newest Booking -->
                 <div x-data="tableData3" x-init="dataFetchForNewBook()"
-                    class="basis-1/2 p-4 dark:bg-gray-700 bg-gray-50 rounded-b flex flex-col gap-4 h-[380px]">
+                    class="basis-1/2 p-4 m-1 dark:bg-gray-700 bg-gray-50 rounded-b flex flex-col gap-4 h-[380px]">
                     <div class="text-xl lg:text-2xl font-semibold text-black dark:text-white">Newest Booking</div>
                     <div class="flex flex-col lg:flex-row lg:flex-wrap gap-4 lg:justify-between overflow-y-scroll scr-gone">
                         <template x-for="item in tableData3">
