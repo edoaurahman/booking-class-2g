@@ -162,10 +162,10 @@ class Booking extends Model
 
     public function getAllBookHistory(): array
     {
-        $sql1 = "SELECT COUNT(*) AS totalavailable FROM view_gethistorybooking WHERE status_jam = 'available' AND nama_hari = DAYNAME(CURRENT_DATE())";
-        $sql2 = "SELECT COUNT(*) AS totalused FROM view_gethistorybooking WHERE status_jam = 'used' AND nama_hari = DAYNAME(CURRENT_DATE())";
-        $sql3 = "SELECT COUNT(*) AS totaldone FROM view_gethistorybooking WHERE status_jam = 'done' AND nama_hari = DAYNAME(CURRENT_DATE())";
-        $sql4 = "SELECT COUNT(*) AS totalunavailable FROM view_gethistorybooking WHERE (status_jam = 'done' OR status_jam = 'used') AND nama_hari = DAYNAME(CURRENT_DATE())";
+        $sql1 = "SELECT COUNT(*) AS totalavailable FROM view_getbookingstatus WHERE status_jam = 'available' AND nama_hari = DAYNAME(CURRENT_DATE())";
+        $sql2 = "SELECT COUNT(*) AS totalused FROM view_getbookingstatus WHERE status_jam = 'onprocess' AND nama_hari = DAYNAME(CURRENT_DATE())";
+        $sql3 = "SELECT COUNT(*) AS totaldone FROM view_getbookingstatus WHERE status_jam = 'used' AND nama_hari = DAYNAME(CURRENT_DATE())";
+        $sql4 = "SELECT COUNT(*) AS totalunavailable FROM view_getbookingstatus WHERE (status_jam = 'onprocess' OR status_jam = 'used') AND nama_hari = DAYNAME(CURRENT_DATE())";
 
         $result1 = $this->db->query($sql1);
         $result2 = $this->db->query($sql2);

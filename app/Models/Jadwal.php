@@ -83,7 +83,7 @@ class Jadwal extends Model
 
     public function getSchedule($hari): array
     {
-        $sql = "SELECT * FROM view_getjadwaladmin WHERE hari = '$hari'";
+        $sql = "SELECT * FROM view_getjadwaladmin WHERE hari = '$hari' ORDER BY ruang ASC, jam_mulai ASC";
         $result = $this->query($sql);
         return $result;
     }
