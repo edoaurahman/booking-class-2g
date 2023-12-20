@@ -266,6 +266,23 @@
                                     Tidak Ada Permintaan Peminjaman Yang Urgent
                                 </div>
                             </template>
+
+                            <!-- paggination -->
+                            <nav class="w-full flex items-center justify-end py-4 px-3" aria-label="Table navigation">
+                                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+                                    <li>
+                                        <a href="#booking" @click="prev()" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                                    </li>
+                                    <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
+                                        <li>
+                                            <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#booking" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400  dark:hover:text-white hover:text-black"><?= $i ?></a>
+                                        </li>
+                                    <?php endfor; ?>
+                                    <li>
+                                        <a href="#booking" @click="next()" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </section>
                 </div>
@@ -427,17 +444,35 @@
     function setActive(current_page) {
         buttonPaggination.forEach((button) => {
             if (button.innerText == current_page) {
-                button.classList.remove("dark:bg-gray-800");
-                button.classList.add("dark:bg-gray-700");
-                button.classList.add("bg-gray-200")
+                button.classList.add('dark:bg-bingu');
+                button.classList.add('dark:text-white');
+                button.classList.remove('dark:bg-gray-800');
+                button.classList.add('bg-bingu');
+                button.classList.add('hover:bg-bingu_hover');
+                button.classList.add('dark:hover:bg-bingu_hover');
+                button.classList.add('hover:text-white');
+                button.classList.remove('hover:text-black');
+                button.classList.remove('hover:bg-gray-200');
+                button.classList.remove('dark:hover:bg-gray-700');
+                button.classList.add('text-white');
+                button.classList.remove('bg-white');
             } else {
                 button.classList.add('dark:bg-gray-800');
                 button.classList.add('bg-white');
-                button.classList.remove("dark:bg-gray-700");
-                button.classList.remove("bg-gray-200");
+                button.classList.add('hover:text-black');
+                button.classList.remove('dark:bg-bingu');
+                button.classList.remove('dark:text-white');
+                button.classList.remove('bg-bingu');
+                button.classList.remove('hover:bg-bingu_hover');
+                button.classList.remove('dark:hover:bg-bingu_hover');
+                button.classList.remove('text-white');
+                button.classList.remove('hover:text-white');
+                button.classList.add('hover:bg-gray-200');
+                button.classList.add('dark:hover:bg-gray-700');
             }
         });
     }
+
     const padZero = (num) => {
         return String(num).padStart(2, "0");
     };

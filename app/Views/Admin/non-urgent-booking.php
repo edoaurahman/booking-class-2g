@@ -226,7 +226,7 @@
                                 </li>
                                 <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
                                     <li>
-                                        <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#booking" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white hover:text-black"><?= $i ?></a>
+                                        <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#booking" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400  dark:hover:text-white hover:text-black"><?= $i ?></a>
                                     </li>
                                 <?php endfor; ?>
                                 <li>
@@ -390,21 +390,38 @@
 
     // table & pagination
     const buttonPaggination = document.querySelectorAll('#button-pagination');
-
     function setActive(current_page) {
         buttonPaggination.forEach((button) => {
             if (button.innerText == current_page) {
-                button.classList.remove("dark:bg-gray-800");
-                button.classList.add("dark:bg-gray-700");
-                button.classList.add("bg-gray-200")
+                button.classList.add('dark:bg-bingu');
+                button.classList.add('dark:text-white');
+                button.classList.remove('dark:bg-gray-800');
+                button.classList.add('bg-bingu');
+                button.classList.add('hover:bg-bingu_hover');
+                button.classList.add('dark:hover:bg-bingu_hover');
+                button.classList.add('hover:text-white');
+                button.classList.remove('hover:text-black');
+                button.classList.remove('hover:bg-gray-200');
+                button.classList.remove('dark:hover:bg-gray-700');
+                button.classList.add('text-white');
+                button.classList.remove('bg-white');
             } else {
                 button.classList.add('dark:bg-gray-800');
                 button.classList.add('bg-white');
-                button.classList.remove("dark:bg-gray-700");
-                button.classList.remove("bg-gray-200");
+                button.classList.add('hover:text-black');
+                button.classList.remove('dark:bg-bingu');
+                button.classList.remove('dark:text-white');
+                button.classList.remove('bg-bingu');
+                button.classList.remove('hover:bg-bingu_hover');
+                button.classList.remove('dark:hover:bg-bingu_hover');
+                button.classList.remove('text-white');
+                button.classList.remove('hover:text-white');
+                button.classList.add('hover:bg-gray-200');
+                button.classList.add('dark:hover:bg-gray-700');
             }
         });
     }
+
     const padZero = (num) => {
         return String(num).padStart(2, "0");
     };
