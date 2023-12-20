@@ -97,4 +97,11 @@ class Jadwal extends Model
         $sql = "UPDATE jadwal SET status = 'offline' WHERE id_jadwal = '$id_jadwal'";
         $this->exec($sql);
     }
+
+    public function getSchedule($hari): array
+    {
+        $sql = "SELECT * FROM view_getjadwaladmin WHERE hari = '$hari'";
+        $result = $this->query($sql);
+        return $result;
+    }
 }
