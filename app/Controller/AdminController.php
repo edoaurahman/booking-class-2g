@@ -364,7 +364,7 @@ class AdminController extends Controller
         $this->redirect("/admin/dosen");
     }
 
-    public function booking()
+    public function urgentBooking()
     {
         // cek lampiran\
         if (isset($_COOKIE['lampiran'])) {
@@ -393,7 +393,39 @@ class AdminController extends Controller
         $listRuang = $ruang->all();
 
         View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
-        View::render("Admin/booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
+        View::render("Admin/urgent-booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
+    }
+
+    public function nonUrgentBooking()
+    {
+        // cek lampiran\
+        if (isset($_COOKIE['lampiran'])) {
+            // delete old file
+            $oldFile = __DIR__ . '/../../public/assets/lampiran/' . $_COOKIE['lampiran'];
+            unlink($oldFile);
+            // delete cookie
+            setcookie('lampiran', '', time() - 3600, '/');
+            unset($_COOKIE['lampiran']);
+        }
+
+        $booking = new Booking();
+        $totalPage = $booking->getTotalPage();
+
+        $mahasiswa = new Mahasiswa();
+        $listNim = $mahasiswa->all();
+
+        $dosen = new Dosen();
+        $listDosenPJ = $dosen->all();
+        $listDosenPR = $dosen->all();
+
+        $kelas = new Kelas();
+        $listKelas = $kelas->all();
+
+        $ruang = new Ruang();
+        $listRuang = $ruang->all();
+
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        View::render("Admin/non-urgent-booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
     }
 
     public function apiBooking($page)
@@ -508,7 +540,7 @@ class AdminController extends Controller
             'tanggal_pakai' => $tanggal_pakai
         ]);
     }
-
+    
     public function print_report($month, $year)
     {
         $report = new Laporan();
@@ -573,8 +605,7 @@ class AdminController extends Controller
         $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
         if (empty($bookingAvailability)) {
             $bookingAvailability = new Dosen();
-            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
-            ;
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);;
         }
         echo json_encode($bookingAvailability);
     }
@@ -618,7 +649,8 @@ class AdminController extends Controller
     {
         $booking = new Booking();
         $booking = $booking->getTotalBookingOnprocess();
-        echo json_encode(['total_booking' => $booking]);
+        // $this->ddd($booking[0]['count']);
+        echo json_encode(['total_booking' => $booking[0]['count'], 'nonurgent' => $booking[1]['count'], 'urgent' => $booking[2]['count']]);
     }
 
     public function apiDashboard1()

@@ -1,11 +1,6 @@
 <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full" x-data="tableData">
     <div class="p-4  ml-[77px] lg:ml-64">
-        <div class="p-4 mt-14">
-
-            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
-                <i class="fa-solid fa-door-open fa-sm dark:text-gray-400 group-hover:text-white"></i>
-                Admin / Ruang
-            </div>
+        <div class="p-4 mt-14">      
 
             <div class="pb-4  flex justify-between">
                 <!-- Searching -->
@@ -133,7 +128,7 @@
                                                     </div>
                                                     <!-- content -->
                                                     <div class="p-4 md:p-5 space-y-4">
-                                                        <img :src="'/assets/img/lantai/'+ item.gambar" :alt="item.id_ruang">
+                                                        <img :src="item.gambar != undefined && '/assets/img/lantai/'+ item.gambar" :alt="item.id_ruang">
                                                     </div>
                                                     <!-- Modal footer -->
                                                     <div class="flex justify-end items-center p-4 border-t border-gray-200 rounded-b dark:border-gray-600">
@@ -207,7 +202,7 @@
                                                                 <div class="col-span-2">
                                                                     <label for="gambar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Denah Ruangan</label>
                                                                     <div class="flex justify-center my-4">
-                                                                        <img :src="'/assets/img/lantai/'+ item.gambar" :alt="item.id_ruang" class="w-[300px]">
+                                                                        <img :src="item.gambar != undefined && '/assets/img/lantai/'+ item.gambar" :alt="item.id_ruang" class="w-[300px]">
                                                                     </div>
                                                                     <input type="file" name="gambar" id="gambar" class=" text-gray-900 dark:text-white" accept="image/*">
                                                                 </div>
@@ -374,6 +369,7 @@
                     .then(response => response.json())
                     .then(data => {
                         this.tableData = data.ruangan;
+                        console.log(this.tableData);
                         this.current_page = data.currentPage;
                         setActive(this.current_page);
                     }).then(e => {

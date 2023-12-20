@@ -1,257 +1,12 @@
 <div x-data="tableData">
     <div class="bg-gray-100 dark:bg-dark_grey1 min-h-[100vh] w-full">
-
         <div class="p-4  ml-[77px] lg:ml-64">
-            <div class="p-4 mt-14">
+            <div class="p-4 mt-8">
 
-                <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
-                    <svg class="flex-shrink-0 w-4 h-4 text-white transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                        <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
-                    </svg>
-                    Admin / Booking
+                <div class="py-3 font-semibold text-xl px-2">
+                    <span class="text-[#0088ED]">Non Urgent</span>
+                    <span class="text-white">Booking</span>
                 </div>
-
-                <template x-if="bookingIntersect && bookingIntersect.length != 0">
-                    <div class="pb-4">
-                        <div class="w-full text-center">
-                            <h1 class="font-bold text-2xl text-red-600 pb-4">Terdapat Booking yang urgent</h1>
-                        </div>
-                        <!-- table -->
-                        <section id="booking" class="shadow-lg sm:rounded-lg">
-                            <div x-init="$nextTick(() => {paggination(1) })">
-                                <div class="overflow-x-auto rounded-md overflow-hidden">
-                                    <table class="w-[1400px] lg:w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
-                                        <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-                                            <tr>
-                                                <th scope="col" class="w-[15%] px-6 py-3">
-                                                </th>
-                                                <th scope="col" class=" px-6 py-3">
-                                                </th>
-                                                <th scope="col" class=" px-6 py-3">
-                                                </th>
-                                                <th scope="col" class="w-[15%] px-6 py-3 text-center" colspan="2">
-                                                    Dosen
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 text-center" colspan="2">
-                                                    Booking
-                                                </th>
-                                                <th scope="col" class="px-6 py-3 text-center" colspan="2">
-                                                    Saat Ini
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                </th>
-                                                <th scope="col" class="w-[9%] px-6 py-3">
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col" class="w-[15%] px-6 py-3">
-                                                    Peminjam
-                                                </th>
-                                                <th scope="col" class=" px-6 py-3">
-                                                    Tanggal Pesan
-                                                </th>
-                                                <th scope="col" class=" px-6 py-3">
-                                                    Tanggal Pakai
-                                                </th>
-                                                <th scope="col" class="w-[15%] px-6 py-3">
-                                                    Penanggung Jawab Booking
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Pengguna Ruang Saat Ini
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Kelas
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Ruang
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Jam Mulai
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Jam Selesai
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Jam Mulai
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Jam Selesai
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Lampiran
-                                                </th>
-                                                <th scope="col" class="px-6 py-3">
-                                                    Keterangan
-                                                </th>
-                                                <th scope="col" class="w-[9%] px-6 py-3">
-                                                    Status
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <template x-for="(item,index) in bookingIntersect">
-                                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                    <template x-if="bookingUrgent[index].mahasiswa">
-                                                        <td x-text="bookingUrgent[index].mahasiswa" class="px-4 py-3">
-                                                        </td>
-                                                    </template>
-                                                    <template x-if="!bookingUrgent[index].mahasiswa">
-                                                        <td x-text="bookingUrgent[index].dosen" class="px-4 py-3">
-                                                        </td>
-                                                    </template>
-                                                    <td class="px-6 py-4">
-                                                        <template x-if="item.id_jadwal != null">
-                                                            <span x-text="getFormattedDate()"></span>
-                                                        </template>
-                                                        <span x-text="item.tanggal_pesan"></span>
-                                                    </td>
-                                                    <td class="px-6 py-4">
-                                                        <template x-if="item.id_jadwal != null">
-                                                            <span x-text="getFormattedDate()"></span>
-                                                        </template>
-                                                        <span x-text="item.tanggal_pakai"></span>
-                                                    </td>
-                                                    <td x-text="bookingUrgent[index].dosen" class="px-6 py-4">
-                                                    </td>
-                                                    <td x-text="item.dosen" class="px-6 py-4">
-                                                    </td>
-                                                    <td x-text="item.kelas" class="px-6 py-4">
-                                                    </td>
-                                                    <td x-text="item.ruang" class="px-6 py-4">
-                                                    </td>
-                                                    <!-- jika dari jadwal -->
-                                                    <template x-if="item.id_jadwal != null">
-                                                        <td x-text="bookingUrgent[index].jam_mulai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-                                                    <template x-if="item.id_jadwal != null">
-                                                        <td x-text="bookingUrgent[index].jam_selesai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-                                                    <template x-if="item.id_jadwal != null">
-                                                        <td x-text="item.jam_mulai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-                                                    <template x-if="item.id_jadwal != null">
-                                                        <td x-text="item.jam_selesai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-                                                    <!-- jika dari booking -->
-                                                    <template x-if="item.id_jadwal == null">
-                                                        <td x-text="item.jam_mulai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-                                                    <template x-if="item.id_jadwal == null">
-                                                        <td x-text="item.jam_selesai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-                                                    <template x-if="item.id_jadwal == null">
-                                                        <td x-text="bookingUrgent[index].jam_mulai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-                                                    <template x-if="item.id_jadwal == null">
-                                                        <td x-text="bookingUrgent[index].jam_selesai" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
-
-                                                    <td class="px-6 py-4">
-                                                        <a :href="'/assets/lampiran/' + bookingUrgent[index].lampiran" target="_blank">
-                                                            <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-900 dark:focus:ring-blue-800">
-                                                                Lihat Lampiran
-                                                            </div>
-                                                        </a>
-                                                    </td>
-                                                    <td class="px-6 py-4">
-                                                        <!-- Modal toggle -->
-                                                        <span :data-modal-target="'modal-keterangan-' + index" :data-modal-toggle="'modal-keterangan-' + index" x-text="bookingUrgent[index] && bookingUrgent[index].keterangan ? bookingUrgent[index].keterangan.substring(0, 20) + '...' : ''"></span>
-                                                        <!-- Main modal -->
-                                                        <div :id="'modal-keterangan-' + index" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                                            <div class="relative p-4 w-full max-w-2xl max-h-full">
-                                                                <!-- Modal content -->
-                                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                                    <!-- Modal header -->
-                                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                                                            Keterangan
-                                                                        </h3>
-                                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" :data-modal-hide="'modal-keterangan-' + index">
-                                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                                            </svg>
-                                                                            <span class="sr-only">Close modal</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <!-- Modal body -->
-                                                                    <div class="p-4 md:p-5 space-y-4">
-                                                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400" x-text="bookingUrgent[index].keterangan">
-                                                                        </p>
-                                                                    </div>
-                                                                    <!-- Modal footer -->
-                                                                    <div class="flex justify-end items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                                        <button :data-modal-hide="'modal-keterangan-' + index" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tutup</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="px-6 py-4 font-medium">
-                                                        <template x-if="item.id_jadwal != null">
-                                                            <div class="flex gap-3 w-full">
-                                                                <form action="/admin/booking/verif" method="post">
-                                                                    <input type="hidden" name="id_booking" :value="bookingUrgent[index].id_booking">
-                                                                    <input type="hidden" name="id_jadwal" :value="item.id_jadwal">
-                                                                    <input type="hidden" name="status" value="canceled">
-                                                                    <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
-                                                                        <i class="fa-solid fa-xmark"></i>
-                                                                    </button>
-                                                                </form>
-                                                                <form action="/admin/booking/verif" method="post">
-                                                                    <input type="hidden" name="id_booking" :value="bookingUrgent[index].id_booking">
-                                                                    <input type="hidden" name="id_jadwal" :value="item.id_jadwal">
-                                                                    <input type="hidden" name="status" value="success">
-                                                                    <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
-                                                                        <i class="fa-solid fa-check"></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </template>
-                                                        <template x-if="item.id_jadwal == null">
-                                                            <div class="flex gap-3 w-full">
-                                                                <form action="/admin/booking/verif" method="post">
-                                                                    <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                    <input type="hidden" name="id_booking_urgent" :value="bookingUrgent[index].id_booking">
-                                                                    <input type="hidden" name="status" value="canceled">
-                                                                    <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
-                                                                        <i class="fa-solid fa-xmark"></i>
-                                                                    </button>
-                                                                </form>
-                                                                <form action="/admin/booking/verif" method="post">
-                                                                    <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                    <input type="hidden" name="id_booking_urgent" :value="bookingUrgent[index].id_booking">
-                                                                    <input type="hidden" name="status" value="success">
-                                                                    <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
-                                                                        <i class="fa-solid fa-check"></i>
-                                                                    </button>
-                                                                </form>
-                                                            </div>
-                                                        </template>
-                                                    </td>
-                                                </tr>
-                                            </template>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <!-- </div> -->
-                </template>
 
                 <div class="pb-4  flex justify-between">
                     <!-- Searching -->
@@ -271,9 +26,7 @@
                     <a class="px-4 py-2 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover" data-modal-target="add-booking-modal" data-modal-toggle="add-booking-modal">
                         Add Booking
                     </a>
-
                 </div>
-
 
                 <!-- table -->
                 <section id="booking" class="shadow-lg sm:rounded-lg">
@@ -473,7 +226,7 @@
                                 </li>
                                 <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
                                     <li>
-                                        <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#booking" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white hover:text-black"><?= $i ?></a>
+                                        <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#booking" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400  dark:hover:text-white hover:text-black"><?= $i ?></a>
                                     </li>
                                 <?php endfor; ?>
                                 <li>
@@ -637,21 +390,38 @@
 
     // table & pagination
     const buttonPaggination = document.querySelectorAll('#button-pagination');
-
     function setActive(current_page) {
         buttonPaggination.forEach((button) => {
             if (button.innerText == current_page) {
-                button.classList.remove("dark:bg-gray-800");
-                button.classList.add("dark:bg-gray-700");
-                button.classList.add("bg-gray-200")
+                button.classList.add('dark:bg-bingu');
+                button.classList.add('dark:text-white');
+                button.classList.remove('dark:bg-gray-800');
+                button.classList.add('bg-bingu');
+                button.classList.add('hover:bg-bingu_hover');
+                button.classList.add('dark:hover:bg-bingu_hover');
+                button.classList.add('hover:text-white');
+                button.classList.remove('hover:text-black');
+                button.classList.remove('hover:bg-gray-200');
+                button.classList.remove('dark:hover:bg-gray-700');
+                button.classList.add('text-white');
+                button.classList.remove('bg-white');
             } else {
                 button.classList.add('dark:bg-gray-800');
                 button.classList.add('bg-white');
-                button.classList.remove("dark:bg-gray-700");
-                button.classList.remove("bg-gray-200");
+                button.classList.add('hover:text-black');
+                button.classList.remove('dark:bg-bingu');
+                button.classList.remove('dark:text-white');
+                button.classList.remove('bg-bingu');
+                button.classList.remove('hover:bg-bingu_hover');
+                button.classList.remove('dark:hover:bg-bingu_hover');
+                button.classList.remove('text-white');
+                button.classList.remove('hover:text-white');
+                button.classList.add('hover:bg-gray-200');
+                button.classList.add('dark:hover:bg-gray-700');
             }
         });
     }
+
     const padZero = (num) => {
         return String(num).padStart(2, "0");
     };
@@ -723,10 +493,8 @@
                 this.id_jam_selesai = this.listJam[this.selectedHours[1] - 1];
                 input_jam_mulai.value = this.id_jam_mulai;
                 input_jam_selesai.value = this.id_jam_selesai;
-                // checkLastDosen if jam_mulai and jam_selesai is not empty and not undefined
-                if (this.id_jam_mulai != "" && this.id_jam_selesai != "" && this.id_jam_mulai != undefined && this.id_jam_selesai != undefined) {
-                    this.checkDosenLast();
-                }
+                this.checkDosenLast();
+
             },
             paggination(page = '1') {
                 fetch('/api/booking/' + page)
@@ -794,6 +562,9 @@
                 formData.append("jam_mulai", this.id_jam_mulai);
                 formData.append("jam_selesai", this.id_jam_selesai);
                 formData.append("tanggal", document.querySelector("#tgl_pakai").value);
+                if (this.id_jam_mulai != null && this.id_jam_mulai != undefined && this.id_jam_selesai == undefined) {
+                    formData.append("jam_selesai", this.id_jam_mulai);
+                }
                 const response = await fetch('/api/admin/booking/check-dosen-last', {
                     method: "POST",
                     body: formData
@@ -815,7 +586,7 @@
                         text: 'Data berhasil dikirim',
                     }).then(() => {
                         document.cookie = "lampiran=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        window.location.href = '/admin/booking'
+                        window.location.href = (this.lastDosen === null) ? '/admin/nonurgent-booking' : '/admin/urgent-booking';
                     })
                 } else {
                     await swal({
@@ -824,7 +595,7 @@
                         text: 'Data gagal dikirim',
                     }).then(() => {
                         document.cookie = "lampiran=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                        window.location.href = '/admin/booking'
+                        window.location.href = '/admin/nonurgent-booking'
                     })
                 }
             },
@@ -847,19 +618,8 @@
                 return `${yyyy}-${mm}-${dd}`;
             }
         }))
-        Alpine.directive('log', (el, {
-            expression
-        }, {
-            evaluate
-        }) => {
-            // expression === 'message'
-            console.log(
-                evaluate(expression)
-            )
-        })
     })
 </script>
-
 </body>
 
 </html>

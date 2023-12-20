@@ -64,7 +64,8 @@ Router::add('POST', '/admin/jadwal', AdminController::class, 'storeJadwal', [Aut
 Router::add('GET', '/admin/jadwal/edit/{id_jadwal}', AdminController::class, 'jadwalModal');
 Router::add('POST', '/admin/jadwal/edit', AdminController::class, 'editJadwal');
 Router::add('GET', '/admin/jadwal/delete/{id_jadwal}', AdminController::class, 'deleteJadwal', [AuthMiddleware::class]);
-Router::add('GET', '/admin/booking', AdminController::class, 'booking', [AuthMiddleware::class]);
+Router::add('GET', '/admin/urgent-booking', AdminController::class, 'urgentBooking', [AuthMiddleware::class]);
+Router::add('GET', '/admin/nonurgent-booking', AdminController::class, 'nonUrgentBooking', [AuthMiddleware::class]);
 Router::add('POST', '/admin/booking', AdminController::class, 'storeBooking', [AuthMiddleware::class]);
 Router::add('GET', '/admin/report', AdminController::class, 'report', [AuthMiddleware::class]);
 Router::add('GET', '/admin/pdf/{id_booking}', AdminController::class, 'pdf', [AuthMiddleware::class]);
@@ -85,7 +86,7 @@ Router::add('GET', '/api/booking/{page}', AdminController::class, 'apiBooking');
 Router::add('POST', '/api/admin/booking/search', AdminController::class, 'apiBookingSearch');
 Router::add('GET', '/api/report/{page}', AdminController::class, 'apiReport');
 Router::add('GET', '/api/dashboard1', AdminController::class, 'apiDashboard1');
-Router::add('POST', '/api/dashboard2', AdminController::class, 'apiDashboard2');
+Router::add('POST','/api/dashboard2', AdminController::class, 'apiDashboard2');
 
 // Filter ruang, hari, jam mulai, jam selesai, cateogry ruang, lantai
 Router::add('POST', '/api/ruang/filter', BookingController::class, 'apiRuangBooking');

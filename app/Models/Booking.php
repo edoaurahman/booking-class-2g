@@ -143,11 +143,15 @@ class Booking extends Model
         return $result;
     }
 
-    public function getTotalBookingOnprocess(): int
+    public function getTotalBookingOnprocess(): array
     {
-        $sql = "SELECT COUNT(*) AS total FROM booking WHERE status = 'onprocess' OR status = 'urgent'";
+        $sql = "SELECT 'total' AS type, COUNT(*) AS count FROM booking WHERE status = 'onprocess' OR status = 'urgent'
+        UNION
+        SELECT 'nonurgent' AS type, COUNT(*) AS count FROM booking WHERE status = 'onprocess'
+        UNION
+        SELECT 'urgent' AS type, COUNT(*) AS count FROM booking WHERE status = 'urgent';";
         $result = $this->query($sql);
-        return $result[0]['total'];
+        return $result;
     }
     public function getNewestBooking(): array
     {
