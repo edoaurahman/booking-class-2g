@@ -33,7 +33,7 @@
                         <h1 class="text-4xl font-semibold mb-2">
                             <?= $data['totDone'] ?>
                         </h1>
-                        <div class="text-md font-medium">Total Jam Telah Terpakai</div>
+                        <div class="text-md font-medium">Total Jam Terpakai</div>
                     </div>
                     <img src="assets/img/enter.png" alt="" class="h-12 w-12">
                 </div>
@@ -56,22 +56,8 @@
             <div class=" lg:col-span-3 max-h-[503px] flex flex-col h-full shadow-lg rounded bg-gray-50
                 dark:bg-gray-800">
                 <div class="flex w-[100%] justify-between">
-                    <label for="table-search" class="sr-only">Search</label>
-                    <div class="pt-3 relative mt-1 ml-5">
-                        <div
-                            class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input type="search" @input.debounce.750="searchBooking()" id="table-search"
-                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search for items">
-                    </div>
                     <div class="flex flex-col w-[40%]">
-                        <h1 class="p-5 text-xl font-semibold text-right text-gray-900 dark:text-white">Jadwal Kelas
+                        <h1 class="p-5 text-xl font-semibold text-left text-gray-900 dark:text-white">Jadwal Utama Kelas
                         </h1>
                     </div>
                 </div>
@@ -80,39 +66,39 @@
                         class="w-full text-center text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                         <thead class="sticky ">
                             <tr>
-                                <th scope="col" class="px-6 py-2">
+                                <th scope="col" class="w-[30%] px-6 py-2">
                                     Mata Kuliah
                                 </th>
-                                <th scope="col" class="px-6 py-2">
+                                <th scope="col" class="w-[10%] px-6 py-2">
                                     Kelas
                                 </th>
-                                <th scope="col" class="px-6 py-2">
+                                <th scope="col" class="w-[30%] px-6 py-2">
                                     Dosen
                                 </th>
-                                <th scope="col" class="px-6 py-2">
+                                <th scope="col" class="w-[10%] px-6 py-2">
                                     Ruang
                                 </th>
-                                <th scope="col" class="px-6 py-2">
+                                <th scope="col" class="w-[10%] px-6 py-2">
                                     Jam Mulai
                                 </th>
-                                <th scope="col" class="px-6 py-2">
+                                <th scope="col" class="w-[10%] px-6 py-2">
                                     Jam Selesai
                                 </th>
                             </tr>
                         </thead>
                     </table>
                 </div>
-                <div class="overflow-y-auto">
+                <div class="overflow-y-auto scr-gone">
                     <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                         <tbody>
                             <template x-for="item in tableData1">
                                 <tr class=" border-b dark:border-gray-700">
-                                    <td class="text-left px-6 py-3" x-text="item.matkul"></td>
-                                    <td class="text-left px-6 py-3" x-text="item.kelas"></td>
-                                    <td class="text-left px-6 py-3" x-text="item.dosen"></td>
-                                    <td class="text-left px-6 py-3" x-text="item.ruang"></td>
-                                    <td class="text-left px-6 py-3" x-text="item.jam_mulai"></td>
-                                    <td class="text-left px-6 py-3" x-text="item.jam_selesai"></td>
+                                    <td class="w-[30%] text-left px-6 py-3" x-text="item.matkul"></td>
+                                    <td class="w-[10%] text-center px-6 py-3" x-text="item.kelas"></td>
+                                    <td class="w-[30%] text-left px-6 py-3" x-text="item.dosen"></td>
+                                    <td class="w-[10%] text-center px-6 py-3" x-text="item.ruang"></td>
+                                    <td class="w-[10%] text-center px-6 py-3" x-text="item.jam_mulai"></td>
+                                    <td class="w-[10%] text-center px-6 py-3" x-text="item.jam_selesai"></td>
                                 </tr>
                             </template>
                         </tbody>
@@ -130,29 +116,29 @@
                         class="w-full text-center text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                         <thead class="sticky ">
                             <tr>
-                                <th scope="col" class="px-5 py-2">
+                                <th scope="col" class="w-[20%] px-5 py-2">
                                     No
                                 </th>
-                                <th scope="col" class="px-5 py-2">
+                                <th scope="col" class="w-[40%]px-5 py-2">
                                     Ruang
                                 </th>
-                                <th scope="col" class="px-5 py-2">
+                                <th scope="col" class="w-[40%] px-5 py-2">
                                     Persentase
                                 </th>
                             </tr>
                         </thead>
                     </table>
                 </div>
-                <div class="overflow-y-auto">
+                <div class="overflow-y-scroll scr-gone">
                     <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                         <tbody>
                             <template x-for="item in tableData2">
                                 <tr class=" border-b dark:border-gray-700">
                                     <th x-text="item.nomor_urut" scope="row"
-                                        class="px-5 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-gray-400">
+                                        class="w-[20%] px-5 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-gray-400">
                                     </th>
-                                    <td x-text="item.nama_ruang" class="px-5 py-3"></td>
-                                    <td x-text="item.persentase" class="px-5 py-3"></td>
+                                    <td x-text="item.nama_ruang" class="w-[40%] px-5 py-3"></td>
+                                    <td x-text="item.persentase" class="w-[40%] px-5 py-3"></td>
                                 </tr>
                             </template>
                         </tbody>
@@ -346,7 +332,7 @@
                 <div x-data="tableData3" x-init="dataFetchForNewBook()"
                     class="basis-1/2 p-4 dark:bg-gray-700 bg-gray-50 rounded-b flex flex-col gap-4 h-[380px]">
                     <div class="text-xl lg:text-2xl font-semibold text-black dark:text-white">Newest Booking</div>
-                    <div class="flex flex-col lg:flex-row lg:flex-wrap gap-4 lg:justify-between overflow-y-auto">
+                    <div class="flex flex-col lg:flex-row lg:flex-wrap gap-4 lg:justify-between overflow-y-scroll scr-gone">
                         <template x-for="item in tableData3">
                             <div class="flex border border-gray-400 p-4 rounded-md gap-4 items-start lg:w-[48%]">
                                 <img src="/assets/img/foto-profil.png" alt="img-user" class="h-[45px] rounded-full">
@@ -373,6 +359,11 @@
         </div>
     </div>
 </div>
+<style lang="postcss">
+    .scr-gone::-webkit-scrollbar {
+        width: 1px;
+    }
+</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script>
     // user chart
