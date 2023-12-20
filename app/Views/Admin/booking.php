@@ -11,8 +11,7 @@
                     Admin / Booking
                 </div>
 
-                <template x-if="tableUrgent">
-                    <!-- <div class="p-4  ml-[77px] lg:ml-64"> -->
+                <template x-if="bookingIntersect && bookingIntersect.length != 0">
                     <div class="pb-4">
                         <div class="w-full text-center">
                             <h1 class="font-bold text-2xl text-red-600 pb-4">Terdapat Booking yang urgent</h1>
@@ -25,6 +24,36 @@
                                         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                             <tr>
                                                 <th scope="col" class="w-[15%] px-6 py-3">
+
+                                                </th>
+                                                <th scope="col" class=" px-6 py-3">
+
+                                                </th>
+                                                <th scope="col" class=" px-6 py-3">
+
+                                                </th>
+                                                <th scope="col" class="w-[15%] px-6 py-3 text-center" colspan="2">
+                                                    Dosen
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                </th>
+                                                <th scope="col" class="px-6 py-3 text-center" colspan="2">
+                                                    Jam Mulai
+                                                </th>
+                                                <th scope="col" class="px-6 py-3 text-center" colspan="2">
+                                                    Jam Selesai
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                </th>
+                                                <th scope="col" class="w-[9%] px-6 py-3">
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col" class="w-[15%] px-6 py-3">
                                                     Peminjam
                                                 </th>
                                                 <th scope="col" class=" px-6 py-3">
@@ -34,7 +63,10 @@
                                                     Tanggal Pakai
                                                 </th>
                                                 <th scope="col" class="w-[15%] px-6 py-3">
-                                                    Dosen Penanggung Jawab
+                                                    Penanggung Jawab Booking
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Pengguna Ruang Saat Ini
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
                                                     Kelas
@@ -43,10 +75,16 @@
                                                     Ruang
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
-                                                    Jam Mulai
+                                                    Booking
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
-                                                    Jam Selesai
+                                                    Jadwal
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Booking
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Jadwal
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
                                                     Lampiran
@@ -60,27 +98,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <template x-for="(item,index) in tableUrgent">
+                                            <template x-for="(item,index) in bookingIntersect">
+                                                bookingUrgent:null,
                                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                                    <template x-if="item.mahasiswa">
-                                                        <td x-text="item.mahasiswa" class="px-4 py-3">
+                                                    <template x-if="bookingUrgent[index].mahasiswa">
+                                                        <td x-text="bookingUrgent[index].mahasiswa" class="px-4 py-3">
                                                         </td>
                                                     </template>
-                                                    <template x-if="!item.mahasiswa">
+                                                    <template x-if="!bookingUrgent[index].mahasiswa">
                                                         <td x-text="item.dosen" class="px-4 py-3">
                                                         </td>
                                                     </template>
                                                     <td class="px-6 py-4">
-                                                        <template x-if="item.tanggal_pesan == null">
+                                                        <template x-if="item.id_jadwal != null">
                                                             <span x-text="getFormattedDate()"></span>
                                                         </template>
                                                         <span x-text="item.tanggal_pesan"></span>
                                                     </td>
                                                     <td class="px-6 py-4">
-                                                        <template x-if="item.tanggal_pesan == null">
+                                                        <template x-if="item.id_jadwal != null">
                                                             <span x-text="getFormattedDate()"></span>
                                                         </template>
                                                         <span x-text="item.tanggal_pakai"></span>
+                                                    </td>
+                                                    <template x-if="item.id_jadwal !=">
+                                                        <td x-text="item.dosen" class="px-6 py-4">
+                                                        </td>
+                                                        <td x-text="bookingUrgent[index].dosen" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <td x-text="bookingUrgent[index].dosen" class="px-6 py-4">
                                                     </td>
                                                     <td x-text="item.dosen" class="px-6 py-4">
                                                     </td>
@@ -90,28 +137,22 @@
                                                     </td>
                                                     <td x-text="item.jam_mulai" class="px-6 py-4">
                                                     </td>
+                                                    <td x-text="bookingUrgent[index].jam_mulai" class="px-6 py-4">
+                                                    </td>
                                                     <td x-text="item.jam_selesai" class="px-6 py-4">
                                                     </td>
+                                                    <td x-text="bookingUrgent[index].jam_selesai" class="px-6 py-4">
+                                                    </td>
                                                     <td class="px-6 py-4">
-                                                        <template x-if="item.lampiran != null">
-                                                            <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
-                                                                <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-900 dark:focus:ring-blue-800">
-                                                                    Lihat Lampiran
-                                                                </div>
-                                                            </a>
-                                                        </template>
-                                                        <template x-if="item.lampiran == null" class="text-center">
-                                                            <div class="px-3 py-2 text-xs font-medium text-center dark:text-white text-black">
-                                                                -
+                                                        <a :href="'/assets/lampiran/' + bookingUrgent[index].lampiran" target="_blank">
+                                                            <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-900 dark:focus:ring-blue-800">
+                                                                Lihat Lampiran
                                                             </div>
-                                                        </template>
+                                                        </a>
                                                     </td>
                                                     <td class="px-6 py-4">
                                                         <!-- Modal toggle -->
-                                                        <template x-if="item.keterangan == null">
-                                                            <span>Dari Jadwal</span>
-                                                        </template>
-                                                        <span :data-modal-target="'modal-keterangan-' + index" :data-modal-toggle="'modal-keterangan-' + index" x-text="item && item.keterangan ? item.keterangan.substring(0, 20) : ''"></span>
+                                                        <span :data-modal-target="'modal-keterangan-' + index" :data-modal-toggle="'modal-keterangan-' + index" x-text="bookingUrgent[index] && bookingUrgent[index].keterangan ? bookingUrgent[index].keterangan.substring(0, 20) + '...' : ''"></span>
                                                         <!-- Main modal -->
                                                         <div :id="'modal-keterangan-' + index" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                                             <div class="relative p-4 w-full max-w-2xl max-h-full">
@@ -131,7 +172,7 @@
                                                                     </div>
                                                                     <!-- Modal body -->
                                                                     <div class="p-4 md:p-5 space-y-4">
-                                                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400" x-text="item.keterangan">
+                                                                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400" x-text="bookingUrgent[index].keterangan">
                                                                         </p>
                                                                     </div>
                                                                     <!-- Modal footer -->
@@ -141,79 +182,33 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </td>
                                                     <td class="px-6 py-4 font-medium">
-                                                        <template x-if="item.status == 'success'">
-                                                            <div>
-                                                                <div class="bg-green-500 px-2 py-[2px] text-center text-white rounded-md">
-                                                                    <p x-text="item.status"></p>
-                                                                </div>
-                                                                <div class="flex justify-between w-full py-2">
-                                                                    <form action="/admin/booking/verif" method="post">
-                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                        <input type="hidden" name="status" value="canceled">
-                                                                        <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
-                                                                            <i class="fa-solid fa-xmark"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </template>
-
-                                                        <template x-if="item.status == 'canceled'">
-                                                            <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
-                                                                <p x-text="item.status"></p>
-                                                            </div>
-                                                        </template>
-
-                                                        <template x-if="item.status == 'urgent'">
-                                                            <div>
-                                                                <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
-                                                                    <p x-text="item.status"></p>
-                                                                </div>
-                                                                <div class="flex justify-between w-full py-2">
-                                                                    <form action="/admin/booking/verif" method="post">
-                                                                        <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                        <input type="hidden" name="status" value="canceled">
-                                                                        <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
-                                                                            <i class="fa-solid fa-xmark"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                    <div x-show="tableUrgent.length == 1">
-                                                                        <form action="/admin/booking/verif" method="post">
-                                                                            <input type="hidden" name="id_booking" :value="item.id_booking">
-                                                                            <input type="hidden" name="status" value="success">
-                                                                            <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
-                                                                                <i class="fa-solid fa-check"></i>
-                                                                            </button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </template>
-
                                                         <template x-if="item.id_jadwal != null">
-                                                            <div>
-                                                                <div class="bg-red-500 px-2 py-[2px] text-center text-white rounded-md">
-                                                                    <p>offline</p>
-                                                                </div>
-                                                                <div class="flex justify-between w-full py-2">
-                                                                    <form action="/api/admin/booking/set-jadwal-status" method="post">
-                                                                        <input type="hidden" name="id_jadwal" :value="item.id_jadwal">
-                                                                        <input type="hidden" name="status" value="online">
-                                                                        <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
-                                                                            <i class="fa-solid fa-xmark"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
+                                                            <div class="flex gap-3 w-full">
+                                                                <form action="/admin/booking/verif" method="post">
+                                                                    <input type="hidden" name="id_booking" :value="bookingUrgent[index].id_booking">
+                                                                    <input type="hidden" name="id_jadwal" :value="item.id_jadwal">
+                                                                    <input type="hidden" name="status" value="canceled">
+                                                                    <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </form>
+                                                                <form action="/admin/booking/verif" method="post">
+                                                                    <input type="hidden" name="id_booking" :value="bookingUrgent[index].id_booking">
+                                                                    <input type="hidden" name="id_jadwal" :value="item.id_jadwal">
+                                                                    <input type="hidden" name="status" value="success">
+                                                                    <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
+                                                                        <i class="fa-solid fa-check"></i>
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                         </template>
-
-                                                        <template x-if="item.status == 'onprocess'">
+                                                        <template x-if="item.id_jadwal == null">
                                                             <div class="flex gap-3 w-full">
                                                                 <form action="/admin/booking/verif" method="post">
                                                                     <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                    <input type="hidden" name="id_booking_urgent" :value="bookingUrgent[index].id_booking">
                                                                     <input type="hidden" name="status" value="canceled">
                                                                     <button class="w-[25px] h-[25px] rounded-full bg-red-500 text-white hover:bg-red-700">
                                                                         <i class="fa-solid fa-xmark"></i>
@@ -221,6 +216,7 @@
                                                                 </form>
                                                                 <form action="/admin/booking/verif" method="post">
                                                                     <input type="hidden" name="id_booking" :value="item.id_booking">
+                                                                    <input type="hidden" name="id_booking_urgent" :value="bookingUrgent[index].id_booking">
                                                                     <input type="hidden" name="status" value="success">
                                                                     <button class="w-[25px] h-[25px] rounded-full text-white bg-green-500 hover:bg-green-700">
                                                                         <i class="fa-solid fa-check"></i>
@@ -640,7 +636,8 @@
     document.addEventListener('alpine:init', () => {
         Alpine.data('tableData', () => ({
             tableData: null,
-            tableUrgent: null,
+            bookingIntersect: null,
+            bookingUrgent: null,
             current_page: 1,
             detailBooking: [],
             id_ruang: null,
@@ -761,7 +758,9 @@
                 fetch('/api/admin/booking/urgent')
                     .then(response => response.json())
                     .then(data => {
-                        this.tableUrgent = data.bookingIntersect;
+                        this.bookingIntersect = data.bookingIntersect;
+                        console.log(data.bookingIntersect);
+                        this.bookingUrgent = data.bookingUrgent;
                     });
             },
             async checkDosenLast() {

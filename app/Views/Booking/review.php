@@ -30,7 +30,7 @@
         </ol>
 
         <!-- mobile  -->
-        <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 overflow-x-auto shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+        <ol class="sm:hidden  flex items-center w-full p-3 space-x-2 text-sm font-medium text-center text-gray-500 overflow-x-auto shadow-sm dark:text-gray-400 sm:text-base dark:bg-gray-800  dark:border-gray-700 sm:p-4 sm:space-x-4 rtl:space-x-reverse min-h-screen">
             <li class="flex items-center text-blue-600  ">
                 <i class="fa-solid fa-circle-check  "></i>
                 <div class="ml-2 mr-2">Search</div>
@@ -78,7 +78,7 @@
                         <input type="text" id="nama" value="<?= $user->nama ?>" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-72  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="mb-5  pr-6">
-                        <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><? $level === 'mahasiswa' ? 'NIM' : 'NIP' ?></label>
+                        <label for="nim" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"><?= $level === 'mahasiswa' ? 'NIM' : 'NIP' ?></label>
                         <input type="text" id="nim" value="<?= $user->nim ?? $user->nip ?>" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-72 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="mb-5 ">

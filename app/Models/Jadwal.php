@@ -80,4 +80,21 @@ class Jadwal extends Model
     {
         return $this->update(['status' => $status], $id_jadwal, 'id_jadwal');
     }
+
+    public function setJadwalOffline(string $id_booking): void
+    {
+        $sql = "SELECT * FROM booking WHERE id_booking = '$id_booking'";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $date = $data['date'];
+        $id_ruang = $data['id_ruang'];
+        $jam_mulai = $data['jam_mulai'];
+        $jam_selesai = $data['jam_selesai'];
+        $sql = "CALL getJadwalOnline('$date','$id_ruang','$jam_mulai','$jam_selesai')";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $id_jadwal = $data['id_jadwal'];
+        $sql = "UPDATE jadwal SET status = 'offline' WHERE id_jadwal = '$id_jadwal'";
+        $this->exec($sql);
+    }
 }

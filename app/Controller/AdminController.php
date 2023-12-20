@@ -433,11 +433,11 @@ class AdminController extends Controller
             if (!empty($booking->getBookingIntersect($date, $id_ruang, $jam_mulai, $jam_selesai))) {
                 $bookingIntersect[] = $booking->getBookingIntersect($date, $id_ruang, $jam_mulai, $jam_selesai)[0];
             }
-            $bookingIntersect[] = $bookingUrgent[$key];
         }
         // $this->ddd($bookingIntersect);
         $data = [
             'bookingIntersect' => $bookingIntersect,
+            'bookingUrgent' => $bookingUrgent,
         ];
         echo json_encode($data);
     }
@@ -524,8 +524,49 @@ class AdminController extends Controller
 
     public function adminVerification(Request $request): void
     {
-        $booking = new Booking();
-        $booking->verifikasiBooking($request->id_booking, $request->status);
+        // $this->ddd($request);
+        if ($request->status == 'success') {
+            if (!empty("$request->id_booking_urgent")) {
+                // $this->ddd($request);
+                $booking = new Booking();
+                $booking->verifikasiBooking($request->id_booking_urgent, $request->status);
+                $booking->verifikasiBooking($request->id_booking, 'canceled');
+                $this->redirect('/admin/booking');
+                return;
+            }
+            // $this->ddd($request);
+            $booking = new Booking();
+            $booking->verifikasiBooking($request->id_booking, $request->status);
+            // $this->ddd($request->id_jadwal);
+            if ($request->id_jadwal != NULL) {
+                $jadwal = new Jadwal();
+                $jadwal->setJadwalStatus('online', $request->id_jadwal);
+            }
+        } else if ($request->status == 'canceled') {
+            if (!empty("$request->id_booking_urgent")) {
+                // $this->ddd($request);
+                $booking = new Booking();
+                $booking->verifikasiBooking($request->id_booking_urgent, $request->status);
+                $booking->verifikasiBooking($request->id_booking, 'success');
+                $this->redirect('/admin/booking');
+                return;
+            }
+            // $this->ddd($request);
+            // $this->ddd("canceled");
+            $booking = new Booking();
+            $booking->verifikasiBooking($request->id_booking, $request->status);
+            if ($request->id_jadwal != NULL) {
+                $jadwal = new Jadwal();
+                $jadwal->setJadwalStatus('offline', $request->id_jadwal);
+            }
+        } else if ($request->status == 'done') {
+            $booking = new Booking();
+            $booking->markDone($request->id_booking);
+            if ($request->id_jadwal != NULL) {
+                $jadwal = new Jadwal();
+                $jadwal->setJadwalOffline($request->id_booking);
+            }
+        }
         $this->redirect('/admin/booking');
     }
 
