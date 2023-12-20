@@ -293,7 +293,7 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-wrap mt-4 leading-3">
-                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-indigo-500 rounded-full me-1.5 flex-shrink-0"></span>Tersedia</span>
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-bingu rounded-full me-1.5 flex-shrink-0"></span>Tersedia</span>
                                     <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-yellow-500 rounded-full me-1.5 flex-shrink-0"></span>Sedang di Proses</span>
                                     <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-red-500 rounded-full me-1.5 flex-shrink-0"></span>Terpakai</span>
                                 </div>
