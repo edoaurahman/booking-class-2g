@@ -16,6 +16,7 @@ class Dosen extends Model
     public $tanggal_lahir = '';
     public $email = '';
     public $id_matkul = '';
+    public $created_at = '';
 
     public function getDetailDosen($nip): object
     {
@@ -74,12 +75,14 @@ class Dosen extends Model
         $this->exec($sql);
     }
 
-    public function editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email) {
+    public function editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email)
+    {
         $sql = "Call editDosen('$nip', '$nama', '$password', '$jenis_kelamin', '$tmpt_lahir', '$tgl_lahir', '$email')";
         $this->exec($sql);
     }
 
-    public function deleteDosen($nip): void {
+    public function deleteDosen($nip): void
+    {
         $sql = "DELETE FROM dosen WHERE nip = '$nip'";
         $this->exec($sql);
     }
@@ -95,7 +98,7 @@ class Dosen extends Model
         }
         return $data;
     }
-    
+
     public function totalDosen(): int
     {
         $sql = "SELECT COUNT(*) AS total FROM view_getdosen";

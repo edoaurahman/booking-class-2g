@@ -16,6 +16,7 @@ class Jadwal extends Model
     public $jam_mulai = '';
     public $jam_selesai = '';
     public $status = '';
+    public $created_at = '';
 
     public function getJadwal($id, $hari): array
     {
@@ -59,7 +60,7 @@ class Jadwal extends Model
         $this->exec($sql);
     }
 
-    public function deleteJadwal($id): void 
+    public function deleteJadwal($id): void
     {
         $sql = "DELETE FROM jadwal WHERE id_jadwal = '$id'";
         $this->exec($sql);
@@ -76,7 +77,7 @@ class Jadwal extends Model
         }
         return $data;
     }
-    
+
     public function setJadwalStatus(string $status, string $id_jadwal): bool
     {
         return $this->update(['status' => $status], $id_jadwal, 'id_jadwal');
