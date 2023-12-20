@@ -256,7 +256,7 @@
                         </button>
                         <span tabindex="0"
                             class="focus:outline-none  text-base font-bold dark:text-gray-100 text-gray-800"
-                            id="calendarHead">October 2020</span>
+                            id="calendarHead"></span>
                         <button id="next" aria-label="calendar forward" @click="next()"
                             class="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100 button-calendar">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler  icon-tabler-chevron-right"
