@@ -237,147 +237,6 @@
 
                     <!-- refisi perbandingan start -->
                     <div class="mt-7">
-                        <!-- <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100 mb-5">Informasi Jam Pembelajaran </h2> -->
-                        <!-- <div class="relative h-56 overflow-y-auto">
-                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-white bg-bingu dark:bg-slate-700 uppercase dark:text-white sticky top-0">
-                                    <tr>
-                                        <th scope="col" class="px-5 py-3">
-                                            Jam
-                                        </th>
-                                        <th scope="col" class="px-5 py-3">
-                                            Mulai
-                                        </th>
-                                        <th scope="col" class="px-5 py-3">
-                                            Selsai
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 01
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            07.00
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            07.50
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 02
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            07.50
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            08.40
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 03
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            08.40
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            09.30
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 04
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            09.30
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            10.30
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 05
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            10.30
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            11.20
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 06
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            11.20
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            12.10
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 07
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            12.50
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            13.40
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 08
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            13.40
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            14.30
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 09
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            14.30
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            15.20
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 10
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            15.30
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            16.20
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-gray-200 dark:bg-gray-800">
-                                        <th scope="row" class="px-5 py-2 font-medium  text-gray-900 whitespace-nowrap dark:text-white">
-                                            Jam Ke - 11
-                                        </th>
-                                        <td class="px-5 py-2">
-                                            16.20
-                                        </td>
-                                        <td class="px-5 py-2">
-                                            17.10
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> -->
                         <div class="Denah mt-5">
                             <h2 class="text-gray-600 font-sans font-bold text-xl dark:text-gray-100">Denah Lantai</h2>
                             <div class="flex flex-col gap-2  pb-6 pt-6">
@@ -432,6 +291,11 @@
                                             <button type="button" :class="item.status_jam === 'onprocess' && !selectedHours.includes(index + 1) ? 'bg-yellow-500' : item.status_jam === 'used' && !selectedHours.includes(index + 1) ? 'bg-red-500' : selectedHours.includes(index + 1) ? 'bg-blue-500' : '' " class="text-white font-medium text-xs px-8 py-2 text-center rounded bg-bingu" x-text="padZero(index+1)" @click="toggleSelectedRange(index + 1)"></button>
                                         </template>
                                     </div>
+                                </div>
+                                <div class="flex flex-wrap mt-4 leading-3">
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-indigo-500 rounded-full me-1.5 flex-shrink-0"></span>Tersedia</span>
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-yellow-500 rounded-full me-1.5 flex-shrink-0"></span>Sedang di Proses</span>
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-red-500 rounded-full me-1.5 flex-shrink-0"></span>Terpakai</span>
                                 </div>
                             </div>
                         </div>
