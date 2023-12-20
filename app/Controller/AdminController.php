@@ -661,13 +661,10 @@ class AdminController extends Controller
         $ruang = new Ruang();
         $topBook = $ruang->getTopBookedRoom();
 
-        $jadwal = new Jadwal();
-        $schedule =
-            // $this->ddd($newBook);
-            $data = [
-                'newBook' => $newBook,
-                'topBook' => $topBook
-            ];
+        $data = [
+            'newBook' => $newBook,
+            'topBook' => $topBook
+        ];
 
         echo json_encode($data);
     }
