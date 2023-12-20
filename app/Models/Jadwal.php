@@ -16,6 +16,7 @@ class Jadwal extends Model
     public $jam_mulai = '';
     public $jam_selesai = '';
     public $status = '';
+    public $created_at = '';
 
     public function getJadwal($id, $hari): array
     {
@@ -53,17 +54,6 @@ class Jadwal extends Model
         $this->exec($sql);
     }
 
-    public function getJadwalById($id): object
-    {
-        $sql = "SELECT * FROM view_getjadwaladmin WHERE id_jadwal = '$id'";
-        $result = $this->db->query($sql);
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-        return (object) $data[0];
-    }
-
     public function editJadwal($id, $matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai)
     {
         $sql = "CALL editJadwal('$id', '$matakuliah', '$kelas', '$dosen', '$ruang', '$hari', '$jam_mulai', '$jam_selesai')";
@@ -76,9 +66,38 @@ class Jadwal extends Model
         $this->exec($sql);
     }
 
+    public function getJadwalSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getjadwaladmin WHERE kelas LIKE '%$keyword%' OR matkul LIKE '%$keyword%' OR dosen LIKE '%$keyword%' OR ruang LIKE '%$keyword%' OR hari LIKE '%$keyword%' OR jam_mulai LIKE '%$keyword%' OR jam_selesai LIKE '%$keyword%' ORDER BY created_at DESC";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
     public function setJadwalStatus(string $status, string $id_jadwal): bool
     {
         return $this->update(['status' => $status], $id_jadwal, 'id_jadwal');
+    }
+
+    public function setJadwalOffline(string $id_booking): void
+    {
+        $sql = "SELECT * FROM booking WHERE id_booking = '$id_booking'";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $date = $data['date'];
+        $id_ruang = $data['id_ruang'];
+        $jam_mulai = $data['jam_mulai'];
+        $jam_selesai = $data['jam_selesai'];
+        $sql = "CALL getJadwalOnline('$date','$id_ruang','$jam_mulai','$jam_selesai')";
+        $result = $this->db->query($sql);
+        $data = $result->fetch_assoc();
+        $id_jadwal = $data['id_jadwal'];
+        $sql = "UPDATE jadwal SET status = 'offline' WHERE id_jadwal = '$id_jadwal'";
+        $this->exec($sql);
     }
 
     public function getSchedule($hari): array

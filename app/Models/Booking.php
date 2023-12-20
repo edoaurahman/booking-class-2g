@@ -145,7 +145,7 @@ class Booking extends Model
 
     public function getTotalBookingOnprocess(): int
     {
-        $sql = "SELECT COUNT(*) AS total FROM booking WHERE status = 'onprocess'";
+        $sql = "SELECT COUNT(*) AS total FROM booking WHERE status = 'onprocess' OR status = 'urgent'";
         $result = $this->query($sql);
         return $result[0]['total'];
     }

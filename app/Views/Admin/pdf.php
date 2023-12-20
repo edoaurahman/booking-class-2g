@@ -1,4 +1,4 @@
-<div class="py-4 px-16  ml-[77px] lg:ml-64 mt-14 dark:bg-[#171622] dark:text-white" id="ruang">
+<div class="py-4 px-16  ml-[77px] lg:ml-64 mt-14 dark:bg-[#ffffff] dark:text-black" id="ruang">
     <div data-dial-init class="fixed end-6 bottom-6 group animate-bounce">
         <button type="button" onclick="printJS('printJS-form', 'html')" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default" aria-expanded="false" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-14 h-14 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800">
             <i class="fa-solid fa-print  text-xl"></i>

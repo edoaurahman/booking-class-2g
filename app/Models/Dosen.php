@@ -16,6 +16,7 @@ class Dosen extends Model
     public $tanggal_lahir = '';
     public $email = '';
     public $id_matkul = '';
+    public $created_at = '';
 
     public function getDetailDosen($nip): object
     {
@@ -74,25 +75,28 @@ class Dosen extends Model
         $this->exec($sql);
     }
 
-    public function getDosenById($nip): object
+    public function editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email)
     {
-        $sql = "SELECT * FROM dosen WHERE nip = '$nip'";
+        $sql = "Call editDosen('$nip', '$nama', '$password', '$jenis_kelamin', '$tmpt_lahir', '$tgl_lahir', '$email')";
+        $this->exec($sql);
+    }
+
+    public function deleteDosen($nip): void
+    {
+        $sql = "DELETE FROM dosen WHERE nip = '$nip'";
+        $this->exec($sql);
+    }
+
+    public function getDosenSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getdosen WHERE nip LIKE '%$keyword%' OR nama LIKE '%$keyword%' OR password LIKE '%$keyword%' OR tempat_lahir LIKE '%$keyword%' OR tanggal_lahir LIKE '%$keyword%' OR jenis_kelamin LIKE '%$keyword%' OR email LIKE '%$keyword%' ORDER BY created_at DESC";
         $result = $this->db->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
-        return (object) $data[0];
-    }
-
-    public function editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email) {
-        $sql = "Call editDosen('$nip', '$nama', '$password', '$jenis_kelamin', '$tmpt_lahir', '$tgl_lahir', '$email')";
-        $this->exec($sql);
-    }
-
-    public function deleteDosen($nip): void {
-        $sql = "DELETE FROM dosen WHERE nip = '$nip'";
-        $this->exec($sql);
+        return $data;
     }
 
     public function totalDosen(): int

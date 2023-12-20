@@ -131,16 +131,14 @@ $_SESSION['csrf'] = $csrf;
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300">Dosen</p>
                                                 <p class="mb-2 text-gray-500 dark:text-gray-300"><?= $nama ?></p>
                                             </div>
-                                            <?php if ($level === 'dosen') : ?>
-                                                <!-- <p class="mb-2 text-gray-500 dark:text-gray-400">Checkout Booking</p> -->
-                                                <div class="flex">
-                                                    <form action="/booking/mark/done" method="post">
-                                                        <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
-                                                        <input type="hidden" name="status" value="done">
-                                                        <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Mark As Done</button>
-                                                    </form>
-                                                </div>
-                                            <?php endif ?>
+                                            <!-- <p class="mb-2 text-gray-500 dark:text-gray-400">Checkout Booking</p> -->
+                                            <div class="flex">
+                                                <form action="/booking/mark/done" method="post">
+                                                    <input type="hidden" name="id_booking" value="<?= $id_booking ?>">
+                                                    <input type="hidden" name="status" value="done">
+                                                    <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Mark As Done</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 <?php endif ?>

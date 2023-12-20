@@ -14,6 +14,8 @@ class Ruang extends Model
     public $id_jenis_ruang = '';
     public $status_ruang = '';
     public $qr_code = '';
+    public $gambar = '';
+    public $keterangan = '';
 
     public function getRuangAndLantai(): array
     {
@@ -30,7 +32,7 @@ class Ruang extends Model
     {
         $page -= 1;
         $page *= 10;
-        $sql = "SELECT * FROM view_getruang LIMIT 10 OFFSET $page";
+        $sql = "SELECT * FROM view_getruang ORDER BY id_ruang ASC LIMIT 10 OFFSET $page";
         $result = $this->db->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {
@@ -135,9 +137,10 @@ class Ruang extends Model
         }
         return $data;
     }
-    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void
+
+    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $gambar): void
     {
-        $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang' )";
+        $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang', '$keterangan', '$gambar')";
         $this->exec($sql);
     }
 
@@ -152,9 +155,9 @@ class Ruang extends Model
         return (object) $data[0];
     }
 
-    public function editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai)
+    public function editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $gambar): void
     {
-        $sql = "CALL editRuang('$id', '$kode_ruang', '$nama', '$jenis_ruang', '$lantai')";
+        $sql = "CALL editRuang('$id', '$kode_ruang', '$nama', '$jenis_ruang', '$lantai', '$keterangan', '$gambar')";
         $this->exec($sql);
     }
 
@@ -163,38 +166,51 @@ class Ruang extends Model
         $sql = "DELETE FROM ruang WHERE id_ruang = '$id'";
         $this->exec($sql);
     }
-    public function getTotalRuangByIdJenis() : array
+
+    public function getRuangSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getruang WHERE nama_ruang LIKE '%$keyword%' OR deskripsi_ruang LIKE '%$keyword%' OR jenis_ruang LIKE '%$keyword%' OR nama_lantai LIKE '%$keyword%' OR keterangan LIKE '%$keyword%' ORDER BY created_at DESC";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getTotalRuangByIdJenis(): array
     {
         $sql = "SELECT COUNT(*) FROM `view_getruang` GROUP BY id_jenis_ruang";
         $result = $this->query($sql);
         $data = [];
-        $i=0;
-        while ($i<count($result)) {  
+        $i = 0;
+        while ($i < count($result)) {
             $data['counter'][] = $result[$i]['COUNT(*)'];
             $i++;
         }
-        
+
         $j = 0;
-        while($j<count($data['counter'])){
+        while ($j < count($data['counter'])) {
             $k = 0;
             $total = 0;
-            while($k<count($data['counter'])){
+            while ($k < count($data['counter'])) {
                 $total += $data['counter'][$k];
                 $k++;
             }
-            $percentOfTotal = ($data['counter'][$j] / $total) * 100; 
-            $data['percentage'][$j] =(float) number_format($percentOfTotal,2);
+            $percentOfTotal = ($data['counter'][$j] / $total) * 100;
+            $data['percentage'][$j] = (float) number_format($percentOfTotal, 2);
             $j++;
         }
         return $data;
     }
 
-    public function getTopBookedRoom() : array
+    public function getTopBookedRoom(): array
     {
         $sql = "SELECT * FROM `view_persentasekelas`";
         $result = $this->db->query($sql);
         $data = [];
-        while ($row = $result->fetch_assoc()){
+        while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
         return $data;
