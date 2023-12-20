@@ -256,7 +256,7 @@
                                     <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Tangga Darurat </p>
                                 </div>
                             </div>
-                            <img class="object-cover sm:w-auto mx-auto pt-1" src="/assets/img/lantai/<?= $ruang->gambar ?>" alt="" />
+                            <img class="object-cover sm:w-auto mx-auto p-14" src="/assets/img/lantai/<?= $ruang->gambar ?>" alt="" />
                         </div>
                     </div>
                     <!-- refisi perbandingan end -->
@@ -277,7 +277,9 @@
                             <div class="">
                                 <!-- === Booking Tanggal Start === -->
                                 <div class=" p-3 border rounded-md dark:border-dark_grey2">
-                                    <label for="tanggal" class="text-gray-900 dark:text-white font-sans text-sm font-medium mb-2">Pilih Tanggal</label>
+                                    <div class="mb-3">
+                                        <label for="tanggal" class="text-gray-900 dark:text-white font-sans text-sm font-medium">Pilih Tanggal</label>
+                                    </div>
                                     <input type="date" @input="fetchDetailBooking" id="inputTanggal" class="appearance-none border border-[#c8c8c8] dark:border-dark_grey3 rounded w-full py-3 px-4 text-gray-700 dark:bg-dark_grey3 dark:text-dark_grey2 font-sans text-sm leading-6 transform-none" />
                                 </div>
                                 <!-- === Booking Tanggal END ===-->
@@ -292,10 +294,10 @@
                                         </template>
                                     </div>
                                 </div>
-                                <div class="flex flex-wrap mt-4 leading-3">
-                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-bingu rounded-full me-1.5 flex-shrink-0"></span>Tersedia</span>
-                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-yellow-500 rounded-full me-1.5 flex-shrink-0"></span>Sedang di Proses</span>
-                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 bg-red-500 rounded-full me-1.5 flex-shrink-0"></span>Terpakai</span>
+                                <div class="flex flex-wrap mt-4">
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 mr-3 bg-bingu rounded-full me-1.5 flex-shrink-0"></span>Tersedia</span>
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 mr-3 bg-yellow-500 rounded-full me-1.5 flex-shrink-0"></span>Sedang di Proses</span>
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 mr-3 bg-red-500 rounded-full me-1.5 flex-shrink-0"></span>Terpakai</span>
                                 </div>
                             </div>
                         </div>
