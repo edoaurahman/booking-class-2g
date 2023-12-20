@@ -24,13 +24,10 @@
                                         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                             <tr>
                                                 <th scope="col" class="w-[15%] px-6 py-3">
-
                                                 </th>
                                                 <th scope="col" class=" px-6 py-3">
-
                                                 </th>
                                                 <th scope="col" class=" px-6 py-3">
-
                                                 </th>
                                                 <th scope="col" class="w-[15%] px-6 py-3 text-center" colspan="2">
                                                     Dosen
@@ -246,7 +243,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                 </svg>
                             </div>
-                            <input type="search" @input.debounce.750="searchBooking()" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
+                            <input type="search" @input.debounce.750="searchBooking()" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
                         </div>
                     </div>
 
@@ -297,6 +294,9 @@
                                         </th>
                                         <th scope="col" class="w-[9%] px-6 py-3">
                                             Status
+                                        </th>
+                                        <th scope="col" class="w-[9%] px-6 py-3">
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
@@ -433,6 +433,11 @@
                                                         </form>
                                                     </div>
                                                 </template>
+                                            </td>
+                                            <td class="px-6 py-4">
+                                                <a x-show="item.status != 'canceled'" class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover" :href="'/admin/pdf/' + item.id_booking">
+                                                    Cetak
+                                                </a>
                                             </td>
                                         </tr>
                                     </template>
@@ -759,7 +764,6 @@
                     .then(response => response.json())
                     .then(data => {
                         this.bookingIntersect = data.bookingIntersect;
-                        console.log(data.bookingIntersect);
                         this.bookingUrgent = data.bookingUrgent;
                     });
             },
@@ -775,18 +779,15 @@
                     body: formData
                 })
                 const data = await response.json()
-                console.log(data);
                 this.lastDosen = data;
             },
             async handleSubmit() {
                 const formData = new FormData(document.querySelector('#formulir'));
-                console.log(formData.get);
                 const response = await fetch('/admin/booking', {
                     method: 'POST',
                     body: formData
                 })
                 const data = await response.json()
-                console.log(data);
                 if (data.status) {
                     swal({
                         icon: 'success',

@@ -171,7 +171,6 @@
                         .then(response => response.json())
                         .then(data => {
                             this.total_booking = data.total_booking;
-                            console.log(this.total_booking);
                         })
                 },
             }))
