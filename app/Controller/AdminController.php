@@ -4,6 +4,7 @@ namespace TugasBesar\BookingClass2g\Controller;
 
 use TugasBesar\BookingClass2g\App\Request;
 use TugasBesar\BookingClass2g\App\View;
+use TugasBesar\BookingClass2g\Models\Admin;
 use TugasBesar\BookingClass2g\Models\Booking;
 use TugasBesar\BookingClass2g\Models\Laporan;
 use TugasBesar\BookingClass2g\Models\Mahasiswa;
@@ -31,6 +32,11 @@ class AdminController extends Controller
         $totRuang = $ruang->getTotalRuangByIdJenis();
         // $this->ddd($totBookHistory);
 
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+
+        // $this->ddd($admin);
+
         //semua data yang diperlukan di dashboard
         $data = [
             //total data history jam untuk 
@@ -53,7 +59,10 @@ class AdminController extends Controller
 
         ];
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/dashboard", ['data' => $data]);
     }
 
@@ -63,7 +72,10 @@ class AdminController extends Controller
         $ruang = new Ruang();
         $totalPage = $ruang->getTotalPage();
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/ruang", ['totalPage' => $totalPage]);
     }
 
@@ -171,7 +183,10 @@ class AdminController extends Controller
         $kelas = new Kelas();
         $listKelas = $kelas->all();
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/mahasiswa", ['totalPage' => $totalPage, 'listKelas' => $listKelas]);
     }
 
@@ -246,7 +261,10 @@ class AdminController extends Controller
         $hari = new Hari();
         $listHari = $hari->all();
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/jadwal", ['totalPage' => $totalPage, 'listKelas' => $listKelas, 'listMK' => $listMK, 'listDosen' => $listDosen, 'listRuang' => $listRuang, 'listHari' => $listHari]);
     }
 
@@ -309,7 +327,10 @@ class AdminController extends Controller
         $dosen = new Dosen();
         $totalPage = $dosen->getTotalPage();
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/dosen", ['totalPage' => $totalPage]);
     }
 
@@ -392,7 +413,10 @@ class AdminController extends Controller
         $ruang = new Ruang();
         $listRuang = $ruang->all();
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/urgent-booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
     }
 
@@ -424,7 +448,10 @@ class AdminController extends Controller
         $ruang = new Ruang();
         $listRuang = $ruang->all();
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/non-urgent-booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
     }
 
@@ -510,7 +537,10 @@ class AdminController extends Controller
         $report = new Laporan();
         $totalPage = $report->getTotalPage();
 
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
+        
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/report", ['totalPage' => $totalPage]);
     }
 
@@ -533,8 +563,11 @@ class AdminController extends Controller
         $tanggal_pakai = $fmt->format(new \DateTime($report['tanggal_pakai']));
 
         // $this->ddd($tanggal_pakai);
+        
+        $admin = new Admin();
+        $admin = $admin->getAdminData();
         // $this->ddd($report);
-        View::render("Templates/sidebarAdmin", ["title" => 'Admin']);
+        View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/pdf", [
             'report' => $report,
             'tanggal_pakai' => $tanggal_pakai

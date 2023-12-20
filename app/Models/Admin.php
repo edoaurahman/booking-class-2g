@@ -14,4 +14,15 @@ class Admin extends Model
     public $jenis_kelamin = '';
     public $tempat_lahir = '';
     public $tanggal_lahir = '';
+
+    public function getAdminData(): object
+    {
+        $sql = "SELECT * FROM admin";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return (object) $data[0];
+    }
 }
