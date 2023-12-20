@@ -47,17 +47,6 @@ class Mahasiswa extends Model
         return $totalPage;
     }
 
-    public function getMahasiswaById($nim): object
-    {
-        $sql = "SELECT * FROM mahasiswa WHERE nim = '$nim'";
-        $result = $this->db->query($sql);
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-        return (object) $data[0];
-    }
-
     public function addMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas): void {
         $sql = "CALL addMahasiswa('$nim', '$nama', '$password', '$tmpt_lahir', '$tgl_lahir', '$jenis_kelamin', '$kelas')";
         $this->exec($sql);
@@ -71,9 +60,20 @@ class Mahasiswa extends Model
     public function deleteMahasiswa($nim): void {
         $sql = "DELETE FROM mahasiswa WHERE nim = '$nim'";
         $this->exec($sql);
+    }  
+    public function getMahasiswaSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getmahasiswa WHERE nim LIKE '%$keyword%' OR nama LIKE '%$keyword%' OR password LIKE '%$keyword%' OR tempat_lahir LIKE '%$keyword%' OR tanggal_lahir LIKE '%$keyword%' OR jenis_kelamin LIKE '%$keyword%' OR nama_kelas LIKE '%$keyword%' ORDER BY created_at DESC";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
     }
-
-    public function totalMahasiswa() : int
+    
+     public function totalMahasiswa() : int
     {
         $sql = "SELECT COUNT(*) AS total FROM view_getmahasiswa";
         $result = $this->db->query($sql);

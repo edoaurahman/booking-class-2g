@@ -74,17 +74,6 @@ class Dosen extends Model
         $this->exec($sql);
     }
 
-    public function getDosenById($nip): object
-    {
-        $sql = "SELECT * FROM dosen WHERE nip = '$nip'";
-        $result = $this->db->query($sql);
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-        return (object) $data[0];
-    }
-
     public function editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email) {
         $sql = "Call editDosen('$nip', '$nama', '$password', '$jenis_kelamin', '$tmpt_lahir', '$tgl_lahir', '$email')";
         $this->exec($sql);
@@ -95,6 +84,18 @@ class Dosen extends Model
         $this->exec($sql);
     }
 
+    public function getDosenSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getdosen WHERE nip LIKE '%$keyword%' OR nama LIKE '%$keyword%' OR password LIKE '%$keyword%' OR tempat_lahir LIKE '%$keyword%' OR tanggal_lahir LIKE '%$keyword%' OR jenis_kelamin LIKE '%$keyword%' OR email LIKE '%$keyword%' ORDER BY created_at DESC";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+    
     public function totalDosen(): int
     {
         $sql = "SELECT COUNT(*) AS total FROM view_getdosen";
