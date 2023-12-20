@@ -560,7 +560,7 @@ class AdminController extends Controller
                 $booking = new Booking();
                 $booking->verifikasiBooking($request->id_booking_urgent, $request->status);
                 $booking->verifikasiBooking($request->id_booking, 'canceled');
-                $this->redirect('/admin/booking');
+                $this->redirect('/admin/nonurgent-booking');
                 return;
             }
             // $this->ddd($request);
@@ -577,7 +577,7 @@ class AdminController extends Controller
                 $booking = new Booking();
                 $booking->verifikasiBooking($request->id_booking_urgent, $request->status);
                 $booking->verifikasiBooking($request->id_booking, 'success');
-                $this->redirect('/admin/booking');
+                $this->redirect('/admin/nonurgent-booking');
                 return;
             }
             // $this->ddd($request);
@@ -596,7 +596,7 @@ class AdminController extends Controller
                 $jadwal->setJadwalOffline($request->id_booking);
             }
         }
-        $this->redirect('/admin/booking');
+        $this->redirect('/admin/nonurgent-booking');
     }
 
     public function apiCheckLastDosen(Request $request): void
