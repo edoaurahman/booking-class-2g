@@ -53,29 +53,30 @@ class Jadwal extends Model
         $this->exec($sql);
     }
 
-    public function getJadwalById($id): object
-    {
-        $sql = "SELECT * FROM view_getjadwaladmin WHERE id_jadwal = '$id'";
-        $result = $this->db->query($sql);
-        $data = [];
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
-        }
-        return (object) $data[0];
-    }
-
     public function editJadwal($id, $matakuliah, $kelas, $dosen, $ruang, $hari, $jam_mulai, $jam_selesai)
     {
         $sql = "CALL editJadwal('$id', '$matakuliah', '$kelas', '$dosen', '$ruang', '$hari', '$jam_mulai', '$jam_selesai')";
         $this->exec($sql);
     }
 
-    public function deleteJadwal($id): void
+    public function deleteJadwal($id): void 
     {
         $sql = "DELETE FROM jadwal WHERE id_jadwal = '$id'";
         $this->exec($sql);
     }
 
+    public function getJadwalSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getjadwaladmin WHERE kelas LIKE '%$keyword%' OR matkul LIKE '%$keyword%' OR dosen LIKE '%$keyword%' OR ruang LIKE '%$keyword%' OR hari LIKE '%$keyword%' OR jam_mulai LIKE '%$keyword%' OR jam_selesai LIKE '%$keyword%' ORDER BY created_at DESC";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+    
     public function setJadwalStatus(string $status, string $id_jadwal): bool
     {
         return $this->update(['status' => $status], $id_jadwal, 'id_jadwal');
@@ -96,5 +97,12 @@ class Jadwal extends Model
         $id_jadwal = $data['id_jadwal'];
         $sql = "UPDATE jadwal SET status = 'offline' WHERE id_jadwal = '$id_jadwal'";
         $this->exec($sql);
+    }
+
+    public function getSchedule($hari): array
+    {
+        $sql = "SELECT * FROM view_getjadwaladmin WHERE hari = '$hari'";
+        $result = $this->query($sql);
+        return $result;
     }
 }

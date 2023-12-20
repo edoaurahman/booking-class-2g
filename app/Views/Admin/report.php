@@ -32,11 +32,11 @@
             <section id="report" class="shadow-lg sm:rounded-lg">
                 <div x-data="tableData" x-init="$nextTick(() => {paggination(1) })">
                     <div class="overflow-x-auto rounded-md overflow-hidden">
-                        <table class="w-[1200px] lg:w-[1600px] overflow-y-auto text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                        <table class="w-[1200px] lg:w-full overflow-y-auto text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="w-[15%] px-6 py-3">
-                                        Mahasiswa
+                                        Peminjam
                                     </th>
                                     <th scope="col" class=" px-6 py-3">
                                         Tanggal Pesan
@@ -46,9 +46,6 @@
                                     </th>
                                     <th scope="col" class="w-[15%] px-6 py-3">
                                         Dosen Penanggung Jawab
-                                    </th>
-                                    <th scope="col" class="w-[15%] px-6 py-3">
-                                        Dosen Pengguna Ruang
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Kelas
@@ -66,6 +63,9 @@
                                         Lampiran
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Keterangan
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Action
                                     </th>
                                 </tr>
@@ -74,13 +74,17 @@
 
                                 <template x-for="item in tableData">
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td x-text="item.mahasiswa" class="px-4 py-3">
-                                        </td>
+                                        <template x-if="item.mahasiswa">
+                                            <td x-text="item.mahasiswa" class="px-4 py-3">
+                                            </td>
+                                        </template>
+                                        <template x-if="!item.mahasiswa">
+                                            <td x-text="item.dosen" class="px-4 py-3">
+                                            </td>
+                                        </template>
                                         <td x-text="item.tanggal_pesan" class="px-6 py-4">
                                         </td>
                                         <td x-text="item.tanggal_pakai" class="px-6 py-4">
-                                        </td>
-                                        <td x-text="item.dosen" class="px-6 py-4">
                                         </td>
                                         <td x-text="item.dosen" class="px-6 py-4">
                                         </td>
@@ -93,12 +97,38 @@
                                         <td x-text="item.jam_selesai" class="px-6 py-4">
                                         </td>
                                         <td class="px-6 py-4">
-                                            <template x-if="item.lampiran == null">
-                                                <div>Tidak ada</div>
-                                            </template>
-                                            <template x-if="item.lampiran != null">
-                                                <div x-text="item.lampiran"></div>
-                                            </template>
+                                            <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
+                                                <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                    Lihat Lampiran
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <!-- ########### Ini Modal YGY ########### -->
+                                            <div x-data="{ 'showModal': false }" @keydown.escape="showModal = false">
+                                                <!-- Trigger for Modal -->
+                                                <button type="button" @click="showModal = true" x-text="item && item.keterangan ? item.keterangan.substring(0,20) + '...' : '' "></button>
+                                                <!-- Modal -->
+                                                <div class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50" x-show="showModal">
+                                                    <!-- Modal inner -->
+                                                    <div class="max-w-3xl px-6 py-4 mx-auto text-left bg-white rounded shadow-lg dark:bg-gray-600" @click.away="showModal = false" x-transition:enter="motion-safe:ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+                                                        <!-- Title / Close-->
+                                                        <div class="flex items-center justify-between">
+                                                            <h5 class="mr-3 text-black max-w-none dark:text-white">Keterangan</h5>
+                                                            <button type="button" class="z-50 cursor-pointer" @click="showModal = false">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <!-- content -->
+                                                        <div class="min-h-[100px] min-w-[300px] pt-4 max-h-[80vh] overflow-y-auto text-gray-500 dark:text-gray-300">
+                                                            <p x-text="item.keterangan"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         </td>
                                         <td class="px-6 py-4">
                                             <a class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover" :href="'/admin/pdf/' + item.id_booking">
@@ -117,7 +147,7 @@
                             </li>
                             <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
                                 <li>
-                                    <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#report" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-white hover:text-black"><?= $i ?></a>
+                                    <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#report" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400  dark:hover:text-white hover:text-black"><?= $i ?></a>
                                 </li>
                             <?php endfor; ?>
                             <li>
@@ -219,14 +249,31 @@
     function setActive(current_page) {
         buttonPaggination.forEach((button) => {
             if (button.innerText == current_page) {
-                button.classList.remove("dark:bg-gray-800");
-                button.classList.add("dark:bg-gray-700");
-                button.classList.add("bg-gray-200")
+                button.classList.add('dark:bg-bingu');
+                button.classList.add('dark:text-white');
+                button.classList.remove('dark:bg-gray-800');
+                button.classList.add('bg-bingu');
+                button.classList.add('hover:bg-bingu_hover');
+                button.classList.add('dark:hover:bg-bingu_hover');
+                button.classList.add('hover:text-white');
+                button.classList.remove('hover:text-black');
+                button.classList.remove('hover:bg-gray-200');
+                button.classList.remove('dark:hover:bg-gray-700');
+                button.classList.add('text-white');
+                button.classList.remove('bg-white');
             } else {
                 button.classList.add('dark:bg-gray-800');
                 button.classList.add('bg-white');
-                button.classList.remove("dark:bg-gray-700");
-                button.classList.remove("bg-gray-200");
+                button.classList.add('hover:text-black');
+                button.classList.remove('dark:bg-bingu');
+                button.classList.remove('dark:text-white');
+                button.classList.remove('bg-bingu');
+                button.classList.remove('hover:bg-bingu_hover');
+                button.classList.remove('dark:hover:bg-bingu_hover');
+                button.classList.remove('text-white');
+                button.classList.remove('hover:text-white');
+                button.classList.add('hover:bg-gray-200');
+                button.classList.add('dark:hover:bg-gray-700');
             }
         });
     }

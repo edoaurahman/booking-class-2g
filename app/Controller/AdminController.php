@@ -57,6 +57,7 @@ class AdminController extends Controller
         View::render("Admin/dashboard", ['data' => $data]);
     }
 
+
     public function ruang()
     {
         $ruang = new Ruang();
@@ -83,10 +84,21 @@ class AdminController extends Controller
         $nama = $request->nama;
         $jenis_ruang = $request->jenis_ruang;
         $lantai = $request->lantai;
-        // $deskripsi_ruang = $request->deskripsi_ruang;
+        $keterangan = $request->keterangan;
+        $gambar = $request->gambar;
+        // $this->ddd($request->gambar['tmp_name']);
+        // move file gambar ke dalam folder assets/img/lantai
+
+        $extension = pathinfo($gambar['name'], PATHINFO_EXTENSION);
+        $uploadDir = '/assets/img/lantai/';
+        $gambar = uniqid() . '.' . $extension;
+        $uploadPath = __DIR__ . '/../../public' . $uploadDir . $gambar;
+
+        // $this->ddd($uploadPath);
+        move_uploaded_file($request->gambar['tmp_name'], $uploadPath);
 
         $ruang = new Ruang();
-        $ruang->addRuang($kode_ruang, $nama, $jenis_ruang, $lantai);
+        $ruang->addRuang($kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $gambar);
 
         $this->redirect("/admin/ruang");
     }
@@ -98,30 +110,54 @@ class AdminController extends Controller
         $nama = $request->nama;
         $jenis_ruang = $request->jenis_ruang;
         $lantai = $request->lantai;
+        $keterangan = $request->keterangan;
+        $gambar = $request->gambar;
 
+        
+        // get prev image
         $ruang = new Ruang();
-        $ruang->editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai);
-
+        $gambarPrev = $ruang->getRuangByID($id);
+        $gambarPrev = $gambarPrev->gambar; 
+        // $this->ddd(empty($gambar["name"]));
+        // Check if a new image is uploaded
+        if (!empty($gambar["name"])) {
+            // Move the new file to the destination folder
+            $extension = pathinfo($gambar['name'], PATHINFO_EXTENSION);
+            $uploadDir = '/assets/img/lantai/';
+            $newImage = uniqid() . '.' . $extension;
+            $uploadPath = __DIR__ . '/../../public' . $uploadDir . $newImage;
+            
+            
+            move_uploaded_file($request->gambar['tmp_name'], $uploadPath);
+            
+            // Check if the current image exists and delete it
+            if ($gambarPrev !== null && file_exists(__DIR__ . '/../../public' . $uploadDir . $gambarPrev)) {
+                unlink(__DIR__ . '/../../public' . $uploadDir . $gambarPrev);
+            }
+    
+            // Update the database with the new image file name
+            $ruang->editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $newImage);
+        } else {
+            // No new image uploaded, update the database without changing the image file name
+            $ruang->editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $gambarPrev);
+        }
+    
         $this->redirect("/admin/ruang");
     }
-
-    public function ruangModal($id_ruang): void
-    {
-        $ruang = new Ruang();
-        $ruang = $ruang->getRuangByID($id_ruang);
-
-        $id = $ruang->id_ruang;
-        $kode_ruang = $ruang->nama_ruang;
-        $nama = $ruang->deskripsi_ruang;
-        $jenis_ruang = $ruang->jenis_ruang;
-        $lantai = $ruang->nama_lantai;
-
-        View::render('Admin/Modal/ruangModal', ['id' => $id, 'nama' => $nama, 'kode_ruang' => $kode_ruang, 'jenis_ruang' => $jenis_ruang, 'lantai' => $lantai]);
-    }
-
+    
     public function deleteRuang($id_ruang)
     {
         $ruang = new Ruang();
+
+        // delete image from folder
+        $gambarPrev = $ruang->getRuangByID($id_ruang);
+        $gambarPrev = $gambarPrev->gambar;
+        $uploadDir = '/assets/img/lantai/';
+        if ($gambarPrev !== null) {
+            unlink(__DIR__ . '/../../public' . $uploadDir . $gambarPrev);
+        }
+
+        // delete data from database
         $ruang->deleteRuang($id_ruang);
 
         $this->redirect("/admin/ruang");
@@ -180,21 +216,6 @@ class AdminController extends Controller
         $mahasiswa->editMahasiswa($nim, $nama, $password, $tmpt_lahir, $tgl_lahir, $jenis_kelamin, $kelas);
 
         $this->redirect("/admin/mahasiswa");
-    }
-
-    public function mahasiswaModal($nim): void
-    {
-        $mahasiswa = new Mahasiswa();
-        $mahasiswa = $mahasiswa->getMahasiswaById($nim);
-
-        $nama = $mahasiswa->nama;
-        $password = $mahasiswa->password;
-        $tempat_lahir = $mahasiswa->tempat_lahir;
-        $tanggal_lahir = $mahasiswa->tanggal_lahir;
-        $jenis_kelamin = $mahasiswa->jenis_kelamin;
-        $id_kelas = $mahasiswa->id_kelas;
-
-        View::render('Admin/Modal/mahasiswaModal', ['id' => $nim, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'id_kelas' => $id_kelas]);
     }
 
     public function deleteMahasiswa($nim)
@@ -275,25 +296,6 @@ class AdminController extends Controller
         $this->redirect("/admin/jadwal");
     }
 
-    public function jadwalModal($id_jadwal): void
-    {
-        $jadwal = new Jadwal();
-        $jadwal = $jadwal->getJadwalById($id_jadwal);
-
-        $id = $id_jadwal;
-        $matakuliah = $jadwal->id_matkul;
-        $kelas = $jadwal->id_kelas;
-        $dosen = $jadwal->id_dosen;
-        $ruang = $jadwal->id_ruang;
-        $hari = $jadwal->id_hari;
-        $jam_mulai = $jadwal->jam_mulai;
-        $jam_selesai = $jadwal->jam_selesai;
-        $id_jam_mulai = $jadwal->id_jam_mulai;
-        $id_jam_selesai = $jadwal->id_jam_selesai;
-
-        View::render('Admin/Modal/jadwalModal', ['id' => $id, 'matakuliah' => $matakuliah, 'kelas' => $kelas, 'dosen' => $dosen, 'ruang' => $ruang, 'hari' => $hari, 'jam_mulai' => $jam_mulai, 'jam_selesai' => $jam_selesai, 'id_jam_mulai' => $id_jam_mulai, 'id_jam_selesai' => $id_jam_selesai]);
-    }
-
     public function deleteJadwal($id_jadwal)
     {
         $jadwal = new Jadwal();
@@ -352,21 +354,6 @@ class AdminController extends Controller
         $dosen->editDosen($nip, $nama, $password, $jenis_kelamin, $tmpt_lahir, $tgl_lahir, $email);
 
         $this->redirect("/admin/dosen");
-    }
-
-    public function dosenModal($nip): void
-    {
-        $dosen = new Dosen();
-        $dosen = $dosen->getDosenById($nip);
-
-        $nama = $dosen->nama;
-        $password = $dosen->password;
-        $email = $dosen->email;
-        $tempat_lahir = $dosen->tempat_lahir;
-        $tanggal_lahir = $dosen->tanggal_lahir;
-        $jenis_kelamin = $dosen->jenis_kelamin;
-
-        View::render('Admin/Modal/dosenModal', ['id' => $nip, 'nama' => $nama, 'password' => $password, 'tempat_lahir' => $tempat_lahir, 'tanggal_lahir' => $tanggal_lahir, 'jenis_kelamin' => $jenis_kelamin, 'email' => $email]);
     }
 
     public function deleteDosen($nip)
@@ -576,7 +563,8 @@ class AdminController extends Controller
         $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
         if (empty($bookingAvailability)) {
             $bookingAvailability = new Dosen();
-            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);;
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+            ;
         }
         echo json_encode($bookingAvailability);
     }
@@ -588,6 +576,34 @@ class AdminController extends Controller
         echo json_encode($booking);
     }
 
+    public function apiMahasiswaSearch(Request $request): void
+    {
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa = $mahasiswa->getMahasiswaSearch($request);
+        echo json_encode($mahasiswa);
+    }
+
+    public function apiDosenSearch(Request $request): void
+    {
+        $dosen = new Dosen();
+        $dosen = $dosen->getDosenSearch($request);
+        echo json_encode($dosen);
+    }
+
+    public function apiRuangSearch(Request $request): void
+    {
+        $ruang = new Ruang();
+        $ruang = $ruang->getRuangSearch($request);
+        echo json_encode($ruang);
+    }
+
+    public function apiJadwalSearch(Request $request): void
+    {
+        $jadwal = new Jadwal();
+        $jadwal = $jadwal->getJadwalSearch($request);
+        echo json_encode($jadwal);
+    }
+    
     public function getTotalBookingOnproccess(): void
     {
         $booking = new Booking();
@@ -602,15 +618,27 @@ class AdminController extends Controller
 
         $ruang = new Ruang();
         $topBook = $ruang->getTopBookedRoom();
-        // $this->ddd($newBook);
-        $data = [
-            'newBook' => $newBook,
-            'topBook' => $topBook
-        ];
+
+        $jadwal = new Jadwal();
+        $schedule =
+            // $this->ddd($newBook);
+            $data = [
+                'newBook' => $newBook,
+                'topBook' => $topBook
+            ];
 
         echo json_encode($data);
     }
 
+    public function apiDashboard2(Request $request): void
+    {
+        $hari = $request->hari;
+        $jadwal = new Jadwal();
+        $listJadwal = $jadwal->getSchedule($hari);
+        // $this->ddd($listJadwal);
+        echo json_encode($listJadwal);
+    }
+    
     public function setJadwalStatus(Request $request): void
     {
         $status = $request->status;

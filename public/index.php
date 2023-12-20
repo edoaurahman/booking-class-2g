@@ -72,13 +72,18 @@ Router::add('POST', '/admin/booking/verif', AdminController::class, 'adminVerifi
 // API
 Router::add('GET', '/api/jadwal/{id}/hari/{hari}', HomeController::class, 'apiJadwal');
 Router::add('GET', '/api/ruang/{page}', HomeController::class, 'apiRuang');
+Router::add('POST', '/api/admin/ruang/search', AdminController::class, 'apiRuangSearch');
 Router::add('GET', '/api/dosen/{page}', AdminController::class, 'apiDosen');
+Router::add('POST', '/api/admin/dosen/search', AdminController::class, 'apiDosenSearch');
 Router::add('GET', '/api/mahasiswa/{page}', AdminController::class, 'apiMahasiswa');
+Router::add('POST', '/api/admin/mahasiswa/search', AdminController::class, 'apiMahasiswaSearch');
 Router::add('GET', '/api/jadwal/{page}', AdminController::class, 'apiJadwal');
+Router::add('POST', '/api/admin/jadwal/search', AdminController::class, 'apiJadwalSearch');
 Router::add('GET', '/api/booking/{page}', AdminController::class, 'apiBooking');
 Router::add('POST', '/api/admin/booking/search', AdminController::class, 'apiBookingSearch');
 Router::add('GET', '/api/report/{page}', AdminController::class, 'apiReport');
 Router::add('GET', '/api/dashboard1', AdminController::class, 'apiDashboard1');
+Router::add('POST','/api/dashboard2', AdminController::class, 'apiDashboard2');
 
 // Filter ruang, hari, jam mulai, jam selesai, cateogry ruang, lantai
 Router::add('POST', '/api/ruang/filter', BookingController::class, 'apiRuangBooking');

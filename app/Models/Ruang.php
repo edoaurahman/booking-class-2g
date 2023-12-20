@@ -30,7 +30,7 @@ class Ruang extends Model
     {
         $page -= 1;
         $page *= 10;
-        $sql = "SELECT * FROM view_getruang LIMIT 10 OFFSET $page";
+        $sql = "SELECT * FROM view_getruang ORDER BY id_ruang ASC LIMIT 10 OFFSET $page";
         $result = $this->db->query($sql);
         $data = [];
         while ($row = $result->fetch_assoc()) {
@@ -86,8 +86,8 @@ class Ruang extends Model
             $sql .= " AND id_lantai IN (" . implode(',', $id_lantai) . ")";
         }
         // print $sql to log
-        // $dataToAppend = print_r($sql, true) . "\n";
-        // file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
+        $dataToAppend = print_r($sql, true) . "\n";
+        file_put_contents('log.txt', $dataToAppend, FILE_APPEND);
 
         $result = $this->db->query($sql);
         $data_booking = [];
@@ -135,9 +135,10 @@ class Ruang extends Model
         }
         return $data;
     }
-    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai): void
+
+    public function addRuang($kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $gambar): void
     {
-        $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang' )";
+        $sql = "CALL addRuang('$kode_ruang', '$nama', '$lantai', '$jenis_ruang', '$keterangan', '$gambar')";
         $this->exec($sql);
     }
 
@@ -152,17 +153,28 @@ class Ruang extends Model
         return (object) $data[0];
     }
 
-    public function editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai)
-    {
-        $sql = "CALL editRuang('$id', '$kode_ruang', '$nama', '$jenis_ruang', '$lantai')";
+    public function editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $gambar): void {
+        $sql = "CALL editRuang('$id', '$kode_ruang', '$nama', '$jenis_ruang', '$lantai', '$keterangan', '$gambar')";
         $this->exec($sql);
     }
 
-    public function deleteRuang($id): void
-    {
+    public function deleteRuang($id): void {
         $sql = "DELETE FROM ruang WHERE id_ruang = '$id'";
         $this->exec($sql);
     }
+
+    public function getRuangSearch(object $request): array
+    {
+        $keyword = $request->keyword;
+        $sql = "SELECT * FROM view_getruang WHERE nama_ruang LIKE '%$keyword%' OR deskripsi_ruang LIKE '%$keyword%' OR jenis_ruang LIKE '%$keyword%' OR nama_lantai LIKE '%$keyword%' OR keterangan LIKE '%$keyword%' ORDER BY created_at DESC";
+        $result = $this->db->query($sql);
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+    
     public function getTotalRuangByIdJenis() : array
     {
         $sql = "SELECT COUNT(*) FROM `view_getruang` GROUP BY id_jenis_ruang";
@@ -188,7 +200,7 @@ class Ruang extends Model
         }
         return $data;
     }
-
+    
     public function getTopBookedRoom() : array
     {
         $sql = "SELECT * FROM `view_persentasekelas`";
