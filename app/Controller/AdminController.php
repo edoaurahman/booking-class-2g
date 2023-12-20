@@ -113,11 +113,11 @@ class AdminController extends Controller
         $keterangan = $request->keterangan;
         $gambar = $request->gambar;
 
-        
+
         // get prev image
         $ruang = new Ruang();
         $gambarPrev = $ruang->getRuangByID($id);
-        $gambarPrev = $gambarPrev->gambar; 
+        $gambarPrev = $gambarPrev->gambar;
         // $this->ddd(empty($gambar["name"]));
         // Check if a new image is uploaded
         if (!empty($gambar["name"])) {
@@ -126,25 +126,25 @@ class AdminController extends Controller
             $uploadDir = '/assets/img/lantai/';
             $newImage = uniqid() . '.' . $extension;
             $uploadPath = __DIR__ . '/../../public' . $uploadDir . $newImage;
-            
-            
+
+
             move_uploaded_file($request->gambar['tmp_name'], $uploadPath);
-            
+
             // Check if the current image exists and delete it
             if ($gambarPrev !== null && file_exists(__DIR__ . '/../../public' . $uploadDir . $gambarPrev)) {
                 unlink(__DIR__ . '/../../public' . $uploadDir . $gambarPrev);
             }
-    
+
             // Update the database with the new image file name
             $ruang->editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $newImage);
         } else {
             // No new image uploaded, update the database without changing the image file name
             $ruang->editRuang($id, $kode_ruang, $nama, $jenis_ruang, $lantai, $keterangan, $gambarPrev);
         }
-    
+
         $this->redirect("/admin/ruang");
     }
-    
+
     public function deleteRuang($id_ruang)
     {
         $ruang = new Ruang();
@@ -509,6 +509,15 @@ class AdminController extends Controller
         ]);
     }
 
+    public function print_report()
+    {
+        $report = new Laporan();
+
+        View::render("Admin/print_report", [
+            'report' => $report
+        ]);
+    }
+
     public function adminVerification(Request $request): void
     {
         // $this->ddd($request);
@@ -563,8 +572,7 @@ class AdminController extends Controller
         $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
         if (empty($bookingAvailability)) {
             $bookingAvailability = new Dosen();
-            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
-            ;
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);;
         }
         echo json_encode($bookingAvailability);
     }
@@ -603,7 +611,7 @@ class AdminController extends Controller
         $jadwal = $jadwal->getJadwalSearch($request);
         echo json_encode($jadwal);
     }
-    
+
     public function getTotalBookingOnproccess(): void
     {
         $booking = new Booking();
@@ -638,7 +646,7 @@ class AdminController extends Controller
         // $this->ddd($listJadwal);
         echo json_encode($listJadwal);
     }
-    
+
     public function setJadwalStatus(Request $request): void
     {
         $status = $request->status;
