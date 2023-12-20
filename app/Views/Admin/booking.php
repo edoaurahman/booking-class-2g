@@ -37,10 +37,10 @@
                                                 <th scope="col" class="px-6 py-3">
                                                 </th>
                                                 <th scope="col" class="px-6 py-3 text-center" colspan="2">
-                                                    Jam Mulai
+                                                    Booking
                                                 </th>
                                                 <th scope="col" class="px-6 py-3 text-center" colspan="2">
-                                                    Jam Selesai
+                                                    Saat Ini
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
                                                 </th>
@@ -72,16 +72,16 @@
                                                     Ruang
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
-                                                    Booking
+                                                    Jam Mulai
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
-                                                    Jadwal
+                                                    Jam Selesai
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
-                                                    Booking
+                                                    Jam Mulai
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
-                                                    Jadwal
+                                                    Jam Selesai
                                                 </th>
                                                 <th scope="col" class="px-6 py-3">
                                                     Lampiran
@@ -96,14 +96,13 @@
                                         </thead>
                                         <tbody>
                                             <template x-for="(item,index) in bookingIntersect">
-                                                bookingUrgent:null,
                                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                                     <template x-if="bookingUrgent[index].mahasiswa">
                                                         <td x-text="bookingUrgent[index].mahasiswa" class="px-4 py-3">
                                                         </td>
                                                     </template>
                                                     <template x-if="!bookingUrgent[index].mahasiswa">
-                                                        <td x-text="item.dosen" class="px-4 py-3">
+                                                        <td x-text="bookingUrgent[index].dosen" class="px-4 py-3">
                                                         </td>
                                                     </template>
                                                     <td class="px-6 py-4">
@@ -118,12 +117,6 @@
                                                         </template>
                                                         <span x-text="item.tanggal_pakai"></span>
                                                     </td>
-                                                    <template x-if="item.id_jadwal !=">
-                                                        <td x-text="item.dosen" class="px-6 py-4">
-                                                        </td>
-                                                        <td x-text="bookingUrgent[index].dosen" class="px-6 py-4">
-                                                        </td>
-                                                    </template>
                                                     <td x-text="bookingUrgent[index].dosen" class="px-6 py-4">
                                                     </td>
                                                     <td x-text="item.dosen" class="px-6 py-4">
@@ -132,14 +125,41 @@
                                                     </td>
                                                     <td x-text="item.ruang" class="px-6 py-4">
                                                     </td>
-                                                    <td x-text="item.jam_mulai" class="px-6 py-4">
-                                                    </td>
-                                                    <td x-text="bookingUrgent[index].jam_mulai" class="px-6 py-4">
-                                                    </td>
-                                                    <td x-text="item.jam_selesai" class="px-6 py-4">
-                                                    </td>
-                                                    <td x-text="bookingUrgent[index].jam_selesai" class="px-6 py-4">
-                                                    </td>
+                                                    <!-- jika dari jadwal -->
+                                                    <template x-if="item.id_jadwal != null">
+                                                        <td x-text="bookingUrgent[index].jam_mulai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <template x-if="item.id_jadwal != null">
+                                                        <td x-text="bookingUrgent[index].jam_selesai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <template x-if="item.id_jadwal != null">
+                                                        <td x-text="item.jam_mulai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <template x-if="item.id_jadwal != null">
+                                                        <td x-text="item.jam_selesai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <!-- jika dari booking -->
+                                                    <template x-if="item.id_jadwal == null">
+                                                        <td x-text="item.jam_mulai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <template x-if="item.id_jadwal == null">
+                                                        <td x-text="item.jam_selesai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <template x-if="item.id_jadwal == null">
+                                                        <td x-text="bookingUrgent[index].jam_mulai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+                                                    <template x-if="item.id_jadwal == null">
+                                                        <td x-text="bookingUrgent[index].jam_selesai" class="px-6 py-4">
+                                                        </td>
+                                                    </template>
+
                                                     <td class="px-6 py-4">
                                                         <a :href="'/assets/lampiran/' + bookingUrgent[index].lampiran" target="_blank">
                                                             <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-900 dark:focus:ring-blue-800">
@@ -827,8 +847,19 @@
                 return `${yyyy}-${mm}-${dd}`;
             }
         }))
+        Alpine.directive('log', (el, {
+            expression
+        }, {
+            evaluate
+        }) => {
+            // expression === 'message'
+            console.log(
+                evaluate(expression)
+            )
+        })
     })
 </script>
+
 </body>
 
 </html>
