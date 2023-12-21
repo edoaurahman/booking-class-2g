@@ -1,4 +1,5 @@
 <!-- font awesome -->
+<title>Admin</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,13 +30,19 @@
         <div class="bodySurat text-xs mt-4 font-">
             <div class="flex justify-between">
                 <div class="font-surat">
-                    <p>Nomor &emsp;: 002/HCK/polinema/X/2023</p>
+                    <p>Nomor &emsp;: <span id="nomor-report"></span>/HCK/polinema/X/
+                        <?= $year ?>
+                    </p>
                     <p>Hal &emsp;&emsp;&ensp;: Peminjaman Kelas</p>
-                    <p>Bulan &ensp;&ensp;&ensp;: Januari - Desember</p>
-                    <p>Periode &ensp;&ensp;: 20023/2024</p>
+                    <p>Bulan &ensp;&ensp;&ensp;:
+                        <?= $month_name ?>
+                    </p>
+                    <p>Tahun &ensp;&ensp;&ensp;:
+                        <?= $year ?>
+                    </p>
                 </div>
                 <div class="font-surat">
-                    <p>9-12-2006</p>
+                    <p><?php ?>-<?php ?>-2006</p>
                 </div>
             </div>
 
@@ -132,3 +139,23 @@
 </div>
 <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
 <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+<script>
+    // program to generate random strings
+
+    // declare all characters
+    const characters = '0123456789';
+
+    function generateString(length) {
+        let result = ' ';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+
+        return result;
+    }
+    document.getElementById("nomor-report").innerHTML = generateString(3);
+
+    // console.log(generateString(3));
+</script>
