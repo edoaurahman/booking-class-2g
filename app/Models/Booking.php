@@ -7,6 +7,19 @@ use TugasBesar\BookingClass2g\Models\Model;
 class Booking extends Model
 {
     protected $table = 'booking';
+    public $id_booking = '';
+    public $date = '';
+    public $status = '';
+    public $lampiran = '';
+    public $keterangan = '';
+    public $id_mahasiswa = '';
+    public $id_dosen = '';
+    public $id_dosen_last = '';
+    public $id_kelas = '';
+    public $id_ruang = '';
+    public $jam_mulai = '';
+    public $jam_selesai = '';
+    public $created_at = '';
 
     public function getNotification($level, $user): array
     {
