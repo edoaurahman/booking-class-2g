@@ -305,7 +305,15 @@
                                     <span>Pilih ruang dan tanggal terlebih dahulu</span>
                                 </div>
                             </template>
+                            <template x-if="detailBooking.length != 0">
+                                <div class="flex flex-wrap mt-4">
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 mr-3 bg-bingu rounded-full me-1.5 flex-shrink-0"></span>Tersedia</span>
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 mr-3 bg-yellow-500 rounded-full me-1.5 flex-shrink-0"></span>Sedang di Proses</span>
+                                    <span class="flex flex-none items-center text-sm font-medium text-gray-900 dark:text-white me-3"><span class="flex w-2.5 h-2.5 mr-3 bg-red-500 rounded-full me-1.5 flex-shrink-0"></span>Terpakai</span>
+                                </div>
+                            </template>
                         </div>
+
                         <div class="col-span-1 relative">
                             <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
                             <textarea required name="keterangan" id="keterangan" rows="10" class="rounded w-full border border-gray-500 dark:bg-gray-600 dark:text-white" value="Kepentingan kelas"></textarea>
@@ -390,6 +398,7 @@
 
     // table & pagination
     const buttonPaggination = document.querySelectorAll('#button-pagination');
+
     function setActive(current_page) {
         buttonPaggination.forEach((button) => {
             if (button.innerText == current_page) {
