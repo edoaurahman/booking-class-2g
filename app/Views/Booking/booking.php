@@ -163,10 +163,10 @@
                 <template x-for="(item,index) in listRuang" x-show="!isLoading">
                     <a :href="/detail-booking/+item.id_ruang" x-show="shouldShowDetails(item)">
                         <div class="group border-2 px-2 mt-3 rounded-xl shadow-md hover:bg-bingu dark:bg-dark_grey dark:bg-dark_grey5 dark:hover:bg-dark_grey3 dark:border-dark_grey2  dark:hover:border-dark_grey3 dark:shadow-gray-700 ">
-                            <div class="grid grid-cols-1 md:grid-cols-5 md:gap-4 items-center">
+                            <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-5 xl:gap-4 items-center">
                                 <!-- tampilan untuk desktop start -->
-                                <div class="col-span-2 py-3 mx-4">
-                                    <h1 class="py-3 sm:hidden inline-flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
+                                <div class="xl:col-span-2 py-3 mx-4">
+                                    <h1 class="py-3 md:block sm:hidden xl:hidden inline-flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
                                         <span x-text="item.nama_ruang"></span>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600" x-text="item.nama_lantai">Lantai 5</span>
                                     </h1>
@@ -174,13 +174,13 @@
                                     <img class="object-cover rounded-md" src="/assets/img/booking/class1.jpg" loading="lazy" alt="" />
                                 </div>
 
-                                <div class="col-span-3 py-3">
-                                    <h1 class="hidden mx-4 sm:flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
+                                <div class="xl:col-span-3 py-3">
+                                    <h1 class="hidden md:hidden xl:block mx-4 sm:flex items-center text-2xl uppercase font-extrabold text-slate-700 group-hover:text-white dark:text-white dark:group-hover:text-dark_grey5">
                                         <span x-text="item.nama_ruang"></span>
                                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-dark_grey4 dark:text-slate-100 ms-2 dark:group-hover:bg-gray-600" x-text="item.nama_lantai">Lantai 5</span>
                                     </h1>
 
-                                    <div class="fasilitas sm:hidden mx-4">
+                                    <div class="fasilitas md:block xl:hidden mx-4">
                                         <div class="text-sm">
                                             <!-- icon1dark  -->
                                             <i :data-tooltip-target="'icon1dark-' + index" class="fa-solid fa-wifi border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>
@@ -247,19 +247,11 @@
                                     </div>
                                     <div class="flex items-center">
                                         <div class="px-4">
-                                            <p class="text-sm my-3 text-slate-500 group-hover:text-slate-300 dark:text-slate-300 dark:group-hover:text-dark_grey5">
-                                                Kelas di kampus memiliki peran vital sebagai tempat interaksi, pembelajaran, dan pengembangan keterampilan mahasiswa. Dalam ruang kelas, mereka dapat mendiskusikan konsep akademis, membangun keterampilan berpikir kritis, serta menjalin hubungan sosial, semuanya mendukung pertumbuhan intelektual dan pembentukan karakter mahasiswa. Melalui interaksi aktif di dalam kelas, mahasiswa juga memperoleh persiapan yang kokoh untuk menghadapi tantangan dunia nyata setelah menyelesaikan studi mereka di kampus.
+                                            <p class="text-sm my-3 text-slate-500 group-hover:text-slate-300 dark:text-slate-300 dark:group-hover:text-dark_grey5" x-text="item.keterangan">
                                             </p>
                                         </div>
-                                        <!-- <div class=" persentase relative px-4 py-6 text-center justify-center border m-4 rounded-lg bg-bingu group-hover:bg-white dark:bg-dark_grey5">
-                                        <span class="bg-gray-200 group-hover:bg-gray-200 text-gray-800 group-hover:text-bingu text-xs font-medium mb-4 px-2.5 py-0.5 rounded dark:bg-white dark:text-dark_grey5">Tersedia</span>
-                                        <div class="leading-4">
-                                            <h1 class="text-2xl font-serif font-extrabold text-white group-hover:text-gray-700 mt-1">9 / 11</h1>
-                                            <p class="font-normal text-sm font-semibold text-white group-hover:text-gray-700 mt-0.5">Jam</p>
-                                        </div>
-                                    </div> -->
                                     </div>
-                                    <div class="fasilitas hidden sm:block mx-4">
+                                    <div class="fasilitas hidden md:hidden xl:block mx-4">
                                         <div class="text-sm">
                                             <!-- icon1  -->
                                             <i :data-tooltip-target="'icon1-' + index" class="fa-solid fa-wifi border-2 rounded-md p-2 mt-1 bg-bingu hover:bg-bingu_hover text-white hover:text-white dark:bg-dark_grey5 "></i>

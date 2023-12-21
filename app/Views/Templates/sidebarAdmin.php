@@ -34,7 +34,7 @@
                         <button type="button" class="group flex text-s rounded-full gap-2 items-center " aria-expanded="false" data-dropdown-toggle="dropdown-user" data-dropdown-trigger="hover">
                             <img class="w-8 h-8 rounded-full group-hover:ring-white group-hover:ring-1" src="/assets/img/foto-profil.png" alt="user photo">
                             <div class="font-medium hidden text-center mr-3 text-white md:block">
-                                <?= $nama;?>
+                                <?= $nama; ?>
                             </div>
                             <svg class="w-3 h-3 transition-all duration-500 text-white group-hover:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
@@ -43,18 +43,15 @@
                         <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
                             <div class="px-4 py-3" role="none">
                                 <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                <?= $nama;?>
+                                    <?= $nama; ?>
                                 </p>
                                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                                <?= $email;?>
+                                    <?= $email; ?>
                                 </p>
                             </div>
                             <ul class="py-1" role="none">
                                 <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
+                                    <a href="/admin" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
                                 </li>
                                 <li>
                                     <div class="border-t-[1px] border-gray-300 dark:border-gray-600">
