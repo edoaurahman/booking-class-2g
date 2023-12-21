@@ -65,7 +65,7 @@ class Ruang extends Model
         }
 
         if (!empty($search)) {
-            $whereClauses[] = "nama_ruang LIKE '%$search%'";
+            $whereClauses[] = "nama_ruang LIKE '%$search%' OR deskripsi_ruang LIKE '%$search%'";
         }
 
         if (!empty($whereClauses)) {
