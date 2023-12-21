@@ -30,12 +30,12 @@
                 <!-- Button add report -->
                 <form @submit.prevent="handleSubmit()" method="POST" class="flex w-[50%] items-center justify-end"
                     id="getMonthReport">
-                    <div class="w-[35%] mx-1">
+                    <div class="w-[40%] mx-1">
                         <select id="bulan" name="month" id="month"
                             class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </select>
                     </div>
-                    <div class="w-[35%] mx-1">
+                    <div class="w-[30%] mx-1">
                         <input name="year" type="number" value="2023"
                             class="w-full spin-gone bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
                     </div>
@@ -43,7 +43,7 @@
                         <button
                             class="px-5 min-w-max py-2.5 !bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:!bg-bingu_hover"
                             type="submit">
-                            Print Multiple Report
+                            Print Report
                         </button>
                     </div>
 
@@ -89,9 +89,6 @@
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Keterangan
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Action
                                     </th>
                                 </tr>
                             </thead>
@@ -166,13 +163,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <a class="px-3 py-1 bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:bg-bingu_hover"
-                                                :href="'/admin/pdf/' + item.id_booking">
-                                                Cetak
-                                            </a>
                                         </td>
                                     </tr>
                                 </template>

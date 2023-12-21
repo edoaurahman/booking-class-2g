@@ -578,9 +578,13 @@ class AdminController extends Controller
     {
         $report = new Laporan();
         $result = $report->getReportByDate($month, $year);
-        // $this->ddd($result);
+
+        $month_name = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
         View::render("Admin/print_report", [
-            'report' => $result
+            'report' => $result,
+            'month_name' => $month_name[$month - 1],
+            'year' => $year
         ]);
     }
 
@@ -638,7 +642,8 @@ class AdminController extends Controller
         $bookingAvailability = $bookingAvailability->checkBookingAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
         if (empty($bookingAvailability)) {
             $bookingAvailability = new Dosen();
-            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);;
+            $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
+            ;
         }
         echo json_encode($bookingAvailability);
     }
