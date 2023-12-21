@@ -7,6 +7,10 @@ use TugasBesar\BookingClass2g\Models\Model;
 class Laporan extends Model
 {
     protected $table = 'laporan';
+    public $id_laporan = '';
+    public $date = '';
+    public $id_booking = '';
+    public $id_jadwal = '';
 
     public function getReportPagination(string $page): array
     {
