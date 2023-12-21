@@ -42,7 +42,7 @@
                     </p>
                 </div>
                 <div class="font-surat">
-                    <p><?php ?>-<?php ?>-2006</p>
+                    <p><?= $date = date("d-m-Y") ?></p>
                 </div>
             </div>
 

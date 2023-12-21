@@ -583,7 +583,7 @@ class AdminController extends Controller
 
         View::render("Admin/print_report", [
             'report' => $result,
-            'month' => $month_name[$month - 1],
+            'month_name' => $month_name[$month - 1],
             'year' => $year
         ]);
     }
