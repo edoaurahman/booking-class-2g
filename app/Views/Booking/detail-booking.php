@@ -256,7 +256,7 @@
                                     <p class="text-gray-500 text-sm font-medium dark:text-gray-400">Tangga Darurat </p>
                                 </div>
                             </div>
-                            <img class="object-cover sm:w-auto mx-auto p-14" src="/assets/img/lantai/<?= $ruang->gambar ?>" alt="" />
+                            <img class="object-cover sm:w-auto mx-auto p-3 xl:p-14" src="/assets/img/lantai/<?= $ruang->gambar ?>" alt="" />
                         </div>
                     </div>
                     <!-- refisi perbandingan end -->
