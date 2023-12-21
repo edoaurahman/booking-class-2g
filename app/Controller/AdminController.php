@@ -61,7 +61,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/dashboard", ['data' => $data]);
     }
@@ -74,7 +74,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/ruang", ['totalPage' => $totalPage]);
     }
@@ -185,7 +185,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/mahasiswa", ['totalPage' => $totalPage, 'listKelas' => $listKelas]);
     }
@@ -263,7 +263,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/jadwal", ['totalPage' => $totalPage, 'listKelas' => $listKelas, 'listMK' => $listMK, 'listDosen' => $listDosen, 'listRuang' => $listRuang, 'listHari' => $listHari]);
     }
@@ -329,7 +329,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/dosen", ['totalPage' => $totalPage]);
     }
@@ -415,7 +415,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/urgent-booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
     }
@@ -450,7 +450,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/non-urgent-booking", ['totalPage' => $totalPage, 'listNim' => $listNim, 'listDosenPJ' => $listDosenPJ, 'listDosenPR' => $listDosenPR, 'listKelas' => $listKelas, 'listRuang' => $listRuang]);
     }
@@ -539,7 +539,7 @@ class AdminController extends Controller
 
         $admin = new Admin();
         $admin = $admin->getAdminData();
-        
+
         View::render("Templates/sidebarAdmin", ["title" => 'Admin', 'nama' => $admin->nama, 'email' => $admin->email]);
         View::render("Admin/report", ['totalPage' => $totalPage]);
     }
@@ -563,7 +563,7 @@ class AdminController extends Controller
         $tanggal_pakai = $fmt->format(new \DateTime($report['tanggal_pakai']));
 
         // $this->ddd($tanggal_pakai);
-        
+
         $admin = new Admin();
         $admin = $admin->getAdminData();
         // $this->ddd($report);
@@ -573,7 +573,7 @@ class AdminController extends Controller
             'tanggal_pakai' => $tanggal_pakai
         ]);
     }
-    
+
     public function print_report($month, $year)
     {
         $report = new Laporan();

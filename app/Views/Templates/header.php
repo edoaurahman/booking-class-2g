@@ -190,10 +190,7 @@ $_SESSION['csrf'] = $csrf;
                         </div>
                         <ul class=" text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownAvatarNameButton">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                                <a href="/" class="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                             </li>
                         </ul>
                     </div>
