@@ -104,7 +104,7 @@ class BookingController extends Controller
         $formatter->setPattern('dd MMMM yyyy');
         $tanggal = $formatter->format(strtotime($request->tanggal));
         $jam_mulai = $listJam[$request->jam_mulai];
-        $jam_selesai = $listJam[$request->jam_selesai];
+        $jam_selesai = $listJam[$request->jam_selesai] ?? null;
         $bookingAvailability = new Dosen();
         $bookingAvailability = $bookingAvailability->checkJadwalAvailability($request->tanggal, $request->id_ruang, $request->jam_mulai, $request->jam_selesai);
         if (empty($bookingAvailability)) {
@@ -177,7 +177,7 @@ class BookingController extends Controller
         $formatter->setPattern('dd MMMM yyyy');
         $tanggal = $formatter->format(strtotime($request->tanggal));
         $jam_mulai = $listJam[$request->jam_mulai];
-        $jam_selesai = $listJam[$request->jam_selesai];
+        $jam_selesai = $listJam[$request->jam_selesai] ?? null;
         // $this->ddd($_COOKIE['lampiran']);
 
         // upload lampiran

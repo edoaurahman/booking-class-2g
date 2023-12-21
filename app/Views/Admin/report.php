@@ -2,15 +2,14 @@
     <div class="p-4  ml-[77px] lg:ml-64">
         <div class="p-4 mt-14">
 
-            <div
-                class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
+            <div class="px-4 py-2 mb-5 rounded-md shadow-md flex items-center gap-2 bg-white font-normal text-sm dark:bg-gray-700 text-gray-500 dark:text-gray-400">
                 <i class="fa-solid fa-clipboard-list fa-sm dark:text-gray-400 group-hover:text-white"></i>
                 Admin / Report
             </div>
 
-            <div class="pb-4  flex justify-between">
+            <div class="pb-4  flex justify-end">
                 <!-- Searching -->
-                <div class="shadow-md rounded-lg">
+                <!-- <div class="shadow-md rounded-lg">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div
@@ -25,24 +24,19 @@
                             class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Search for items">
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Button add report -->
-                <form @submit.prevent="handleSubmit()" method="POST" class="flex w-[50%] items-center justify-end"
-                    id="getMonthReport">
+                <form @submit.prevent="handleSubmit()" method="POST" class="flex w-[50%] items-center justify-end" id="getMonthReport">
                     <div class="w-[40%] mx-1">
-                        <select id="bulan" name="month" id="month"
-                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <select id="bulan" name="month" id="month" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         </select>
                     </div>
                     <div class="w-[30%] mx-1">
-                        <input name="year" type="number" value="2023"
-                            class="w-full spin-gone bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
+                        <input name="year" type="number" value="2023" class="w-full spin-gone bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
                     </div>
                     <div class="mx-1">
-                        <button
-                            class="px-5 min-w-max py-2.5 !bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:!bg-bingu_hover"
-                            type="submit">
+                        <button class="px-5 min-w-max py-2.5 !bg-bingu rounded-lg cursor-pointer shadow-lg text-white hover:!bg-bingu_hover" type="submit">
                             Print Report
                         </button>
                     </div>
@@ -54,11 +48,8 @@
             <section id="report" class="shadow-lg sm:rounded-lg">
                 <div x-init="$nextTick(() => {paggination(1) })">
                     <div class="overflow-x-auto rounded-md overflow-hidden">
-                        <table
-                            class="w-[1200px] lg:w-full overflow-y-auto text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative"
-                            id="table">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                        <table class="w-[1200px] lg:w-full overflow-y-auto text-sm text-left text-gray-500 dark:text-gray-400 table-auto relative" id="table">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="w-[15%] px-6 py-3">
                                         Peminjam
@@ -120,8 +111,7 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             <a :href="'/assets/lampiran/' + item.lampiran" target="_blank">
-                                                <div
-                                                    class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                <div class="px-3 py-2 text-xs font-medium text-center text-white bg-bingu rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-bingu dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                     Lihat Lampiran
                                                 </div>
                                             </a>
@@ -130,34 +120,23 @@
                                             <!-- ########### Ini Modal YGY ########### -->
                                             <div x-data="{ 'showModal': false }" @keydown.escape="showModal = false">
                                                 <!-- Trigger for Modal -->
-                                                <button type="button" @click="showModal = true"
-                                                    x-text="item && item.keterangan ? item.keterangan.substring(0,20) + '...' : '' "></button>
+                                                <button type="button" @click="showModal = true" x-text="item && item.keterangan ? item.keterangan.substring(0,20) + '...' : '' "></button>
                                                 <!-- Modal -->
-                                                <div class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50"
-                                                    x-show="showModal">
+                                                <div class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50" x-show="showModal">
                                                     <!-- Modal inner -->
-                                                    <div class="max-w-3xl px-6 py-4 mx-auto text-left bg-white rounded shadow-lg dark:bg-gray-600"
-                                                        @click.away="showModal = false"
-                                                        x-transition:enter="motion-safe:ease-out duration-300"
-                                                        x-transition:enter-start="opacity-0 scale-90"
-                                                        x-transition:enter-end="opacity-100 scale-100">
+                                                    <div class="max-w-3xl px-6 py-4 mx-auto text-left bg-white rounded shadow-lg dark:bg-gray-600" @click.away="showModal = false" x-transition:enter="motion-safe:ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
                                                         <!-- Title / Close-->
                                                         <div class="flex items-center justify-between">
                                                             <h5 class="mr-3 text-black max-w-none dark:text-white">
                                                                 Keterangan</h5>
-                                                            <button type="button" class="z-50 cursor-pointer"
-                                                                @click="showModal = false">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                    height="24" viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                                        stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                            <button type="button" class="z-50 cursor-pointer" @click="showModal = false">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                                                 </svg>
                                                             </button>
                                                         </div>
                                                         <!-- content -->
-                                                        <div
-                                                            class="min-h-[100px] min-w-[300px] pt-4 max-h-[80vh] overflow-y-auto text-gray-500 dark:text-gray-300">
+                                                        <div class="min-h-[100px] min-w-[300px] pt-4 max-h-[80vh] overflow-y-auto text-gray-500 dark:text-gray-300">
                                                             <p x-text="item.keterangan"></p>
                                                         </div>
                                                     </div>
@@ -172,20 +151,17 @@
                     <nav class="w-full flex items-center justify-end py-4 px-3" aria-label="Table navigation">
                         <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
                             <li>
-                                <a href="#report" @click="prev()"
-                                    class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                                <a href="#report" @click="prev()" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
                             </li>
-                            <?php for ($i = 1; $i <= $totalPage; $i++): ?>
+                            <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
                                 <li>
-                                    <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#report"
-                                        class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400  dark:hover:text-white hover:text-black">
+                                    <a @click="paggination(<?= $i; ?>)" id="button-pagination" href="#report" class="flex items-center justify-center px-3 h-8 leading-tight border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400  dark:hover:text-white hover:text-black">
                                         <?= $i ?>
                                     </a>
                                 </li>
                             <?php endfor; ?>
                             <li>
-                                <a href="#report" @click="next()"
-                                    class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                                <a href="#report" @click="next()" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
                             </li>
                         </ul>
                     </nav>
@@ -292,7 +268,7 @@
                 } else if (e.target !== node && !e.target.classList.contains("delete-modal") && !e.target.classList.contains("edit-modal")) {
                     node.nextElementSibling.classList.add("hidden");
                 }
-            } catch (error) { }
+            } catch (error) {}
         });
     });
 

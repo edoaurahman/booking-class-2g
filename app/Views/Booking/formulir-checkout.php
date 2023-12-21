@@ -166,7 +166,11 @@
                     </div>
                     <div class="text-base mb-2  font-semibold text-gray-900 dark:text-white">
                         Jam ke <br>
-                        <p class="-my-0.5 font-thin"><?= $jam_mulai . ' - ' . $jam_selesai ?></p>
+                        <?php if ($jam_selesai != null) : ?>
+                            <p class="-my-0.5 font-thin"><?= $jam_mulai . ' - ' . $jam_selesai ?></p>
+                        <?php else : ?>
+                            <p class="-my-0.5 font-thin"><?= $jam_mulai ?></p>
+                        <?php endif ?>
                     </div>
                     <div class="text-base font-semibold text-gray-900 dark:text-white">
                         Tanggal <br>
