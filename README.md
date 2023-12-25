@@ -42,15 +42,21 @@ npm run dev
 ### jalankan program dengan perintah (Windows)
 
 ```
-php -S localhost:8080 -t public
+npm run php
 ```
 
 ```
- npx tailwindcss -i public\assets\css\input.css -o public\assets\css\style.css --watch
+npm run tailwind
 ```
 
 ### Buka di Browser
 
 ```
 http://localhost:8080
+```
+
+### Build Production
+
+```
+npm run build
 ```
