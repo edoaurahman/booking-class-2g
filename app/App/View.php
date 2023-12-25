@@ -7,6 +7,13 @@ class View
     public static function render(string $view, array $data): void
     {
         extract($data);
-        require __DIR__ . '/../View/' . $view . '.php';
+
+        $templateFile =  __DIR__ . '/../Views/' . $view . '.php';
+
+        if (file_exists($templateFile)) {
+            require $templateFile;
+        } else {
+            throw new \Exception('View file not found: ' . $template);
+        }
     }
 }

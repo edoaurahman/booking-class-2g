@@ -4,8 +4,7 @@ namespace TugasBesar\BookingClass2g\App;
 
 class Router
 {
-    private static array $routes = [];
-
+    private static array $_routes = [];
     public static function add(
         string $method,
         string $path,
@@ -14,13 +13,14 @@ class Router
         array $middlewares = []
     ): void {
         $variables = [];
-        $pattern = preg_replace_callback('/{([a-zA-Z0-9]+)}/', function ($matches) use (&$variables) {
+        $pattern = preg_replace_callback('/{([a-zA-Z0-9_]+)}/', function ($matches) use (&$variables) {
             $variables[] = $matches[1];
-            return '([a-zA-Z0-9]+)';
+            return '([a-zA-Z0-9_]+)';
         }, $path);
         $pattern = '#^' . $pattern . '$#';
 
-        self::$routes[] = [
+
+        self::$_routes[] = [
             'method' => $method,
             'path' => $path,
             'controller' => $controller,
@@ -40,7 +40,7 @@ class Router
 
         $method = $_SERVER['REQUEST_METHOD'];
 
-        foreach (self::$routes as $route) {
+        foreach (self::$_routes as $route) {
             if (preg_match($route['pattern'], $path, $matches) && $method == $route['method']) {
                 array_shift($matches);
                 $variables = array_combine($route['variables'], $matches);
@@ -61,15 +61,24 @@ class Router
                     call_user_func_array([$controller, $function], $variables);
                     return;
                 } catch (\Throwable $e) {
-                    http_response_code(500);
-                    echo "INTERNAL SERVER ERROR: " . $e->getMessage();
-                    return;
+                    $env = parse_ini_file(__DIR__ . '/../../.env');
+                    if ($env['ENVIRONMENT'] == 'development') {
+                        http_response_code(500);
+                        echo "INTERNAL SERVER ERROR: ";
+                        echo "<pre>"
+                            . $e->getMessage() . "\n"
+                            . $e->getTraceAsString() . "\n"
+                            . "</pre>";
+                        return;
+                    } else {
+                        http_response_code(500);
+                        return;
+                    }
                 }
             }
         }
 
-
         http_response_code(404);
-        echo "CONTROLLER NOT FOUND";
+        include_once '404.php';
     }
 }

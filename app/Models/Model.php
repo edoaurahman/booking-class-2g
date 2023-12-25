@@ -8,7 +8,7 @@ class Model extends Database
 {
     protected $table;
 
-    public function find($id, string $column = 'id'): object
+    public function find(string $id, string $column = 'id'): object
     {
         $model = new static;
         $sql = "SELECT * FROM $model->table WHERE $column = ?";
@@ -44,10 +44,9 @@ class Model extends Database
         $stmt = $model->db->prepare($sql);
         $stmt->bind_param(str_repeat('s', count($data)), ...array_values($data));
         $stmt->execute();
-
     }
 
-    public function update(array $data, string $id, string $column = 'id'): void
+    public function update(array $data, string $id, string $column = 'id'): bool
     {
         $model = new static;
         $set = '';
@@ -55,17 +54,25 @@ class Model extends Database
             $set .= "$key = ?, ";
         }
         $set = rtrim($set, ', ');
-        $sql = "UPDATE $model->table SET $set WHERE $column = ?";
+        $sql = "UPDATE {$model->table} SET $set WHERE $column = ?";
         $stmt = $model->db->prepare($sql);
 
+        // Buat array dengan tipe data untuk bind_param
         $types = str_repeat('s', count($data)) . 's';
         $values = array_values($data);
         $values[] = $id;
 
+        // Bind parameter dan jalankan query
         $stmt->bind_param($types, ...$values);
         $stmt->execute();
 
+        // Handle error
+        if ($stmt->error) {
+            die($stmt->error);
+        }
+        return true;
     }
+
 
     public function delete(string $id, string $column = 'id'): void
     {
@@ -74,7 +81,6 @@ class Model extends Database
         $stmt = $model->db->prepare($sql);
         $stmt->bind_param('s', $id);
         $stmt->execute();
-
     }
 
     public function query(string $sql): array
@@ -95,5 +101,17 @@ class Model extends Database
         $result = $stmt->get_result()->fetch_assoc();
 
         return $result ? (object)$result : null;
+    }
+
+    public function exec(string $sql): bool
+    {
+        $model = new static;
+        $stmt = $model->db->prepare($sql);
+        $stmt->execute();
+        // handdle error
+        if ($stmt->error) {
+            die($stmt->error);
+        }
+        return true;
     }
 }
